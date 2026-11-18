@@ -2,22 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import FormatPanel from '../components/FormatPanel.astro';
-import Invitation from '../components/Invitation.astro';
 import { collections } from '../data/site';
 const slides = [
   {
     image: 'gateau-creme',
-    label: 'Cakes',
     alt: 'Gâteau sur pied décoré de volutes de crème, photographie d’ambiance',
   },
   {
     image: 'macarons-ivoire',
-    label: 'Mignardises',
     alt: 'Macarons ivoire présentés sur un plat, photographie d’ambiance',
   },
   {
     image: 'table-reception',
-    label: 'Tables',
     alt: 'Table gourmande dressée pour une réception, photographie d’ambiance',
   },
 ];
@@ -33,13 +29,16 @@ const slides = [
       </a>
     </div>
     <div class="hero-visual">
-      <div
+      <button
         class="hero-photos"
         data-slide-surface
-        aria-label="Photographies d’ambiance en défilement automatique"
+        type="button"
+        disabled
+        aria-label="Figer le défilement des photographies"
+        aria-pressed="false"
       >
         {slides.map((slide, index) => (
-          <div
+          <span
             class:list={['hero-slide', { 'is-active': index === 0 }]}
             data-slide
             aria-hidden={index !== 0}
@@ -50,38 +49,9 @@ const slides = [
               eager={index === 0}
               sizes="(min-width: 960px) 56vw, 100vw"
             />
-          </div>
+          </span>
         ))}
-      </div>
-      <div class="hero-rail" data-carousel-controls hidden>
-        <div
-          class="hero-scenes"
-          role="group"
-          aria-label="Choisir une photographie"
-        >
-          {slides.map((slide, index) => (
-            <button
-              type="button"
-              data-scene={index}
-              aria-pressed={index === 0}
-              aria-label={`Afficher : ${slide.label}`}
-            >
-              {slide.label}
-              <span class="scene-line" aria-hidden="true">
-                <i />
-              </span>
-            </button>
-          ))}
-        </div>
-        <button
-          class="slide-pause"
-          type="button"
-          data-slide-toggle
-          aria-label="Mettre le diaporama en pause"
-        >
-          Pause
-        </button>
-      </div>
+      </button>
     </div>
   </section>
 
@@ -198,5 +168,4 @@ const slides = [
       </a>
     </div>
   </section>
-  <Invitation />
 </Layout>

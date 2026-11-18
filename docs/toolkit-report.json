@@ -1,5 +1,5 @@
 {
-  "task": "Siray Signature V2 : refonte guidée par Unslop, priorité mobile, suppression du lecteur décoratif, cohérence cerise noire/crème et vérification indépendante.",
+  "task": "Siray Signature V3 : suppression du rail du diaporama, lecture automatique sans chrome et footer global crème unique, guidés par Unslop, Taste et Impeccable.",
   "prepared_sources": [
     {
       "name": "ponytail",
@@ -189,9 +189,7 @@
     {
       "name": "humanizer",
       "commit": "b48c832f0f809c1b5658edbb838c2521b72f2413",
-      "files_read": [
-        ".dev-toolkit/vendor/humanizer/SKILL.md"
-      ],
+      "files_read": [".dev-toolkit/vendor/humanizer/SKILL.md"],
       "applied_decisions": [
         "Prose française directe, pas de faux historique, chiffres promotionnels, témoignages ou récit de méthode sur les pages produit."
       ],
@@ -217,10 +215,7 @@
       "applied_decisions": [
         "Implémentation statique sobre, pas de back-end, base, formulaire ou paiement inutiles; QA standardlib sans dépendance de test lourde."
       ],
-      "changed_files": [
-        "astro.config.mjs",
-        "scripts/check-site.py"
-      ],
+      "changed_files": ["astro.config.mjs", "scripts/check-site.py"],
       "checks": [
         {
           "command": "python3 scripts/check-site.py",
@@ -237,10 +232,7 @@
       "applied_decisions": [
         "Parcours mobile, contrôles explicites, focus modal et optimisation des ressources Astro."
       ],
-      "changed_files": [
-        "src/components/Photo.astro",
-        "src/scripts/site.ts"
-      ],
+      "changed_files": ["src/components/Photo.astro", "src/scripts/site.ts"],
       "checks": [
         {
           "command": "Local catalog searches: keyboard focus modal (ux); static asset optimization (astro)",
@@ -412,5 +404,87 @@
     "source_checksum_comparison": "identical source trees in project and isolated validation checkout",
     "build_runtime": "Node 24.22.3; isolated npm ci from unchanged package-lock to avoid macOS dataless reads"
   },
-  "v2_preparation": "The nine recorded source checkouts remain in place. Repeated helper validation was stopped after dataless Git shallow files stalled it; no pin was changed or checkout reset. Unslop installed successfully by official skill-installer git method."
+  "v2_preparation": "The nine recorded source checkouts remain in place. Repeated helper validation was stopped after dataless Git shallow files stalled it; no pin was changed or checkout reset. Unslop installed successfully by official skill-installer git method.",
+  "v3_implementation": {
+    "scope": "État du code V3 ; les entrées verification, modules_applied et v2_checks sont conservées comme historique des versions précédentes. Aucun résultat navigateur V3 n’est consigné ici.",
+    "hero": {
+      "automatic_interval_ms": 6500,
+      "fade_ms": 850,
+      "visible_controls": "Aucun rail, libellé de scène, indicateur de durée ou bouton de lecture affiché.",
+      "interaction": "La surface photo est un bouton natif sans chrome. Toucher, clic ou activation clavier suspendent les changements automatiques ; une nouvelle activation les reprend. Nom accessible et aria-pressed reflètent l’action et la pause choisie.",
+      "suspension": "Photo hors de vue ou onglet masqué ; ni le survol ni le focus de la photo ou du CTA ne mettent la lecture en pause.",
+      "reduced_motion": "Photo statique sans fondu ; bouton photographique désactivé.",
+      "without_javascript": "Première photo visible et surface désactivée."
+    },
+    "footer": {
+      "component": "src/components/Footer.astro",
+      "background": "#fff9f2",
+      "content": "Une seule conclusion globale : Votre projet gourmand, un lien Instagram, Siray Signature, Bordeaux/Gironde, quatre liens de navigation et un seul lien de crédits explicite.",
+      "responsive": "Navigation en deux colonnes sur mobile, composition horizontale sur ordinateur ; cibles de 44 px minimum et action Instagram de 48 px.",
+      "removed_duplicate": "Suppression du composant Invitation et de ses appels avant le footer."
+    }
+  },
+  "modules_applied_v3": [
+    {
+      "name": "unslop",
+      "author": "Damir Sokolovsky (@heydamir)",
+      "license": "CC-BY-4.0",
+      "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+      "files_read": ["SKILL.md", "references/signs.md"],
+      "applied_decisions": [
+        "Palette et typographie existantes conservées ; retrait du rail, des libellés et du chrome du diaporama.",
+        "Footer clair, signature mesurée, une seule action Instagram et suppression de la conclusion répétée."
+      ]
+    },
+    {
+      "name": "taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "files_read": [
+        "skills/taste-skill/SKILL.md",
+        "skills/taste-skill/references/sections.md"
+      ],
+      "applied_decisions": [
+        "Navigation utile, textes courts, liens réels et une seule ligne de provenance des photographies.",
+        "Aucune adresse, coordonnée commerciale ou mention légale inventée."
+      ]
+    },
+    {
+      "name": "impeccable",
+      "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+      "files_read": ["skill/reference/craft-floor.md"],
+      "applied_decisions": [
+        "Cibles tactiles de 44 px minimum, CTA de 48 px, focus lisible sur crème et styles de footer scoped.",
+        "Bouton photographique natif accessible au clavier ; photo statique et bouton désactivé avec mouvement réduit."
+      ]
+    }
+  ],
+  "v3_checks": {
+    "build": {
+      "astro_check_files": 20,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0,
+      "pages": 12
+    },
+    "static_and_http": {
+      "pages": 12,
+      "issues": [],
+      "warnings": [],
+      "unknown_route_status": 404
+    },
+    "browser_report": "docs/qa/v3-browser-review.md",
+    "independent_review": "docs/qa/v3-independent-review.md",
+    "viewport_widths": [320, 390, 430, 1440],
+    "horizontal_overflow": false,
+    "footer_height_px": {
+      "320": 439.5,
+      "390": 442,
+      "430": 442,
+      "1440": 295
+    },
+    "footer_min_link_height_px": 44,
+    "hero_rail_present": false,
+    "hero_auto_change_observed": true,
+    "scope_limit": "Browser viewports only; reduced motion reviewed in source, not emulated. No physical-device or Instagram embedded-browser test."
+  }
 }

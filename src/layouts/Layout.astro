@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Icon from '../components/Icon.astro';
+import Footer from '../components/Footer.astro';
 import { instagram } from '../data/site';
 import '@fontsource/gloock/latin-400.css';
 import '@fontsource/manrope/latin-400.css';
@@ -130,33 +131,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     <main id="contenu" tabindex="-1">
       <slot />
     </main>
-    <footer class="site-footer section-pad">
-      <div class="footer-top">
-        <p>Cakes, mignardises & tables sur mesure</p>
-        <a href={instagram} target="_blank" rel="noopener noreferrer">
-          @siraysignature
-        </a>
-      </div>
-      <a
-        class="footer-wordmark"
-        href="/"
-        aria-label="Siray Signature, retour à l’accueil"
-      >
-        Siray Signature
-      </a>
-      <div class="footer-bottom">
-        <span>Bordeaux & Gironde</span>
-        <nav aria-label="Informations">
-          <a href="/contact/">Contact</a>
-          <a href="/credits/">Photos & informations</a>
-        </nav>
-        <span>© {new Date().getFullYear()} Siray Signature</span>
-      </div>
-      <p class="ambiance-note">
-        Cette maquette utilise des photographies d’ambiance. Elles seront
-        remplacées par les créations de Siray Signature.
-      </p>
-    </footer>
+    <Footer />
     <script>
       import '../scripts/site';
     </script>

@@ -40,60 +40,50 @@ function initialize() {
   }
 
   const hero = document.querySelector<HTMLElement>('[data-hero]');
-  if (hero) {
+  const surface = hero?.querySelector<HTMLButtonElement>(
+    '[data-slide-surface]',
+  );
+  if (hero && surface) {
     const slides = Array.from(
       hero.querySelectorAll<HTMLElement>('[data-slide]'),
     );
-    const scenes = Array.from(
-      hero.querySelectorAll<HTMLButtonElement>('[data-scene]'),
-    );
-    const toggle = hero.querySelector<HTMLButtonElement>('[data-slide-toggle]');
-    const surface = hero.querySelector<HTMLElement>('[data-slide-surface]');
-    hero.querySelector('[data-carousel-controls]')?.removeAttribute('hidden');
     let current = 0;
     let pausedByUser = false;
     let inView = true;
-    let hovered = false;
     let disposed = false;
     let generation = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
     let animation: gsap.core.Timeline | undefined;
     const canRun = () =>
-      !pausedByUser &&
-      !reduced.matches &&
-      inView &&
-      !hovered &&
-      !document.hidden;
+      !pausedByUser && !reduced.matches && inView && !document.hidden;
     const schedule = () => {
       clearTimeout(timer);
+      const scheduledGeneration = ++generation;
       hero.dataset.running = String(canRun());
-      hero.dataset.suspended = String(!canRun());
-      toggle?.setAttribute(
+      surface.disabled = reduced.matches;
+      surface.setAttribute('aria-pressed', String(pausedByUser));
+      surface.setAttribute(
         'aria-label',
-        pausedByUser
-          ? 'Reprendre le diaporama'
-          : 'Mettre le diaporama en pause',
+        reduced.matches
+          ? 'Photographies d’ambiance'
+          : pausedByUser
+            ? 'Reprendre le défilement des photographies'
+            : 'Figer le défilement des photographies',
       );
-      if (toggle) toggle.textContent = pausedByUser ? 'Reprendre' : 'Pause';
       if (canRun())
         timer = setTimeout(() => {
-          void change(current + 1, true);
+          void change(scheduledGeneration);
         }, 6500);
     };
-    const change = async (next: number, automatic = false) => {
-      const targetIndex = (next + slides.length) % slides.length;
-      if (targetIndex === current) {
-        schedule();
-        return;
-      }
-      const token = ++generation;
+    const change = async (scheduledGeneration: number) => {
+      const targetIndex = (current + 1) % slides.length;
       const target = slides[targetIndex];
       const img = target.querySelector('img');
       if (img) {
         img.loading = 'eager';
         await img.decode().catch(() => {});
       }
-      if (disposed || token !== generation || (automatic && !canRun())) return;
+      if (disposed || scheduledGeneration !== generation || !canRun()) return;
       animation?.kill();
       const old = slides[current];
       slides.forEach((slide) => {
@@ -107,90 +97,17 @@ function initialize() {
       target.setAttribute('aria-hidden', 'false');
       animation = gsap
         .timeline()
-        .to(
-          target,
-          {
-            opacity: 1,
-            duration: reduced.matches ? 0 : 0.85,
-            ease: 'power3.out',
-          },
-          0,
-        )
-        .to(old, { opacity: 0, duration: reduced.matches ? 0 : 0.85 }, 0)
+        .to(target, { opacity: 1, duration: 0.85, ease: 'power3.out' }, 0)
+        .to(old, { opacity: 0, duration: 0.85 }, 0)
         .set(old, { visibility: 'hidden' });
       current = targetIndex;
-      scenes.forEach((button, index) =>
-        button.setAttribute('aria-pressed', String(index === current)),
-      );
       schedule();
     };
-    const pause = () => {
-      pausedByUser = true;
-      schedule();
-    };
-    scenes.forEach((button, index) =>
-      button.addEventListener(
-        'click',
-        () => {
-          pause();
-          void change(index);
-        },
-        { signal },
-      ),
-    );
-    toggle?.addEventListener(
+    surface.addEventListener(
       'click',
       () => {
         pausedByUser = !pausedByUser;
         schedule();
-      },
-      { signal },
-    );
-    hero.addEventListener(
-      'focusin',
-      (event) => {
-        if (event.target !== toggle) pause();
-      },
-      { signal },
-    );
-    surface?.addEventListener(
-      'pointerenter',
-      (event) => {
-        if (event.pointerType === 'mouse') {
-          hovered = true;
-          schedule();
-        }
-      },
-      { signal },
-    );
-    surface?.addEventListener(
-      'pointerleave',
-      () => {
-        hovered = false;
-        schedule();
-      },
-      { signal },
-    );
-    let startX = 0;
-    let startY = 0;
-    surface?.addEventListener(
-      'pointerdown',
-      (event) => {
-        startX = event.clientX;
-        startY = event.clientY;
-      },
-      { signal },
-    );
-    surface?.addEventListener(
-      'pointerup',
-      (event) => {
-        if (event.pointerType === 'mouse') return;
-        const dx = event.clientX - startX;
-        const dy = event.clientY - startY;
-        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-          pause();
-          void change(current + (dx < 0 ? 1 : -1));
-        } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) pause();
       },
       { signal },
     );
@@ -201,21 +118,24 @@ function initialize() {
       },
       { threshold: 0.2 },
     );
-    if (surface) observer.observe(surface);
+    observer.observe(surface);
     document.addEventListener('visibilitychange', schedule, { signal });
-    const motionChange = () => {
-      if (toggle) toggle.hidden = reduced.matches;
-      if (reduced.matches) {
-        animation?.kill();
-        gsap.set(slides, { opacity: 0, visibility: 'hidden' });
-        gsap.set(slides[current], { opacity: 1, visibility: 'visible' });
-      }
-      schedule();
-    };
-    reduced.addEventListener('change', motionChange, { signal });
-    motionChange();
+    reduced.addEventListener(
+      'change',
+      () => {
+        if (reduced.matches) {
+          animation?.kill();
+          gsap.set(slides, { opacity: 0, visibility: 'hidden' });
+          gsap.set(slides[current], { opacity: 1, visibility: 'visible' });
+        }
+        schedule();
+      },
+      { signal },
+    );
+    schedule();
     cleanups.push(() => {
       disposed = true;
+      generation++;
       clearTimeout(timer);
       animation?.kill();
       observer.disconnect();

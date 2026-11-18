@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
 import FormatPanel from '../../components/FormatPanel.astro';
 import Process from '../../components/Process.astro';
-import Invitation from '../../components/Invitation.astro';
 import { collections, instagram } from '../../data/site';
 export function getStaticPaths() {
   return collections.map((item) => ({
@@ -77,5 +76,4 @@ const related = collections.filter((x) => x.slug !== item.slug).slice(0, 2);
       <a href="/buffets/">Buffets & réceptions</a>
     </div>
   </section>
-  <Invitation />
 </Layout>

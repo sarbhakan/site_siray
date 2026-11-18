@@ -1,0 +1,251 @@
+---
+import { instagram } from '../data/site';
+
+const year = new Date().getFullYear();
+const links = [
+  { href: '/creations/', label: 'Les créations' },
+  { href: '/buffets/', label: 'Buffets & brunch' },
+  { href: '/galerie/', label: 'Le carnet' },
+  { href: '/la-maison/', label: 'La maison' },
+];
+---
+
+<footer class="signature-footer section-pad">
+  <div class="signature-footer-contact">
+    <h2>Votre projet gourmand</h2>
+    <a
+      class="signature-footer-instagram"
+      href={instagram}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Écrire sur Instagram
+    </a>
+  </div>
+
+  <div class="signature-footer-directory">
+    <div class="signature-footer-identity">
+      <a
+        class="signature-footer-brand"
+        href="/"
+        aria-label="Siray Signature, accueil"
+      >
+        Siray <span>Signature</span>
+      </a>
+      <p class="signature-footer-area">Bordeaux & Gironde</p>
+    </div>
+
+    <nav class="signature-footer-nav" aria-label="Explorer Siray Signature">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="signature-footer-colophon">
+    <p>© {year} Siray Signature</p>
+    <a href="/credits/">Photographies d’ambiance & crédits</a>
+  </div>
+</footer>
+
+<style>
+  .signature-footer {
+    padding-block: 32px 16px;
+    border-top: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .signature-footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .signature-footer-contact h2 {
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .signature-footer-instagram {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 6px;
+    background: var(--wine);
+    color: var(--on-wine);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: background-color 160ms var(--ease);
+  }
+
+  .signature-footer-directory {
+    display: grid;
+    gap: 16px;
+    padding-block: 24px 20px;
+  }
+
+  .signature-footer-identity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .signature-footer-brand {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: baseline;
+    gap: 6px;
+    flex-shrink: 0;
+    font-family: 'Gloock', serif;
+    font-size: 28px;
+    line-height: 44px;
+  }
+
+  .signature-footer-brand span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .signature-footer-area {
+    max-width: 11ch;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 20px;
+    text-align: right;
+    text-wrap: balance;
+  }
+
+  .signature-footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+  }
+
+  .signature-footer-nav a {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    padding-block: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 160ms var(--ease);
+  }
+
+  .signature-footer-colophon {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .signature-footer-colophon a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 4px;
+    transition: text-decoration-color 160ms var(--ease);
+  }
+
+  @media (hover: hover) {
+    .signature-footer-instagram:hover {
+      background: var(--wine-raised);
+    }
+
+    .signature-footer-nav a:hover,
+    .signature-footer-colophon a:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .signature-footer-contact {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+
+    .signature-footer-contact h2 {
+      font-size: 32px;
+    }
+
+    .signature-footer-instagram {
+      flex-shrink: 0;
+    }
+
+    .signature-footer-directory {
+      gap: 24px;
+      padding-block: 24px;
+    }
+
+    .signature-footer-area {
+      max-width: none;
+      text-align: left;
+    }
+
+    .signature-footer-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .signature-footer-colophon {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 8px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .signature-footer-directory {
+      grid-template-columns: minmax(240px, 1fr) minmax(0, 1.5fr);
+      align-items: center;
+      gap: 48px;
+    }
+
+    .signature-footer-identity {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    .signature-footer-nav {
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 359px) {
+    .signature-footer-contact h2 {
+      font-size: 26px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signature-footer a {
+      transition: none;
+    }
+  }
+</style>

@@ -25,16 +25,18 @@ Sur macOS, si le projet se trouve dans un dossier Documents synchronisé et que 
 
 ## Pages et contenu
 
-- Accueil avec défilement photographique automatique, choix de scène et pause.
+- Accueil avec défilement photographique automatique, sans rail ni commandes affichées.
 - Index des créations et quatre pages : layer cakes, bento cakes, mignardises/cupcakes, brunch box.
 - Buffets et réceptions, avec plateaux sucrés et salés.
 - Carnet filtrable et visionneuse accessible.
 - La maison, contact et questions fréquentes.
 - Crédits/informations et page404.
 
-La V2 associe un cadre cerise noire à des surfaces crème. Les titres et l'interface utilisent Manrope ; Gloock est réservé à la marque. Sur mobile, les collections se parcourent dans une rangée horizontale native et chaque carte mène à sa page.
+La V3 conserve le cadre cerise noire et les surfaces crème. Les titres et l'interface utilisent Manrope ; Gloock est réservé à la marque. Sur mobile, les collections se parcourent dans une rangée horizontale native et chaque carte mène à sa page.
 
-Le diaporama démarre automatiquement : une scène toutes les 6,5 secondes, avec un fondu de 850 ms. Ses commandes restent sous la photo, sans texte ni bouton superposé à l'image. Le choix d'une scène, le focus clavier ou un geste tactile suspendent la lecture ; le bouton texte permet de la reprendre. La lecture se suspend aussi au survol de la photo, lorsque celle-ci sort de la vue et lorsque l'onglet devient inactif. Avec la préférence système de mouvement réduit, la photo reste statique jusqu'à un choix manuel, sans fondu.
+Le diaporama démarre automatiquement : une scène toutes les 6,5 secondes, avec un fondu de 850 ms. Il ne présente ni rail, ni nom de scène, ni durée, ni bouton visible. La photo elle-même est un bouton natif sans chrome : un toucher, un clic ou une activation au clavier suspend les changements automatiques ; une nouvelle activation les reprend. Le nom accessible du bouton indique cette action. Le survol et le focus, y compris sur l'action voisine, ne suspendent pas la lecture. Celle-ci se suspend lorsque la photo sort de la vue ou que l'onglet devient inactif. Avec la préférence système de mouvement réduit, la photo reste statique et sa surface est désactivée. Sans JavaScript, la première photo reste visible.
+
+Un footer global crème clair rassemble un seul appel Instagram, la marque, Bordeaux/Gironde, quatre liens de navigation et les crédits photo. Sa grille mobile reste en deux colonnes avec des cibles d'au moins 44 px. Le bloc d'invitation séparé qui précédait le footer a été retiré : chaque page dispose désormais d'une seule conclusion commune.
 
 Les données des collections et du carnet se trouvent dans `src/data/site.ts`. Les textes des autres pages sont dans `src/pages/`. Le layout, les composants communs et les tokens CSS sont regroupés dans `src/layouts/`, `src/components/` et `src/styles/global.css`.
 
