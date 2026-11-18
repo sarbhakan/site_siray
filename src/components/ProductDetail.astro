@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from './Photo.astro';
+import PlatterChoices from './PlatterChoices.astro';
+import BuffetService from './BuffetService.astro';
 import {
   collections, instagram, classicFlavorGroups, signatureFlavors,
   cupcakeFlavors, brunchBoxes, type Collection,
@@ -12,18 +14,20 @@ const classic = ['layer-cakes', 'bento-cakes'].includes(item.slug);
 const brunch = item.slug === 'brunch-box';
 const layer = item.slug === 'layer-cakes';
 const cupcakes = item.slug === 'cupcakes';
+const buffet = item.slug === 'buffets';
+const platters = item.slug === 'plateaux';
 const related = collections.filter((other) => other.slug !== item.slug).slice(0, 3);
 const euro = (value: number) => new Intl.NumberFormat('fr-FR', {
   style: 'currency', currency: 'EUR', maximumFractionDigits: 0,
 }).format(value);
 const formatLabel = brunch ? 'Les compositions' : classic ? 'Format & décor'
-  : item.slug === 'buffets' ? 'Composer le buffet' : 'Formats & tarifs';
+  : buffet ? 'La prestation' : 'Formats & tarifs';
 const firstPanel = brunch ? 'compositions' : 'formats';
 const tabs = [
   { id: firstPanel, label: formatLabel },
   ...(classic || cupcakes ? [{ id: 'saveurs', label: classic ? 'Saveurs classiques' : 'Les saveurs' }] : []),
   ...(layer ? [{ id: 'signatures', label: 'Associations Signature' }] : []),
-  { id: 'votre-demande', label: 'Préparer ma demande' },
+  { id: 'votre-demande', label: buffet ? 'Demander un devis' : 'Préparer ma demande' },
 ];
 const secondary: Record<string, { image: string; alt: string }> = {
   'layer-cakes': { image: 'gateau-creme', alt: 'Volutes de crème sur un gâteau' },
@@ -50,11 +54,11 @@ const cupcakeGroups = [
 ];
 const flavorGroups = cupcakes ? cupcakeGroups : classicFlavorGroups;
 const conciseNotes: Record<string, string> = {
-  'layer-cakes': 'Tarif en message privé selon les parts, les saveurs et la personnalisation.',
-  'bento-cakes': 'Tarif en message privé selon la personnalisation et le décor.',
+  'layer-cakes': 'Tarif personnalisé en message privé.',
+  'bento-cakes': 'Tarif personnalisé en message privé.',
   cupcakes: 'Personnalisation spécifique avec supplément.',
-  buffets: 'Devis selon les quantités, les produits et la mise en place.',
-  plateaux: 'Précisez les convives et la quantité de chaque plateau.',
+  buffets: 'Chaque prestation fait l’objet d’un devis personnalisé.',
+  plateaux: 'Précisez les quantités et le nombre de convives.',
 };
 ---
 
@@ -92,7 +96,7 @@ const conciseNotes: Record<string, string> = {
             {brunch ? (
               <>
                 <span id="formats"></span>
-                <div class="v5-panel-heading"><h2>Dix brunchs au choix</h2><p>Chaque composition réunit du sucré, du salé et un jus de fruits. Les prix sont indiqués par personne.</p></div>
+                <div class="v5-panel-heading"><h2>Dix brunchs au choix</h2><p>Du sucré, du salé et un jus de fruits dans chaque composition.</p></div>
                 <div class="v5-brunch" data-v5-brunch>
                   <div class="v5-brunch-picker" data-v5-brunch-controls hidden>
                     <label for="brunch-composition">Choisissez une composition</label>
@@ -113,20 +117,22 @@ const conciseNotes: Record<string, string> = {
                     ))}
                   </div>
                 </div>
-                <p class="v5-panel-note">Précisez le nombre de personnes et l’heure de retrait.</p>
+                <p class="v5-panel-note">Personnes et heure de retrait à préciser.</p>
               </>
             ) : (
               <>
-                <div class="v5-panel-heading"><h2>{classic ? 'Le format, puis votre décor' : item.slug === 'buffets' ? 'Une table à composer ensemble' : 'Les formats & leurs tarifs'}</h2><p>{item.text}</p></div>
-                {item.tariffs.length > 0 && (
+                <div class="v5-panel-heading"><h2>{classic ? 'Le format, puis votre décor' : buffet ? 'Mise en place du buffet' : platters ? 'Les plateaux à partager' : 'Les formats & leurs tarifs'}</h2><p>{platters ? 'Découvrez la composition de chaque plateau.' : item.text}</p></div>
+                {buffet && <BuffetService />}
+                {platters && <PlatterChoices tariffs={item.tariffs} />}
+                {!platters && item.tariffs.length > 0 && (
                   <table class="v5-product-prices">
                     <caption class="sr-only">Les tarifs des {item.name.toLowerCase()}</caption>
                     <thead><tr><th scope="col">{item.slug === 'plateaux' ? 'Plateau' : 'Quantité'}</th><th scope="col">Tarif</th></tr></thead>
                     <tbody>{item.tariffs.map((tariff) => <tr><th scope="row">{tariff.label}{tariff.detail && <small>{tariff.detail}</small>}</th><td>{euro(tariff.price)}</td></tr>)}</tbody>
                   </table>
                 )}
-                <ul class="v5-product-options">{item.possibilities.map((possibility, index) => <li>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>
-                {item.slug === 'mignardises' ? <p class="v5-panel-note"><strong>Quantités supplémentaires sur devis.</strong> Composition ajustée à vos besoins et au nombre de convives.</p> : <p class="v5-panel-note">{conciseNotes[item.slug] || item.priceNote}</p>}
+                {!buffet && !platters && <ul class="v5-product-options">{item.possibilities.map((possibility, index) => <li>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>}
+                {item.slug === 'mignardises' ? <p class="v5-panel-note">Quantités supplémentaires sur devis.</p> : <p class="v5-panel-note">{conciseNotes[item.slug] || item.priceNote}</p>}
               </>
             )}
           </section>
@@ -157,7 +163,7 @@ const conciseNotes: Record<string, string> = {
           )}
 
           <section id="votre-demande" class="v5-product-panel" data-v5-panel>
-            <div class="v5-panel-heading"><h2>Les détails à nous partager</h2><p>Gardez ces éléments sous la main pour préparer votre message. Nous précisons ensuite votre projet avec vous sur Instagram.</p></div>
+            <div class="v5-panel-heading"><h2>{buffet ? 'Votre demande de devis' : 'Les détails à nous partager'}</h2><p>{buffet ? 'Partagez ces informations sur Instagram pour établir votre devis.' : 'Partagez ces détails sur Instagram.'}</p></div>
             <div class="v5-request-plan"><div class="v5-request-photo"><Photo name={requestPhoto.image} alt={requestPhoto.alt} sizes="(min-width: 960px) 45vw, 100vw" /></div><ul>{item.orderFields.map((field) => <li>{field}</li>)}</ul></div>
             <div class="v5-order-notes"><p><strong>Allergies & intolérances</strong>Signalez-les avant la validation de votre commande, ainsi que toute restriction alimentaire.</p><p>Toutes nos viandes sont halal. Nos créations sont réalisées sur commande.</p><p>Les tarifs peuvent varier selon les personnalisations et demandes spécifiques. Un devis personnalisé est établi lorsque nécessaire.</p></div>
           </section>
@@ -185,7 +191,7 @@ const conciseNotes: Record<string, string> = {
   .v5-product { padding-bottom: 48px; }
   .v5-product-heading { display: grid; gap: 16px; padding-block: 8px 28px; }
   .v5-product-heading h1 { font-size: var(--title-size); line-height: 1.14; }
-  .v5-product-intro { max-width: 52ch; font-size: 16px; line-height: 1.625; }
+  .v5-product-intro { max-width: none; font-size: 16px; line-height: 1.625; }
   .v5-product-price { display: grid; gap: 4px; margin-top: 12px; font-size: 14px; line-height: 1.5; }
   .v5-product-price strong { font-weight: 600; white-space: nowrap; }
   .v5-product-studio { display: grid; gap: 28px; overflow-anchor: none; }
@@ -206,7 +212,7 @@ const conciseNotes: Record<string, string> = {
   .v5-product-explorer.is-ready .v5-product-panel:not([hidden]) { animation: v5-panel-reveal 180ms var(--ease); }
   .v5-panel-heading { margin-bottom: 24px; }
   .v5-panel-heading h2 { font-size: 26px; line-height: 1.25; }
-  .v5-panel-heading p { margin-top: 12px; max-width: 52ch; color: var(--muted); font-size: 16px; line-height: 1.625; }
+  .v5-panel-heading p { margin-top: 12px; max-width: none; color: var(--muted); font-size: 16px; line-height: 1.625; }
   .v5-product-options { display: grid; gap: 12px; list-style: none; margin-top: 24px; }
   .v5-product-options li { display: flex; gap: 12px; font-size: 16px; line-height: 1.625; }
   .v5-product-options strong { font-weight: 600; }
@@ -264,9 +270,10 @@ const conciseNotes: Record<string, string> = {
   .v5-order-notes { display: grid; gap: 16px; margin-top: 24px; }
   .v5-order-notes p { color: var(--muted); font-size: 14px; line-height: 1.625; }
   .v5-order-notes strong { display: block; margin-bottom: 4px; color: var(--ink); font-weight: 600; }
-  .v5-studio-contact { padding-top: 24px; border-top: 1px solid var(--line); }
+  .v5-studio-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; padding-top: 20px; border-top: 1px solid var(--line); text-align: center; }
   .v5-studio-contact .round-link { width: 100%; justify-content: center; }
-  .v5-studio-contact p { margin-top: 12px; max-width: none; color: var(--ink); font-size: 13px; line-height: 1.5; }
+  .v5-studio-contact p { margin: 0; max-width: none; color: var(--ink); font-size: 13px; line-height: 1.5; }
+  .v5-studio-practical { display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .v5-studio-practical strong { font-weight: 600; }
   .v5-studio-practical > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
   .v5-related { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
@@ -298,9 +305,11 @@ const conciseNotes: Record<string, string> = {
     .v5-box-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .v5-box-drink { grid-column: 1 / -1; }
     .v5-request-photo { height: 224px; }
-    .v5-studio-contact { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: start; }
+    .v5-studio-contact { justify-content: flex-start; }
     .v5-studio-contact .round-link { width: auto; }
-    .v5-studio-contact p { margin: 0; max-width: none; padding-top: 12px; }
+    .v5-studio-contact p { padding: 0; }
+    .v5-studio-practical { gap: 4px; }
+    .v5-studio-practical > a { min-height: 24px; }
     .v5-related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .v5-related-link:last-child { display: grid; grid-column: auto; grid-template-columns: none; gap: 8px; align-items: start; }
     .v5-related-link:last-child .v5-related-photo { grid-row: auto; }

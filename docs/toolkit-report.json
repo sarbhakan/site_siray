@@ -1,5 +1,5 @@
 {
-  "task": "Siray Signature V6 : défilement naturel,saveurs illustrées,Signature directe,menus brunch lisibles et galerie sans zoom.",
+  "task": "Siray Signature V7 : descriptions de plateaux ouvrantes, prestation buffet et devis, alignement des mentions Instagram, microcopie et footer compact.",
   "prepared_sources": [
     {
       "name": "ponytail",
@@ -982,5 +982,198 @@
     },
     "console": "No warn/error entries returned at final inspection.",
     "scope_limit": "Chromium viewports only;no physical phone,Safari/iOS,Instagram embedded browser or screen-reader test. No-JS,print and reduced-motion behavior reviewed in source,not emulated. Hero autoplay behavior not re-audited."
+  },
+  "v7_usage": {
+    "task": "Siray Signature V7",
+    "date": "2026-11-19",
+    "preparation": "Helper actually invoked against main: exit1 due existing prepare.lock. Nine existing pinned checkouts retained; no reset, global install, hook, live agent or dependency change.",
+    "modules": [
+      {
+        "name": "impeccable",
+        "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+        "entrypoint": "Loaded earlier in this conversation",
+        "files_read_v7": [
+          "reference/craft-floor.md",
+          "reference/polish.md",
+          "reference/clarify.md"
+        ],
+        "applied_decisions": [
+          "Align CTA and practical group by center; remove asymmetric padding.",
+          "Native plateaux disclosure and four ordered buffet steps; clear state and keyboard use.",
+          "Compact footer with 44px navigation and 48px CTA."
+        ],
+        "checks": [
+          {
+            "command": "cached impeccable context --target src/components/ProductDetail.astro",
+            "result": "Returncode -9, zero stdout; no context returned for this invocation."
+          },
+          {
+            "command": "cached impeccable detect --json --changed",
+            "result": "Exit0, [] with limited Astro source coverage."
+          }
+        ]
+      },
+      {
+        "name": "taste-skill",
+        "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+        "entrypoint": "Loaded earlier in this conversation",
+        "references_applied": [
+          "system",
+          "layout",
+          "copy"
+        ],
+        "applied_decisions": [
+          "Short factual descriptions, full column width and natural mobile wraps.",
+          "Preserve all prices, recipe families and sourced order information."
+        ],
+        "checks": [
+          {
+            "command": "copy-lint.mjs <all 14 dist HTML paths> --kind service --json --year 2026",
+            "result": "0 FAIL,0 WARN,2 INFO; cross-page repeated headings reported separately."
+          }
+        ]
+      },
+      {
+        "name": "hallmark",
+        "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+        "scope": "Existing visual foundation retained. Orchestrator integration guide considered; no new Hallmark runtime or redesign workflow in V7."
+      },
+      {
+        "name": "unslop",
+        "author": "Damir Sokolovsky (@heydamir)",
+        "license": "CC-BY-4.0",
+        "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+        "scope": "Prior V2-V6 design foundation retained. No new exhaustive unslop reference pass claimed in V7."
+      }
+    ],
+    "agents": [
+      "v6_content_review: sourced data and independent final content audit",
+      "v6_gallery_cleanup: footer and independent screenshot review",
+      "v6_product_refinement: microcopy and documentation"
+    ],
+    "checks": {
+      "astro_check": {
+        "files": 27,
+        "errors": 0,
+        "warnings": 0,
+        "hints": 0
+      },
+      "build_pages": 14,
+      "static_http": {
+        "pages": 14,
+        "issues": [],
+        "warnings": [],
+        "unknown_route_status": 404,
+        "report": "docs/qa/v7-static.json"
+      },
+      "responsive": {
+        "routes": 14,
+        "viewport_widths": [
+          320,
+          390,
+          430,
+          768,
+          1440
+        ],
+        "measurements": 70,
+        "document_overflow": false,
+        "report": "docs/qa/v7-responsive.json"
+      },
+      "product_tabs": {
+        "checks": 18,
+        "viewport_width": 320,
+        "issues": [],
+        "report": "docs/qa/v7-tabs.json"
+      },
+      "cta_alignment": {
+        "desktop_center_difference_px": 0,
+        "mobile_horizontal_difference_less_than_px": 0.01,
+        "report": "docs/qa/v7-layout-metrics.json"
+      },
+      "copy_lint": {
+        "html_files": 14,
+        "FAIL": 0,
+        "WARN": 0,
+        "INFO": 2,
+        "report": "docs/qa/v7-copy-lint.json"
+      },
+      "impeccable_detect": {
+        "returncode": 0,
+        "stdout": "[]",
+        "scope": "Limited source detector; not visual proof.",
+        "report": "docs/qa/v7-impeccable-detect.json"
+      },
+      "console_warn_error": [],
+      "browser_report": "docs/qa/v7-browser-review.md",
+      "not_verified": [
+        "Physical phone",
+        "Safari/iOS/Instagram browser",
+        "Screen reader",
+        "No-JS runtime, print, reduced-motion emulation",
+        "Production hosting or field performance"
+      ]
+    }
+  },
+  "v7_checks": {
+    "astro_check": {
+      "files": 27,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "build_pages": 14,
+    "static_http": {
+      "pages": 14,
+      "issues": [],
+      "warnings": [],
+      "unknown_route_status": 404,
+      "report": "docs/qa/v7-static.json"
+    },
+    "responsive": {
+      "routes": 14,
+      "viewport_widths": [
+        320,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "measurements": 70,
+      "document_overflow": false,
+      "report": "docs/qa/v7-responsive.json"
+    },
+    "product_tabs": {
+      "checks": 18,
+      "viewport_width": 320,
+      "issues": [],
+      "report": "docs/qa/v7-tabs.json"
+    },
+    "cta_alignment": {
+      "desktop_center_difference_px": 0,
+      "mobile_horizontal_difference_less_than_px": 0.01,
+      "report": "docs/qa/v7-layout-metrics.json"
+    },
+    "copy_lint": {
+      "html_files": 14,
+      "FAIL": 0,
+      "WARN": 0,
+      "INFO": 2,
+      "report": "docs/qa/v7-copy-lint.json"
+    },
+    "impeccable_detect": {
+      "returncode": 0,
+      "stdout": "[]",
+      "scope": "Limited source detector; not visual proof.",
+      "report": "docs/qa/v7-impeccable-detect.json"
+    },
+    "console_warn_error": [],
+    "browser_report": "docs/qa/v7-browser-review.md",
+    "not_verified": [
+      "Physical phone",
+      "Safari/iOS/Instagram browser",
+      "Screen reader",
+      "No-JS runtime, print, reduced-motion emulation",
+      "Production hosting or field performance"
+    ]
   }
 }
