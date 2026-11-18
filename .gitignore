@@ -1,0 +1,11 @@
+node_modules
+dist/
+.astro/
+.dev-toolkit/
+.impeccable/
+.netlify/
+.env
+.env.*
+!.env.example
+.DS_Store
+test-results/

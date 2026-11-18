@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Icon from '../../components/Icon.astro';
+import Invitation from '../../components/Invitation.astro';
+import { collections } from '../../data/site';
+---
+
+<Layout title="Les créations">
+  <div class="section-pad">
+    <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <span aria-current="page">Les créations</span>
+    </nav>
+  </div>
+  <section class="page-intro section-pad">
+    <h1>
+      De petites douceurs
+      <br />
+      en grandes occasions.
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        Des cakes à personnaliser, des mignardises à partager et des brunchs à
+        imaginer. Choisissez un point de départ ; la suite se compose avec vous.
+      </p>
+      <span class="page-count">Quatre envies, mille occasions.</span>
+    </div>
+  </section>
+  <div class="section-pad">
+    {collections.map((item, index) => (
+      <article class="collection-editorial">
+        <a
+          class="editorial-photo"
+          href={`/creations/${item.slug}/`}
+          aria-label={`Découvrir les ${item.name.toLowerCase()}`}
+        >
+          <Photo name={item.image} alt={item.alt} eager={index === 0} />
+          <span class="photo-note">Photographie d’ambiance</span>
+        </a>
+        <div class="editorial-copy">
+          <span class="small-label">
+            0{index + 1} / {item.occasion}
+          </span>
+          <h2>{item.name}</h2>
+          <p>{item.intro}</p>
+          <a class="round-link" href={`/creations/${item.slug}/`}>
+            <span>Découvrir cette collection</span>
+            <span class="round-link-icon">
+              <Icon />
+            </span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+  <Invitation title="Une idée en tête ? Donnons-lui une signature." />
+</Layout>

@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Icon from '../../components/Icon.astro';
+import Process from '../../components/Process.astro';
+import Invitation from '../../components/Invitation.astro';
+import { collections, instagram } from '../../data/site';
+export function getStaticPaths() {
+  return collections.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+const { item } = Astro.props;
+const related = collections.filter((x) => x.slug !== item.slug).slice(0, 2);
+---
+
+<Layout
+  title={item.name}
+  description={`${item.name} sur mesure à Bordeaux et en Gironde. ${item.short} Échangeons sur votre projet avec Siray Signature.`}
+  image={item.image}
+>
+  <div class="section-pad">
+    <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <a href="/creations/">Les créations</a>
+      <span>/</span>
+      <span aria-current="page">{item.name}</span>
+    </nav>
+  </div>
+  <section class="detail-hero">
+    <div class="detail-copy">
+      <h1>{item.name}</h1>
+      <p>{item.intro}</p>
+      <a
+        class="round-link"
+        href={instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>Imaginer votre création</span>
+        <span class="round-link-icon">
+          <Icon name="diagonal" />
+        </span>
+      </a>
+    </div>
+    <div class="detail-photo">
+      <Photo name={item.image} alt={item.alt} eager />
+      <span class="photo-note">Photographie d’ambiance illustrative</span>
+    </div>
+  </section>
+  <section class="detail-story section-pad">
+    <h2>{item.short}</h2>
+    <div>
+      <p>{item.text}</p>
+      <ul class="detail-options">
+        {item.possibilities.map((text) => (
+          <li>{text}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <div class="section-pad">
+    <div class="detail-occasion">
+      <span>{item.occasion}</span>
+      <span>Sur mesure · Bordeaux & Gironde</span>
+    </div>
+  </div>
+  <Process />
+  <section class="related-links section-pad">
+    <h2>Prolonger la gourmandise.</h2>
+    <div>
+      {related.map((other) => (
+        <a href={`/creations/${other.slug}/`}>
+          {other.name}
+          <Icon />
+        </a>
+      ))}
+      <a href="/buffets/">
+        Buffets & réceptions
+        <Icon />
+      </a>
+    </div>
+  </section>
+  <Invitation />
+</Layout>

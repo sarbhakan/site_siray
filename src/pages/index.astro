@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import Invitation from '../components/Invitation.astro';
+import { collections } from '../data/site';
+const slides = [
+  {
+    image: 'gateau-creme',
+    label: 'Les grandes occasions',
+    alt: 'Gâteau décoré de volutes de crème, photographie d’ambiance',
+  },
+  {
+    image: 'macarons-ivoire',
+    label: 'Les petites attentions',
+    alt: 'Macarons clairs, photographie d’ambiance',
+  },
+  {
+    image: 'table-reception',
+    label: 'Les moments à partager',
+    alt: 'Table de réception gourmande, photographie d’ambiance',
+  },
+];
+---
+
+<Layout title="Accueil">
+  <section class="hero" data-hero aria-label="L’univers Siray Signature">
+    <div class="hero-photos">
+      {slides.map((slide, index) => (
+        <div
+          class:list={['hero-slide', { 'is-active': index === 0 }]}
+          data-slide
+          data-label={slide.label}
+          aria-hidden={index !== 0}
+        >
+          <Photo
+            name={slide.image}
+            alt={slide.alt}
+            eager={index === 0}
+            sizes="100vw"
+          />
+        </div>
+      ))}
+      <div class="hero-photo-caption">
+        <span>Siray Signature</span>
+        <span>Pâtisserie & tables gourmandes</span>
+      </div>
+      <div class="hero-player">
+        <span data-slide-label>{slides[0].label}</span>
+        <div class="hero-controls">
+          <span data-slide-count>01 / 03</span>
+          <button
+            class="icon-button"
+            data-slide-prev
+            aria-label="Photographie précédente"
+          >
+            <Icon class="reverse" />
+          </button>
+          <button
+            class="icon-button"
+            data-slide-toggle
+            aria-label="Lancer le diaporama"
+            aria-pressed="false"
+          >
+            <span data-pause hidden>
+              <Icon name="pause" />
+            </span>
+            <span data-play>
+              <Icon name="play" />
+            </span>
+          </button>
+          <button
+            class="icon-button"
+            data-slide-next
+            aria-label="Photographie suivante"
+          >
+            <Icon />
+          </button>
+        </div>
+      </div>
+      <span class="hero-ambient">Photographies d’ambiance</span>
+    </div>
+    <div class="hero-title section-pad">
+      <h1>
+        L’art de sublimer
+        <br />
+        vos instants gourmands.
+      </h1>
+      <div class="hero-intro">
+        <p>
+          Cakes, mignardises & buffets sur mesure.
+          <br />
+          Imaginés pour vous, à Bordeaux et en Gironde.
+        </p>
+        <a href="/creations/" class="round-link">
+          <span>Découvrir les créations</span>
+          <span class="round-link-icon">
+            <Icon />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="collection-section section-pad">
+    <div class="section-heading">
+      <h2>
+        À chaque envie,
+        <br />
+        sa signature.
+      </h2>
+      <p>
+        Un gâteau qui rassemble.
+        <br />
+        Une bouchée qui fait sourire.
+        <br />
+        Une table dont on se souvient.
+      </p>
+    </div>
+    <div class="collection-index">
+      <div class="collection-preview">
+        <Photo
+          name="layer-cake"
+          alt="Gâteau blanc aux fruits, photographie d’ambiance"
+        />
+        <span>Le plaisir de faire plaisir.</span>
+      </div>
+      <div class="collection-list">
+        {collections.map((item, index) => (
+          <a
+            class="collection-row"
+            href={`/creations/${item.slug}/`}
+            data-preview={`/images/${item.image}.webp`}
+            data-preview-alt={item.alt}
+          >
+            <span class="row-number">0{index + 1}</span>
+            <div>
+              <h3>{item.name}</h3>
+              <p>{item.short}</p>
+            </div>
+            <Icon name="diagonal" />
+          </a>
+        ))}
+        <a
+          class="collection-row"
+          href="/buffets/"
+          data-preview="/images/buffet-gourmand.webp"
+          data-preview-alt="Buffet de réception, photographie d’ambiance"
+        >
+          <span class="row-number">05</span>
+          <div>
+            <h3>Buffets & plateaux</h3>
+            <p>L’art de recevoir, à votre image.</p>
+          </div>
+          <Icon name="diagonal" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="buffet-feature">
+    <div class="buffet-feature-photo">
+      <Photo
+        name="buffet-gourmand"
+        alt="Buffet gourmand dressé pour une réception, photographie d’ambiance"
+      />
+    </div>
+    <div class="buffet-feature-copy">
+      <h2>
+        De belles tables.
+        <br />
+        De vrais moments.
+      </h2>
+      <p>
+        Des mignardises aux plateaux de fruits, de fromages ou de charcuterie,
+        composons un buffet qui vous ressemble.
+      </p>
+      <a class="round-link light" href="/buffets/">
+        <span>Imaginer votre réception</span>
+        <span class="round-link-icon">
+          <Icon />
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="maison-feature section-pad">
+    <div class="maison-feature-copy">
+      <h2>
+        La gourmandise
+        <br />a le sens du détail.
+      </h2>
+      <p>
+        Une couleur, un décor, une manière de présenter. Chez Siray Signature,
+        l’attention portée à la table accompagne le plaisir de partager.
+      </p>
+      <p>
+        Racontez-nous votre occasion. Nous prendrons le temps d’en imaginer les
+        gourmandises avec vous.
+      </p>
+      <a class="text-link" href="/la-maison/">
+        Entrer dans la maison <Icon />
+      </a>
+    </div>
+    <figure>
+      <Photo
+        name="macarons-rose"
+        alt="Macarons aux teintes délicates, photographie d’ambiance"
+      />
+      <figcaption>Une attention dans chaque détail.</figcaption>
+    </figure>
+  </section>
+
+  <section class="carnet-section section-pad">
+    <div class="section-heading">
+      <h2>
+        Le carnet
+        <br />
+        des envies.
+      </h2>
+      <a href="/galerie/" class="text-link">
+        Ouvrir le carnet <Icon />
+      </a>
+    </div>
+    <div class="carnet-images">
+      <a href="/galerie/#cakes">
+        <Photo
+          name="gateau-creme"
+          alt="Gâteau décoré de crème, photographie d’ambiance"
+        />
+        <span>Une attention</span>
+      </a>
+      <a href="/galerie/#douceurs">
+        <Photo
+          name="cupcakes"
+          alt="Cupcakes décorés, photographie d’ambiance"
+        />
+        <span>Une douceur</span>
+      </a>
+      <a href="/galerie/#tables">
+        <Photo
+          name="plateau-sale"
+          alt="Plateau salé à partager, photographie d’ambiance"
+        />
+        <span>Un moment ensemble</span>
+      </a>
+    </div>
+    <p class="caption">
+      Un aperçu d’ambiance, en attendant les photographies de nos propres
+      créations.
+    </p>
+  </section>
+  <Invitation />
+</Layout>

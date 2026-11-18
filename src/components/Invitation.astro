@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { instagram } from '../data/site';
+const { title = 'Et si l’on imaginait votre prochain moment gourmand ?' } =
+  Astro.props;
+---
+
+<section class="invitation section-pad">
+  <div class="invitation-top">
+    <span>De votre idée à votre table.</span>
+    <span>Bordeaux & Gironde</span>
+  </div>
+  <h2>{title}</h2>
+  <a
+    class="round-link light"
+    href={instagram}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span>Parlons-en sur Instagram</span>
+    <span class="round-link-icon">
+      <Icon name="diagonal" />
+    </span>
+  </a>
+</section>

@@ -1,0 +1,41 @@
+[
+ {
+  "date": "2026-11-18",
+  "mode": "build",
+  "shape": "custom photographic editorial",
+  "theme": "custom: La table se compose",
+  "axes": "light/high-contrast-serif/chromatic-burgundy",
+  "hero": "large cake photograph, ivory title panel, manual photo controls",
+  "nav": "wordmark, four destinations, event action, mobile dialog",
+  "footer": "large wordmark, contact, credits, locality",
+  "imagery": "licensed local food photography with explicit illustrative attribution",
+  "photos": [
+   "https://unsplash.com/photos/a-white-cake-topped-with-berries-and-blueberries-WXpzzYM6k2M",
+   "https://unsplash.com/photos/a-white-frosted-cake-with-swirled-icing-on-a-stand-AAAX_mN2-SE",
+   "https://unsplash.com/photos/stack-of-cream-colored-macarons-on-a-white-plate-TYQsDIJTJow",
+   "https://unsplash.com/photos/a-plate-of-pink-and-white-macaroons-on-a-white-table-Nx6SyYyfNUc",
+   "https://unsplash.com/photos/cupcakes-with-white-icing-on-top-I8U6XXVmdKo",
+   "https://unsplash.com/photos/a-beautiful-charcuterie-board-full-of-delicious-treats-e4gkH3ZshF8",
+   "https://unsplash.com/photos/a-delicious-charcuterie-board-with-bread-and-greenery-PlHdlc0Ja48",
+   "https://unsplash.com/photos/elegant-dessert-table-with-a-white-cake-and-various-pastries-HKes9_amYnE",
+   "https://unsplash.com/photos/croissant-pastry-with-berries-and-coffee-on-a-table-xAslUfIkYCE",
+   "https://unsplash.com/photos/a-plate-of-fruit-with-oranges-strawberries-and-blueberries-Zp_nqma-4aY",
+   "https://unsplash.com/photos/pJILiyPdrXI",
+   "https://unsplash.com/photos/cupcake-with-white-icing-on-top-uEB9eYRALyc"
+  ],
+  "entry": "static French multipage showcase",
+  "fingerprint": "Gloock Manrope warm ivory cacao burgundy open numbered creation index",
+  "sections": [
+   "hero",
+   "creations index",
+   "buffets",
+   "maison",
+   "carnet",
+   "invitation",
+   "footer"
+  ],
+  "signature": "stable photograph frame with manual GSAP dissolve and collection preview",
+  "waived": [],
+  "prompt": "Siray Signature, luxury multipage pastry and catering showcase, Bordeaux and Gironde; Instagram orders; user photos and commercial details later."
+ }
+]

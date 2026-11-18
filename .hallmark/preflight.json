@@ -1,0 +1,30 @@
+{
+  "scanned": "2026-11-18",
+  "scope": "new multipage site, custom direction",
+  "findings": {
+    "fonts": "Gloock 400 + Manrope 400/600 locally imported through Fontsource; src/layouts/Layout.astro, DESIGN.md.",
+    "palette": "Implemented hexadecimal tokens --paper #f6f2ea, --ink #38251f, --muted #75655c, --wine #5c1e2c, --line #cfc3b5, --white #fffcf7; src/styles/global.css:2. First proposed OKLCH palette is not the implementation.",
+    "motion": "GSAP manual hero photo crossfade 600ms; optional play/pause at 5.5s only after opt-in; reduced-motion immediate switch and no autoplay. Astro ClientRouter fade; src/scripts/site.ts and src/styles/global.css.",
+    "spacing": "clamp(22px, 4.5vw, 88px) gutters and route-specific spacing. Final CSS overrides hero height to 45svh capped at 540px, mobile325px; main paragraphs16px. Wide-screen content cap remains a review item.",
+    "framework": "Astro static multipage project, package.json scripts and astro.config.mjs. No server service needed for the stated product.",
+    "material": "User supplied brand, phrase, product families, Bordeaux/Gironde; Instagram https://www.instagram.com/siraysignature/ and repository https://github.com/sarbhakan/site_siray.git subsequently confirmed. User photos and commercial specifics still absent.",
+    "existing_product": "Twelve pages now compile in the new Astro workspace. Visual review is pending; no public product URL assigned by this design cache.",
+    "sources": "Hallmark main custom workflow; Taste rhythm/copy; Impeccable craft and motion. Three vendor repositories installed/verified by parent orchestration. No global hooks or installs requested by this design task."
+  },
+  "preserve": [
+    "Siray Signature spelling and supplied phrase",
+    "Supplied product families and Bordeaux/Gironde perimeter",
+    "Confirmed @siraysignature Instagram conversation and ordering channel",
+    "Future replacement with user's own photographs",
+    "Autonomous complete first facade before questions about commercial details"
+  ],
+  "introduce": [
+    "Custom idea: la table se compose",
+    "Gloock + Manrope and shared role tokens",
+    "Ivory/cocoa/burgundy visual system",
+    "Real multipage information architecture",
+    "Manual image composition and accessible supporting states",
+    "Documented imagery slots, provenance and review evidence"
+  ],
+  "verification_status": "Code-to-design reconciliation completed. No render, performance or accessibility pass is claimed by this cache."
+}

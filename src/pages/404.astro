@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Layout title="Page introuvable">
+  <section class="not-found section-pad">
+    <span class="small-label">Erreur 404</span>
+    <h1>
+      Une petite
+      <br />
+      fausse route.
+    </h1>
+    <p>
+      Cette page n’existe pas. Les gourmandises vous attendent un peu plus loin.
+    </p>
+    <a class="round-link" href="/">
+      <span>Revenir à l’accueil</span>
+      <span class="round-link-icon">
+        <Icon />
+      </span>
+    </a>
+  </section>
+</Layout>

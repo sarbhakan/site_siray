@@ -1,0 +1,168 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Icon from '../components/Icon.astro';
+import { instagram } from '../data/site';
+import '@fontsource/gloock/latin-400.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-600.css';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const {
+  title,
+  description = 'Cakes, mignardises, brunch box et buffets sur mesure à Bordeaux et en Gironde. Découvrez l’univers gourmand de Siray Signature.',
+  image = 'layer-cake',
+} = Astro.props;
+const pathname = Astro.url.pathname;
+const links = [
+  { href: '/creations/', label: 'Les créations' },
+  { href: '/buffets/', label: 'Buffets & réceptions' },
+  { href: '/galerie/', label: 'Le carnet' },
+  { href: '/la-maison/', label: 'La maison' },
+];
+const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f2ea" />
+    <meta name="description" content={description} />
+    <title>{title === 'Accueil' ? 'Siray Signature — Vos instants gourmands, Bordeaux' : `${title} — Siray Signature`}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={`${title} — Siray Signature`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta
+      property="og:image"
+      content={
+        new URL(`/images/${image}.webp`, Astro.site || Astro.url.origin).href
+      }
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <ClientRouter />
+  </head>
+  <body>
+    <a href="#contenu" class="skip-link">
+      Aller au contenu
+    </a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Siray Signature, accueil">
+        Siray<span>Signature</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+      <a class="header-contact" href="/contact/">
+        Votre événement <Icon name="diagonal" />
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span>Menu</span>
+        <span class="menu-lines">
+          <i></i>
+          <i></i>
+        </span>
+      </button>
+    </header>
+    <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation">
+      <div class="mobile-menu-top">
+        <span class="brand">
+          Siray<span>Signature</span>
+        </span>
+        <button class="icon-button" data-close-menu aria-label="Fermer le menu">
+          <Icon name="close" />
+        </button>
+      </div>
+      <nav aria-label="Navigation mobile">
+        <a href="/">
+          Accueil <Icon />
+        </a>
+        {links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+            <Icon />
+          </a>
+        ))}
+        <a href="/contact/">
+          Votre événement <Icon />
+        </a>
+      </nav>
+      <a
+        class="menu-instagram"
+        href={instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @siraysignature <Icon name="instagram" />
+      </a>
+      <p>Bordeaux & Gironde</p>
+    </dialog>
+    <noscript>
+      <nav class="no-script-nav" aria-label="Navigation sans JavaScript">
+        {links.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+        <a href="/contact/">Votre événement</a>
+      </nav>
+    </noscript>
+    <main id="contenu" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer section-pad">
+      <div class="footer-top">
+        <p>
+          Pour les petites attentions.
+          <br />
+          Et les grandes occasions.
+        </p>
+        <a href={instagram} target="_blank" rel="noopener noreferrer">
+          Suivre nos gourmandises <Icon name="instagram" />
+        </a>
+      </div>
+      <a
+        class="footer-wordmark"
+        href="/"
+        aria-label="Siray Signature, retour à l’accueil"
+      >
+        Siray Signature
+      </a>
+      <div class="footer-bottom">
+        <span>Bordeaux & Gironde</span>
+        <nav aria-label="Informations">
+          <a href="/contact/">Contact</a>
+          <a href="/credits/">Photos & informations</a>
+        </nav>
+        <span>© {new Date().getFullYear()} Siray Signature</span>
+      </div>
+      <p class="ambiance-note">
+        Photographies d’ambiance. Les créations Siray Signature se dévoileront
+        bientôt ici.
+      </p>
+    </footer>
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

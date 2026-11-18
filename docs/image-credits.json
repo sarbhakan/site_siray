@@ -1,0 +1,428 @@
+{
+  "notice": "Photographies d’ambiance — ces images illustrent l’univers de Siray Signature et ne représentent pas ses réalisations.",
+  "licenseSummary": "Usage commercial autorisé sous la licence Unsplash ; attribution conservée par transparence.",
+  "licenseUrl": "https://unsplash.com/license",
+  "transforms": "Redimensionnement et conversion WebP uniquement ; aucun détourage, retouche créative ou modification par IA.",
+  "images": [
+    {
+      "file": "/images/layer-cake.webp",
+      "alt": "Layer cake blanc garni de fruits rouges",
+      "author": "Filipp Romanovski",
+      "source": "https://unsplash.com/photos/a-white-cake-topped-with-berries-and-blueberries-WXpzzYM6k2M",
+      "sourceImage": "https://images.unsplash.com/photo-1690292892715-4130ddae52e8",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "cakes",
+      "illustrative": true,
+      "focalPoint": "50% 44%",
+      "usageNote": "Coupe verticale ; garder les fruits et le socle visibles.",
+      "variants": [
+        {
+          "path": "/images/layer-cake.webp",
+          "width": 1067,
+          "height": 1600,
+          "bytes": 64514
+        },
+        {
+          "path": "/images/layer-cake-1024.webp",
+          "width": 683,
+          "height": 1024,
+          "bytes": 36368
+        },
+        {
+          "path": "/images/layer-cake-640.webp",
+          "width": 427,
+          "height": 640,
+          "bytes": 19330
+        }
+      ]
+    },
+    {
+      "file": "/images/gateau-creme.webp",
+      "alt": "Gâteau blanc aux volutes de crème",
+      "author": "Jonathan Borba",
+      "source": "https://unsplash.com/photos/a-white-frosted-cake-with-swirled-icing-on-a-stand-AAAX_mN2-SE",
+      "sourceImage": "https://images.unsplash.com/photo-1776722092640-d8caee121219",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "cakes",
+      "illustrative": true,
+      "focalPoint": "50% 42%",
+      "usageNote": "Belle matière crème pour le hero ou un portrait. Gâteau d’ambiance, pas un bento authentifié.",
+      "variants": [
+        {
+          "path": "/images/gateau-creme.webp",
+          "width": 1067,
+          "height": 1600,
+          "bytes": 49938
+        },
+        {
+          "path": "/images/gateau-creme-1024.webp",
+          "width": 683,
+          "height": 1024,
+          "bytes": 28410
+        },
+        {
+          "path": "/images/gateau-creme-640.webp",
+          "width": 427,
+          "height": 640,
+          "bytes": 15690
+        }
+      ]
+    },
+    {
+      "file": "/images/macarons-ivoire.webp",
+      "alt": "Macarons ivoire sur un présentoir blanc",
+      "author": "Lucas T Photography",
+      "source": "https://unsplash.com/photos/stack-of-cream-colored-macarons-on-a-white-plate-TYQsDIJTJow",
+      "sourceImage": "https://images.unsplash.com/photo-1761115048523-ed6cc1b358ca",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "mignardises",
+      "illustrative": true,
+      "focalPoint": "48% 54%",
+      "usageNote": "Image très calme ; bon cadrage paysage ou carré.",
+      "variants": [
+        {
+          "path": "/images/macarons-ivoire.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 27754
+        },
+        {
+          "path": "/images/macarons-ivoire-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 14620
+        },
+        {
+          "path": "/images/macarons-ivoire-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 8012
+        }
+      ]
+    },
+    {
+      "file": "/images/macarons-rose.webp",
+      "alt": "Macarons roses et ivoire sur une assiette",
+      "author": "Diana Polekhina",
+      "source": "https://unsplash.com/photos/a-plate-of-pink-and-white-macaroons-on-a-white-table-Nx6SyYyfNUc",
+      "sourceImage": "https://images.unsplash.com/photo-1612198791424-dffa2eb9eb42",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "mignardises",
+      "illustrative": true,
+      "focalPoint": "52% 48%",
+      "usageNote": "Vue du dessus ; conserver la forme circulaire du plateau.",
+      "variants": [
+        {
+          "path": "/images/macarons-rose.webp",
+          "width": 1600,
+          "height": 1008,
+          "bytes": 60946
+        },
+        {
+          "path": "/images/macarons-rose-1024.webp",
+          "width": 1024,
+          "height": 645,
+          "bytes": 31712
+        },
+        {
+          "path": "/images/macarons-rose-640.webp",
+          "width": 640,
+          "height": 403,
+          "bytes": 16172
+        }
+      ]
+    },
+    {
+      "file": "/images/cupcakes.webp",
+      "alt": "Petits cupcakes à la crème rose et aux fruits rouges",
+      "author": "Sara Cervera",
+      "source": "https://unsplash.com/photos/cupcakes-with-white-icing-on-top-I8U6XXVmdKo",
+      "sourceImage": "https://images.unsplash.com/photo-1599785209798-a9736a89b93b",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "cupcakes",
+      "illustrative": true,
+      "focalPoint": "50% 46%",
+      "usageNote": "Portrait ; garder plusieurs cupcakes pour comprendre la répétition.",
+      "variants": [
+        {
+          "path": "/images/cupcakes.webp",
+          "width": 1064,
+          "height": 1600,
+          "bytes": 69572
+        },
+        {
+          "path": "/images/cupcakes-1024.webp",
+          "width": 681,
+          "height": 1024,
+          "bytes": 38008
+        },
+        {
+          "path": "/images/cupcakes-640.webp",
+          "width": 426,
+          "height": 640,
+          "bytes": 20074
+        }
+      ]
+    },
+    {
+      "file": "/images/buffet-gourmand.webp",
+      "alt": "Table de fromages, fruits et bouchées à partager",
+      "author": "Keith Tanner",
+      "source": "https://unsplash.com/photos/a-beautiful-charcuterie-board-full-of-delicious-treats-e4gkH3ZshF8",
+      "sourceImage": "https://images.unsplash.com/photo-1744848279507-f6e20e647792",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "buffets",
+      "illustrative": true,
+      "focalPoint": "50% 62%",
+      "usageNote": "Très large paysage ; idéal pour une respiration horizontale. Éviter une coupe verticale serrée.",
+      "variants": [
+        {
+          "path": "/images/buffet-gourmand.webp",
+          "width": 1600,
+          "height": 681,
+          "bytes": 58596
+        },
+        {
+          "path": "/images/buffet-gourmand-1024.webp",
+          "width": 1024,
+          "height": 436,
+          "bytes": 32272
+        },
+        {
+          "path": "/images/buffet-gourmand-640.webp",
+          "width": 640,
+          "height": 272,
+          "bytes": 17326
+        }
+      ]
+    },
+    {
+      "file": "/images/plateau-sale.webp",
+      "alt": "Planche de fromages et de charcuterie avec fruits",
+      "author": "Anto Meneghini",
+      "source": "https://unsplash.com/photos/a-delicious-charcuterie-board-with-bread-and-greenery-PlHdlc0Ja48",
+      "sourceImage": "https://images.unsplash.com/photo-1754572058122-771d8cb264d2",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "plateaux",
+      "illustrative": true,
+      "focalPoint": "50% 50%",
+      "usageNote": "Portrait très riche ; limiter le voisinage à une typographie sobre.",
+      "variants": [
+        {
+          "path": "/images/plateau-sale.webp",
+          "width": 1067,
+          "height": 1600,
+          "bytes": 322492
+        },
+        {
+          "path": "/images/plateau-sale-1024.webp",
+          "width": 683,
+          "height": 1024,
+          "bytes": 136500
+        },
+        {
+          "path": "/images/plateau-sale-640.webp",
+          "width": 427,
+          "height": 640,
+          "bytes": 53026
+        }
+      ]
+    },
+    {
+      "file": "/images/table-reception.webp",
+      "alt": "Table de réception avec gâteau et petites pâtisseries",
+      "author": "Jonathan Borba",
+      "source": "https://unsplash.com/photos/elegant-dessert-table-with-a-white-cake-and-various-pastries-HKes9_amYnE",
+      "sourceImage": "https://images.unsplash.com/photo-1780586383003-7a8bb9375ae9",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "receptions",
+      "illustrative": true,
+      "focalPoint": "50% 57%",
+      "usageNote": "Paysage ; conserver l’équilibre entre gâteau, petits fours et végétal.",
+      "variants": [
+        {
+          "path": "/images/table-reception.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 179160
+        },
+        {
+          "path": "/images/table-reception-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 97530
+        },
+        {
+          "path": "/images/table-reception-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 51498
+        }
+      ]
+    },
+    {
+      "file": "/images/brunch.webp",
+      "alt": "Viennoiseries, fruits rouges et boissons sur une table",
+      "author": "Juan Pablo Lara",
+      "source": "https://unsplash.com/photos/croissant-pastry-with-berries-and-coffee-on-a-table-xAslUfIkYCE",
+      "sourceImage": "https://images.unsplash.com/photo-1763683944413-731050054d3a",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "brunch",
+      "illustrative": true,
+      "focalPoint": "49% 54%",
+      "usageNote": "Portrait chaleureux ; évoque un moment brunch, pas une box Siray existante.",
+      "variants": [
+        {
+          "path": "/images/brunch.webp",
+          "width": 1067,
+          "height": 1600,
+          "bytes": 120018
+        },
+        {
+          "path": "/images/brunch-1024.webp",
+          "width": 683,
+          "height": 1024,
+          "bytes": 62626
+        },
+        {
+          "path": "/images/brunch-640.webp",
+          "width": 427,
+          "height": 640,
+          "bytes": 31884
+        }
+      ]
+    },
+    {
+      "file": "/images/fruits.webp",
+      "alt": "Assiette de fraises, myrtilles et oranges dans la verdure",
+      "author": "Katja Ano",
+      "source": "https://unsplash.com/photos/a-plate-of-fruit-with-oranges-strawberries-and-blueberries-Zp_nqma-4aY",
+      "sourceImage": "https://images.unsplash.com/photo-1681840524567-732960c82f4c",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "fruits",
+      "illustrative": true,
+      "focalPoint": "51% 51%",
+      "usageNote": "Paysage ou carré ; garder la composition de fruits entière. Évoque un plateau frais, sans marque visible.",
+      "variants": [
+        {
+          "path": "/images/fruits.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 105572
+        },
+        {
+          "path": "/images/fruits-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 61368
+        },
+        {
+          "path": "/images/fruits-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 33254
+        }
+      ]
+    },
+    {
+      "file": "/images/framboises.webp",
+      "alt": "Framboises dans une lumière dorée",
+      "author": "Ben Moore",
+      "source": "https://unsplash.com/photos/pJILiyPdrXI",
+      "sourceImage": "https://images.unsplash.com/11/berries.jpg",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "details",
+      "illustrative": true,
+      "focalPoint": "50% 74%",
+      "usageNote": "Grand espace clair en haut ; image de détail uniquement, sans promesse d’ingrédients.",
+      "variants": [
+        {
+          "path": "/images/framboises.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 37812
+        },
+        {
+          "path": "/images/framboises-1024.webp",
+          "width": 1024,
+          "height": 768,
+          "bytes": 19582
+        },
+        {
+          "path": "/images/framboises-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 10102
+        }
+      ]
+    },
+    {
+      "file": "/images/cupcake-detail.webp",
+      "alt": "Cupcake à la crème blanche sur fond sombre",
+      "author": "Andrew Valdivia",
+      "source": "https://unsplash.com/photos/cupcake-with-white-icing-on-top-uEB9eYRALyc",
+      "sourceImage": "https://images.unsplash.com/photo-1597991772316-2cb16ed1ca3d",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "category": "details",
+      "illustrative": true,
+      "focalPoint": "50% 48%",
+      "usageNote": "Portrait sombre ; beau contraste de matière, objet isolé.",
+      "variants": [
+        {
+          "path": "/images/cupcake-detail.webp",
+          "width": 1067,
+          "height": 1600,
+          "bytes": 25604
+        },
+        {
+          "path": "/images/cupcake-detail-1024.webp",
+          "width": 683,
+          "height": 1024,
+          "bytes": 11544
+        },
+        {
+          "path": "/images/cupcake-detail-640.webp",
+          "width": 427,
+          "height": 640,
+          "bytes": 5744
+        }
+      ]
+    }
+  ]
+}

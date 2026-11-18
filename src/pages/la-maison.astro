@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import Invitation from '../components/Invitation.astro';
+---
+
+<Layout title="La maison" image="macarons-ivoire">
+  <div class="section-pad">
+    <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <span aria-current="page">La maison</span>
+    </nav>
+  </div>
+  <section class="page-intro section-pad">
+    <h1>
+      La gourmandise.
+      <br />
+      L’attention en plus.
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        Siray Signature imagine des cakes, des douceurs et des tables gourmandes
+        pour les moments que vous avez envie de célébrer.
+      </p>
+      <span class="page-count">Bordeaux & Gironde</span>
+    </div>
+  </section>
+  <div class="wide-photo">
+    <Photo
+      name="macarons-ivoire"
+      alt="Macarons ivoire et détails de table, photographie d’ambiance"
+      eager
+      sizes="100vw"
+    />
+    <span class="photo-note">Photographie d’ambiance</span>
+  </div>
+  <section class="house-statement section-pad">
+    <h2>
+      Une signature
+      <br />
+      qui vous ressemble.
+    </h2>
+    <div>
+      <p>
+        Tout peut commencer par une idée très simple : une couleur, un souvenir,
+        l’envie de faire plaisir. C’est ce point de départ qui guide les
+        échanges et donne sa place à chaque détail.
+      </p>
+      <p>
+        Un bento pour une attention, un layer cake pour réunir vos proches, des
+        mignardises ou un buffet pour recevoir. Chaque format raconte une autre
+        manière de partager.
+      </p>
+      <p>
+        Les créations se définissent ensemble, en fonction de votre occasion et
+        des possibilités du moment.
+      </p>
+    </div>
+  </section>
+  <section class="house-quote section-pad">
+    <p>
+      Le goût de partager.
+      <br />
+      Le plaisir de faire plaisir.
+    </p>
+    <span>Siray Signature</span>
+  </section>
+  <Invitation title="Racontez-nous le moment que vous imaginez." />
+</Layout>

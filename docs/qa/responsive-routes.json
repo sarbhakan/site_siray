@@ -1,0 +1,79 @@
+[
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "L’art de sublimer\nvos instants gourmands.",
+    "route": "/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "De petites douceurs\nen grandes occasions.",
+    "route": "/creations/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Layer cakes",
+    "route": "/creations/layer-cakes/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Bento cakes",
+    "route": "/creations/bento-cakes/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Mignardises & cupcakes",
+    "route": "/creations/mignardises/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Brunch box",
+    "route": "/creations/brunch-box/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Recevoir est\nun art gourmand.",
+    "route": "/buffets/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Le carnet\ndes envies.",
+    "route": "/galerie/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "La gourmandise.\nL’attention en plus.",
+    "route": "/la-maison/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Les belles idées\ncommencent\npar un message.",
+    "route": "/contact/",
+    "width": 390
+  },
+  {
+    "brokenLoadedImages": [],
+    "contentWidth": 375,
+    "h1": "Photos &\ninformations.",
+    "route": "/credits/",
+    "width": 390
+  }
+]
