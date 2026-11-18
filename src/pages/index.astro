@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
-import { collections } from '../data/site';
+import CollectionEdit from '../components/CollectionEdit.astro';
 const slides = [
   {
     image: 'gateau-creme',
@@ -54,52 +54,13 @@ const slides = [
     </div>
   </section>
 
-  <section class="collection-section section-pad">
-    <div class="section-heading">
-      <h2>Sept façons de partager</h2>
-    </div>
-    <div class="collection-list" aria-label="Les sept familles de prestations">
-      {collections.map((item) => (
-        <a class="collection-card" href={item.href}>
-          <div class="collection-card-photo">
-            <Photo
-              name={item.image}
-              alt={item.alt}
-              sizes="(min-width: 960px) 24vw, 45vw"
-            />
-          </div>
-          <h3>{item.name}</h3>
-          <p>{item.short}</p>
-        </a>
-      ))}
-    </div>
-  </section>
+  <CollectionEdit />
 
   <div class="service-note section-pad">
     <p>Créations sur commande</p>
     <p>Toutes nos viandes sont halal</p>
     <a href="/contact/#allergies">Allergies & intolérances : parlons-en</a>
   </div>
-
-  <section class="buffet-feature section-pad">
-    <div class="buffet-feature-photo">
-      <Photo
-        name="buffet-gourmand"
-        alt="Table de réception avec compositions gourmandes, photographie d’ambiance"
-        sizes="(min-width: 960px) 60vw, 100vw"
-      />
-    </div>
-    <div class="buffet-feature-copy">
-      <h2>La table prend toute sa place</h2>
-      <p>
-        Mignardises, fruits, fromages ou charcuterie : composez votre réception
-        autour de ce que vous aimez partager.
-      </p>
-      <a class="round-link" href="/buffets/">
-        Composer un buffet
-      </a>
-    </div>
-  </section>
 
   <section class="maison-feature section-pad">
     <div class="maison-feature-copy">

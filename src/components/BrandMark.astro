@@ -1,8 +1,10 @@
 ---
 interface Props {
+  placement: 'header' | 'menu' | 'footer';
   class?: string;
 }
-const { class: className } = Astro.props;
+const { class: className, placement } = Astro.props;
+const inkFilter = `siray-logo-ink-${placement}`;
 ---
 
 <svg
@@ -13,25 +15,37 @@ const { class: className } = Astro.props;
   aria-hidden="true"
   focusable="false"
 >
+  <defs>
+    <filter id={inkFilter} color-interpolation-filters="sRGB">
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 0.961  0 0 0 0 0.945  0 0 0 0 0.910  0.2126 0.7152 0.0722 0 0"
+      />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="4" intercept="-1.9" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
   <image
     href="/brand/siray-signature.webp"
     x="0"
     y="0"
     width="1215"
     height="1231"
+    filter={`url(#${inkFilter})`}
   />
 </svg>
 <style>
   .brandmark {
     display: block;
-    width: 136px;
+    width: 152px;
     height: auto;
     aspect-ratio: 760/470;
     flex: none;
   }
   @media (min-width: 960px) {
     .brandmark {
-      width: 152px;
+      width: 166px;
     }
   }
 </style>

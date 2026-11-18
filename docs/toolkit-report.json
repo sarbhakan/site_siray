@@ -1,5 +1,5 @@
 {
-  "task": "Siray Signature V4 : identité olive et ivoire issue du logo fourni, harmonisation mobile et catalogue de sept prestations avec compositions, saveurs, tarifs et modalités sourcés.",
+  "task": "Siray Signature V5 : logo sans rectangle de fond, carte photographique composée, sept fiches à volets et choix des dix brunchs explicite sur mobile.",
   "prepared_sources": [
     {
       "name": "ponytail",
@@ -695,5 +695,144 @@
     },
     "console": "No warn/error entries returned by browser at final inspection",
     "scope_limit": "Chromium viewport tests; no physical phone, Safari/iOS, Instagram embedded browser, screen reader or production test. Reduced motion/no-JS reviewed in source, not emulated again. V3 autoplay code retained, no V4 timing claim."
+  },
+  "v5_implementation": {
+    "scope": "Current V5 behavior; V1–V4 entries remain historical. Business source and all prices/compositions/modalities preserved from V4.",
+    "brand": "Original bitmap unchanged. Inline SVG luminance-to-alpha filter isolates ivory lettering; unique filter IDs for header/menu/footer; mobile152px, desktop166px.",
+    "home": "CollectionEdit.astro: Pour célébrer (large Layer, Bento/Cupcakes duo, horizontal Mignardises); Pour se retrouver (large Buffet, Brunch/Plateaux duo). Seven independent photo links; duplicate Buffet feature removed.",
+    "product": "Sticky photo/detail composition on desktop; compact photos then 2-column tab controls on mobile. One panel at a time after progressive enhancement. All contents available in source/no-JS; all panels printed.",
+    "flavors": "Three native exclusive classic groups, nine Signature disclosures (Layer only), eleven cupcake flavors; supporting ambience photos. Open/closed action labels Réduire/Voir.",
+    "brunch": "Nine compositions30€/personne, Anatolia35€/personne. Native select on mobile/tablet, ten buttons beside menu at >=1200px. Selection state, price unit, complete sweet/savory/drink menu.",
+    "copy": "Seven intros shortened, two brunch summaries clarified, no price or business rule changed.",
+    "accessibility": "Tab roles/relationships, roving tabindex, arrows/Home/End, button focus, reduced-motion CSS, abort cleanup on astro:before-swap and init on astro:page-load.",
+    "photos": "Existing licensed ambience only; real Siray photos still awaited."
+  },
+  "v5_preparation": "Preparation helper invoked against main, stopped after >6min without output on macOS dataless reads. Nine existing source checkouts and recorded pins preserved; selected instructions actually read. No source reset, dependency change, global install, hook/live mode or new Hallmark workflow.",
+  "modules_applied_v5": [
+    {
+      "name": "impeccable",
+      "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+      "engine": "0.1.25 project-local cached",
+      "files_read": [
+        ".agents/skills/impeccable/SKILL.md",
+        ".agents/skills/impeccable/reference/craft-floor.md",
+        ".agents/skills/impeccable/reference/adapt.md",
+        ".agents/skills/impeccable/reference/critique.md",
+        ".agents/skills/impeccable/reference/clarify.md"
+      ],
+      "applied_decisions": [
+        "Photo et exploration côte à côte sur bureau, commandes regroupées sur mobile, hauteur naturelle du contenu.",
+        "Onglets bordés avec sélection olive, clavier roving tabindex, nettoyage avant navigation Astro et réinitialisation page-load.",
+        "Prix brunch par personne au choix et dans la composition ; information allergie toujours accessible."
+      ],
+      "checks": [
+        {
+          "command": "impeccable context --target src/components/ProductDetail.astro",
+          "result": "Context returned with pre-existing legacy PRODUCT schema and hooks-off notices; no schema migration or hook setup performed."
+        },
+        {
+          "command": "impeccable detect --json --changed",
+          "result": "[]; limited Astro source coverage, not a rendered visual verdict."
+        }
+      ]
+    },
+    {
+      "name": "taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "files_read": [
+        "skills/taste-skill/SKILL.md",
+        "skills/taste-skill/references/sections.md",
+        "skills/taste-skill/references/copy.md",
+        "skills/taste-skill/references/copy-voice.md"
+      ],
+      "applied_decisions": [
+        "Sept destinations conservées dans une composition aux proportions variées, action Découvrir soulignée.",
+        "Descriptions raccourcies sans changer les faits métier ; unités des tarifs explicites."
+      ],
+      "checks": [
+        {
+          "command": "Taste copy-lint",
+          "result": "0 FAIL, 0 WARN; docs/qa/v5-copy-lint.json"
+        }
+      ]
+    },
+    {
+      "name": "unslop",
+      "author": "Damir Sokolovsky (@heydamir)",
+      "license": "CC-BY-4.0",
+      "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+      "files_read": [
+        "SKILL.md",
+        "references/signs.md"
+      ],
+      "applied_decisions": [
+        "Remplacer la rangée uniforme et la pile de blocs par deux compositions photographiques et des contenus à explorer.",
+        "Palette olive/ivoire conservée, pas de nouvelle couleur décorative ; source du logo intacte avec filtre SVG d’affichage.",
+        "Neuf passes de détail consignées dans active-context.md ; aucune invention métier ni réalisation photo attribuée à Siray."
+      ]
+    },
+    {
+      "name": "hallmark",
+      "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+      "scope": "Foundation and orchestrator guide retained; no new Hallmark redesign workflow or runtime executed in V5."
+    }
+  ],
+  "v5_checks": {
+    "astro_check": {
+      "files": 25,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "build_pages": 14,
+    "static_http": {
+      "pages": 14,
+      "issues": [],
+      "warnings": [],
+      "unknown_route_status": 404,
+      "report": "docs/qa/v5-static.json"
+    },
+    "responsive": {
+      "routes": 14,
+      "viewport_widths": [
+        320,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "samples": 70,
+      "document_overflows": 0,
+      "smallest_visible_text_px": 13,
+      "report": "docs/qa/v5-responsive.json"
+    },
+    "interactions": {
+      "product_tabs_clicked_at_320": 18,
+      "keyboard": [
+        "ArrowRight",
+        "End",
+        "Home"
+      ],
+      "brunch_mobile": "Anatolia selected, 35 €/personne; 10 option labels checked",
+      "brunch_desktop": "10 choices clicked, each one visible menu and matching price; selection retained across resize",
+      "astro_navigation": "Layer -> Bento -> browser Back, tab initialization and switching successful",
+      "regression": "Mobile menu -> Layer; gallery Cakes filter (2 photos), image dialog and Escape close",
+      "report": "docs/qa/v5-interactions.json"
+    },
+    "browser_report": "docs/qa/v5-browser-review.md",
+    "independent_content_review": "docs/qa/v5-content-review.md",
+    "independent_visual_review": "docs/qa/v5-visual-review.md",
+    "taste_copy_lint": {
+      "fail": 0,
+      "warn": 0,
+      "report": "docs/qa/v5-copy-lint.json"
+    },
+    "impeccable_detect": {
+      "result": [],
+      "scope": "Limited Astro source coverage",
+      "report": "docs/qa/v5-impeccable-detect.json"
+    },
+    "console": "No warn/error entries returned at final inspection",
+    "scope_limit": "Chromium viewport tests only; no physical phone, Safari/iOS, Instagram embedded browser or screen-reader test. No-JS and reduced motion reviewed in source, not emulated. Existing hero script unchanged; no new autoplay timing claim."
   }
 }

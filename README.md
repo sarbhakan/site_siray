@@ -32,7 +32,7 @@ Sur macOS, si le projet se trouve dans un dossier Documents synchronisé et que 
 - La maison, contact et questions fréquentes.
 - Crédits/informations et page404.
 
-La V4 reprend le logo fourni par le client et sa palette olive et ivoire. Les sept familles disposent chacune d'un lien, d'une page et d'un visuel distincts. La mise en page et la hiérarchie typographique sont pensées pour les visites mobiles depuis Instagram ; le système visuel courant est décrit dans `DESIGN.md`.
+La V5 conserve le logo fourni par le client et sa palette olive et ivoire. Son encre claire est isolée à l’affichage pour retirer le rectangle de fond. Les sept familles disposent chacune d'un lien, d'une page et d'un visuel distincts. L’accueil alterne grandes photos, duos et compositions ouvertes. Les fiches présentent leurs informations dans des volets explicites, avec une composition photo à côté sur ordinateur et des commandes adaptées au mobile. Les brunchs disposent d’un sélecteur de composition affichant le nom et le prix par personne. Tous les contenus restent accessibles sans JavaScript. La mise en page et la hiérarchie typographique sont pensées pour les visites mobiles depuis Instagram ; le système visuel courant est décrit dans `DESIGN.md`.
 
 Le catalogue comprend les tarifs des cupcakes, mignardises, plateaux et brunch box, quinze saveurs classiques de cakes, neuf associations Signature pour les layer cakes, onze saveurs de cupcakes et les dix compositions de brunch fournies. Les détails de personnalisation et les informations à transmettre sur Instagram figurent dans les pages concernées. Le référentiel des sources et des écarts entre texte et visuels est dans `docs/qa/v4-content-source.md`.
 

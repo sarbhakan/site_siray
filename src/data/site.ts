@@ -33,7 +33,7 @@ export const collections: Collection[] = [
     image: 'layer-cake',
     alt: 'Gâteau blanc à étages décoré de fruits, photographie d’ambiance',
     intro:
-      'Un gâteau sur commande, à partir de 10 parts. Saveurs classiques ou associations Signature, décor et couleurs se choisissent avec vous.',
+      'Un gâteau à votre image, du choix des saveurs aux couleurs du décor.',
     text: 'Une photo d’inspiration, une inscription, les couleurs de votre événement : nous imaginons votre layer cake autour de vos envies.',
     possibilities: [
       '10 parts minimum',
@@ -61,7 +61,7 @@ export const collections: Collection[] = [
     image: 'gateau-creme',
     alt: 'Gâteau à la crème, photographie d’ambiance illustrative',
     intro:
-      'Un gâteau au format standard, à personnaliser avec un message, des couleurs et un décor choisis pour votre occasion.',
+      'Un petit gâteau au format standard, avec vos couleurs et votre message.',
     text: 'Choisissez une saveur classique, puis partagez votre idée de décor. Une photo d’inspiration nous aide à préciser votre création.',
     possibilities: [
       'Format standard',
@@ -88,7 +88,7 @@ export const collections: Collection[] = [
     image: 'macarons-ivoire',
     alt: 'Macarons clairs disposés sur une table, photographie d’ambiance',
     intro:
-      'Des pièces sucrées et salées réunies en plateaux prêts à disposer, pour vos événements et vos réceptions.',
+      'Des bouchées sucrées et salées, réunies en plateaux pour vos événements.',
     text: 'Choisissez les variétés et leur répartition. La composition s’ajuste à vos envies et au nombre de convives.',
     possibilities: [
       'Sucré, salé ou les deux',
@@ -122,7 +122,7 @@ export const collections: Collection[] = [
     image: 'cupcakes',
     alt: 'Cupcakes décorés présentés sur une table, photographie d’ambiance',
     intro:
-      'De 6 à 30 pièces, des cupcakes à composer parmi onze saveurs et à personnaliser selon votre occasion.',
+      'Onze saveurs au choix, des couleurs et un décor à assortir à votre occasion.',
     text: 'Sélectionnez vos saveurs et le nombre de pièces, puis échangeons sur le décor et les couleurs souhaités.',
     possibilities: [
       'Cinq formats, de 6 à 30 pièces',
@@ -155,15 +155,15 @@ export const collections: Collection[] = [
     image: 'brunch',
     alt: 'Table de brunch avec viennoiseries et fruits, photographie d’ambiance',
     intro:
-      'Dix compositions sucrées et salées, à offrir ou à partager. Choisissez votre brunch, nous le préparons sur commande.',
+      'Dix compositions mêlant sucré, salé et jus de fruits, préparées sur commande.',
     text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
     possibilities: [
       'Dix compositions au choix',
       'Sucré, salé et jus de fruits',
-      '30 € par personne, 35 € pour Anatolia',
+      'Neuf compositions à 30 € par personne ; Anatolia à 35 € par personne',
     ],
     occasion: 'Brunchs & cadeaux',
-    priceSummary: '30 € par personne · Anatolia 35 €',
+    priceSummary: '9 compositions à 30 € / personne. Anatolia à 35 € / personne.',
     priceNote:
       'Toutes nos brunch box sont proposées à 30 € par personne, à l’exception d’Anatolia, à 35 € par personne.',
     tariffs: [
@@ -190,7 +190,7 @@ export const collections: Collection[] = [
     image: 'buffet-gourmand',
     alt: 'Buffet dressé pour une réception, photographie d’ambiance',
     intro:
-      'Un buffet sucré, salé ou mixte, pensé pour votre événement et vos convives. De la sélection des gourmandises à la mise en place.',
+      'Un buffet sucré, salé ou mixte, composé et dressé pour votre réception.',
     text: 'Nous étudions avec vous la composition, les quantités, le dressage et la décoration. Thème, couleurs et inspirations donnent le ton de votre table.',
     possibilities: [
       'Composition sucrée, salée ou mixte',
@@ -219,7 +219,7 @@ export const collections: Collection[] = [
     image: 'plateau-sale',
     alt: 'Plateau de fromages et charcuterie, photographie d’ambiance',
     intro:
-      'Charcuterie, fromages, fruits frais ou crudités : une sélection de plateaux pour compléter vos tables gourmandes.',
+      'Fruits, fromages, charcuterie ou crudités : une table à partager.',
     text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
     possibilities: [
       'Cinq plateaux au choix',

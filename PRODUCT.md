@@ -1,6 +1,6 @@
 # Siray Signature
 
-Site vitrine multipage de pâtisserie et de créations à partager, à Bordeaux et en Gironde. La V4 intègre le catalogue, les saveurs, les compositions et les modalités fournis le 18 novembre 2026. Les photographies de réalisations Siray Signature seront intégrées ensuite.
+Site vitrine multipage de pâtisserie et de créations à partager, à Bordeaux et en Gironde. La V5 conserve le catalogue, les saveurs, les compositions et les modalités fournis le 18 novembre 2026. Les photographies de réalisations Siray Signature seront intégrées ensuite.
 
 ## Faits fournis
 
@@ -40,4 +40,4 @@ Avant publication commerciale : renseigner les vraies photographies et leurs dro
 
 Dépôt confirmé : [sarbhakan/site_siray](https://github.com/sarbhakan/site_siray.git).
 
-La V4 est conçue en priorité pour les visites mobiles depuis Instagram. Le système visuel actuel est décrit dans [DESIGN.md](DESIGN.md). Le [brief artistique initial](docs/art-direction.md) et le [plan de vérification](docs/qa-plan.md) restent des documents de contexte ; les résultats effectifs et leur périmètre figurent dans `docs/qa/`.
+La V5 est conçue en priorité pour les visites mobiles depuis Instagram. Le système visuel actuel est décrit dans [DESIGN.md](DESIGN.md). Le [brief artistique initial](docs/art-direction.md) et le [plan de vérification](docs/qa-plan.md) restent des documents de contexte ; les résultats effectifs et leur périmètre figurent dans `docs/qa/`.
