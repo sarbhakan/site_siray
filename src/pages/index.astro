@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
-import FormatPanel from '../components/FormatPanel.astro';
 import { collections } from '../data/site';
 const slides = [
   {
@@ -23,9 +22,9 @@ const slides = [
   <section class="hero" data-hero aria-label="L’univers Siray Signature">
     <div class="hero-title">
       <h1>Vos instants gourmands</h1>
-      <p>Cakes, mignardises et buffets sur mesure, à Bordeaux et en Gironde.</p>
+      <p>Pâtisserie, brunchs et tables sur mesure, à Bordeaux et en Gironde.</p>
       <a href="/creations/" class="primary-link">
-        Explorer les créations
+        Découvrir nos prestations
       </a>
     </div>
     <div class="hero-visual">
@@ -57,46 +56,30 @@ const slides = [
 
   <section class="collection-section section-pad">
     <div class="section-heading">
-      <h2>À vous de choisir</h2>
+      <h2>Sept façons de partager</h2>
     </div>
-    <div
-      class="collection-list"
-      tabindex="0"
-      role="region"
-      aria-label="Les créations, défilement horizontal sur mobile"
-    >
+    <div class="collection-list" aria-label="Les sept familles de prestations">
       {collections.map((item) => (
-        <a class="collection-card" href={`/creations/${item.slug}/`}>
+        <a class="collection-card" href={item.href}>
           <div class="collection-card-photo">
-            {item.slug === 'bento-cakes' ? (
-              <FormatPanel />
-            ) : (
-              <Photo
-                name={item.image}
-                alt={item.alt}
-                sizes="(min-width: 960px) 20vw, 70vw"
-              />
-            )}
+            <Photo
+              name={item.image}
+              alt={item.alt}
+              sizes="(min-width: 960px) 24vw, 45vw"
+            />
           </div>
           <h3>{item.name}</h3>
           <p>{item.short}</p>
-          <span class="card-discover">Découvrir</span>
         </a>
       ))}
-      <a class="collection-card" href="/buffets/">
-        <div class="collection-card-photo">
-          <Photo
-            name="plateau-sale"
-            alt="Plateau de fromages et de charcuterie, photographie d’ambiance"
-            sizes="(min-width: 960px) 20vw, 70vw"
-          />
-        </div>
-        <h3>Buffets & plateaux</h3>
-        <p>Sucré, salé, à partager</p>
-        <span class="card-discover">Découvrir</span>
-      </a>
     </div>
   </section>
+
+  <div class="service-note section-pad">
+    <p>Créations sur commande</p>
+    <p>Toutes nos viandes sont halal</p>
+    <a href="/contact/#allergies">Allergies & intolérances : parlons-en</a>
+  </div>
 
   <section class="buffet-feature section-pad">
     <div class="buffet-feature-photo">
@@ -141,7 +124,7 @@ const slides = [
     <div class="section-heading">
       <h2>Des idées à garder</h2>
       <a href="/galerie/" class="text-link">
-        Parcourir le carnet
+        Ouvrir la galerie
       </a>
     </div>
     <div class="carnet-images">

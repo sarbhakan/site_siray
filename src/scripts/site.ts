@@ -10,6 +10,39 @@ function initialize() {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const cleanups: (() => void)[] = [];
 
+  const catalogMenu = document.querySelector<HTMLDetailsElement>(
+    '[data-catalog-menu]',
+  );
+  if (catalogMenu) {
+    document.addEventListener(
+      'click',
+      (event) => {
+        if (!catalogMenu.contains(event.target as Node))
+          catalogMenu.open = false;
+      },
+      { signal },
+    );
+    document.addEventListener(
+      'keydown',
+      (event) => {
+        if (event.key === 'Escape' && catalogMenu.open) {
+          catalogMenu.open = false;
+          catalogMenu.querySelector('summary')?.focus();
+        }
+      },
+      { signal },
+    );
+    catalogMenu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener(
+        'click',
+        () => {
+          catalogMenu.open = false;
+        },
+        { signal },
+      ),
+    );
+  }
+
   const menu = document.querySelector<HTMLDialogElement>('#mobile-menu');
   const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   if (menu && menuToggle) {

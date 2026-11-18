@@ -1,72 +1,470 @@
 export const instagram = 'https://www.instagram.com/siraysignature/';
 export const brand = 'Siray Signature';
 
-export const collections = [
+export interface Tariff {
+  label: string;
+  price: number;
+  detail?: string;
+}
+
+export interface Collection {
+  slug: string;
+  href: string;
+  name: string;
+  short: string;
+  image: string;
+  alt: string;
+  intro: string;
+  text: string;
+  possibilities: string[];
+  occasion: string;
+  priceSummary: string;
+  priceNote: string;
+  tariffs: Tariff[];
+  orderFields: string[];
+}
+
+export const collections: Collection[] = [
   {
     slug: 'layer-cakes',
+    href: '/creations/layer-cakes/',
     name: 'Layer cakes',
-    short: 'Un gâteau à partager',
+    short: 'Un gâteau à votre image',
     image: 'layer-cake',
     alt: 'Gâteau blanc à étages décoré de fruits, photographie d’ambiance',
     intro:
-      'Un gâteau pour votre anniversaire ou votre réception. Format, décor et saveurs se définissent avec vous.',
-    text: 'Le layer cake réunit plusieurs couches de gâteau et de garniture. Nous échangeons sur votre thème et le nombre de convives pour imaginer la pièce adaptée.',
+      'Un gâteau sur commande, à partir de 10 parts. Saveurs classiques ou associations Signature, décor et couleurs se choisissent avec vous.',
+    text: 'Une photo d’inspiration, une inscription, les couleurs de votre événement : nous imaginons votre layer cake autour de vos envies.',
     possibilities: [
-      'Un format adapté à votre réception',
-      'Un décor en accord avec votre thème',
-      'Des saveurs à choisir ensemble',
+      '10 parts minimum',
+      'Couleurs, thème, inscription et décoration personnalisables',
+      'Saveurs classiques ou associations Signature',
     ],
     occasion: 'Anniversaires & réceptions',
+    priceSummary: 'À partir de 10 parts',
+    priceNote:
+      'Le tarif est communiqué en message privé selon le nombre de parts, les saveurs et le niveau de personnalisation.',
+    tariffs: [],
+    orderFields: [
+      'Le nombre de parts souhaité, à partir de 10',
+      'Le modèle et vos photos d’inspiration',
+      'La saveur classique ou l’association Signature',
+      'Les couleurs, le thème, l’inscription et le décor',
+      'La date de votre événement',
+    ],
   },
   {
     slug: 'bento-cakes',
+    href: '/creations/bento-cakes/',
     name: 'Bento cakes',
-    short: 'Un cake en petit format',
+    short: 'Un petit format, un message personnel',
     image: 'gateau-creme',
     alt: 'Gâteau à la crème, photographie d’ambiance illustrative',
     intro:
-      'Un petit gâteau à offrir ou à partager. Le décor et le message s’imaginent selon votre occasion.',
-    text: 'Le bento cake accompagne une surprise, un anniversaire ou un moment à deux. Apportez vos idées de couleurs et de message pour en discuter ensemble.',
+      'Un gâteau au format standard, à personnaliser avec un message, des couleurs et un décor choisis pour votre occasion.',
+    text: 'Choisissez une saveur classique, puis partagez votre idée de décor. Une photo d’inspiration nous aide à préciser votre création.',
     possibilities: [
-      'Un message personnel',
-      'Des couleurs à imaginer ensemble',
-      'Un petit format à offrir ou à partager',
+      'Format standard',
+      'Inscription, couleurs, thème et décoration personnalisables',
+      'Saveurs classiques au choix',
     ],
     occasion: 'Cadeaux & petites occasions',
+    priceSummary: 'Un format standard à personnaliser',
+    priceNote:
+      'Le tarif est communiqué en message privé selon la personnalisation et les éléments décoratifs souhaités.',
+    tariffs: [],
+    orderFields: [
+      'La saveur classique souhaitée',
+      'Le modèle et votre photo d’inspiration',
+      'L’inscription, les couleurs, le thème et le décor',
+      'La date souhaitée',
+    ],
   },
   {
     slug: 'mignardises',
-    name: 'Mignardises & cupcakes',
-    short: 'Des pièces pour vos tables sucrées',
+    href: '/creations/mignardises/',
+    name: 'Mignardises',
+    short: 'Les petites pièces sucrées & salées',
     image: 'macarons-ivoire',
-    alt: 'Macarons clairs sur une table, photographie d’ambiance',
+    alt: 'Macarons clairs disposés sur une table, photographie d’ambiance',
     intro:
-      'Mignardises et cupcakes pour une table sucrée, un cadeau ou une réception. Les pièces et leur présentation se composent avec vous.',
-    text: 'Associez plusieurs petites pièces sur votre buffet, ou choisissez des cupcakes pour accompagner un cake. La composition dépend de votre occasion et des possibilités du moment.',
+      'Des pièces sucrées et salées réunies en plateaux prêts à disposer, pour vos événements et vos réceptions.',
+    text: 'Choisissez les variétés et leur répartition. La composition s’ajuste à vos envies et au nombre de convives.',
     possibilities: [
-      'Une composition de petites pièces',
-      'Des cupcakes à personnaliser',
-      'Une présentation accordée à votre événement',
+      'Sucré, salé ou les deux',
+      'Plateaux prêts à disposer',
+      'Variétés et répartition à définir ensemble',
     ],
-    occasion: 'Tables sucrées & cadeaux',
+    occasion: 'Événements & réceptions',
+    priceSummary: '35 pièces · 70 €',
+    priceNote:
+      'Les quantités supplémentaires sont proposées sur devis. Les compositions peuvent être ajustées selon vos besoins et le nombre de convives.',
+    tariffs: [
+      { label: '35 pièces', price: 70 },
+      { label: '70 pièces', price: 135 },
+      { label: '105 pièces', price: 200 },
+      { label: '140 pièces', price: 260 },
+      { label: '175 pièces', price: 320 },
+      { label: '210 pièces', price: 380 },
+    ],
+    orderFields: [
+      'Le nombre total de pièces',
+      'Les variétés sucrées et/ou salées',
+      'La répartition entre les différentes variétés',
+      'La date de votre événement',
+    ],
+  },
+  {
+    slug: 'cupcakes',
+    href: '/creations/cupcakes/',
+    name: 'Cupcakes',
+    short: 'Des saveurs à réunir, un décor à choisir',
+    image: 'cupcakes',
+    alt: 'Cupcakes décorés présentés sur une table, photographie d’ambiance',
+    intro:
+      'De 6 à 30 pièces, des cupcakes à composer parmi onze saveurs et à personnaliser selon votre occasion.',
+    text: 'Sélectionnez vos saveurs et le nombre de pièces, puis échangeons sur le décor et les couleurs souhaités.',
+    possibilities: [
+      'Cinq formats, de 6 à 30 pièces',
+      'Onze saveurs au choix',
+      'Personnalisation sur demande',
+    ],
+    occasion: 'Cadeaux & tables sucrées',
+    priceSummary: '6 cupcakes · 18 €',
+    priceNote:
+      'Toute personnalisation spécifique fait l’objet d’un supplément tarifaire.',
+    tariffs: [
+      { label: '6 pièces', price: 18 },
+      { label: '12 pièces', price: 34 },
+      { label: '18 pièces', price: 50 },
+      { label: '24 pièces', price: 64 },
+      { label: '30 pièces', price: 78 },
+    ],
+    orderFields: [
+      'La quantité souhaitée',
+      'Les saveurs sélectionnées',
+      'Votre personnalisation ou une photo d’inspiration',
+      'La date souhaitée',
+    ],
   },
   {
     slug: 'brunch-box',
+    href: '/creations/brunch-box/',
     name: 'Brunch box',
-    short: 'Le brunch à offrir ou à partager',
+    short: 'Dix compositions pour vos matins gourmands',
     image: 'brunch',
     alt: 'Table de brunch avec viennoiseries et fruits, photographie d’ambiance',
     intro:
-      'Une box pour un brunch à offrir ou à partager. Son contenu sucré et salé se définit selon vos envies.',
-    text: 'Pour un anniversaire, des retrouvailles ou un cadeau, nous échangeons sur le nombre de personnes et vos préférences pour composer votre brunch box.',
+      'Dix compositions sucrées et salées, à offrir ou à partager. Choisissez votre brunch, nous le préparons sur commande.',
+    text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
     possibilities: [
-      'Une composition sucrée et salée',
-      'Une box à partager ou à offrir',
-      'Un contenu à définir selon vos envies',
+      'Dix compositions au choix',
+      'Sucré, salé et jus de fruits',
+      '30 € par personne, 35 € pour Anatolia',
     ],
     occasion: 'Brunchs & cadeaux',
+    priceSummary: '30 € par personne · Anatolia 35 €',
+    priceNote:
+      'Toutes nos brunch box sont proposées à 30 € par personne, à l’exception d’Anatolia, à 35 € par personne.',
+    tariffs: [
+      {
+        label: 'Brunch box au choix, hors Anatolia',
+        price: 30,
+        detail: 'par personne',
+      },
+      { label: 'Anatolia', price: 35, detail: 'par personne' },
+    ],
+    orderFields: [
+      'La composition choisie',
+      'Le nombre de personnes',
+      'La date souhaitée',
+      'L’heure de retrait',
+      'Vos demandes particulières éventuelles',
+    ],
   },
-] as const;
+  {
+    slug: 'buffets',
+    href: '/buffets/',
+    name: 'Buffets',
+    short: 'Une réception, une table sur mesure',
+    image: 'buffet-gourmand',
+    alt: 'Buffet dressé pour une réception, photographie d’ambiance',
+    intro:
+      'Un buffet sucré, salé ou mixte, pensé pour votre événement et vos convives. De la sélection des gourmandises à la mise en place.',
+    text: 'Nous étudions avec vous la composition, les quantités, le dressage et la décoration. Thème, couleurs et inspirations donnent le ton de votre table.',
+    possibilities: [
+      'Composition sucrée, salée ou mixte',
+      'Sélection et quantités adaptées à vos invités',
+      'Mise en place et dressage selon votre projet',
+    ],
+    occasion: 'Réceptions & événements',
+    priceSummary: 'Une prestation sur devis',
+    priceNote:
+      'Chaque buffet fait l’objet d’un devis personnalisé selon les quantités, les produits sélectionnés et les besoins de mise en place.',
+    tariffs: [],
+    orderFields: [
+      'Le nombre d’invités et de mignardises par personne',
+      'La composition : sucrée, salée ou mixte',
+      'Le lieu, la date et l’horaire de la réception',
+      'Les besoins de mise en place et de dressage',
+      'Le thème, les couleurs, la décoration et vos inspirations',
+      'Toute demande particulière pour la présentation',
+    ],
+  },
+  {
+    slug: 'plateaux',
+    href: '/plateaux/',
+    name: 'Plateaux',
+    short: 'Des compositions à partager',
+    image: 'plateau-sale',
+    alt: 'Plateau de fromages et charcuterie, photographie d’ambiance',
+    intro:
+      'Charcuterie, fromages, fruits frais ou crudités : une sélection de plateaux pour compléter vos tables gourmandes.',
+    text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
+    possibilities: [
+      'Cinq plateaux au choix',
+      'À réunir selon votre table et vos convives',
+      'Toutes nos viandes sont halal',
+    ],
+    occasion: 'Tables & moments à partager',
+    priceSummary: 'Cinq plateaux, de 45 à 70 €',
+    priceNote:
+      'Précisez le nombre de convives et la quantité de chaque plateau lors de votre demande.',
+    tariffs: [
+      { label: 'Plateau de charcuterie', price: 70 },
+      { label: 'Plateau de fromages', price: 70 },
+      { label: 'Grazing Platter', price: 60 },
+      { label: 'Plateau de fruits frais', price: 50 },
+      {
+        label: 'Plateau de crudités',
+        price: 45,
+        detail: 'Houmous, tzatziki et sauce aïoli',
+      },
+    ],
+    orderFields: [
+      'Les plateaux souhaités',
+      'La quantité de chaque plateau',
+      'Le nombre de convives',
+      'La date souhaitée',
+      'Vos éventuelles restrictions alimentaires',
+    ],
+  },
+];
+
+export const classicFlavorGroups = [
+  {
+    name: 'Fruits',
+    flavors: [
+      'Framboise',
+      'Fraise',
+      'Fruit de la passion',
+      'Mangue',
+      'Myrtille',
+      'Poire',
+      'Pomme',
+    ],
+  },
+  {
+    name: 'Chocolats',
+    flavors: ['Chocolat au lait', 'Chocolat noir', 'Chocolat blanc'],
+  },
+  {
+    name: 'Notes gourmandes',
+    flavors: [
+      'Pistache',
+      'Vanille',
+      'Spéculoos',
+      'Caramel beurre salé',
+      'Croustillant au chocolat praliné',
+    ],
+  },
+];
+
+export const signatureFlavors = [
+  {
+    name: 'Éclat vert',
+    composition: 'Curd citron vert et basilic, framboises fraîches.',
+  },
+  {
+    name: 'Tropical',
+    composition: 'Framboises fraîches et coulis mangue-passion.',
+  },
+  { name: 'Noisette royale', composition: 'Praliné noisette et vanille.' },
+  {
+    name: 'Douceur acidulée',
+    composition: 'Curd citron, framboises fraîches et vanille.',
+  },
+  {
+    name: 'Velours pistache',
+    composition:
+      'Framboises fraîches, crème de pistache et éclats de pistache.',
+  },
+  {
+    name: 'Douceur d’automne',
+    composition: 'Caramel beurre salé, pomme et vanille.',
+  },
+  {
+    name: 'Évasion tropicale',
+    composition: 'Mangue fraîche, fruit de la passion frais et vanille.',
+  },
+  {
+    name: 'Praliné royal',
+    composition: 'Fraise, vanille et praliné pistache.',
+  },
+  {
+    name: 'Rosée verte',
+    composition: 'Curd citron-basilic et fraises fraîches.',
+  },
+];
+
+export const cupcakeFlavors = [
+  'Framboise',
+  'Fraise',
+  'Fruit de la passion',
+  'Mangue & fruit de la passion',
+  'Crème de pistache',
+  'Fruits rouges',
+  'Lemon curd',
+  'Nutella',
+  'Crème de spéculoos',
+  'Caramel beurre salé',
+  'Crème de noisette',
+];
+
+export const brunchBoxes = [
+  {
+    name: 'Elegancia',
+    price: 30,
+    sweet: [
+      'Mini-viennoiserie',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella',
+    ],
+    savory: [
+      'Avocado & salmon toast : saumon fumé, avocat, émincés d’oignons rouges et fleur de sel',
+      'Tartine tomate & mozzarella au pesto',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Prestige',
+    price: 30,
+    sweet: [
+      'Brioche perdue',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Blini saumon fumé & crème citronnée',
+      'Tartine tomate & burrata, mâche et sauce mélasse de grenade',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Le Parisien',
+    price: 30,
+    sweet: ['Viennoiserie', 'Pain de campagne', 'Beurre & confiture'],
+    savory: [
+      'Œufs brouillés aux fines herbes',
+      'Tartine tomates séchées & cœur de burrata',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Faisalia',
+    price: 30,
+    sweet: ['Baghrir', 'Msemen', 'Miel & confiture'],
+    savory: [
+      'Batbout poulet',
+      'Omelette à la marocaine',
+      'Assortiment d’olives',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Signature',
+    price: 30,
+    sweet: [
+      'Crêpe',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Shrimp toast : crevettes, avocat, tomates cerises et fromage frais',
+      'Assortiment de charcuterie',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Brunchetta',
+    price: 30,
+    sweet: [
+      'Granola bowl & fruits rouges',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Toast saumon fumé, concombre, crème citronnée et aneth',
+      'Assortiment d’olives',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Dolcezza',
+    price: 30,
+    sweet: [
+      'Granola bowl & fruits rouges',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Chicken toast : caviar d’aubergine, ail, poivron, émincé de poulet et parmesan',
+      'Assortiment d’olives',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Amarizia',
+    price: 30,
+    sweet: [
+      'Brioche perdue',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Chicken toast : fromage frais, émincés de poulet marinés, avocat et sauce miel-moutarde',
+      'Assortiment de fromages',
+    ],
+  },
+  {
+    name: 'Seralia',
+    price: 30,
+    sweet: [
+      'Croissant ou chocolatine',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: ['Egg muffin', 'Bagel saumon fumé', 'Assortiment de fromages'],
+  },
+  {
+    name: 'Anatolia',
+    price: 35,
+    sweet: [
+      'Croissant ou chocolatine',
+      'Assortiment de fruits de saison',
+      'Confiture ou Nutella au choix',
+    ],
+    savory: [
+      'Sigara böreği : roulés au fromage turc',
+      'Gözleme : feuilleté turc, épinard, fromage ou pomme de terre',
+      'Menemen : œufs brouillés aux tomates, poivrons et oignons',
+      'Assortiment de charcuterie turque',
+      'Assortiment d’olives',
+      'Assortiment de fromages turcs',
+      'Tomate & concombre',
+    ],
+  },
+].map((box) => ({ ...box, drink: 'Jus de fruits : orange ou fraise' }));
 
 export const gallery = [
   {

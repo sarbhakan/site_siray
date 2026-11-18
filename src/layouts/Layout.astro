@@ -2,10 +2,13 @@
 import { ClientRouter } from 'astro:transitions';
 import Icon from '../components/Icon.astro';
 import Footer from '../components/Footer.astro';
-import { instagram } from '../data/site';
+import BrandMark from '../components/BrandMark.astro';
+import { collections, instagram } from '../data/site';
 import '@fontsource/gloock/latin-400.css';
 import '@fontsource/manrope/latin-400.css';
 import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-ext-400.css';
+import '@fontsource/manrope/latin-ext-600.css';
 import '../styles/global.css';
 interface Props {
   title: string;
@@ -15,17 +18,19 @@ interface Props {
 }
 const {
   title,
-  description = 'Cakes, mignardises, brunch box et buffets sur mesure à Bordeaux et en Gironde. Découvrez l’univers gourmand de Siray Signature.',
+  description = 'Layer cakes, bento cakes, mignardises, cupcakes, brunch box, buffets et plateaux sur commande à Bordeaux et en Gironde. Siray Signature.',
   image = 'layer-cake',
   home = false,
 } = Astro.props;
 const pathname = Astro.url.pathname;
 const links = [
-  { href: '/creations/', label: 'Les créations' },
-  { href: '/buffets/', label: 'Buffets & réceptions' },
-  { href: '/galerie/', label: 'Le carnet' },
+  { href: '/galerie/', label: 'Galerie' },
   { href: '/la-maison/', label: 'La maison' },
 ];
+const inCatalog =
+  pathname.startsWith('/creations/') ||
+  pathname === '/buffets/' ||
+  pathname === '/plateaux/';
 const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
 ---
 
@@ -37,7 +42,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <meta name="theme-color" content={home ? '#2b101b' : '#f4ede6'} />
+    <meta name="theme-color" content="#4e533d" />
     <meta name="description" content={description} />
     <title>{title === 'Accueil' ? 'Siray Signature — Vos instants gourmands, Bordeaux' : `${title} — Siray Signature`}</title>
     {canonical && <link rel="canonical" href={canonical} />}
@@ -61,9 +66,25 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     </a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Siray Signature, accueil">
-        Siray <span>Signature</span>
+        <BrandMark />
       </a>
       <nav class="desktop-nav" aria-label="Navigation principale">
+        <details class="catalog-menu" data-catalog-menu>
+          <summary class:list={{ 'is-current': inCatalog }}>
+            Nos prestations
+          </summary>
+          <div class="catalog-dropdown">
+            <a href="/creations/">Toutes les prestations</a>
+            {collections.map((item) => (
+              <a
+                href={item.href}
+                aria-current={pathname === item.href ? 'page' : undefined}
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </details>
         {links.map((link) => (
           <a
             href={link.href}
@@ -91,15 +112,26 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     </header>
     <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation">
       <div class="mobile-menu-top">
-        <span class="brand">
-          Siray<span>Signature</span>
-        </span>
+        <a href="/" class="brand" aria-label="Siray Signature, accueil">
+          <BrandMark />
+        </a>
         <button class="icon-button" data-close-menu aria-label="Fermer le menu">
           <Icon name="close" />
         </button>
       </div>
       <nav aria-label="Navigation mobile">
         <a href="/">Accueil</a>
+        <a href="/creations/">Nos prestations</a>
+        <div class="mobile-catalog">
+          {collections.map((item) => (
+            <a
+              href={item.href}
+              aria-current={pathname === item.href ? 'page' : undefined}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
         {links.map((link) => (
           <a
             href={link.href}
@@ -122,10 +154,14 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     </dialog>
     <noscript>
       <nav class="no-script-nav" aria-label="Navigation sans JavaScript">
+        <a href="/creations/">Nos prestations</a>
+        {collections.map((item) => (
+          <a href={item.href}>{item.name}</a>
+        ))}
         {links.map((link) => (
           <a href={link.href}>{link.label}</a>
         ))}
-        <a href="/contact/">Votre événement</a>
+        <a href="/contact/">Votre projet</a>
       </nav>
     </noscript>
     <main id="contenu" tabindex="-1">

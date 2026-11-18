@@ -1,11 +1,14 @@
 ---
 import { instagram } from '../data/site';
+import BrandMark from './BrandMark.astro';
 
 const year = new Date().getFullYear();
 const links = [
-  { href: '/creations/', label: 'Les créations' },
-  { href: '/buffets/', label: 'Buffets & brunch' },
-  { href: '/galerie/', label: 'Le carnet' },
+  { href: '/creations/', label: 'Nos prestations' },
+  { href: '/creations/brunch-box/', label: 'Brunch box' },
+  { href: '/buffets/', label: 'Buffets' },
+  { href: '/plateaux/', label: 'Plateaux' },
+  { href: '/galerie/', label: 'Galerie' },
   { href: '/la-maison/', label: 'La maison' },
 ];
 ---
@@ -30,7 +33,7 @@ const links = [
         href="/"
         aria-label="Siray Signature, accueil"
       >
-        Siray <span>Signature</span>
+        <BrandMark />
       </a>
       <p class="signature-footer-area">Bordeaux & Gironde</p>
     </div>
@@ -51,9 +54,13 @@ const links = [
 <style>
   .signature-footer {
     padding-block: 32px 16px;
-    border-top: 1px solid var(--line);
-    background: var(--white);
-    color: var(--ink);
+    border-top: 1px solid var(--olive-line);
+    background: var(--olive);
+    color: var(--on-olive);
+  }
+
+  .signature-footer :focus-visible {
+    outline-color: var(--on-olive);
   }
 
   .signature-footer-contact {
@@ -62,7 +69,7 @@ const links = [
     align-items: flex-start;
     gap: 16px;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--olive-line);
   }
 
   .signature-footer-contact h2 {
@@ -78,8 +85,8 @@ const links = [
     justify-content: center;
     padding: 12px 20px;
     border-radius: 6px;
-    background: var(--wine);
-    color: var(--on-wine);
+    background: var(--paper);
+    color: var(--ink);
     font-size: 14px;
     font-weight: 600;
     line-height: 24px;
@@ -119,7 +126,7 @@ const links = [
 
   .signature-footer-area {
     max-width: 11ch;
-    color: var(--muted);
+    color: var(--on-olive-muted);
     font-size: 13px;
     line-height: 20px;
     text-align: right;
@@ -151,9 +158,9 @@ const links = [
     flex-direction: column;
     align-items: flex-start;
     padding-top: 12px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 12px;
+    border-top: 1px solid var(--olive-line);
+    color: var(--on-olive-muted);
+    font-size: 13px;
     line-height: 20px;
   }
 
@@ -162,14 +169,14 @@ const links = [
     min-height: 44px;
     align-items: center;
     text-decoration: underline;
-    text-decoration-color: var(--line);
+    text-decoration-color: var(--olive-line);
     text-underline-offset: 4px;
     transition: text-decoration-color 160ms var(--ease);
   }
 
   @media (hover: hover) {
     .signature-footer-instagram:hover {
-      background: var(--wine-raised);
+      background: var(--white);
     }
 
     .signature-footer-nav a:hover,
@@ -206,7 +213,7 @@ const links = [
     }
 
     .signature-footer-nav {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
     }
 
@@ -227,7 +234,7 @@ const links = [
     }
 
     .signature-footer-identity {
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
       gap: 0;
     }

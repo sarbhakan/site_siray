@@ -1,5 +1,5 @@
 {
-  "task": "Siray Signature V3 : suppression du rail du diaporama, lecture automatique sans chrome et footer global crème unique, guidés par Unslop, Taste et Impeccable.",
+  "task": "Siray Signature V4 : identité olive et ivoire issue du logo fourni, harmonisation mobile et catalogue de sept prestations avec compositions, saveurs, tarifs et modalités sourcés.",
   "prepared_sources": [
     {
       "name": "ponytail",
@@ -189,7 +189,9 @@
     {
       "name": "humanizer",
       "commit": "b48c832f0f809c1b5658edbb838c2521b72f2413",
-      "files_read": [".dev-toolkit/vendor/humanizer/SKILL.md"],
+      "files_read": [
+        ".dev-toolkit/vendor/humanizer/SKILL.md"
+      ],
       "applied_decisions": [
         "Prose française directe, pas de faux historique, chiffres promotionnels, témoignages ou récit de méthode sur les pages produit."
       ],
@@ -215,7 +217,10 @@
       "applied_decisions": [
         "Implémentation statique sobre, pas de back-end, base, formulaire ou paiement inutiles; QA standardlib sans dépendance de test lourde."
       ],
-      "changed_files": ["astro.config.mjs", "scripts/check-site.py"],
+      "changed_files": [
+        "astro.config.mjs",
+        "scripts/check-site.py"
+      ],
       "checks": [
         {
           "command": "python3 scripts/check-site.py",
@@ -232,7 +237,10 @@
       "applied_decisions": [
         "Parcours mobile, contrôles explicites, focus modal et optimisation des ressources Astro."
       ],
-      "changed_files": ["src/components/Photo.astro", "src/scripts/site.ts"],
+      "changed_files": [
+        "src/components/Photo.astro",
+        "src/scripts/site.ts"
+      ],
       "checks": [
         {
           "command": "Local catalog searches: keyboard focus modal (ux); static asset optimization (astro)",
@@ -430,7 +438,10 @@
       "author": "Damir Sokolovsky (@heydamir)",
       "license": "CC-BY-4.0",
       "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
-      "files_read": ["SKILL.md", "references/signs.md"],
+      "files_read": [
+        "SKILL.md",
+        "references/signs.md"
+      ],
       "applied_decisions": [
         "Palette et typographie existantes conservées ; retrait du rail, des libellés et du chrome du diaporama.",
         "Footer clair, signature mesurée, une seule action Instagram et suppression de la conclusion répétée."
@@ -451,7 +462,9 @@
     {
       "name": "impeccable",
       "commit": "d41d9860b0094dcb68030657da63461212835aaa",
-      "files_read": ["skill/reference/craft-floor.md"],
+      "files_read": [
+        "skill/reference/craft-floor.md"
+      ],
       "applied_decisions": [
         "Cibles tactiles de 44 px minimum, CTA de 48 px, focus lisible sur crème et styles de footer scoped.",
         "Bouton photographique natif accessible au clavier ; photo statique et bouton désactivé avec mouvement réduit."
@@ -474,7 +487,12 @@
     },
     "browser_report": "docs/qa/v3-browser-review.md",
     "independent_review": "docs/qa/v3-independent-review.md",
-    "viewport_widths": [320, 390, 430, 1440],
+    "viewport_widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
     "horizontal_overflow": false,
     "footer_height_px": {
       "320": 439.5,
@@ -486,5 +504,196 @@
     "hero_rail_present": false,
     "hero_auto_change_observed": true,
     "scope_limit": "Browser viewports only; reduced motion reviewed in source, not emulated. No physical-device or Instagram embedded-browser test."
+  },
+  "v4_implementation": {
+    "scope": "Description du code V4. Les champs verification, modules_applied et les audits v2/v3 restent des résultats historiques inchangés. Aucun résultat navigateur V4 n’est ajouté par cette entrée.",
+    "brand": {
+      "source": "Logo fourni par l’utilisateur, première image jointe au brief V4",
+      "asset": "public/brand/siray-signature.webp",
+      "dimensions_px": [
+        1215,
+        1231
+      ],
+      "bytes": 116354,
+      "rounded_kib": 114,
+      "component": "src/components/BrandMark.astro",
+      "inline_svg_viewbox": [
+        190,
+        420,
+        760,
+        470
+      ],
+      "treatment": "Bitmap d’origine cadré dans une fenêtre SVG inline ; aucune calligraphie redessinée ni vectorisation inventée.",
+      "placement": [
+        "En-tête : lien de retour à l’accueil",
+        "Menu mobile : lien de retour à l’accueil",
+        "Footer : lien de retour à l’accueil"
+      ]
+    },
+    "palette": {
+      "olive": "#4E533D",
+      "ink": "#303528",
+      "paper": "#F5F1E8",
+      "white": "#FFFCF6",
+      "surface": "#E9E4D7",
+      "muted": "#626452",
+      "line": "#D4D3C4",
+      "on_olive": "#F5F1E8",
+      "on_olive_muted": "#E7E4D5",
+      "focus": "#717746"
+    },
+    "typography": {
+      "headings": "Gloock 400, hébergé localement",
+      "body_and_controls": "Manrope 400/600, latin et latin étendu hébergés localement",
+      "reading_body_px": 16,
+      "reading_line_height": 1.625,
+      "title_tokens_px": {
+        "mobile": 34,
+        "below_360": 32,
+        "desktop": 56
+      },
+      "section_title_tokens_px": {
+        "mobile": 28,
+        "below_360": 26,
+        "desktop": 40
+      }
+    },
+    "navigation": {
+      "desktop": "Nos prestations : menu natif contenant les sept familles et l’index ; Galerie, La maison, Votre projet.",
+      "mobile": "Menu natif avec les sept familles directement accessibles.",
+      "footer": "Olive, logo fourni, un CTA Instagram, Bordeaux/Gironde, six destinations et un lien de crédits."
+    },
+    "home": "Grille de sept familles : deux colonnes mobile avec le dernier élément pleine largeur ; trois dès600px, quatre dès960px, sept dès1200px. Chaque famille a son propre href et son image d’ambiance.",
+    "catalog": {
+      "index": "/creations/",
+      "families": [
+        {
+          "name": "Layer cakes",
+          "href": "/creations/layer-cakes/",
+          "temporary_image": "layer-cake"
+        },
+        {
+          "name": "Bento cakes",
+          "href": "/creations/bento-cakes/",
+          "temporary_image": "gateau-creme"
+        },
+        {
+          "name": "Mignardises",
+          "href": "/creations/mignardises/",
+          "temporary_image": "macarons-ivoire"
+        },
+        {
+          "name": "Cupcakes",
+          "href": "/creations/cupcakes/",
+          "temporary_image": "cupcakes"
+        },
+        {
+          "name": "Brunch box",
+          "href": "/creations/brunch-box/",
+          "temporary_image": "brunch"
+        },
+        {
+          "name": "Buffets",
+          "href": "/buffets/",
+          "temporary_image": "buffet-gourmand"
+        },
+        {
+          "name": "Plateaux",
+          "href": "/plateaux/",
+          "temporary_image": "plateau-sale"
+        }
+      ],
+      "detail_component": "src/components/ProductDetail.astro",
+      "content": "Tableaux de tarifs, quinze classiques layer/bento, neuf Signature layer uniquement, onze saveurs cupcakes, dix brunch sucrés/salés/boisson en détails natifs, modalités propres à chaque famille.",
+      "source_review": "docs/qa/v4-content-source.md",
+      "implementation_note": "docs/qa/v4-content-implementation.md"
+    },
+    "transverse_facts": [
+      "Toutes nos viandes sont halal, sans certification inventée.",
+      "Créations réalisées sur commande.",
+      "Allergies, intolérances et restrictions à communiquer avant validation.",
+      "Demandes et confirmation sur Instagram.",
+      "Tarifs susceptibles de varier selon personnalisation et demandes spécifiques."
+    ],
+    "retained_interactions": "Autoplay photo sans rail ni bouton visible,6,5s/fondu850ms, bouton photographique natif pause/reprise, mouvement réduit statique ; galerie filtrable/visionneuse et menu natifs.",
+    "remaining_inputs": [
+      "Photos autorisées des réalisations réelles, notamment un véritable bento cake.",
+      "Mentions légales complètes de l’entreprise et de l’hébergeur avant lancement commercial."
+    ]
+  },
+  "modules_applied_v4": [
+    {
+      "name": "unslop",
+      "author": "Damir Sokolovsky (@heydamir)",
+      "license": "CC-BY-4.0",
+      "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+      "applied_decisions": [
+        "Direction issue du logo réel, palette olive/ivoire cohérente et logo conservé.",
+        "Rythme4px, hiérarchie typographique commune et suppression des regroupements de prestations qui masquaient les sept familles.",
+        "Chrome calme et photographies comme matière principale."
+      ]
+    },
+    {
+      "name": "taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "applied_decisions": [
+        "Sept destinations réelles et distinctes, catalogue complet, intitulés courts et descriptions fondées sur les sources.",
+        "Photos d’ambiance distinctes en attendant les réalisations réelles ; aucune promesse ni prix inventé."
+      ]
+    },
+    {
+      "name": "impeccable",
+      "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+      "applied_decisions": [
+        "Tokens de titres communs, textes de lecture16px et métadonnées13pxminimum.",
+        "Tableaux sémantiques, détails brunch natifs, cibles44pxminimum, états de focus et mouvement réduit.",
+        "Revue des données métier distincte de la revue visuelle et des observations navigateur."
+      ]
+    }
+  ],
+  "v4_checks": {
+    "astro_check": {
+      "files": 23,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "build_pages": 14,
+    "static_http": {
+      "pages": 14,
+      "issues": [],
+      "warnings": [],
+      "unknown_route_status": 404,
+      "report": "docs/qa/v4-static.json"
+    },
+    "responsive": {
+      "routes": 14,
+      "viewport_widths": [
+        320,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "samples": 70,
+      "document_overflows": 0,
+      "smallest_visible_text_px": 13,
+      "report": "docs/qa/v4-responsive.json"
+    },
+    "browser_report": "docs/qa/v4-browser-review.md",
+    "independent_content_review": "docs/qa/v4-content-source.md",
+    "independent_visual_review": "docs/qa/v4-art-direction.md",
+    "taste_copy_lint": {
+      "fail": 0,
+      "warn": 0,
+      "report": "docs/qa/v4-copy-lint.json"
+    },
+    "impeccable_detect": {
+      "result": [],
+      "scope": "Mechanical source scan with limited Astro coverage; not a rendered verdict",
+      "report": "docs/qa/v4-impeccable-detect.json"
+    },
+    "console": "No warn/error entries returned by browser at final inspection",
+    "scope_limit": "Chromium viewport tests; no physical phone, Safari/iOS, Instagram embedded browser, screen reader or production test. Reduced motion/no-JS reviewed in source, not emulated again. V3 autoplay code retained, no V4 timing claim."
   }
 }

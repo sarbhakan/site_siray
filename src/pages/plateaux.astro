@@ -1,0 +1,7 @@
+---
+import ProductDetail from '../components/ProductDetail.astro';
+import { collections } from '../data/site';
+const item = collections.find((collection) => collection.slug === 'plateaux')!;
+---
+
+<ProductDetail item={item} />

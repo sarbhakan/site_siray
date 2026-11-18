@@ -1,53 +1,60 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
-import FormatPanel from '../../components/FormatPanel.astro';
 import { collections } from '../../data/site';
 ---
 
-<Layout title="Les créations">
+<Layout
+  title="Nos prestations"
+  description="Sept familles gourmandes : layer cakes, bento cakes, mignardises, cupcakes, brunch box, buffets et plateaux. Compositions et tarifs Siray Signature à Bordeaux."
+>
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
       <span>/</span>
-      <span aria-current="page">Les créations</span>
+      <span aria-current="page">Nos prestations</span>
     </nav>
   </div>
   <section class="page-intro section-pad">
-    <h1>Cakes & petites pièces</h1>
+    <h1>À chaque occasion, sa création</h1>
     <div class="intro-bottom">
       <p>
-        Layer cakes, bentos, mignardises et brunch box sur mesure à Bordeaux et
-        en Gironde.
+        Un gâteau à offrir, un brunch à partager ou une table à composer.
+        Explorez nos sept familles, leurs saveurs et leurs possibilités.
       </p>
-      <span class="page-count">4 collections à composer</span>
     </div>
   </section>
-  <div class="section-pad">
+  <div class="catalog-grid section-pad">
     {collections.map((item, index) => (
-      <article class="collection-editorial">
+      <article class="catalog-entry">
         <a
-          class="editorial-photo"
-          href={`/creations/${item.slug}/`}
-          aria-label={`Découvrir les ${item.name.toLowerCase()}`}
+          class="catalog-entry-photo"
+          href={item.href}
+          aria-label={`Découvrir : ${item.name}`}
         >
-          {item.slug === 'bento-cakes' ? (
-            <FormatPanel />
-          ) : (
-            <Photo name={item.image} alt={item.alt} eager={index === 0} />
-          )}
+          <Photo
+            name={item.image}
+            alt={item.alt}
+            eager={index < 2}
+            sizes="(min-width:960px) 31vw, (min-width:600px) 45vw, 100vw"
+          />
         </a>
-        <div class="editorial-copy">
-          <span class="small-label">
-            0{index + 1} / {item.occasion}
-          </span>
-          <h2>{item.name}</h2>
+        <div class="catalog-entry-copy">
+          <h2>
+            <a href={item.href}>{item.name}</a>
+          </h2>
           <p>{item.intro}</p>
-          <a class="round-link" href={`/creations/${item.slug}/`}>
-            <span>Voir les possibilités</span>
+          <p class="catalog-price">{item.priceSummary}</p>
+          <a href={item.href} class="text-link">
+            Compositions & détails
           </a>
         </div>
       </article>
     ))}
+  </div>
+  <div class="service-note section-pad">
+    <p>Toutes nos viandes sont halal</p>
+    <p>Personnalisation selon vos envies</p>
+    <a href="/contact/#allergies">Signaler une allergie ou une intolérance</a>
   </div>
 </Layout>

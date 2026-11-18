@@ -1,0 +1,37 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg
+  class:list={['brandmark', className]}
+  viewBox="190 420 760 470"
+  width="152"
+  height="94"
+  aria-hidden="true"
+  focusable="false"
+>
+  <image
+    href="/brand/siray-signature.webp"
+    x="0"
+    y="0"
+    width="1215"
+    height="1231"
+  />
+</svg>
+<style>
+  .brandmark {
+    display: block;
+    width: 136px;
+    height: auto;
+    aspect-ratio: 760/470;
+    flex: none;
+  }
+  @media (min-width: 960px) {
+    .brandmark {
+      width: 152px;
+    }
+  }
+</style>

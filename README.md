@@ -26,30 +26,32 @@ Sur macOS, si le projet se trouve dans un dossier Documents synchronisé et que 
 ## Pages et contenu
 
 - Accueil avec défilement photographique automatique, sans rail ni commandes affichées.
-- Index des créations et quatre pages : layer cakes, bento cakes, mignardises/cupcakes, brunch box.
-- Buffets et réceptions, avec plateaux sucrés et salés.
-- Carnet filtrable et visionneuse accessible.
+- Index des sept familles et cinq pages de créations : layer cakes, bento cakes, mignardises, cupcakes et brunch box.
+- Buffets et plateaux sur deux pages distinctes, avec leurs compositions et modalités propres.
+- Galerie filtrable et visionneuse accessible.
 - La maison, contact et questions fréquentes.
 - Crédits/informations et page404.
 
-La V3 conserve le cadre cerise noire et les surfaces crème. Les titres et l'interface utilisent Manrope ; Gloock est réservé à la marque. Sur mobile, les collections se parcourent dans une rangée horizontale native et chaque carte mène à sa page.
+La V4 reprend le logo fourni par le client et sa palette olive et ivoire. Les sept familles disposent chacune d'un lien, d'une page et d'un visuel distincts. La mise en page et la hiérarchie typographique sont pensées pour les visites mobiles depuis Instagram ; le système visuel courant est décrit dans `DESIGN.md`.
+
+Le catalogue comprend les tarifs des cupcakes, mignardises, plateaux et brunch box, quinze saveurs classiques de cakes, neuf associations Signature pour les layer cakes, onze saveurs de cupcakes et les dix compositions de brunch fournies. Les détails de personnalisation et les informations à transmettre sur Instagram figurent dans les pages concernées. Le référentiel des sources et des écarts entre texte et visuels est dans `docs/qa/v4-content-source.md`.
 
 Le diaporama démarre automatiquement : une scène toutes les 6,5 secondes, avec un fondu de 850 ms. Il ne présente ni rail, ni nom de scène, ni durée, ni bouton visible. La photo elle-même est un bouton natif sans chrome : un toucher, un clic ou une activation au clavier suspend les changements automatiques ; une nouvelle activation les reprend. Le nom accessible du bouton indique cette action. Le survol et le focus, y compris sur l'action voisine, ne suspendent pas la lecture. Celle-ci se suspend lorsque la photo sort de la vue ou que l'onglet devient inactif. Avec la préférence système de mouvement réduit, la photo reste statique et sa surface est désactivée. Sans JavaScript, la première photo reste visible.
 
-Un footer global crème clair rassemble un seul appel Instagram, la marque, Bordeaux/Gironde, quatre liens de navigation et les crédits photo. Sa grille mobile reste en deux colonnes avec des cibles d'au moins 44 px. Le bloc d'invitation séparé qui précédait le footer a été retiré : chaque page dispose désormais d'une seule conclusion commune.
+Un footer global olive rassemble le logo fourni, un seul appel Instagram, Bordeaux/Gironde, six liens de navigation et les crédits photo. Les cibles interactives mesurent au moins 44 px. Le bloc d'invitation séparé qui précédait le footer a été retiré : chaque page dispose d'une seule conclusion commune.
 
 Les données des collections et du carnet se trouvent dans `src/data/site.ts`. Les textes des autres pages sont dans `src/pages/`. Le layout, les composants communs et les tokens CSS sont regroupés dans `src/layouts/`, `src/components/` et `src/styles/global.css`.
 
 ## Remplacer les photos
 
-La façade emploie des **photographies d'ambiance Unsplash**, jamais présentées comme les réalisations de Siray Signature. Provenance et licence : `docs/image-credits.json`. Aide aux cadrages : `docs/images.md`. La collection bento utilise un panneau typographique, en attendant une photographie réelle de ce format.
+La façade emploie des **photographies d'ambiance Unsplash**, jamais présentées comme les réalisations de Siray Signature. Provenance et licence : `docs/image-credits.json`. Aide aux cadrages : `docs/images.md`. Les sept familles utilisent des visuels distincts ; la photo illustrative associée aux bento cakes reste à remplacer par une photographie réelle de ce format. Le logo fourni appartient à l'identité de Siray Signature et ne doit pas être présenté comme une photo Unsplash.
 
 1. Fournir les photographies autorisées de la maison.
 2. Les décliner en WebP à plusieurs tailles, puis renseigner les dimensions et points focaux dans le manifeste d'images.
 3. Remplacer les noms d'images et textes alternatifs dans les données ou pages concernées.
 4. Mettre à jour les mentions d'ambiance seulement pour les photographies réellement remplacées, ainsi que les crédits publics.
 
-Les prix, saveurs précises, quantités, délais, coordonnées et conditions commerciales seront ajoutés après validation. Aucune de ces données n'a été inventée. Les informations légales complètes de l'entreprise et de l'hébergeur restent à renseigner avant le lancement commercial.
+Les prix, quantités, saveurs et compositions fournis sont intégrés. Les tarifs des layer et bento cakes sont communiqués en message privé ; les buffets sont sur devis. Les créations sont réalisées sur commande et toutes les viandes sont halal, selon la mention du client, sans certification fournie. Les allergies et intolérances doivent être signalées avant validation. Les photographies réelles, délais, coordonnées, conditions commerciales non communiquées et informations légales complètes de l'entreprise et de l'hébergeur restent à renseigner avant le lancement commercial.
 
 ## Déployer sur Netlify
 

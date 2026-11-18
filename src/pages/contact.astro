@@ -15,8 +15,8 @@ import { instagram } from '../data/site';
     <div>
       <h1>Votre projet gourmand</h1>
       <p>
-        Pour un cake, une box ou un buffet sur mesure à Bordeaux et en Gironde,
-        écrivez-nous directement sur Instagram.
+        Pour un gâteau, des petites pièces, un brunch, un buffet ou des plateaux
+        à Bordeaux et en Gironde, écrivez-nous directement sur Instagram.
       </p>
       <a
         class="contact-instagram"
@@ -31,26 +31,21 @@ import { instagram } from '../data/site';
     </div>
     <aside class="contact-aside">
       <h2>Les détails utiles</h2>
-      <ol class="contact-checklist">
-        <li>
-          <span>01</span>Votre occasion et la date souhaitée
-        </li>
-        <li>
-          <span>02</span>Le nombre de personnes
-        </li>
-        <li>
-          <span>03</span>Le type de création qui vous plaît
-        </li>
-        <li>
-          <span>04</span>Vos envies de saveurs, de couleurs ou de décor
-        </li>
-        <li>
-          <span>05</span>Le lieu de votre événement en Gironde
-        </li>
-      </ol>
+      <ul class="contact-checklist">
+        <li>Votre occasion et la date souhaitée</li>
+        <li>Le nombre de personnes</li>
+        <li>Le type de création qui vous plaît</li>
+        <li>Vos envies de saveurs, de couleurs ou de décor</li>
+        <li>Le lieu, l’horaire ou l’heure de retrait souhaitée</li>
+        <li>Toute allergie, intolérance ou restriction alimentaire</li>
+      </ul>
       <p>
-        Quelques détails suffisent pour commencer. Nous préciserons ensemble la
-        composition, la disponibilité, les tarifs et les modalités.
+        Retrouvez les compositions et les tarifs dans nos{' '}
+        <a href="/creations/" class="text-link">
+          prestations
+        </a>
+        . Les personnalisations, la disponibilité et les modalités seront
+        confirmées lors de notre échange.
       </p>
     </aside>
   </section>
@@ -90,6 +85,10 @@ import { instagram } from '../data/site';
         </p>
       </details>
       <details>
+        <summary>Vos viandes sont-elles halal ?</summary>
+        <p>Toutes nos viandes sont halal.</p>
+      </details>
+      <details id="allergies" open>
         <summary>Et pour les allergies ou contraintes alimentaires ?</summary>
         <p>
           Précisez-les dès le premier message. Les ingrédients et les

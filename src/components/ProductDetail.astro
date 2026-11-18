@@ -1,0 +1,708 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import {
+  collections,
+  instagram,
+  classicFlavorGroups,
+  signatureFlavors,
+  cupcakeFlavors,
+  brunchBoxes,
+  type Collection,
+} from '../data/site';
+
+interface Props {
+  item: Collection;
+}
+const { item } = Astro.props;
+const classic = ['layer-cakes', 'bento-cakes'].includes(item.slug);
+const brunch = item.slug === 'brunch-box';
+const hasFlavors = classic || item.slug === 'cupcakes';
+const related = collections
+  .filter((other) => other.slug !== item.slug)
+  .slice(0, 3);
+const euro = (value: number) =>
+  new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0,
+  }).format(value);
+const sectionLinks = [
+  {
+    href: '#formats',
+    label: item.tariffs.length ? 'Formats & tarifs' : 'Personnalisation',
+  },
+  ...(hasFlavors ? [{ href: '#saveurs', label: 'Les saveurs' }] : []),
+  ...(brunch ? [{ href: '#compositions', label: 'Les compositions' }] : []),
+  { href: '#votre-demande', label: 'Votre demande' },
+];
+---
+
+<Layout
+  title={item.name}
+  image={item.image}
+  description={`${item.name} sur commande à Bordeaux et en Gironde. ${item.intro}`}
+>
+  <div class="section-pad">
+    <nav class="breadcrumbs" aria-label="Fil d’Ariane">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <a href="/creations/">Nos prestations</a>
+      <span>/</span>
+      <span aria-current="page">{item.name}</span>
+    </nav>
+  </div>
+
+  <section class="product-hero section-pad">
+    <div class="product-hero-copy">
+      <h1>{item.name}</h1>
+      <p class="product-intro">{item.intro}</p>
+      <p class="product-price-summary">{item.priceSummary}</p>
+      <a
+        class="round-link"
+        href={instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Écrire sur Instagram
+      </a>
+    </div>
+    <div class="product-hero-photo">
+      <Photo
+        name={item.image}
+        alt={item.alt}
+        eager
+        sizes="(min-width: 960px) 50vw, 100vw"
+      />
+    </div>
+  </section>
+
+  <div class="section-pad">
+    <nav
+      class="product-page-nav"
+      aria-label={`Dans la page ${item.name.toLowerCase()}`}
+    >
+      {sectionLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+
+  <section id="formats" class="product-section section-pad">
+    <div class="product-section-heading">
+      <h2>
+        {item.tariffs.length ? 'Formats & tarifs' : 'Format & personnalisation'}
+      </h2>
+      <p>{item.text}</p>
+    </div>
+    <div class="product-section-body">
+      {item.tariffs.length ? (
+        <table class="product-prices">
+          <caption class="sr-only">
+            Les tarifs des {item.name.toLowerCase()}
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">
+                {item.slug === 'plateaux'
+                  ? 'Plateau'
+                  : brunch
+                    ? 'Composition'
+                    : 'Format'}
+              </th>
+              <th scope="col">Tarif{brunch ? ' / personne' : ''}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {item.tariffs.map((tariff) => (
+              <tr>
+                <th scope="row">
+                  {tariff.label}
+                  {tariff.detail && !brunch && <small>{tariff.detail}</small>}
+                </th>
+                <td>{euro(tariff.price)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <ul class="product-possibilities">
+          {item.possibilities.map((possibility) => (
+            <li>{possibility}</li>
+          ))}
+        </ul>
+      )}
+      <p class="product-note">{item.priceNote}</p>
+    </div>
+  </section>
+
+  {classic && (
+    <section
+      id="saveurs"
+      class="product-section product-section-tinted section-pad"
+    >
+      <div class="product-section-heading">
+        <h2>Les saveurs classiques</h2>
+        <p>
+          À choisir pour votre{' '}
+          {item.slug === 'layer-cakes' ? 'layer cake' : 'bento cake'}.
+        </p>
+      </div>
+      <div class="product-section-body">
+        <div class="flavor-groups">
+          {classicFlavorGroups.map((group) => (
+            <div>
+              <h3>{group.name}</h3>
+              <ul class="flavor-list">
+                {group.flavors.map((flavor) => (
+                  <li>{flavor}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="product-note">
+          Un supplément tarifaire s’applique en cas de mélange de plusieurs
+          saveurs.
+        </p>
+      </div>
+    </section>
+  )}
+
+  {item.slug === 'layer-cakes' && (
+    <section class="product-section section-pad">
+      <div class="product-section-heading">
+        <h2>Les associations Signature</h2>
+        <p>Neuf associations, exclusivement pour les layer cakes.</p>
+      </div>
+      <dl class="signature-flavors product-section-body">
+        {signatureFlavors.map((flavor) => (
+          <div>
+            <dt>{flavor.name}</dt>
+            <dd>{flavor.composition}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )}
+
+  {item.slug === 'cupcakes' && (
+    <section
+      id="saveurs"
+      class="product-section product-section-tinted section-pad"
+    >
+      <div class="product-section-heading">
+        <h2>Les saveurs des cupcakes</h2>
+        <p>Onze saveurs pour composer votre sélection.</p>
+      </div>
+      <div class="product-section-body">
+        <ul class="cupcake-flavors">
+          {cupcakeFlavors.map((flavor) => (
+            <li>{flavor}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {brunch && (
+    <section
+      id="compositions"
+      class="product-section product-section-tinted section-pad"
+    >
+      <div class="product-section-heading">
+        <h2>Les compositions</h2>
+        <p>
+          Ouvrez une box pour retrouver sa sélection sucrée, salée et sa
+          boisson.
+        </p>
+      </div>
+      <div class="brunch-compositions product-section-body">
+        {brunchBoxes.map((box, index) => (
+          <details class="brunch-composition" open={index === 0}>
+            <summary>
+              <h3>{box.name}</h3>
+              <span class="brunch-summary-price">
+                {euro(box.price)}
+                <small>/ personne</small>
+              </span>
+              <Icon name="plus" />
+            </summary>
+            <div class="brunch-composition-body">
+              <div>
+                <h4>Le sucré</h4>
+                <ul>
+                  {box.sweet.map((food) => (
+                    <li>{food}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4>Le salé</h4>
+                <ul>
+                  {box.savory.map((food) => (
+                    <li>{food}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4>La boisson</h4>
+                <p>{box.drink}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section
+    id="votre-demande"
+    class="product-section product-request section-pad"
+  >
+    <div class="product-section-heading">
+      <h2>Préparer votre demande</h2>
+      <p>
+        Ces quelques détails nous permettent de préciser votre projet sur
+        Instagram.
+      </p>
+    </div>
+    <div class="product-section-body">
+      <ul class="product-order-fields">
+        {item.orderFields.map((field) => (
+          <li>{field}</li>
+        ))}
+      </ul>
+      <div class="product-order-notes">
+        <p>
+          <strong>Allergies & intolérances</strong>Signalez-les impérativement
+          avant la validation de votre commande, ainsi que toute restriction
+          alimentaire.
+        </p>
+        <p>
+          Toutes nos viandes sont halal. Nos créations sont réalisées sur
+          commande.
+        </p>
+        <p>
+          Les tarifs indiqués peuvent varier selon les personnalisations et les
+          demandes spécifiques. Les demandes particulières font l’objet d’un
+          devis personnalisé lorsque nécessaire.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="product-related section-pad" aria-label="Les autres prestations">
+    <h2>Les autres prestations</h2>
+    <div>
+      {related.map((other) => (
+        <a href={other.href}>{other.name}</a>
+      ))}
+      <a href="/creations/">Voir toute la carte</a>
+    </div>
+  </nav>
+</Layout>
+
+<style>
+  .product-hero {
+    display: grid;
+    gap: 24px;
+    padding-block: 16px 28px;
+  }
+  .product-hero-copy {
+    align-self: center;
+  }
+  .product-hero h1 {
+    font-size: var(--title-size);
+    line-height: 1.14;
+  }
+  .product-intro {
+    max-width: 42ch;
+    margin-top: 16px;
+    line-height: 1.625;
+  }
+  .product-price-summary {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .product-hero .round-link {
+    margin-top: 20px;
+  }
+  .product-hero-photo {
+    aspect-ratio: 4/3;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .product-hero-photo :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+  .product-page-nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    padding-block: 8px;
+    border-block: 1px solid var(--line);
+  }
+  .product-page-nav a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 5px;
+    transition: text-decoration-color 160ms var(--ease);
+  }
+  .product-section {
+    display: grid;
+    gap: 24px;
+    padding-block: 40px;
+    scroll-margin-top: 24px;
+  }
+  .product-section-heading h2 {
+    max-width: 18ch;
+    font-size: var(--section-title-size);
+    line-height: 1.2;
+  }
+  .product-section-heading p {
+    max-width: 44ch;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .product-section-body {
+    min-width: 0;
+  }
+  .product-section-tinted {
+    background: var(--surface);
+  }
+  .product-prices {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .product-prices thead {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .product-prices th {
+    font-weight: 400;
+  }
+  .product-prices thead th {
+    padding: 0 0 12px;
+  }
+  .product-prices tr {
+    border-bottom: 1px solid var(--line);
+  }
+  .product-prices tbody th {
+    padding: 16px 16px 16px 0;
+  }
+  .product-prices td {
+    padding-block: 16px;
+  }
+  .product-prices :is(th, td):last-child {
+    text-align: right;
+  }
+  .product-prices td {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  .product-prices small {
+    display: block;
+    max-width: 30ch;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .product-note {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.625;
+  }
+  .product-possibilities {
+    list-style: none;
+  }
+  .product-possibilities li {
+    padding-block: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+  .product-possibilities li:first-child {
+    padding-top: 0;
+  }
+  .flavor-groups {
+    display: grid;
+    gap: 24px;
+  }
+  .flavor-groups h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .flavor-list {
+    list-style: none;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .flavor-list li {
+    break-inside: avoid;
+    padding-block: 4px;
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .signature-flavors {
+    display: grid;
+    margin: 0;
+  }
+  .signature-flavors div {
+    padding-block: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .signature-flavors div:first-child {
+    padding-top: 0;
+  }
+  .signature-flavors dt {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .signature-flavors dd {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .cupcake-flavors {
+    list-style: none;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .cupcake-flavors li {
+    break-inside: avoid;
+    padding-block: 8px;
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .brunch-composition {
+    border-bottom: 1px solid var(--line);
+  }
+  .brunch-composition:first-child {
+    border-top: 1px solid var(--line);
+  }
+  .brunch-composition summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 20px;
+    gap: 12px;
+    min-height: 76px;
+    padding-block: 16px;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+  .brunch-composition summary::-webkit-details-marker {
+    display: none;
+  }
+  .brunch-composition summary h3 {
+    font-family: 'Gloock', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .brunch-summary-price {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .brunch-summary-price small {
+    display: block;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .brunch-composition summary :global(svg) {
+    width: 20px;
+    height: 20px;
+    transition: transform 180ms var(--ease);
+  }
+  .brunch-composition[open] summary :global(svg) {
+    transform: rotate(45deg);
+  }
+  .brunch-composition-body {
+    display: grid;
+    gap: 24px;
+    padding-block: 8px 28px;
+  }
+  .brunch-composition-body h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .brunch-composition-body ul {
+    list-style: none;
+  }
+  .brunch-composition-body :is(li, p) {
+    padding-block: 4px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .product-request {
+    border-bottom: 1px solid var(--line);
+  }
+  .product-order-fields {
+    list-style: none;
+  }
+  .product-order-fields li {
+    padding-block: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    line-height: 1.625;
+  }
+  .product-order-fields li:first-child {
+    padding-top: 0;
+  }
+  .product-order-notes {
+    display: grid;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .product-order-notes p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.625;
+  }
+  .product-order-notes strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .product-related {
+    padding-block: 32px 40px;
+  }
+  .product-related h2 {
+    font-size: var(--section-title-size);
+  }
+  .product-related > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+    margin-top: 16px;
+  }
+  .product-related a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--line);
+    transition: text-decoration-color 160ms var(--ease);
+  }
+  @media (hover: hover) {
+    .product-page-nav a:hover,
+    .product-related a:hover {
+      text-decoration-color: currentColor;
+    }
+    .brunch-composition summary:hover h3 {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+  }
+  @media (min-width: 600px) {
+    .product-hero-photo {
+      aspect-ratio: 16/10;
+    }
+    .product-section {
+      padding-block: 48px;
+      gap: 32px;
+    }
+    .flavor-groups {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .flavor-list {
+      columns: 1;
+    }
+    .signature-flavors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 32px;
+    }
+    .signature-flavors div:nth-child(2) {
+      padding-top: 0;
+    }
+    .cupcake-flavors {
+      columns: 3;
+    }
+    .brunch-composition-body {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 32px;
+    }
+    .brunch-composition-body > div:last-child {
+      grid-column: 1/-1;
+    }
+  }
+  @media (min-width: 960px) {
+    .brunch-composition summary h3 {
+      font-size: 24px;
+    }
+    .product-hero {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 64px;
+      padding-block: 24px 48px;
+    }
+    .product-intro {
+      margin-top: 24px;
+    }
+    .product-hero-photo {
+      aspect-ratio: 5/4;
+    }
+    .product-section {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 64px;
+      padding-block: 64px;
+    }
+    .product-section-heading p {
+      max-width: 36ch;
+      margin-top: 16px;
+    }
+    .product-related {
+      padding-block: 40px 48px;
+    }
+  }
+  @media (max-width: 359px) {
+    .product-page-nav {
+      column-gap: 20px;
+    }
+    .product-page-nav a {
+      font-size: 13px;
+    }
+    .brunch-composition summary {
+      gap: 8px;
+    }
+    .cupcake-flavors {
+      columns: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .product-page-nav a,
+    .product-related a,
+    .brunch-composition summary :global(svg) {
+      transition: none;
+    }
+  }
+</style>
