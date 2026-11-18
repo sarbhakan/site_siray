@@ -13,31 +13,21 @@ import { instagram } from '../data/site';
     </nav>
     <article class="prose-page">
       <h1>Photos & informations</h1>
-      <h2>Photographies d’ambiance</h2>
+      <h2>Crédits des images</h2>
       <p>
         Les photographies de cette première version illustrent un univers
         gourmand. Elles ne représentent pas des réalisations Siray Signature et
         ne constituent pas un catalogue contractuel. Elles seront remplacées par
         les photographies de la maison.
       </p>
-      <p>
-        Ces images sont utilisées sous{' '}
-        <a
-          href="https://unsplash.com/license"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          licence Unsplash
-        </a>
-        . Merci aux photographes :
-      </p>
+      <p>Les sources et les licences de chaque image sont indiquées ci-dessous.</p>
       <ul class="credit-list">
         {credits.images.map((photo) => (
           <li>
             <a href={photo.source} target="_blank" rel="noopener noreferrer">
               {photo.author}
             </a>{' '}
-            : {photo.alt}
+            : {photo.alt}. <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>
           </li>
         ))}
       </ul>

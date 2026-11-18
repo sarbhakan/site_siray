@@ -98,7 +98,7 @@ function initialize() {
       surface.setAttribute(
         'aria-label',
         reduced.matches
-          ? 'Photographies d’ambiance'
+          ? 'Les créations en images'
           : pausedByUser
             ? 'Reprendre le défilement des photographies'
             : 'Figer le défilement des photographies',
@@ -176,92 +176,12 @@ function initialize() {
   }
 
   const gallery = document.querySelector<HTMLElement>('[data-gallery]');
-  const lightbox = document.querySelector<HTMLDialogElement>('.lightbox');
-  if (gallery && lightbox) {
-    const items = Array.from(
-      gallery.querySelectorAll<HTMLElement>('[data-lightbox-index]'),
-    );
+  if (gallery) {
     const figures = Array.from(
       gallery.querySelectorAll<HTMLElement>('.gallery-card'),
     );
     const filters = Array.from(
       gallery.querySelectorAll<HTMLButtonElement>('[data-filter]'),
-    );
-    const image = lightbox.querySelector<HTMLImageElement>('img')!;
-    const caption = lightbox.querySelector<HTMLElement>('.lightbox-caption')!;
-    let selected = items[0];
-    let origin: HTMLElement | undefined;
-    const visibleItems = () =>
-      items.filter(
-        (item) => !item.closest<HTMLElement>('.gallery-card')?.hidden,
-      );
-    const show = (item: HTMLElement) => {
-      selected = item;
-      image.src = item.dataset.image || '';
-      image.alt = item.querySelector('img')?.alt || '';
-      const visible = visibleItems();
-      caption.textContent = `${item.dataset.caption} · ${visible.indexOf(item) + 1} / ${visible.length}`;
-    };
-    const move = (direction: number) => {
-      const visible = visibleItems();
-      show(
-        visible[
-          (visible.indexOf(selected) + direction + visible.length) %
-            visible.length
-        ],
-      );
-    };
-    items.forEach((item) =>
-      item.addEventListener(
-        'click',
-        (event) => {
-          event.preventDefault();
-          origin = item;
-          show(item);
-          lightbox.showModal();
-        },
-        { signal },
-      ),
-    );
-    lightbox
-      .querySelector('[data-lightbox-close]')
-      ?.addEventListener('click', () => lightbox.close(), { signal });
-    lightbox
-      .querySelector('[data-lightbox-next]')
-      ?.addEventListener('click', () => move(1), { signal });
-    lightbox
-      .querySelector('[data-lightbox-prev]')
-      ?.addEventListener('click', () => move(-1), { signal });
-    lightbox.addEventListener(
-      'keydown',
-      (event) => {
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          move(1);
-        }
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          move(-1);
-        }
-      },
-      { signal },
-    );
-    lightbox.addEventListener('close', () => origin?.focus(), { signal });
-    let startX = 0;
-    lightbox.addEventListener(
-      'touchstart',
-      (event) => {
-        startX = event.changedTouches[0].screenX;
-      },
-      { signal, passive: true },
-    );
-    lightbox.addEventListener(
-      'touchend',
-      (event) => {
-        const distance = event.changedTouches[0].screenX - startX;
-        if (Math.abs(distance) > 70) move(distance < 0 ? 1 : -1);
-      },
-      { signal, passive: true },
     );
     const filter = (category: string) => {
       if (!filters.some((button) => button.dataset.filter === category))
@@ -297,9 +217,6 @@ function initialize() {
       ),
     );
     filter(location.hash.slice(1) || 'all');
-    cleanups.push(() => {
-      if (lightbox.open) lightbox.close();
-    });
   }
 
   cleanup = () => {

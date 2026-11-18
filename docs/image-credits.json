@@ -1,8 +1,8 @@
 {
   "notice": "Photographies d’ambiance — ces images illustrent l’univers de Siray Signature et ne représentent pas ses réalisations.",
-  "licenseSummary": "Usage commercial autorisé sous la licence Unsplash ; attribution conservée par transparence.",
+  "licenseSummary": "Images sous licences Unsplash et Pexels ; sources et auteurs conservés.",
   "licenseUrl": "https://unsplash.com/license",
-  "transforms": "Redimensionnement et conversion WebP uniquement ; aucun détourage, retouche créative ou modification par IA.",
+  "transforms": "Redimensionnement et conversion WebP ; bento-cake recadré sur le gâteau et les mains. Aucune retouche créative ou génération par IA.",
   "images": [
     {
       "file": "/images/layer-cake.webp",
@@ -421,6 +421,147 @@
           "width": 427,
           "height": 640,
           "bytes": 5744
+        }
+      ]
+    },
+    {
+      "alt": "Petit gâteau blanc personnalisé dans sa boîte, tenu en main",
+      "author": "Katia Damyan",
+      "source": "https://www.pexels.com/photo/model-in-black-blazer-holding-a-box-with-mini-cake-19908504/",
+      "sourceImage": "https://images.pexels.com/photos/19908504/pexels-photo-19908504.jpeg",
+      "license": "Pexels License",
+      "licenseUrl": "https://www.pexels.com/license/",
+      "focalPoint": "50% 50%",
+      "category": "cakes",
+      "file": "/images/bento-cake.webp",
+      "illustrative": true,
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
+      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "variants": [
+        {
+          "path": "/images/bento-cake.webp",
+          "width": 1202,
+          "height": 819,
+          "bytes": 28388
+        },
+        {
+          "path": "/images/bento-cake-1024.webp",
+          "width": 1024,
+          "height": 698,
+          "bytes": 23294
+        },
+        {
+          "path": "/images/bento-cake-640.webp",
+          "width": 640,
+          "height": 436,
+          "bytes": 13530
+        }
+      ],
+      "cropNote": "Recadrage technique sur le gâteau et les mains ; visage exclu, aucune identité présentée comme cliente."
+    },
+    {
+      "alt": "Petit gâteau personnalisé aux cœurs colorés, tenu en main",
+      "author": "Muneer ahmed ok",
+      "source": "https://unsplash.com/photos/hands-holding-a-small-cake-decorated-with-hearts-AKI3g3Xsm5A",
+      "sourceImage": "https://images.unsplash.com/photo-1762950350879-650b940db566",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "focalPoint": "50% 48%",
+      "category": "cakes",
+      "file": "/images/bento-detail.webp",
+      "illustrative": true,
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
+      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "variants": [
+        {
+          "path": "/images/bento-detail.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 70746
+        },
+        {
+          "path": "/images/bento-detail-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 39768
+        },
+        {
+          "path": "/images/bento-detail-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 22520
+        }
+      ]
+    },
+    {
+      "alt": "Morceaux de chocolat noir, au lait et blanc sur un tissu brun",
+      "author": "Tamanna Rumee",
+      "source": "https://unsplash.com/photos/assorted-chocolate-pieces-scattered-on-a-dark-cloth-l3fpWq7zExM",
+      "sourceImage": "https://images.unsplash.com/photo-1772986237238-253cb89c64e1",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "focalPoint": "50% 50%",
+      "category": "ingredients",
+      "file": "/images/chocolat.webp",
+      "illustrative": true,
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
+      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "variants": [
+        {
+          "path": "/images/chocolat.webp",
+          "width": 1280,
+          "height": 854,
+          "bytes": 182122
+        },
+        {
+          "path": "/images/chocolat-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 112298
+        },
+        {
+          "path": "/images/chocolat-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 34548
+        }
+      ]
+    },
+    {
+      "alt": "Pistaches décortiquées dans un bol blanc",
+      "author": "David Trinks",
+      "source": "https://unsplash.com/photos/a-white-bowl-filled-with-pistachios-on-top-of-a-table-9deyN2wkeM8",
+      "sourceImage": "https://images.unsplash.com/photo-1707548686201-b6d960b55f54",
+      "license": "Unsplash License",
+      "licenseUrl": "https://unsplash.com/license",
+      "focalPoint": "50% 48%",
+      "category": "ingredients",
+      "file": "/images/notes-gourmandes.webp",
+      "illustrative": true,
+      "verifiedAt": "2026-11-18",
+      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
+      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "variants": [
+        {
+          "path": "/images/notes-gourmandes.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 91362
+        },
+        {
+          "path": "/images/notes-gourmandes-1024.webp",
+          "width": 1024,
+          "height": 683,
+          "bytes": 50810
+        },
+        {
+          "path": "/images/notes-gourmandes-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 27922
         }
       ]
     }

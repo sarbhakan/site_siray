@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from './Photo.astro';
-import Icon from './Icon.astro';
 import {
   collections, instagram, classicFlavorGroups, signatureFlavors,
   cupcakeFlavors, brunchBoxes, type Collection,
@@ -27,18 +26,36 @@ const tabs = [
   { id: 'votre-demande', label: 'Préparer ma demande' },
 ];
 const secondary: Record<string, { image: string; alt: string }> = {
-  'layer-cakes': { image: 'gateau-creme', alt: 'Volutes de crème sur un gâteau, photographie d’ambiance' },
-  'bento-cakes': { image: 'cupcake-detail', alt: 'Détail de crème sur une pâtisserie, photographie d’ambiance' },
-  mignardises: { image: 'macarons-rose', alt: 'Macarons roses et ivoire, photographie d’ambiance' },
-  cupcakes: { image: 'cupcake-detail', alt: 'Cupcake à la crème blanche sur fond sombre, photographie d’ambiance' },
-  'brunch-box': { image: 'fruits', alt: 'Fraises, myrtilles et oranges, photographie d’ambiance' },
-  buffets: { image: 'table-reception', alt: 'Table de réception et pâtisseries, photographie d’ambiance' },
-  plateaux: { image: 'buffet-gourmand', alt: 'Fromages, fruits et bouchées à partager, photographie d’ambiance' },
+  'layer-cakes': { image: 'gateau-creme', alt: 'Volutes de crème sur un gâteau' },
+  'bento-cakes': { image: 'gateau-creme', alt: 'Détail de volutes de crème sur un gâteau' },
+  mignardises: { image: 'macarons-rose', alt: 'Macarons roses et ivoire' },
+  cupcakes: { image: 'cupcake-detail', alt: 'Cupcake à la crème blanche sur fond sombre' },
+  'brunch-box': { image: 'fruits', alt: 'Fraises, myrtilles et oranges' },
+  buffets: { image: 'table-reception', alt: 'Table de réception et pâtisseries' },
+  plateaux: { image: 'buffet-gourmand', alt: 'Fromages, fruits et bouchées à partager' },
 };
 const detailPhoto = secondary[item.slug];
-const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
-  : item.slug === 'buffets' ? 'table-reception'
-  : cupcakes ? 'cupcake-detail' : classic ? 'framboises' : 'macarons-rose';
+const requestPhoto = item.slug === 'bento-cakes'
+  ? { image: 'bento-detail', alt: 'Bento cake décoré d’un cœur' }
+  : { image: item.image, alt: item.alt };
+const flavorImages = [
+  { name: 'fruits', alt: 'Fraises, myrtilles et oranges' },
+  { name: 'chocolat', alt: 'Chocolat noir, blanc et au lait' },
+  { name: 'notes-gourmandes', alt: 'Pistaches dans un bol' },
+];
+const cupcakeGroups = [
+  { name: 'Fruits', flavors: cupcakeFlavors.filter((flavor) => ['Framboise', 'Fraise', 'Fruit de la passion', 'Mangue & fruit de la passion', 'Fruits rouges', 'Lemon curd'].includes(flavor)) },
+  { name: 'Chocolats', flavors: cupcakeFlavors.filter((flavor) => flavor === 'Nutella') },
+  { name: 'Notes gourmandes', flavors: cupcakeFlavors.filter((flavor) => ['Crème de pistache', 'Crème de spéculoos', 'Caramel beurre salé', 'Crème de noisette'].includes(flavor)) },
+];
+const flavorGroups = cupcakes ? cupcakeGroups : classicFlavorGroups;
+const conciseNotes: Record<string, string> = {
+  'layer-cakes': 'Tarif en message privé selon les parts, les saveurs et la personnalisation.',
+  'bento-cakes': 'Tarif en message privé selon la personnalisation et le décor.',
+  cupcakes: 'Personnalisation spécifique avec supplément.',
+  buffets: 'Devis selon les quantités, les produits et la mise en place.',
+  plateaux: 'Précisez les convives et la quantité de chaque plateau.',
+};
 ---
 
 <Layout title={item.name} image={item.image} description={`${item.name} sur commande à Bordeaux et en Gironde. ${item.intro}`}>
@@ -63,7 +80,6 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
           <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
           <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} sizes="(min-width: 960px) 18vw, 35vw" /></div>
         </div>
-        <p class="v5-photo-note">Photographies d’ambiance</p>
       </aside>
 
       <div class="v5-product-explorer" data-v5-tabset>
@@ -97,7 +113,7 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
                     ))}
                   </div>
                 </div>
-                <p class="v5-panel-note">Indiquez le nombre de personnes et l’heure de retrait souhaitée dans votre message.</p>
+                <p class="v5-panel-note">Précisez le nombre de personnes et l’heure de retrait.</p>
               </>
             ) : (
               <>
@@ -109,48 +125,47 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
                     <tbody>{item.tariffs.map((tariff) => <tr><th scope="row">{tariff.label}{tariff.detail && <small>{tariff.detail}</small>}</th><td>{euro(tariff.price)}</td></tr>)}</tbody>
                   </table>
                 )}
-                <ul class="v5-product-options">{item.possibilities.map((possibility) => <li>{possibility}</li>)}</ul>
-                <p class="v5-panel-note">{item.priceNote}</p>
+                <ul class="v5-product-options">{item.possibilities.map((possibility, index) => <li>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>
+                {item.slug === 'mignardises' ? <p class="v5-panel-note"><strong>Quantités supplémentaires sur devis.</strong> Composition ajustée à vos besoins et au nombre de convives.</p> : <p class="v5-panel-note">{conciseNotes[item.slug] || item.priceNote}</p>}
               </>
             )}
           </section>
 
-          {classic && (
+          {(classic || cupcakes) && (
             <section id="saveurs" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>Quinze saveurs classiques</h2><p>Pour votre {layer ? 'layer cake' : 'bento cake'}, explorez les trois familles de saveurs. Votre choix se précise ensuite sur Instagram.</p></div>
-              <div class="v5-flavor-photo"><Photo name="fruits" alt="Fraises, myrtilles et oranges, photographie d’ambiance" sizes="(min-width: 960px) 45vw, 100vw" /></div>
-              <div class="v5-flavor-families">
-                {classicFlavorGroups.map((group, index) => <details name={`${item.slug}-classiques`} open={index === 0}><summary><span>{group.name}</span><span class="v5-disclosure-action"><span class="v5-closed-label">Voir</span><span class="v5-open-label">Réduire</span><Icon name="plus" /></span></summary><ul>{group.flavors.map((flavor) => <li>{flavor}</li>)}</ul></details>)}
+              <div class="v5-panel-heading"><h2>{cupcakes ? 'Onze saveurs à découvrir' : 'Quinze saveurs classiques'}</h2><p>Choisissez une famille pour retrouver ses saveurs.</p></div>
+              <div class="v6-flavor-explorer" data-v6-flavors>
+                <nav class="v6-flavor-tabs" data-v6-flavor-controls hidden aria-label="Familles de saveurs">
+                  {flavorGroups.map((group, index) => <button type="button" id={`${item.slug}-famille-${index}`} data-v6-flavor-choice={`${item.slug}-saveur-${index}`}>{group.name}</button>)}
+                </nav>
+                {flavorGroups.map((group, index) => <section id={`${item.slug}-saveur-${index}`} class="v6-flavor-group" data-v6-flavor-panel>
+                  <h3>{group.name}</h3>
+                  <div class="v6-flavor-photo"><Photo name={flavorImages[index].name} alt={flavorImages[index].alt} sizes="(min-width: 960px) 45vw, 100vw" /></div>
+                  <ul>{group.flavors.map((flavor) => <li>{flavor}</li>)}</ul>
+                </section>)}
               </div>
-              <p class="v5-panel-note">Un supplément tarifaire s’applique en cas de mélange de plusieurs saveurs.</p>
+              {classic && <p class="v5-panel-note v6-supplement"><strong>Mélange de saveurs : supplément.</strong></p>}
             </section>
           )}
 
           {layer && (
             <section id="signatures" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>Neuf compositions réservées aux layer cakes. Ouvrez une association pour découvrir ce qu’elle réunit.</p></div>
-              <div class="v5-signature-intro"><Photo name="framboises" alt="Framboises dans une lumière dorée, photographie d’ambiance" sizes="(min-width: 960px) 45vw, 100vw" /></div>
-              <div class="v5-signature-menu">{signatureFlavors.map((flavor, index) => <details name="layer-signatures" open={index === 0}><summary><span>{flavor.name}</span><Icon name="plus" /></summary><p>{flavor.composition}</p></details>)}</div>
-            </section>
-          )}
-
-          {cupcakes && (
-            <section id="saveurs" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>Onze saveurs à découvrir</h2><p>Fruits, crèmes et notes gourmandes : choisissez les saveurs qui composeront votre sélection.</p></div>
-              <div class="v5-cupcake-menu"><div class="v5-cupcake-photo"><Photo name="cupcake-detail" alt="Cupcake à la crème blanche, photographie d’ambiance" sizes="(min-width: 960px) 18vw, 35vw" /></div><ul>{cupcakeFlavors.map((flavor) => <li>{flavor}</li>)}</ul></div>
+              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>Neuf compositions réservées aux layer cakes.</p></div>
+              <div class="v5-signature-intro"><Photo name="framboises" alt="Framboises dans une lumière dorée" sizes="(min-width: 960px) 45vw, 100vw" /></div>
+              <dl class="v6-signature-menu">{signatureFlavors.map((flavor) => <div><dt>{flavor.name}</dt><dd>{flavor.composition}</dd></div>)}</dl>
             </section>
           )}
 
           <section id="votre-demande" class="v5-product-panel" data-v5-panel>
             <div class="v5-panel-heading"><h2>Les détails à nous partager</h2><p>Gardez ces éléments sous la main pour préparer votre message. Nous précisons ensuite votre projet avec vous sur Instagram.</p></div>
-            <div class="v5-request-plan"><div class="v5-request-photo"><Photo name={requestPhoto} alt="Inspiration gourmande, photographie d’ambiance" sizes="(min-width: 960px) 18vw, 100vw" /></div><ul>{item.orderFields.map((field) => <li>{field}</li>)}</ul></div>
+            <div class="v5-request-plan"><div class="v5-request-photo"><Photo name={requestPhoto.image} alt={requestPhoto.alt} sizes="(min-width: 960px) 45vw, 100vw" /></div><ul>{item.orderFields.map((field) => <li>{field}</li>)}</ul></div>
             <div class="v5-order-notes"><p><strong>Allergies & intolérances</strong>Signalez-les avant la validation de votre commande, ainsi que toute restriction alimentaire.</p><p>Toutes nos viandes sont halal. Nos créations sont réalisées sur commande.</p><p>Les tarifs peuvent varier selon les personnalisations et demandes spécifiques. Un devis personnalisé est établi lorsque nécessaire.</p></div>
           </section>
         </div>
 
         <div class="v5-studio-contact">
           <a class="round-link" href={instagram} target="_blank" rel="noopener noreferrer">Écrire sur Instagram</a>
-          <div class="v5-studio-practical"><p>Sur commande. Toutes nos viandes sont halal.</p><a href="/contact/#allergies">Allergies & intolérances</a></div>
+          <div class="v5-studio-practical"><p><strong>Sur commande · Viandes halal</strong></p><a href="/contact/#allergies">Allergies & intolérances</a></div>
         </div>
       </div>
     </div>
@@ -177,11 +192,10 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   .v5-product-media { min-width: 0; }
   .v5-photo-composition { position: relative; padding: 0 28px 20px 0; }
   .v5-product-photo { height: 224px; overflow: hidden; background: var(--surface); }
-  .v5-product-photo :global(img), .v5-detail-photo :global(img), .v5-flavor-photo :global(img), .v5-signature-intro :global(img), .v5-cupcake-photo :global(img), .v5-request-photo :global(img), .v5-related-photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .v5-product-photo :global(img), .v5-detail-photo :global(img), .v6-flavor-photo :global(img), .v5-signature-intro :global(img), .v5-request-photo :global(img), .v5-related-photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .v5-detail-photo { position: absolute; right: 0; bottom: 0; width: 112px; height: 116px; border: 8px solid var(--paper); background: var(--surface); }
-  .v5-photo-note { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
   .v5-product-explorer { min-width: 0; }
-  .v5-product-tabs { position: sticky; top: 0; z-index: 5; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-block: 8px; margin-bottom: 24px; background: var(--paper); }
+  .v5-product-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-block: 8px; margin-bottom: 24px; background: var(--paper); }
   .v5-product-tabs button { min-height: 52px; padding: 12px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); text-align: left; font: 600 13px/1.45 'Manrope', sans-serif; cursor: pointer; transition: background-color 160ms var(--ease), color 160ms var(--ease); }
   .v5-product-tabs button[aria-selected='true'] { background: var(--olive); color: var(--on-olive); border-color: var(--olive); }
   .v5-product-tabs button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
@@ -195,8 +209,10 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   .v5-panel-heading p { margin-top: 12px; max-width: 52ch; color: var(--muted); font-size: 16px; line-height: 1.625; }
   .v5-product-options { display: grid; gap: 12px; list-style: none; margin-top: 24px; }
   .v5-product-options li { display: flex; gap: 12px; font-size: 16px; line-height: 1.625; }
+  .v5-product-options strong { font-weight: 600; }
   .v5-product-options li::before { content: ''; width: 16px; height: 1px; flex: none; margin-top: 12px; background: var(--olive-line); }
-  .v5-panel-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.625; }
+  .v5-panel-note { max-width: none; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink); font-size: 14px; font-weight: 600; line-height: 1.625; }
+  .v5-panel-note strong { color: var(--ink); font-weight: 600; }
   .v5-product-prices { width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; line-height: 1.5; }
   .v5-product-prices th { font-weight: 400; }
   .v5-product-prices thead th { padding-bottom: 12px; color: var(--muted); font-size: 13px; }
@@ -205,23 +221,24 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   .v5-product-prices td { padding-block: 12px; text-align: right; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .v5-product-prices thead th:last-child { text-align: right; }
   .v5-product-prices small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-  .v5-flavor-photo, .v5-signature-intro { height: 132px; margin-bottom: 20px; overflow: hidden; background: var(--surface); }
-  .v5-flavor-families details, .v5-signature-menu details { border-bottom: 1px solid var(--line); }
-  .v5-flavor-families details:first-child, .v5-signature-menu details:first-child { border-top: 1px solid var(--line); }
-  .v5-flavor-families summary, .v5-signature-menu summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 56px; padding-block: 12px; list-style: none; cursor: pointer; font-size: 16px; font-weight: 600; }
-  summary::-webkit-details-marker { display: none; }
-  .v5-disclosure-action { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; font-weight: 400; }
-  .v5-open-label, details[open] .v5-closed-label { display: none; }
-  details[open] .v5-open-label { display: inline; }
-  .v5-flavor-families summary :global(svg), .v5-signature-menu summary :global(svg) { width: 20px; height: 20px; flex: none; transition: transform 160ms var(--ease); }
-  details[open] summary :global(svg) { transform: rotate(45deg); }
-  .v5-flavor-families ul { list-style: none; columns: 2; column-gap: 20px; padding-bottom: 16px; }
-  .v5-flavor-families li { break-inside: avoid; padding-block: 4px; font-size: 16px; line-height: 1.625; }
-  .v5-signature-menu p { margin: 0; padding-bottom: 16px; color: var(--muted); font-size: 16px; line-height: 1.625; }
-  .v5-cupcake-menu { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 20px; align-items: start; }
-  .v5-cupcake-photo { height: 224px; overflow: hidden; background: var(--surface); }
-  .v5-cupcake-menu ul { list-style: none; }
-  .v5-cupcake-menu li { padding-block: 4px; font-size: 16px; line-height: 1.625; }
+  .v5-signature-intro { height: 132px; margin-bottom: 20px; overflow: hidden; background: var(--surface); }
+  .v6-flavor-tabs { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; margin-bottom: 16px; }
+  .v6-flavor-tabs[hidden], .v6-flavor-group[hidden] { display: none !important; }
+  .v6-flavor-tabs button { min-height: 48px; padding: 8px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer; font: 600 13px/1.4 'Manrope', sans-serif; }
+  .v6-flavor-tabs button[aria-selected='true'] { background: var(--olive); border-color: var(--olive); color: var(--on-olive); }
+  .v6-flavor-tabs button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .v6-flavor-group + .v6-flavor-group { margin-top: 24px; }
+  .v6-flavor-group h3 { margin-bottom: 12px; font-size: 20px; }
+  .v6-flavor-explorer.is-ready .v6-flavor-group { margin-top: 0; }
+  .v6-flavor-explorer.is-ready .v6-flavor-group h3 { display: none; }
+  .v6-flavor-photo { height: 156px; overflow: hidden; background: var(--surface); }
+  .v6-flavor-group ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; list-style: none; padding-top: 12px; }
+  .v6-flavor-group li { padding-block: 8px; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.5; }
+  .v6-signature-menu { margin: 0; }
+  .v6-signature-menu > div { padding-block: 16px; border-bottom: 1px solid var(--line); }
+  .v6-signature-menu > div:first-child { padding-top: 0; }
+  .v6-signature-menu dt { font: 600 16px/1.5 'Manrope', sans-serif; }
+  .v6-signature-menu dd { margin: 4px 0 0; color: var(--muted); font-size: 16px; line-height: 1.625; }
   .v5-brunch-picker { margin-bottom: 24px; }
   .v5-brunch-picker label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
   .v5-brunch-select select { width: 100%; min-height: 52px; padding: 12px; border: 1px solid var(--olive-line); border-radius: 4px; background: var(--white); color: var(--ink); font: 400 16px/1.5 'Manrope', sans-serif; cursor: pointer; }
@@ -233,12 +250,14 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   .v5-box-composition h3 { font: 400 24px/1.25 'Gloock', serif; }
   .v5-box-composition header p { flex: none; text-align: right; font-size: 13px; color: var(--muted); }
   .v5-box-composition header strong { display: block; color: var(--ink); font-size: 20px; font-weight: 400; font-variant-numeric: tabular-nums; }
-  .v5-box-menu { display: grid; gap: 20px; padding-top: 20px; }
-  .v5-box-menu h4 { margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+  .v5-box-menu { display: grid; gap: 16px; padding-top: 20px; }
+  .v5-box-menu > div { padding: 16px; background: var(--surface); }
+  .v5-box-menu h4 { margin: 0 0 8px; color: var(--ink); font: 400 20px/1.35 'Gloock', serif; }
   .v5-box-menu ul { list-style: none; }
-  .v5-box-menu :is(li, p) { margin: 0; padding-block: 4px; color: var(--muted); font-size: 16px; line-height: 1.625; }
+  .v5-box-menu :is(li, p) { margin: 0; padding-block: 8px; color: var(--ink); font-size: 16px; line-height: 1.625; }
+  .v5-box-menu li + li { border-top: 1px solid var(--line); }
   .v5-request-plan { display: grid; gap: 20px; }
-  .v5-request-photo { height: 132px; overflow: hidden; background: var(--surface); }
+  .v5-request-photo { height: 168px; overflow: hidden; background: var(--surface); }
   .v5-request-plan ul { list-style: none; }
   .v5-request-plan li { padding-block: 10px; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.625; }
   .v5-request-plan li:first-child { padding-top: 0; }
@@ -247,8 +266,9 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   .v5-order-notes strong { display: block; margin-bottom: 4px; color: var(--ink); font-weight: 600; }
   .v5-studio-contact { padding-top: 24px; border-top: 1px solid var(--line); }
   .v5-studio-contact .round-link { width: 100%; justify-content: center; }
-  .v5-studio-contact p { margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-  .v5-studio-practical > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; text-decoration: underline; text-underline-offset: 4px; }
+  .v5-studio-contact p { margin-top: 12px; max-width: none; color: var(--ink); font-size: 13px; line-height: 1.5; }
+  .v5-studio-practical strong { font-weight: 600; }
+  .v5-studio-practical > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
   .v5-related { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
   .v5-related-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 20px; }
   .v5-related-heading h2 { font-size: var(--section-title-size); line-height: 1.25; }
@@ -264,7 +284,7 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
   @keyframes v5-panel-reveal { from { opacity: .35; } to { opacity: 1; } }
   @media (hover: hover) {
     .v5-product-tabs button:not([aria-selected='true']):hover { background: var(--surface); }
-    .v5-flavor-families summary:hover, .v5-signature-menu summary:hover { background: var(--surface); }
+    .v6-flavor-tabs button:not([aria-selected='true']):hover { background: var(--surface); }
     .v5-related-link:hover .v5-related-action { color: var(--ink); }
     .v5-brunch-buttons button:hover { background: var(--surface); }
   }
@@ -274,14 +294,13 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
     .v5-photo-composition { padding-right: 48px; padding-bottom: 24px; }
     .v5-detail-photo { width: 180px; height: 184px; }
     .v5-product-tabs button { font-size: 14px; }
-    .v5-flavor-photo, .v5-signature-intro { height: 172px; }
+    .v6-flavor-photo, .v5-signature-intro { height: 188px; }
     .v5-box-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .v5-box-drink { grid-column: 1 / -1; }
-    .v5-request-plan { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 24px; }
-    .v5-request-photo { height: 240px; }
-    .v5-studio-contact { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; }
+    .v5-request-photo { height: 224px; }
+    .v5-studio-contact { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: start; }
     .v5-studio-contact .round-link { width: auto; }
-    .v5-studio-contact p { margin: 0; max-width: 27ch; }
+    .v5-studio-contact p { margin: 0; max-width: none; padding-top: 12px; }
     .v5-related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .v5-related-link:last-child { display: grid; grid-column: auto; grid-template-columns: none; gap: 8px; align-items: start; }
     .v5-related-link:last-child .v5-related-photo { grid-row: auto; }
@@ -312,6 +331,9 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
     .v5-brunch-buttons button > span:last-child { flex: none; text-align: right; font-variant-numeric: tabular-nums; }
     .v5-brunch-buttons small { display: block; color: var(--muted); font-size: 13px; font-weight: 400; }
     .v5-box-menu { grid-template-columns: none; }
+    .v5-brunch-details { min-width: 0; }
+    .v6-signature-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+    .v6-signature-menu > div:first-child { padding-top: 16px; }
     .v5-box-drink { grid-column: auto; }
   }
   @media (max-width: 359px) {
@@ -320,18 +342,16 @@ const requestPhoto = brunch || item.slug === 'plateaux' ? 'fruits'
     .v5-detail-photo { width: 96px; height: 100px; }
     .v5-product-tabs button { padding: 10px; min-height: 56px; }
     .v5-panel-heading h2 { font-size: 24px; }
-    .v5-cupcake-menu { grid-template-columns: none; }
-    .v5-cupcake-photo { height: 148px; }
-    .v5-cupcake-menu ul { columns: 2; column-gap: 20px; }
-    .v5-cupcake-menu li { break-inside: avoid; }
+
   }
   @media (prefers-reduced-motion: reduce) {
     .v5-product-explorer.is-ready .v5-product-panel:not([hidden]) { animation: none; }
-    .v5-product-tabs button, .v5-flavor-families summary :global(svg), .v5-signature-menu summary :global(svg) { transition: none; }
+    .v5-product-tabs button { transition: none; }
   }
   @media print {
-    .v5-product-tabs, .v5-brunch-picker { display: none !important; }
-    .v5-product-panel[hidden], .v5-box-composition[hidden] { display: block !important; }
+    .v5-product-tabs, .v5-brunch-picker, .v6-flavor-tabs { display: none !important; }
+    .v5-product-panel[hidden], .v5-box-composition[hidden], .v6-flavor-group[hidden] { display: block !important; }
+    .v6-flavor-explorer.is-ready .v6-flavor-group h3 { display: block; }
     .v5-product-media { position: static; }
   }
 </style>

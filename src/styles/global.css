@@ -77,8 +77,7 @@ button:disabled {
 }
 .site-header :focus-visible,
 .hero :focus-visible,
-.mobile-menu :focus-visible,
-.lightbox :focus-visible {
+.mobile-menu :focus-visible {
   outline-color: var(--on-olive);
 }
 [hidden] {
@@ -274,8 +273,7 @@ ol {
   background: var(--olive);
   color: var(--on-olive);
 }
-.mobile-menu::backdrop,
-.lightbox::backdrop {
+.mobile-menu::backdrop {
   background: #303528ea;
 }
 .mobile-menu-top {
@@ -753,11 +751,10 @@ body:has(dialog[open]) {
   color: var(--muted);
 }
 .faq p a,
-.prose-page a,
-.gallery-disclaimer a {
+.prose-page a {
   text-decoration: underline;
   text-underline-offset: 4px;
-} /* The carnet starts with images,
+} /* The gallery starts with images,
 rather than a page of introduction. */
 .gallery-controls {
   display: flex;
@@ -791,6 +788,7 @@ rather than a page of introduction. */
   color: var(--muted);
 }
 .gallery-grid {
+  padding-bottom: 48px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px 12px;
@@ -808,19 +806,6 @@ rather than a page of introduction. */
   width: 100%;
   height: 100%;
 }
-.gallery-photo > span {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--paper);
-  color: var(--ink);
-  border-radius: 4px;
-}
 .gallery-card figcaption {
   padding-top: 8px;
   line-height: 1.4;
@@ -832,53 +817,6 @@ rather than a page of introduction. */
 .gallery-card figcaption > span + span {
   color: var(--muted);
   margin-top: 4px;
-}
-.gallery-disclaimer {
-  color: var(--muted);
-  font-size: 13px;
-  margin-block: 32px 40px;
-}
-.lightbox {
-  position: fixed;
-  inset: 0;
-  border: 0;
-  margin: 0;
-  padding: 16px 20px max(16px, env(safe-area-inset-bottom));
-  width: 100%;
-  max-width: none;
-  height: 100dvh;
-  max-height: none;
-  background: var(--olive);
-  color: var(--on-olive);
-}
-.lightbox[open] {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.lightbox-top,
-.lightbox-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 13px;
-}
-.lightbox-figure {
-  flex: 1;
-  min-height: 0;
-}
-.lightbox-figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.lightbox-arrows {
-  display: flex;
-  gap: 8px;
-}
-.lightbox :focus-visible {
-  outline-color: var(--on-olive);
 }
 .prose-page {
   max-width: 880px;
@@ -925,9 +863,6 @@ rather than a page of introduction. */
   .text-link:hover,
   .card-discover:hover {
     text-decoration-thickness: 2px;
-  }
-  .gallery-photo:hover img {
-    opacity: 0.88;
   }
   .desktop-nav a:hover {
     text-decoration: underline;
@@ -1248,9 +1183,6 @@ rather than a page of introduction. */
   .gallery-card figcaption > span:first-child {
     font-size: 14px;
   }
-  .lightbox {
-    padding: 24px 48px;
-  }
   .prose-page {
     padding-block: 24px 64px;
   }
@@ -1297,8 +1229,7 @@ rather than a page of introduction. */
     env(safe-area-inset-right)
   );
 }
-.mobile-menu,
-.lightbox {
+.mobile-menu {
   padding-top: max(20px, env(safe-area-inset-top));
   padding-left: max(24px, env(safe-area-inset-left));
   padding-right: max(24px, env(safe-area-inset-right));

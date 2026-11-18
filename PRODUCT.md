@@ -1,6 +1,6 @@
 # Siray Signature
 
-Site vitrine multipage de pâtisserie et de créations à partager, à Bordeaux et en Gironde. La V5 conserve le catalogue, les saveurs, les compositions et les modalités fournis le 18 novembre 2026. Les photographies de réalisations Siray Signature seront intégrées ensuite.
+Site vitrine multipage de pâtisserie et de créations à partager, à Bordeaux et en Gironde. La V6 conserve le catalogue, les saveurs, les compositions et les modalités fournis le 18 novembre 2026. Les photographies de réalisations Siray Signature seront intégrées ensuite.
 
 ## Faits fournis
 
@@ -16,7 +16,7 @@ Les utilisateurs viennent notamment depuis Instagram, souvent sur téléphone. L
 
 ## Parcours et périmètre
 
-L’accueil et l’index présentent les sept familles, chacune avec son lien, son visuel et sa page propre. Les cinq premières familles ont leurs pages dans `/creations/` ; les buffets et les plateaux disposent respectivement de `/buffets/` et `/plateaux/`. Le carnet, la maison, le contact et les informations complètent le parcours. Chaque destination a un contenu propre, un H1, un titre et une description. Les URL existantes sont conservées.
+L’accueil et l’index présentent les sept familles, chacune avec son lien, son visuel et sa page propre. Les cinq premières familles ont leurs pages dans `/creations/` ; les buffets et les plateaux disposent respectivement de `/buffets/` et `/plateaux/`. La galerie, la maison, le contact et les informations complètent le parcours. Chaque destination a un contenu propre, un H1, un titre et une description. Les URL existantes sont conservées.
 
 Le site ne gère ni paiement, ni panier, ni disponibilité, ni transmission de commande. Une aide à la rédaction d’un message peut copier un texte sur l’appareil. Elle annonce honnêtement ce résultat. Le contact Instagram est un lien direct vers le compte confirmé.
 
@@ -30,14 +30,14 @@ Les créations sont réalisées sur commande. **Toutes les viandes sont halal**,
 
 Aucun délai minimal, acompte, condition d’annulation, adresse de retrait, livraison, frais de déplacement, capacité par plateau, label, témoignage, note ou historique n’a été confirmé. L’heure de retrait est une information demandée pour les brunch box ; elle n’établit ni lieu ni créneau de retrait. Ne pas inventer les éléments manquants.
 
-Les photographies temporaires sont des visuels d’ambiance licenciés, explicitement signalés et traçables. Elles ne sont jamais attribuées aux réalisations de Siray Signature. Un registre fournit source, auteur, licence et remplacement attendu.
+Les photographies temporaires sont des visuels licenciés et traçables, sous licences Unsplash ou Pexels. Elles ne sont jamais attribuées aux réalisations de Siray Signature. Le registre fournit source, auteur, licence et remplacement attendu ; la page accessible par « Crédits des images » présente cette provenance. Les légendes répétées de provenance sont retirées des parcours. Les bento cakes ont un visuel propre, et les familles de saveurs un visuel thématique, en attendant les photos de Siray.
 
 ## Critères de livraison
 
-Site statique exportable, compatible avec un hébergement gratuit adapté, sans service serveur obligatoire. Navigation et informations lisibles sans JavaScript; animations progressives; mobile soigné; clavier et mouvement réduit pris en charge; images locales optimisées; liens réels; compilation vérifiée; revue visuelle documentée.
+Site statique exportable, compatible avec un hébergement gratuit adapté, sans service serveur obligatoire. Navigation et informations lisibles sans JavaScript ; animations progressives ; mobile soigné ; clavier et mouvement réduit pris en charge ; images locales optimisées ; liens réels ; compilation vérifiée ; revue visuelle documentée. Les fiches gardent seulement la photo latérale sticky à partir de 960 px. Les volets défilent normalement, les saveurs associent leur image et leur liste, et les neuf Signature sont lisibles directement. La galerie conserve les filtres et retire le zoom.
 
 Avant publication commerciale : renseigner les vraies photographies et leurs droits, les coordonnées et mentions légales pertinentes. Ces éléments manquants n’empêchent pas la revue de la façade.
 
 Dépôt confirmé : [sarbhakan/site_siray](https://github.com/sarbhakan/site_siray.git).
 
-La V5 est conçue en priorité pour les visites mobiles depuis Instagram. Le système visuel actuel est décrit dans [DESIGN.md](DESIGN.md). Le [brief artistique initial](docs/art-direction.md) et le [plan de vérification](docs/qa-plan.md) restent des documents de contexte ; les résultats effectifs et leur périmètre figurent dans `docs/qa/`.
+La V6 est conçue en priorité pour les visites mobiles depuis Instagram. Le système visuel actuel est décrit dans [DESIGN.md](DESIGN.md). Le [brief artistique initial](docs/art-direction.md) et le [plan de vérification](docs/qa-plan.md) restent des documents de contexte ; les résultats effectifs et leur périmètre figurent dans les rapports V6 de `docs/qa/`. Les résultats des versions antérieures restent historiques.

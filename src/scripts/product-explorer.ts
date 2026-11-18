@@ -5,12 +5,18 @@ function initializeProductExplorer() {
   const controller = new AbortController();
   const { signal } = controller;
 
-  document.querySelectorAll<HTMLElement>('[data-v5-tabset]').forEach((root) => {
-    const list = root.querySelector<HTMLElement>('[data-v5-tablist]');
-    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-v5-tab]'));
-    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-v5-panel]'));
+  const enhanceTabs = (
+    root: HTMLElement,
+    listSelector: string,
+    tabSelector: string,
+    panelSelector: string,
+    targetData: string,
+  ) => {
+    const list = root.querySelector<HTMLElement>(listSelector);
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>(tabSelector));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>(panelSelector));
     if (!list || !tabs.length || tabs.length !== panels.length) return;
-    const panelFor = (tab: HTMLButtonElement) => panels.find((panel) => panel.id === tab.dataset.v5Tab);
+    const panelFor = (tab: HTMLButtonElement) => panels.find((panel) => panel.id === tab.dataset[targetData]);
     if (tabs.some((tab) => !panelFor(tab))) return;
 
     list.setAttribute('role', 'tablist');
@@ -53,9 +59,17 @@ function initializeProductExplorer() {
       const panel = panelFor(tab)!;
       return panel === hashTarget || panel.contains(hashTarget);
     });
-    activate(initial || tabs[0]);
+    const selected = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true');
+    activate(initial || selected || tabs[0]);
     root.classList.add('is-ready');
     list.hidden = false;
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-v5-tabset]').forEach((root) => {
+    enhanceTabs(root, '[data-v5-tablist]', '[data-v5-tab]', '[data-v5-panel]', 'v5Tab');
+  });
+  document.querySelectorAll<HTMLElement>('[data-v6-flavors]').forEach((root) => {
+    enhanceTabs(root, '[data-v6-flavor-controls]', '[data-v6-flavor-choice]', '[data-v6-flavor-panel]', 'v6FlavorChoice');
   });
 
   document.querySelectorAll<HTMLElement>('[data-v5-brunch]').forEach((root) => {
@@ -77,7 +91,7 @@ function initializeProductExplorer() {
     };
     buttons.forEach((button, index) => button.addEventListener('click', () => showBox(index, true), { signal }));
     select.addEventListener('change', () => showBox(select.selectedIndex, true), { signal });
-    showBox(0);
+    showBox(select.selectedIndex);
     root.classList.add('is-ready');
     controls.hidden = false;
   });

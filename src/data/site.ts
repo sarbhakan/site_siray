@@ -31,7 +31,7 @@ export const collections: Collection[] = [
     name: 'Layer cakes',
     short: 'Un gâteau à votre image',
     image: 'layer-cake',
-    alt: 'Gâteau blanc à étages décoré de fruits, photographie d’ambiance',
+    alt: 'Gâteau blanc à étages décoré de fruits',
     intro:
       'Un gâteau à votre image, du choix des saveurs aux couleurs du décor.',
     text: 'Une photo d’inspiration, une inscription, les couleurs de votre événement : nous imaginons votre layer cake autour de vos envies.',
@@ -58,8 +58,8 @@ export const collections: Collection[] = [
     href: '/creations/bento-cakes/',
     name: 'Bento cakes',
     short: 'Un petit format, un message personnel',
-    image: 'gateau-creme',
-    alt: 'Gâteau à la crème, photographie d’ambiance illustrative',
+    image: 'bento-cake',
+    alt: 'Petit gâteau blanc personnalisé dans sa boîte, tenu en main',
     intro:
       'Un petit gâteau au format standard, avec vos couleurs et votre message.',
     text: 'Choisissez une saveur classique, puis partagez votre idée de décor. Une photo d’inspiration nous aide à préciser votre création.',
@@ -86,7 +86,7 @@ export const collections: Collection[] = [
     name: 'Mignardises',
     short: 'Les petites pièces sucrées & salées',
     image: 'macarons-ivoire',
-    alt: 'Macarons clairs disposés sur une table, photographie d’ambiance',
+    alt: 'Macarons clairs disposés sur une table',
     intro:
       'Des bouchées sucrées et salées, réunies en plateaux pour vos événements.',
     text: 'Choisissez les variétés et leur répartition. La composition s’ajuste à vos envies et au nombre de convives.',
@@ -120,7 +120,7 @@ export const collections: Collection[] = [
     name: 'Cupcakes',
     short: 'Des saveurs à réunir, un décor à choisir',
     image: 'cupcakes',
-    alt: 'Cupcakes décorés présentés sur une table, photographie d’ambiance',
+    alt: 'Cupcakes décorés présentés sur une table',
     intro:
       'Onze saveurs au choix, des couleurs et un décor à assortir à votre occasion.',
     text: 'Sélectionnez vos saveurs et le nombre de pièces, puis échangeons sur le décor et les couleurs souhaités.',
@@ -153,7 +153,7 @@ export const collections: Collection[] = [
     name: 'Brunch box',
     short: 'Dix compositions pour vos matins gourmands',
     image: 'brunch',
-    alt: 'Table de brunch avec viennoiseries et fruits, photographie d’ambiance',
+    alt: 'Table de brunch avec viennoiseries et fruits',
     intro:
       'Dix compositions mêlant sucré, salé et jus de fruits, préparées sur commande.',
     text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
@@ -188,7 +188,7 @@ export const collections: Collection[] = [
     name: 'Buffets',
     short: 'Une réception, une table sur mesure',
     image: 'buffet-gourmand',
-    alt: 'Buffet dressé pour une réception, photographie d’ambiance',
+    alt: 'Buffet dressé pour une réception',
     intro:
       'Un buffet sucré, salé ou mixte, composé et dressé pour votre réception.',
     text: 'Nous étudions avec vous la composition, les quantités, le dressage et la décoration. Thème, couleurs et inspirations donnent le ton de votre table.',
@@ -217,7 +217,7 @@ export const collections: Collection[] = [
     name: 'Plateaux',
     short: 'Des compositions à partager',
     image: 'plateau-sale',
-    alt: 'Plateau de fromages et charcuterie, photographie d’ambiance',
+    alt: 'Plateau de fromages et charcuterie',
     intro:
       'Fruits, fromages, charcuterie ou crudités : une table à partager.',
     text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
