@@ -1,0 +1,15 @@
+{
+  "engine": "0.1.25",
+  "command": "impeccable context",
+  "resolved_context": {
+    "product": "PRODUCT.md",
+    "design": "DESIGN.md",
+    "has_visual_implementation": true
+  },
+  "setup_notices": [
+    "Existing PRODUCT.md legacy schema",
+    "Design hook not installed; manual detector used"
+  ],
+  "setup_mutations": [],
+  "result": "Current product and design context loaded. No global hook or setup repair performed."
+}

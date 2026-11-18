@@ -10,11 +10,13 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  home?: boolean;
 }
 const {
   title,
   description = 'Cakes, mignardises, brunch box et buffets sur mesure à Bordeaux et en Gironde. Découvrez l’univers gourmand de Siray Signature.',
   image = 'layer-cake',
+  home = false,
 } = Astro.props;
 const pathname = Astro.url.pathname;
 const links = [
@@ -30,8 +32,11 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f2ea" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content={home ? '#2b101b' : '#f4ede6'} />
     <meta name="description" content={description} />
     <title>{title === 'Accueil' ? 'Siray Signature — Vos instants gourmands, Bordeaux' : `${title} — Siray Signature`}</title>
     {canonical && <link rel="canonical" href={canonical} />}
@@ -49,13 +54,13 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     <meta name="twitter:card" content="summary_large_image" />
     <ClientRouter />
   </head>
-  <body>
+  <body class:list={[{ 'home-page': home }]}>
     <a href="#contenu" class="skip-link">
       Aller au contenu
     </a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Siray Signature, accueil">
-        Siray<span>Signature</span>
+        Siray <span>Signature</span>
       </a>
       <nav class="desktop-nav" aria-label="Navigation principale">
         {links.map((link) => (
@@ -68,7 +73,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         ))}
       </nav>
       <a class="header-contact" href="/contact/">
-        Votre événement <Icon name="diagonal" />
+        Votre projet
       </a>
       <button
         class="menu-toggle"
@@ -93,21 +98,16 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         </button>
       </div>
       <nav aria-label="Navigation mobile">
-        <a href="/">
-          Accueil <Icon />
-        </a>
+        <a href="/">Accueil</a>
         {links.map((link) => (
           <a
             href={link.href}
             aria-current={pathname.startsWith(link.href) ? 'page' : undefined}
           >
             {link.label}
-            <Icon />
           </a>
         ))}
-        <a href="/contact/">
-          Votre événement <Icon />
-        </a>
+        <a href="/contact/">Votre projet</a>
       </nav>
       <a
         class="menu-instagram"
@@ -115,7 +115,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         target="_blank"
         rel="noopener noreferrer"
       >
-        @siraysignature <Icon name="instagram" />
+        @siraysignature
       </a>
       <p>Bordeaux & Gironde</p>
     </dialog>
@@ -132,13 +132,9 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     </main>
     <footer class="site-footer section-pad">
       <div class="footer-top">
-        <p>
-          Pour les petites attentions.
-          <br />
-          Et les grandes occasions.
-        </p>
+        <p>Cakes, mignardises & tables sur mesure</p>
         <a href={instagram} target="_blank" rel="noopener noreferrer">
-          Suivre nos gourmandises <Icon name="instagram" />
+          @siraysignature
         </a>
       </div>
       <a
@@ -157,8 +153,8 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         <span>© {new Date().getFullYear()} Siray Signature</span>
       </div>
       <p class="ambiance-note">
-        Photographies d’ambiance. Les créations Siray Signature se dévoileront
-        bientôt ici.
+        Cette maquette utilise des photographies d’ambiance. Elles seront
+        remplacées par les créations de Siray Signature.
       </p>
     </footer>
     <script>

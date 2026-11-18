@@ -25,18 +25,22 @@ Sur macOS, si le projet se trouve dans un dossier Documents synchronisé et que 
 
 ## Pages et contenu
 
-- Accueil avec diaporama manuel et lecture facultative.
+- Accueil avec défilement photographique automatique, choix de scène et pause.
 - Index des créations et quatre pages : layer cakes, bento cakes, mignardises/cupcakes, brunch box.
 - Buffets et réceptions, avec plateaux sucrés et salés.
 - Carnet filtrable et visionneuse accessible.
 - La maison, contact et questions fréquentes.
 - Crédits/informations et page404.
 
+La V2 associe un cadre cerise noire à des surfaces crème. Les titres et l'interface utilisent Manrope ; Gloock est réservé à la marque. Sur mobile, les collections se parcourent dans une rangée horizontale native et chaque carte mène à sa page.
+
+Le diaporama démarre automatiquement : une scène toutes les 6,5 secondes, avec un fondu de 850 ms. Ses commandes restent sous la photo, sans texte ni bouton superposé à l'image. Le choix d'une scène, le focus clavier ou un geste tactile suspendent la lecture ; le bouton texte permet de la reprendre. La lecture se suspend aussi au survol de la photo, lorsque celle-ci sort de la vue et lorsque l'onglet devient inactif. Avec la préférence système de mouvement réduit, la photo reste statique jusqu'à un choix manuel, sans fondu.
+
 Les données des collections et du carnet se trouvent dans `src/data/site.ts`. Les textes des autres pages sont dans `src/pages/`. Le layout, les composants communs et les tokens CSS sont regroupés dans `src/layouts/`, `src/components/` et `src/styles/global.css`.
 
 ## Remplacer les photos
 
-La V1 emploie des **photographies d'ambiance Unsplash**, jamais présentées comme les réalisations de Siray Signature. Provenance et licence : `docs/image-credits.json`. Aide aux cadrages : `docs/images.md`.
+La façade emploie des **photographies d'ambiance Unsplash**, jamais présentées comme les réalisations de Siray Signature. Provenance et licence : `docs/image-credits.json`. Aide aux cadrages : `docs/images.md`. La collection bento utilise un panneau typographique, en attendant une photographie réelle de ce format.
 
 1. Fournir les photographies autorisées de la maison.
 2. Les décliner en WebP à plusieurs tailles, puis renseigner les dimensions et points focaux dans le manifeste d'images.
@@ -60,8 +64,10 @@ Le projet ne dépend d'aucune fonction Netlify. Le même export peut être dépl
 
 ## Qualité et toolkit
 
-Les orientations et faits du projet figurent dans `PRODUCT.md`, `DESIGN.md` et `docs/art-direction.md`. La revue indépendante et les résultats des contrôles sont dans `docs/qa/`.
+Les faits du projet figurent dans `PRODUCT.md` et le système visuel actuel dans `DESIGN.md`. Les pistes de reprise sont dans `docs/v2-directions.md`. Les résultats de contrôle sont consignés dans `docs/qa/` avec leur périmètre ; la présence d'un outil ou d'une règle dans le code ne constitue pas un verdict de test.
 
-Les neuf dépôts du Dev Toolkit Orchestrator sont préparés dans le cache local `.dev-toolkit/vendor`, exclu de Git et du déploiement. Hallmark a guidé la composition ; Taste, la hiérarchie, les images et les textes ; Impeccable, les états, l'accessibilité et les contrôles. Les autres modules sont activés selon leur pertinence. Les checkouts seuls ne constituent pas une exécution de leurs outils.
+Les neuf dépôts du Dev Toolkit Orchestrator sont préparés dans le cache local `.dev-toolkit/vendor`, exclu de Git et du déploiement. La reprise visuelle suit Unslop, complété par Taste pour la hiérarchie et la copie, et Impeccable pour les états, le responsive et la critique. Hallmark reste disponible dans le toolkit. Le bilan des sources et de leur utilisation est dans `docs/toolkit-report.json`.
+
+[Unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop), créé par **Damir Sokolovsky**, est distribué sous **CC BY 4.0**. Le skill est installé localement dans `~/.codex/skills/unslop/`. Ses consignes ont guidé la réduction du bruit visuel, la palette cohérente, les titres compacts et le mouvement lié aux photographies.
 
 Les polices Gloock et Manrope sont distribuées sous SIL Open Font License; leurs licences sont conservées dans `public/licenses/`.

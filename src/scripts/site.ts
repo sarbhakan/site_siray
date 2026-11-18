@@ -44,16 +44,58 @@ function initialize() {
     const slides = Array.from(
       hero.querySelectorAll<HTMLElement>('[data-slide]'),
     );
+    const scenes = Array.from(
+      hero.querySelectorAll<HTMLButtonElement>('[data-scene]'),
+    );
     const toggle = hero.querySelector<HTMLButtonElement>('[data-slide-toggle]');
+    const surface = hero.querySelector<HTMLElement>('[data-slide-surface]');
+    hero.querySelector('[data-carousel-controls]')?.removeAttribute('hidden');
     let current = 0;
-    let playing = false;
-    let timer: ReturnType<typeof setInterval> | undefined;
+    let pausedByUser = false;
+    let inView = true;
+    let hovered = false;
+    let disposed = false;
+    let generation = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
     let animation: gsap.core.Timeline | undefined;
-    const change = (next: number) => {
-      const old = slides[current];
-      const target = slides[(next + slides.length) % slides.length];
-      if (old === target) return;
+    const canRun = () =>
+      !pausedByUser &&
+      !reduced.matches &&
+      inView &&
+      !hovered &&
+      !document.hidden;
+    const schedule = () => {
+      clearTimeout(timer);
+      hero.dataset.running = String(canRun());
+      hero.dataset.suspended = String(!canRun());
+      toggle?.setAttribute(
+        'aria-label',
+        pausedByUser
+          ? 'Reprendre le diaporama'
+          : 'Mettre le diaporama en pause',
+      );
+      if (toggle) toggle.textContent = pausedByUser ? 'Reprendre' : 'Pause';
+      if (canRun())
+        timer = setTimeout(() => {
+          void change(current + 1, true);
+        }, 6500);
+    };
+    const change = async (next: number, automatic = false) => {
+      const targetIndex = (next + slides.length) % slides.length;
+      if (targetIndex === current) {
+        schedule();
+        return;
+      }
+      const token = ++generation;
+      const target = slides[targetIndex];
+      const img = target.querySelector('img');
+      if (img) {
+        img.loading = 'eager';
+        await img.decode().catch(() => {});
+      }
+      if (disposed || token !== generation || (automatic && !canRun())) return;
       animation?.kill();
+      const old = slides[current];
       slides.forEach((slide) => {
         slide.classList.remove('is-active');
         slide.setAttribute('aria-hidden', 'true');
@@ -69,93 +111,114 @@ function initialize() {
           target,
           {
             opacity: 1,
-            duration: reduced.matches ? 0 : 0.6,
-            ease: 'power2.out',
+            duration: reduced.matches ? 0 : 0.85,
+            ease: 'power3.out',
           },
           0,
         )
-        .to(old, { opacity: 0, duration: reduced.matches ? 0 : 0.6 }, 0)
+        .to(old, { opacity: 0, duration: reduced.matches ? 0 : 0.85 }, 0)
         .set(old, { visibility: 'hidden' });
-      current = slides.indexOf(target);
-      const count = hero.querySelector('[data-slide-count]');
-      const label = hero.querySelector('[data-slide-label]');
-      if (count)
-        count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
-      if (label) label.textContent = target.dataset.label || '';
+      current = targetIndex;
+      scenes.forEach((button, index) =>
+        button.setAttribute('aria-pressed', String(index === current)),
+      );
+      schedule();
     };
     const pause = () => {
-      playing = false;
-      clearInterval(timer);
-      toggle?.setAttribute('aria-label', 'Lancer le diaporama');
-      toggle?.setAttribute('aria-pressed', 'false');
-      toggle?.querySelector('[data-pause]')?.setAttribute('hidden', '');
-      toggle?.querySelector('[data-play]')?.removeAttribute('hidden');
+      pausedByUser = true;
+      schedule();
     };
-    const play = () => {
-      if (reduced.matches) return;
-      playing = true;
-      toggle?.setAttribute('aria-label', 'Mettre le diaporama en pause');
-      toggle?.setAttribute('aria-pressed', 'true');
-      toggle?.querySelector('[data-play]')?.setAttribute('hidden', '');
-      toggle?.querySelector('[data-pause]')?.removeAttribute('hidden');
-      clearInterval(timer);
-      timer = setInterval(() => {
-        if (!document.hidden) change(current + 1);
-      }, 5500);
-    };
-    hero.querySelector('[data-slide-next]')?.addEventListener(
+    scenes.forEach((button, index) =>
+      button.addEventListener(
+        'click',
+        () => {
+          pause();
+          void change(index);
+        },
+        { signal },
+      ),
+    );
+    toggle?.addEventListener(
       'click',
       () => {
-        pause();
-        change(current + 1);
+        pausedByUser = !pausedByUser;
+        schedule();
       },
       { signal },
     );
-    hero.querySelector('[data-slide-prev]')?.addEventListener(
-      'click',
-      () => {
-        pause();
-        change(current - 1);
-      },
-      { signal },
-    );
-    toggle?.addEventListener('click', () => (playing ? pause() : play()), {
-      signal,
-    });
-    const motionChange = () => {
-      if (reduced.matches) {
-        pause();
-        toggle?.setAttribute('hidden', '');
-      } else toggle?.removeAttribute('hidden');
-    };
-    reduced.addEventListener('change', motionChange, { signal });
-    motionChange();
     hero.addEventListener(
       'focusin',
       (event) => {
-        if (playing && !toggle?.contains(event.target as Node)) pause();
+        if (event.target !== toggle) pause();
       },
       { signal },
     );
+    surface?.addEventListener(
+      'pointerenter',
+      (event) => {
+        if (event.pointerType === 'mouse') {
+          hovered = true;
+          schedule();
+        }
+      },
+      { signal },
+    );
+    surface?.addEventListener(
+      'pointerleave',
+      () => {
+        hovered = false;
+        schedule();
+      },
+      { signal },
+    );
+    let startX = 0;
+    let startY = 0;
+    surface?.addEventListener(
+      'pointerdown',
+      (event) => {
+        startX = event.clientX;
+        startY = event.clientY;
+      },
+      { signal },
+    );
+    surface?.addEventListener(
+      'pointerup',
+      (event) => {
+        if (event.pointerType === 'mouse') return;
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          pause();
+          void change(current + (dx < 0 ? 1 : -1));
+        } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) pause();
+      },
+      { signal },
+    );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        schedule();
+      },
+      { threshold: 0.2 },
+    );
+    if (surface) observer.observe(surface);
+    document.addEventListener('visibilitychange', schedule, { signal });
+    const motionChange = () => {
+      if (toggle) toggle.hidden = reduced.matches;
+      if (reduced.matches) {
+        animation?.kill();
+        gsap.set(slides, { opacity: 0, visibility: 'hidden' });
+        gsap.set(slides[current], { opacity: 1, visibility: 'visible' });
+      }
+      schedule();
+    };
+    reduced.addEventListener('change', motionChange, { signal });
+    motionChange();
     cleanups.push(() => {
-      clearInterval(timer);
+      disposed = true;
+      clearTimeout(timer);
       animation?.kill();
-    });
-  }
-
-  const preview = document.querySelector<HTMLImageElement>(
-    '.collection-preview img',
-  );
-  if (preview) {
-    document.querySelectorAll<HTMLElement>('[data-preview]').forEach((row) => {
-      const update = () => {
-        if (preview.getAttribute('src') === row.dataset.preview) return;
-        preview.removeAttribute('srcset');
-        preview.src = row.dataset.preview || '';
-        preview.alt = row.dataset.previewAlt || '';
-      };
-      row.addEventListener('mouseenter', update, { signal });
-      row.addEventListener('focus', update, { signal });
+      observer.disconnect();
     });
   }
 

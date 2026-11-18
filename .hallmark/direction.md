@@ -1,3 +1,5 @@
+> Archive V1. La direction actuelle est décrite dans DESIGN.md et docs/v2-directions.md ; les instructions visuelles V1 ci-dessous ne font plus foi.
+
 # Hallmark · Siray Signature · V1
 
 - **Idea** : la table se compose, des petites pièces au buffet à partager.

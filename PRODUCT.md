@@ -25,7 +25,7 @@ Aucun prix, saveur, délai, témoignage, adresse, livraison/retrait, capacité, 
 
 Les photographies temporaires sont des visuels d’ambiance licenciés, explicitement signalés et traçables. Elles ne sont jamais attribuées aux réalisations de Siray Signature. Un registre fournit source, auteur, licence et remplacement attendu.
 
-## Critères de livraison de la V1
+## Critères de livraison
 
 Site statique exportable, compatible avec un hébergement gratuit adapté, sans service serveur obligatoire. Navigation et informations lisibles sans JavaScript; animations progressives; mobile soigné; clavier et mouvement réduit pris en charge; images locales optimisées; liens réels; compilation vérifiée; revue visuelle documentée.
 
@@ -33,4 +33,4 @@ Avant publication commerciale : renseigner les vraies photographies et leurs dro
 
 Dépôt confirmé : [sarbhakan/site_siray](https://github.com/sarbhakan/site_siray.git).
 
-Voir [DESIGN.md](DESIGN.md), [le brief artistique](docs/art-direction.md) et [le plan de vérification](docs/qa-plan.md).
+La V2 est conçue en priorité pour les visites mobiles depuis Instagram. Voir [DESIGN.md](DESIGN.md), [le brief artistique](docs/art-direction.md) et [le plan de vérification](docs/qa-plan.md).

@@ -1,0 +1,194 @@
+{
+ "files": [
+  {
+   "words": 87,
+   "headings": [
+    "Page introuvable"
+   ],
+   "findings": [],
+   "file": "dist/404.html",
+   "kind": "service"
+  },
+  {
+   "words": 266,
+   "headings": [
+    "Buffets sur mesure",
+    "Les pièces sucrées",
+    "Les plateaux à partager",
+    "Composer votre projet",
+    "Votre occasion",
+    "Votre composition",
+    "Les détails de commande",
+    "Votre buffet, à composer ensemble"
+   ],
+   "findings": [],
+   "file": "dist/buffets/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 284,
+   "headings": [
+    "Votre projet gourmand",
+    "Les détails utiles",
+    "Vos questions"
+   ],
+   "findings": [],
+   "file": "dist/contact/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 250,
+   "headings": [
+    "Bento cakes",
+    "Un cake en petit format",
+    "Composer votre projet",
+    "Votre occasion",
+    "Votre composition",
+    "Les détails de commande",
+    "Les autres créations",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/creations/bento-cakes/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 254,
+   "headings": [
+    "Brunch box",
+    "Le brunch à offrir ou à partager",
+    "Composer votre projet",
+    "Votre occasion",
+    "Votre composition",
+    "Les détails de commande",
+    "Les autres créations",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/creations/brunch-box/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 237,
+   "headings": [
+    "Cakes & petites pièces",
+    "Layer cakes",
+    "Bento cakes",
+    "Mignardises & cupcakes",
+    "Brunch box",
+    "Votre création sur mesure"
+   ],
+   "findings": [],
+   "file": "dist/creations/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 250,
+   "headings": [
+    "Layer cakes",
+    "Un gâteau à partager",
+    "Composer votre projet",
+    "Votre occasion",
+    "Votre composition",
+    "Les détails de commande",
+    "Les autres créations",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/creations/layer-cakes/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 256,
+   "headings": [
+    "Mignardises & cupcakes",
+    "Des pièces pour vos tables sucrées",
+    "Composer votre projet",
+    "Votre occasion",
+    "Votre composition",
+    "Les détails de commande",
+    "Les autres créations",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/creations/mignardises/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 350,
+   "headings": [
+    "Photos & informations",
+    "Photographies d'ambiance",
+    "Demandes & commandes",
+    "Confidentialité",
+    "À propos de cette première version"
+   ],
+   "findings": [],
+   "file": "dist/credits/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 178,
+   "headings": [
+    "Le carnet des envies",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/galerie/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 225,
+   "headings": [
+    "Vos instants gourmands",
+    "À vous de choisir",
+    "Layer cakes",
+    "Bento cakes",
+    "Mignardises & cupcakes",
+    "Brunch box",
+    "Buffets & plateaux",
+    "La table prend toute sa place",
+    "L'art de sublimer vos instants gourmands",
+    "Des idées à garder",
+    "Votre projet gourmand"
+   ],
+   "findings": [],
+   "file": "dist/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 190,
+   "headings": [
+    "La maison Siray",
+    "Le sur-mesure, ensemble",
+    "Votre occasion, votre composition"
+   ],
+   "findings": [],
+   "file": "dist/la-maison/index.html",
+   "kind": "service"
+  }
+ ],
+ "cross": {
+  "heroes": [
+   "404.html: Page introuvable",
+   "buffets/index.html: Buffets sur mesure",
+   "contact/index.html: Votre projet gourmand",
+   "creations/bento-cakes/index.html: Bento cakes",
+   "creations/brunch-box/index.html: Brunch box",
+   "creations/index.html: Cakes & petites pièces",
+   "creations/layer-cakes/index.html: Layer cakes",
+   "creations/mignardises/index.html: Mignardises & cupcakes",
+   "credits/index.html: Photos & informations",
+   "galerie/index.html: Le carnet des envies",
+   "index.html: Vos instants gourmands",
+   "la-maison/index.html: La maison Siray"
+  ],
+  "shared": [
+   "\"composer votre projet\" in 5 files: buffets/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html",
+   "\"les dtails de\" in 5 files: buffets/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html",
+   "\"dtails de commande\" in 5 files: buffets/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html",
+   "\"votre projet gourmand\" in 7 files: contact/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html, galerie/index.html, index.html",
+   "\"les autres crations\" in 4 files: creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html"
+  ]
+ }
+}

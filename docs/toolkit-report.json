@@ -1,5 +1,5 @@
 {
-  "task": "Siray Signature V1: vitrine Astro française multipage, interactions accessibles et préparation Netlify.",
+  "task": "Siray Signature V2 : refonte guidée par Unslop, priorité mobile, suppression du lecteur décoratif, cohérence cerise noire/crème et vérification indépendante.",
   "prepared_sources": [
     {
       "name": "ponytail",
@@ -56,7 +56,46 @@
       "source_ready": true
     }
   ],
-  "modules_applied": [
+  "not_activated": [
+    {
+      "name": "browser-use",
+      "status": "Source prête. Exécution Python non nécessaire : navigateur intégré CUA utilisé selon les instructions hôte."
+    },
+    {
+      "name": "rea",
+      "status": "Source prête et but inspecté. Aucun reverse engineering nécessaire à cette vitrine; runtime non exécuté."
+    },
+    {
+      "name": "i-have-adhd",
+      "status": "Source et skill considérés. Non activé comme mode personnel; aucune déduction de diagnostic depuis ce dépôt."
+    }
+  ],
+  "verification": {
+    "build": "Astro check/build: 0error,0warning,0hint; 12pages et robots.txt",
+    "static_html": "12pages, zéro problème ni avertissement",
+    "http": "12routes200, inconnue404",
+    "browser": "Voir docs/qa/browser-review.md et captures",
+    "not_verified": [
+      "Téléphone physique",
+      "Lecteur écran",
+      "Mode sans JS rendu et reduced-motion émulé",
+      "Netlify production, Lighthouse ou Core Web Vitals réels"
+    ]
+  },
+  "runtime": {
+    "node": "25.8.2",
+    "npm": "11.11.1",
+    "astro": "7.4.13",
+    "gsap": "3.15.1",
+    "dependencies": "package-lock.json; npm ci, project-local node_modules",
+    "build_target": "Node24 on Netlify",
+    "global_hooks_installed": false,
+    "verified_build_node": "24.22.3",
+    "dependency_recovery": "npm ci from lockfile; macOS dataless files replaced by hydrated local directory; no permanent symlink"
+  },
+  "provenance": "Local caches and tools are excluded from production and Git. This portable record describes observed uses, not global installation.",
+  "previous_task": "V1 archived in Git history at 0cfa7002789f2e5413a01304fe0e2c16f98979d6",
+  "modules_applied_v1": [
     {
       "name": "hallmark",
       "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
@@ -210,42 +249,168 @@
       ]
     }
   ],
-  "not_activated": [
+  "modules_applied": [
     {
-      "name": "browser-use",
-      "status": "Source prête. Exécution Python non nécessaire : navigateur intégré CUA utilisé selon les instructions hôte."
+      "name": "unslop",
+      "author": "Damir Sokolovsky (@heydamir)",
+      "license": "CC-BY-4.0",
+      "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+      "installed_path": "~/.codex/skills/unslop",
+      "files_read": [
+        "SKILL.md",
+        "references/signs.md",
+        "references/tokens.md",
+        "references/visuals.md",
+        "references/refs.md"
+      ],
+      "applied_decisions": [
+        "Audit lourd et trois directions comparées avant édition autorisée par la demande explicite de reprise",
+        "Neuf passes planifiées : espace, couleurs, icônes, copie, type, composition, détails, visuels, mouvement",
+        "Chrome sobre, photo sans superposition, titres compacts et format bento sans fausse photo"
+      ],
+      "checks": [
+        {
+          "command": "Two grouped render cycles and independent reviews",
+          "result": "No blocking visual issue in final inspected screenshots; physical-device gaps recorded"
+        }
+      ],
+      "changed_files": [
+        "src/styles/global.css",
+        "src/components/Photo.astro",
+        "src/components/Process.astro",
+        "src/components/Icon.astro",
+        "src/components/FormatPanel.astro",
+        "src/components/Invitation.astro",
+        "src/layouts/Layout.astro",
+        "src/scripts/site.ts",
+        "src/data/site.ts",
+        "src/pages/buffets.astro",
+        "src/pages/404.astro",
+        "src/pages/index.astro",
+        "src/pages/robots.txt.ts",
+        "src/pages/credits.astro",
+        "src/pages/contact.astro",
+        "src/pages/galerie.astro",
+        "src/pages/la-maison.astro",
+        "src/pages/creations/index.astro",
+        "src/pages/creations/[slug].astro"
+      ],
+      "installed_skill_sha256": "54e74d73afedb70dd556495f03a13ab7a5724b948cad20c3c7452684f3cb65e9"
     },
     {
-      "name": "rea",
-      "status": "Source prête et but inspecté. Aucun reverse engineering nécessaire à cette vitrine; runtime non exécuté."
+      "name": "taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "files_read": [
+        "skills/taste-skill/SKILL.md",
+        "references/copy.md",
+        "references/copy-voice.md",
+        "references/system.md",
+        "references/layout-v4.md",
+        "references/sections.md",
+        "references/motion.md"
+      ],
+      "applied_decisions": [
+        "Copie française concrète, légendes descriptives, hiérarchie des familles et images locales traçables"
+      ],
+      "checks": [
+        {
+          "command": "copy-lint.mjs on 12 dist HTML, --kind service --json --year 2026",
+          "result": "0 findings; common component headings reported across routes"
+        }
+      ],
+      "changed_files": [
+        "src/styles/global.css",
+        "src/components/Photo.astro",
+        "src/components/Process.astro",
+        "src/components/Icon.astro",
+        "src/components/FormatPanel.astro",
+        "src/components/Invitation.astro",
+        "src/layouts/Layout.astro",
+        "src/scripts/site.ts",
+        "src/data/site.ts",
+        "src/pages/buffets.astro",
+        "src/pages/404.astro",
+        "src/pages/index.astro",
+        "src/pages/robots.txt.ts",
+        "src/pages/credits.astro",
+        "src/pages/contact.astro",
+        "src/pages/galerie.astro",
+        "src/pages/la-maison.astro",
+        "src/pages/creations/index.astro",
+        "src/pages/creations/[slug].astro"
+      ]
     },
     {
-      "name": "i-have-adhd",
-      "status": "Source et skill considérés. Non activé comme mode personnel; aucune déduction de diagnostic depuis ce dépôt."
+      "name": "impeccable",
+      "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+      "engine": "0.1.25 cached project-local",
+      "files_read": [
+        ".agents/skills/impeccable/SKILL.md",
+        ".agents/skills/impeccable/reference/craft-floor.md",
+        ".agents/skills/impeccable/reference/adapt.md",
+        ".agents/skills/impeccable/reference/critique.md"
+      ],
+      "applied_decisions": [
+        "Mobile-first CSS, touch targets, reduced motion, native dialogs and focus restoration",
+        "Independent async pause review, safe area gutters and pinch zoom preservation"
+      ],
+      "checks": [
+        {
+          "command": "impeccable context",
+          "result": "Context read; existing legacy product schema and hook-off notices; no hook or global setup changed"
+        },
+        {
+          "command": "impeccable detect --json --changed",
+          "result": "[]; mechanical source check only, Astro coverage limited"
+        },
+        {
+          "command": "Native browser menu, gallery, keyboard and responsive checks",
+          "result": "See docs/qa/v2-browser-review.md"
+        }
+      ],
+      "changed_files": [
+        "src/styles/global.css",
+        "src/components/Photo.astro",
+        "src/components/Process.astro",
+        "src/components/Icon.astro",
+        "src/components/FormatPanel.astro",
+        "src/components/Invitation.astro",
+        "src/layouts/Layout.astro",
+        "src/scripts/site.ts",
+        "src/data/site.ts",
+        "src/pages/buffets.astro",
+        "src/pages/404.astro",
+        "src/pages/index.astro",
+        "src/pages/robots.txt.ts",
+        "src/pages/credits.astro",
+        "src/pages/contact.astro",
+        "src/pages/galerie.astro",
+        "src/pages/la-maison.astro",
+        "src/pages/creations/index.astro",
+        "src/pages/creations/[slug].astro"
+      ]
+    },
+    {
+      "name": "hallmark",
+      "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+      "applied_decisions": [
+        "Existing multipage static foundation retained; V1 direction replaced at user request by Unslop V2"
+      ],
+      "checks": [],
+      "scope": "Existing source context retained; no new Hallmark redesign/audit workflow invoked",
+      "changed_files": []
     }
   ],
-  "verification": {
-    "build": "Astro check/build: 0error,0warning,0hint; 12pages et robots.txt",
-    "static_html": "12pages, zéro problème ni avertissement",
-    "http": "12routes200, inconnue404",
-    "browser": "Voir docs/qa/browser-review.md et captures",
-    "not_verified": [
-      "Téléphone physique",
-      "Lecteur écran",
-      "Mode sans JS rendu et reduced-motion émulé",
-      "Netlify production, Lighthouse ou Core Web Vitals réels"
-    ]
+  "v2_checks": {
+    "astro_check": "20 files; 0 errors, warnings, hints",
+    "static_pages": 12,
+    "static_http": "0 issues, 0 warnings",
+    "responsive_samples": 18,
+    "document_or_h1_overflows": 0,
+    "rendered_desktop": "1440x900",
+    "browser_scope": "Chromium emulated viewports; no physical iOS/Android test",
+    "source_checksum_comparison": "identical source trees in project and isolated validation checkout",
+    "build_runtime": "Node 24.22.3; isolated npm ci from unchanged package-lock to avoid macOS dataless reads"
   },
-  "runtime": {
-    "node": "25.8.2",
-    "npm": "11.11.1",
-    "astro": "7.4.13",
-    "gsap": "3.15.1",
-    "dependencies": "package-lock.json; npm ci, project-local node_modules",
-    "build_target": "Node24 on Netlify",
-    "global_hooks_installed": false,
-    "verified_build_node": "24.22.3",
-    "dependency_recovery": "npm ci from lockfile; macOS dataless files replaced by hydrated local directory; no permanent symlink"
-  },
-  "provenance": "Local caches and tools are excluded from production and Git. This portable record describes observed uses, not global installation."
+  "v2_preparation": "The nine recorded source checkouts remain in place. Repeated helper validation was stopped after dataless Git shallow files stalled it; no pin was changed or checkout reset. Unslop installed successfully by official skill-installer git method."
 }

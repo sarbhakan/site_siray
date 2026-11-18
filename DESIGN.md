@@ -1,43 +1,39 @@
-# Siray Signature — système visuel
+# Siray Signature — système visuel V2
 
-Version implémentée au 18 novembre 2026. Ce fichier décrit les choix réels de la façade; les intentions initiales et les références sont conservées dans [docs/art-direction.md](docs/art-direction.md). Hallmark conduit la composition custom, Taste le rythme et la voix, Impeccable la qualité des états et du mouvement. Les vérifications sont consignées séparément.
+Ce document décrit la façade présente dans le code. Les faits métier sont dans `PRODUCT.md` ; les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
 ## Direction
 
-**La table se compose.** Le site passe d’une pièce haute à une douceur, un plateau et une table. La mise en page alterne photographie large, index de créations, duo photo/texte sur bordeaux, récit de maison et carnet. Les surfaces ouvertes et les variations d’échelle portent l’identité.
+**Cerise noire et crème.** Un cadre sombre accueille des photographies sans superposition ; les pages de contenu retrouvent une surface claire. Les créations portent la couleur et le détail. La navigation, les liens et les contrôles restent sobres.
 
-Les tokens effectivement utilisés dans `src/styles/global.css` sont `--paper: #f6f2ea`, `--ink: #38251f`, `--muted: #75655c`, `--wine: #5c1e2c`, `--line: #cfc3b5`, `--white: #fffcf7`. Ce sont des valeurs hexadécimales CSS, pas une implémentation OKLCH. Des couleurs de support restent locales pour les voiles de photo, fonds de dialogue et filets sur bordeaux; leur centralisation éventuelle relève de la revue technique.
+Les tokens de `src/styles/global.css` définissent la palette : fond crème `#f4ede6`, surface `#eae0d7`, blanc `#fff9f2`, encre et cerise noire `#2b101b`, texte secondaire `#715e64`. Sur fond sombre, le texte principal reprend le crème et le texte secondaire utilise `#cdb8be`. Les bordures suivent ces deux familles de surfaces. Les photographies conservent leurs couleurs naturelles.
 
-Gloock 400 pour les titres et la marque; Manrope 400/600 pour le texte et les contrôles. Les fichiers latins sont intégrés localement avec Fontsource. Deux familles, trois graisses au total et `font-synthesis: none`. Titres en casse normale, une couleur et un style par titre. La petite ligne « Signature » du logotype possède un espacement propre à la marque; les liens de navigation n’ont pas de capitales espacées.
+Manrope sert aux titres, au texte et à l’interface, en graisses 400 et 600. Gloock 400 est réservé au nom de la marque. Les deux familles sont hébergées localement. Les titres restent en casse normale, sans retours à la ligne imposés. Les icônes sont réservées aux fonctions qui en ont besoin, notamment fermer et parcourir la visionneuse.
 
-Le corps général est à **16px/1,65**. Les paragraphes principaux ont une règle finale commune de 16px; l’introduction du hero et certains textes courts passent à 14px sur téléphone. Les légendes, aides et métadonnées sont plus petites. Le H1 du hero emploie `clamp(48px, 6.2vw, 96px)` sur ordinateur, puis des valeurs adaptées jusqu’à `clamp(37px, 8.4vw, 52px)` sur téléphone. Les H2 se situent entre 38 et 72px avant adaptations locales. Les paragraphes généraux plafonnent à 58ch.
+## Composition mobile
 
-Le gutter utilise `clamp(22px, 4.5vw, 88px)`. Les grands espacements séparent nettement les chapitres, tandis que les textes et leurs actions forment des groupes serrés. Les photos gardent des cadres rectangulaires. Les **contours arrondis ont un rôle fonctionnel** : lien d’événement dans l’en-tête, flèches rondes, filtres et contrôles de galerie. Le bord supérieur arrondi de la plage du hero relie l’image et le texte. Ces détails ne deviennent pas le conteneur de toutes les sections.
+Le CSS part du téléphone : en-tête de 68 px, marges latérales de 20 px et paragraphes de 16 px avec un interligne de 1,6. Le titre du hero utilise 34 px ; les titres de page utilisent 36 px et les titres de section 28 px. Les espacements regroupent titres, textes et actions, puis séparent les sections de 40 à 48 px. Les valeurs se réduisent sous 360 px et augmentent aux seuils de 600 et 960 px.
 
-## Premier écran et parcours
+Le premier écran présente un titre court, la nature des créations et Bordeaux/Gironde, puis l’action et la photographie. Sous celle-ci, une ligne discrète réunit les trois scènes et la commande de pause. Aucun titre, crédit ou contrôle ne couvre l’image.
 
-L’en-tête ivoire réunit marque, quatre destinations et lien « Votre événement ». Le hero possède une grande photographie en largeur et une plage ivoire au pied, avec « L’art de sublimer vos instants gourmands », une phrase locale et « Découvrir les créations ». La hauteur photo finale est `clamp(300px, 45svh, 540px)` sur ordinateur puis 325px sous 600px. Cette dernière règle fait foi sur les anciennes déclarations plus hautes du fichier. Le titre et l’action doivent être vérifiés ensemble à 1280×800 et 390×844.
+Les cinq familles de l’accueil forment une rangée horizontale à défilement natif, avec points d’arrêt et un aperçu de la carte suivante. Chaque carte ouvre une vraie page. À partir de 960 px, elles occupent une grille de cinq colonnes. Le hero devient une composition en deux colonnes, texte à gauche et photos à droite. Les alignements de contenu suivent une largeur de référence de 1 360 px.
 
-Les douze pages compilées comprennent l’accueil, l’index des créations, quatre pages de familles (layer cakes, bento cakes, mignardises & cupcakes, brunch box), Buffets & réceptions, Le carnet, La maison, Votre événement, Photos & informations et la page 404. Le lien Instagram **https://www.instagram.com/siraysignature/** et le dépôt **https://github.com/sarbhakan/site_siray.git** ont été confirmés par l’utilisateur.
+Le bento cake utilise un panneau typographique cerise noire dans l’accueil, l’index et sa page dédiée. Ce choix évite d’attribuer à ce format une photographie de gâteau qui ne le représente pas. Une photographie réelle pourra remplacer le panneau.
 
-L’index des familles met à jour son aperçu au survol et au focus. Sur téléphone, les intitulés sont des liens directs vers leurs vraies pages. Le carnet filtre les images par famille et ouvre leur version agrandie dans un dialogue avec fermeture, flèches et navigation au clavier. Les photos restent accessibles par leur fichier lorsque JavaScript est absent.
+## Mouvement et commandes
 
-## Mouvement et états
+Le hero passe automatiquement d’une scène à l’autre toutes les **6 500 ms**, avec un fondu GSAP de **850 ms**. Les commandes « Cakes », « Mignardises » et « Tables » sélectionnent une scène et mettent la lecture en pause. La commande texte « Pause » devient « Reprendre ». Un toucher sur la photo suspend la lecture ; un balayage horizontal sélectionne la scène voisine.
 
-Le hero démarre sur une photographie stable. Ses flèches changent manuellement la composition par un **fondu GSAP de 600ms**, avec annulation de la séquence précédente. La lecture automatique est une option explicite : bouton de lecture, intervalle de 5,5s, bouton pause et arrêt lors d’une interaction manuelle ou d’une entrée du focus. Elle n’est pas lancée au chargement. Le décompte et le libellé suivent l’image active.
+Le focus clavier suspend la lecture, de même que le survol de la photo avec une souris. Le défilement automatique se suspend lorsque la photo quitte la vue ou que l’onglet devient inactif. La préférence `prefers-reduced-motion` désactive la lecture automatique et le fondu ; le choix manuel reste disponible. Les transitions CSS sont également réduites.
 
-En mouvement réduit, les changements de photographie sont immédiats et la lecture automatique n’est pas proposée. Les transitions CSS sont réduites. Le menu et la visionneuse utilisent des dialogues natifs; le retour de focus de la visionneuse est explicite. Astro ClientRouter assure une continuité de navigation avec des fondus courts. Aucun effet ne bloque la consultation du contenu.
+Les filtres du carnet mettent à jour les photos visibles et leur décompte. La visionneuse utilise un dialogue natif, conserve la famille filtrée, accepte le clavier et le balayage, puis rend le focus au lien d’origine. Le menu mobile utilise aussi un dialogue natif. Les liens et images restent accessibles dans le HTML sans JavaScript ; les contrôles du diaporama apparaissent avec son initialisation.
 
-Les photos liées peuvent s’agrandir légèrement dans leur cadre, les flèches se déplacer ou tourner à l’intérieur de leur cible et les liens de navigation souligner leur état. Les dimensions des cibles restent stables. Les états actifs des filtres, le focus, les boutons de lecture/pause, la fermeture et les FAQ sont fonctionnels. Le site ne simule ni envoi de message ni confirmation de commande.
+## Pages et contenu
 
-## Photos, vérité et vérification
+Les URL existantes sont conservées : accueil, index des créations, quatre pages de collection, buffets, galerie, maison, contact, crédits et page 404. Les textes secondaires nomment les formats et les possibilités sans prix, délai, saveur précise ou témoignage inventé. Le lien de contact reste [@siraysignature sur Instagram](https://www.instagram.com/siraysignature/).
 
-Les images locales WebP, leurs variantes responsives, dimensions et points de recadrage sont consignés dans `docs/image-credits.json`. Le hero est prioritaire; les autres photos sont différées selon leur place. Les photographies sont des **visuels d’ambiance**, annoncés au hero, au carnet, au pied de page et dans les informations. Elles n’illustrent pas des réalisations attribuées à Siray Signature. Les photos utilisateur pourront remplacer ces sujets.
+Les images WebP sont locales, avec variantes responsives, dimensions et points focaux dans `docs/image-credits.json`. Ce sont des photographies d’ambiance licenciées ; leur provenance est indiquée au pied de page et dans les crédits. Elles ne sont pas présentées comme des réalisations de Siray Signature. Les photos de la maison, les détails commerciaux et les informations légales restent à fournir avant le lancement commercial.
 
-Aucun tarif, délai, témoignage ou saveur précise n’est inventé. L’Instagram est confirmé; les détails commerciaux et les coordonnées légales restent à fournir avant une publication définitive.
+## Sources de conception
 
-La revue doit contrôler les couples de couleurs réels (différents de la première palette proposée), le premier écran, les recadrages, les textes longs et les espaces à 1440×900, 1280×800, 390×844 et sur écran très large. La base de texte est 16px mais les légendes et aides plus petites doivent être inspectées à la taille réelle. Le plafond de largeur des compositions est un point de revue : le fichier actuel plafonne les gutters, pas encore tous les groupes de contenu.
-
-Les critères conservés : focus visible immédiat, clavier, fermeture Échap, noms accessibles, état actif perceptible, contenu visible sans JavaScript, mouvement réduit et navigation réelle. Les résultats automatisés ou visuels ne sont déclarés réussis qu’après contrôle. Le présent fichier n’attribue aucun verdict à un rendu non inspecté.
-
-État final : les couleurs et transparences partagent le bloc de tokens. Les marges sont plafonnées autour d’un contenu de1440px, le cadrage desktop du gâteau est28%, les légendes fonctionnelles et la sous-marque sont12px. La provenance supérieure est sur fond ivoire opaque.
+La reprise s’appuie sur [Unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop), par **Damir Sokolovsky**, sous **CC BY 4.0**, installé localement dans `~/.codex/skills/unslop/`. Ses passes ont guidé le rythme, la palette, la suppression des ornements, la copie et le mouvement. Taste complète la hiérarchie et les textes ; Impeccable complète le responsive, les états et la critique. Les sources du Dev Toolkit restent dans `.dev-toolkit/vendor` et leur utilisation est consignée dans `docs/toolkit-report.json`.

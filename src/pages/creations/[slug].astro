@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
-import Icon from '../../components/Icon.astro';
+import FormatPanel from '../../components/FormatPanel.astro';
 import Process from '../../components/Process.astro';
 import Invitation from '../../components/Invitation.astro';
 import { collections, instagram } from '../../data/site';
@@ -17,7 +17,7 @@ const related = collections.filter((x) => x.slug !== item.slug).slice(0, 2);
 
 <Layout
   title={item.name}
-  description={`${item.name} sur mesure à Bordeaux et en Gironde. ${item.short} Échangeons sur votre projet avec Siray Signature.`}
+  description={`${item.name} sur mesure à Bordeaux et en Gironde. ${item.short}. Échangeons sur votre projet avec Siray Signature.`}
   image={item.image}
 >
   <div class="section-pad">
@@ -39,15 +39,15 @@ const related = collections.filter((x) => x.slug !== item.slug).slice(0, 2);
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>Imaginer votre création</span>
-        <span class="round-link-icon">
-          <Icon name="diagonal" />
-        </span>
+        <span>Écrire sur Instagram</span>
       </a>
     </div>
     <div class="detail-photo">
-      <Photo name={item.image} alt={item.alt} eager />
-      <span class="photo-note">Photographie d’ambiance illustrative</span>
+      {item.slug === 'bento-cakes' ? (
+        <FormatPanel />
+      ) : (
+        <Photo name={item.image} alt={item.alt} eager />
+      )}
     </div>
   </section>
   <section class="detail-story section-pad">
@@ -69,18 +69,12 @@ const related = collections.filter((x) => x.slug !== item.slug).slice(0, 2);
   </div>
   <Process />
   <section class="related-links section-pad">
-    <h2>Prolonger la gourmandise.</h2>
+    <h2>Les autres créations</h2>
     <div>
       {related.map((other) => (
-        <a href={`/creations/${other.slug}/`}>
-          {other.name}
-          <Icon />
-        </a>
+        <a href={`/creations/${other.slug}/`}>{other.name}</a>
       ))}
-      <a href="/buffets/">
-        Buffets & réceptions
-        <Icon />
-      </a>
+      <a href="/buffets/">Buffets & réceptions</a>
     </div>
   </section>
   <Invitation />
