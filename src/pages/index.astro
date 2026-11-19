@@ -8,11 +8,30 @@ import { homeSlides as slides, homePhotos } from '../data/photography';
 <Layout title="Accueil" home>
   <section class="hero" data-hero aria-label="L’univers Siray Signature">
     <div class="hero-title">
-      <h1>Vos instants gourmands</h1>
-      <p>Pâtisserie, brunchs et tables sur mesure, à Bordeaux et en Gironde.</p>
-      <a href="/creations/" class="primary-link">
-        Découvrir nos prestations
-      </a>
+      <div class="hero-copy">
+        <h1>Vos instants gourmands</h1>
+        <p class="hero-summary">Pâtisserie & tables sur mesure.</p>
+        <p class="hero-description">
+          Gâteaux personnalisés, brunchs et buffets : choisissez vos saveurs,
+          vos couleurs et votre décor.
+        </p>
+        <a href="/creations/" class="primary-link">
+          Découvrir nos prestations
+        </a>
+      </div>
+      <div class="hero-guide">
+        <nav class="hero-paths" aria-label="Explorer selon votre occasion">
+          <a href="#pour-celebrer">
+            <span class="hero-path-title">Pour célébrer</span>
+            <span class="hero-path-detail">Layer cakes, bento cakes & cupcakes</span>
+          </a>
+          <a href="#pour-se-retrouver">
+            <span class="hero-path-title">Pour se retrouver</span>
+            <span class="hero-path-detail">Mignardises, brunch box, buffets & plateaux</span>
+          </a>
+        </nav>
+        <p class="hero-location"><span>Bordeaux & Gironde</span><span>Créations sur commande</span></p>
+      </div>
     </div>
     <div class="hero-visual">
       <button

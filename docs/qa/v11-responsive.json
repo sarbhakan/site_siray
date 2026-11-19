@@ -1,0 +1,354 @@
+[
+  {
+    "width": 320,
+    "background": "rgb(215, 219, 198)",
+    "client": 320,
+    "gap": "24px",
+    "heading": {
+      "font": "24px",
+      "height": 26.875,
+      "line": "26.88px",
+      "scroll": 288,
+      "text": "Vos instants gourmands",
+      "width": 288
+    },
+    "page": 320,
+    "panel": {
+      "bottom": 498.46875,
+      "height": 398.46875,
+      "left": 0,
+      "right": 320,
+      "top": 100,
+      "width": 320,
+      "x": 0,
+      "y": 100
+    },
+    "photo": {
+      "bottom": 925.1328125,
+      "height": 426.6640625,
+      "left": 0,
+      "right": 320,
+      "top": 498.46875,
+      "width": 320,
+      "x": 0,
+      "y": 498.46875
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 288,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 288
+    },
+    "viewport": 320
+  },
+  {
+    "width": 390,
+    "background": "rgb(215, 219, 198)",
+    "client": 390,
+    "gap": "24px",
+    "heading": {
+      "font": "29.25px",
+      "height": 32.7578125,
+      "line": "32.76px",
+      "scroll": 350,
+      "text": "Vos instants gourmands",
+      "width": 350
+    },
+    "page": 390,
+    "panel": {
+      "bottom": 480.8515625,
+      "height": 380.8515625,
+      "left": 0,
+      "right": 390,
+      "top": 100,
+      "width": 390,
+      "x": 0,
+      "y": 100
+    },
+    "photo": {
+      "bottom": 1000.8515625,
+      "height": 520,
+      "left": 0,
+      "right": 390,
+      "top": 480.8515625,
+      "width": 390,
+      "x": 0,
+      "y": 480.8515625
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 350,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 350
+    },
+    "viewport": 390
+  },
+  {
+    "width": 430,
+    "background": "rgb(215, 219, 198)",
+    "client": 430,
+    "gap": "24px",
+    "heading": {
+      "font": "32.25px",
+      "height": 36.1171875,
+      "line": "36.12px",
+      "scroll": 390,
+      "text": "Vos instants gourmands",
+      "width": 390
+    },
+    "page": 430,
+    "panel": {
+      "bottom": 458.2109375,
+      "height": 358.2109375,
+      "left": 0,
+      "right": 430,
+      "top": 100,
+      "width": 430,
+      "x": 0,
+      "y": 100
+    },
+    "photo": {
+      "bottom": 1031.5390625,
+      "height": 573.328125,
+      "left": 0,
+      "right": 430,
+      "top": 458.2109375,
+      "width": 430,
+      "x": 0,
+      "y": 458.2109375
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 390,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 390
+    },
+    "viewport": 430
+  },
+  {
+    "width": 600,
+    "background": "rgb(215, 219, 198)",
+    "client": 600,
+    "gap": "24px",
+    "heading": {
+      "font": "22px",
+      "height": 24.6328125,
+      "line": "24.64px",
+      "scroll": 248,
+      "text": "Vos instants gourmands",
+      "width": 248
+    },
+    "page": 600,
+    "panel": {
+      "bottom": 538.2265625,
+      "height": 438.2265625,
+      "left": 0,
+      "right": 312,
+      "top": 100,
+      "width": 312,
+      "x": 0,
+      "y": 100
+    },
+    "photo": {
+      "bottom": 511.109375,
+      "height": 384,
+      "left": 312,
+      "right": 600,
+      "top": 127.109375,
+      "width": 288,
+      "x": 312,
+      "y": 127.109375
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 248,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 248
+    },
+    "viewport": 600
+  },
+  {
+    "width": 768,
+    "background": "rgb(215, 219, 198)",
+    "client": 768,
+    "gap": "24px",
+    "heading": {
+      "font": "28.032px",
+      "height": 31.390625,
+      "line": "31.3958px",
+      "scroll": 335,
+      "text": "Vos instants gourmands",
+      "width": 335
+    },
+    "page": 768,
+    "panel": {
+      "bottom": 591.5078125,
+      "height": 491.5078125,
+      "left": 0,
+      "right": 399.3671875,
+      "top": 100,
+      "width": 399.3671875,
+      "x": 0,
+      "y": 100
+    },
+    "photo": {
+      "bottom": 591.5078125,
+      "height": 491.5078125,
+      "left": 399.3671875,
+      "right": 768,
+      "top": 100,
+      "width": 368.6328125,
+      "x": 399.3671875,
+      "y": 100
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 335,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 335
+    },
+    "viewport": 768
+  },
+  {
+    "width": 960,
+    "background": "rgb(215, 219, 198)",
+    "client": 960,
+    "gap": "40px",
+    "heading": {
+      "font": "35.04px",
+      "height": 39.2421875,
+      "line": "39.2448px",
+      "scroll": 403,
+      "text": "Vos instants gourmands",
+      "width": 403
+    },
+    "page": 960,
+    "panel": {
+      "bottom": 726.390625,
+      "height": 614.390625,
+      "left": 0,
+      "right": 499.203125,
+      "top": 112,
+      "width": 499.203125,
+      "x": 0,
+      "y": 112
+    },
+    "photo": {
+      "bottom": 726.390625,
+      "height": 614.390625,
+      "left": 499.203125,
+      "right": 960,
+      "top": 112,
+      "width": 460.796875,
+      "x": 499.203125,
+      "y": 112
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 403,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 403
+    },
+    "viewport": 960
+  },
+  {
+    "width": 1280,
+    "background": "rgb(215, 219, 198)",
+    "client": 1280,
+    "gap": "40px",
+    "heading": {
+      "font": "46.72px",
+      "height": 52.3203125,
+      "line": "52.3264px",
+      "scroll": 624,
+      "text": "Vos instants gourmands",
+      "width": 624
+    },
+    "page": 1280,
+    "panel": {
+      "bottom": 858.6640625,
+      "height": 746.6640625,
+      "left": 0,
+      "right": 720,
+      "top": 112,
+      "width": 720,
+      "x": 0,
+      "y": 112
+    },
+    "photo": {
+      "bottom": 858.6640625,
+      "height": 746.6640625,
+      "left": 720,
+      "right": 1280,
+      "top": 112,
+      "width": 560,
+      "x": 720,
+      "y": 112
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 624,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 624
+    },
+    "viewport": 1280
+  },
+  {
+    "width": 1440,
+    "background": "rgb(215, 219, 198)",
+    "client": 1440,
+    "gap": "40px",
+    "heading": {
+      "font": "48px",
+      "height": 53.7578125,
+      "line": "53.76px",
+      "scroll": 784,
+      "text": "Vos instants gourmands",
+      "width": 784
+    },
+    "page": 1440,
+    "panel": {
+      "bottom": 858.6640625,
+      "height": 746.6640625,
+      "left": 0,
+      "right": 880,
+      "top": 112,
+      "width": 880,
+      "x": 0,
+      "y": 112
+    },
+    "photo": {
+      "bottom": 858.6640625,
+      "height": 746.6640625,
+      "left": 880,
+      "right": 1440,
+      "top": 112,
+      "width": 560,
+      "x": 880,
+      "y": 112
+    },
+    "summary": {
+      "font": "16px",
+      "height": 24,
+      "line": "24px",
+      "scroll": 784,
+      "text": "Pâtisserie & tables sur mesure.",
+      "width": 784
+    },
+    "viewport": 1440
+  }
+]

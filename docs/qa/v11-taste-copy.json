@@ -1,0 +1,29 @@
+{
+ "files": [
+  {
+   "words": 255,
+   "headings": [
+    "Vos instants gourmands",
+    "La carte Siray",
+    "Pour célébrer",
+    "Layer cakes",
+    "Bento cakes",
+    "Cupcakes",
+    "Pour se retrouver",
+    "Buffets",
+    "Mignardises",
+    "Brunch box",
+    "Plateaux",
+    "L'art de sublimer vos instants gourmands",
+    "Des idées à garder"
+   ],
+   "findings": [],
+   "file": "dist/index.html",
+   "kind": "service"
+  }
+ ],
+ "cross": {
+  "heroes": [],
+  "shared": []
+ }
+}
