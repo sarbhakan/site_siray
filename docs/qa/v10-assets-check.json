@@ -1,0 +1,59 @@
+{
+  "sourceJPEGs": [
+    {
+      "id": "layer-rouge",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "bento-fleurs",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "brunch-toasts",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "plateau-grazing",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "plateau-fruits",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "layer-journal",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    },
+    {
+      "id": "mignardises-hotdog",
+      "shaIdentical": true,
+      "bytesIdentical": true
+    }
+  ],
+  "heroContrastRatios": {
+    "heroHeading": 6.964,
+    "heroBody": 6.119,
+    "heroCTA": 6.964
+  },
+  "tasteFindings": {
+    "INFO": 2
+  },
+  "webpCount": 96,
+  "jpegCount": 9
+}

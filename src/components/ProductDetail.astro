@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from './Photo.astro';
-import { collectionPhotography } from '../data/photography';
+import { collectionPhotography, photo } from '../data/photography';
 import PlatterChoices from './PlatterChoices.astro';
 import BuffetService from './BuffetService.astro';
 import MignardiseMenu from './MignardiseMenu.astro';
@@ -20,6 +20,9 @@ const buffet = item.slug === 'buffets';
 const platters = item.slug === 'plateaux';
 const mignardises = item.slug === 'mignardises';
 const related = collections.filter((other) => other.slug !== item.slug).slice(0, 3);
+const relatedPhotos = {
+  'bento-cakes': photo('bento-rubans'),
+};
 const euro = (value: number) => new Intl.NumberFormat('fr-FR', {
   style: 'currency', currency: 'EUR', maximumFractionDigits: 0,
 }).format(value);
@@ -175,7 +178,10 @@ const conciseNotes: Record<string, string> = {
 
     <nav class="v5-related" aria-label="Poursuivre la découverte">
       <div class="v5-related-heading"><h2>À découvrir aussi</h2><a href="/creations/">Toutes les prestations</a></div>
-      <div class="v5-related-grid">{related.map((other) => <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={other.image} alt={other.alt} sizes="(min-width: 600px) 30vw, 45vw" position="50% 50%" /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>)}</div>
+      <div class="v5-related-grid">{related.map((other) => {
+        const relatedPhoto = other.slug === 'bento-cakes' ? relatedPhotos['bento-cakes'] : other;
+        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position="50% 50%" /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
+      })}</div>
     </nav>
   </article>
 </Layout>
@@ -224,9 +230,9 @@ const conciseNotes: Record<string, string> = {
   .v5-product-prices td { padding-block: 12px; text-align: right; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .v5-product-prices thead th:last-child { text-align: right; }
   .v5-product-prices small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-  .v6-flavor-tabs { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; margin-bottom: 16px; }
+  .v6-flavor-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 16px; align-items: stretch; }
   .v6-flavor-tabs[hidden], .v6-flavor-group[hidden] { display: none !important; }
-  .v6-flavor-tabs button { min-height: 48px; padding: 8px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer; font: 600 13px/1.4 'Manrope', sans-serif; }
+  .v6-flavor-tabs button { min-width: 0; min-height: 48px; padding: 8px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); cursor: pointer; font: 600 13px/1.4 'Manrope', sans-serif; overflow-wrap: normal; }
   .v6-flavor-tabs button[aria-selected='true'] { background: var(--olive); border-color: var(--olive); color: var(--on-olive); }
   .v6-flavor-tabs button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
   .v6-flavor-group + .v6-flavor-group { margin-top: 24px; }
@@ -273,17 +279,24 @@ const conciseNotes: Record<string, string> = {
   .v5-related-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 20px; }
   .v5-related-heading h2 { font-size: var(--section-title-size); line-height: 1.25; }
   .v5-related-heading > a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; font-size: 14px; }
-  .v5-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
-  .v5-related-link { display: grid; gap: 8px; align-content: start; min-width: 0; }
+  .v5-related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 12px; }
+  .v5-related-link { display: grid; gap: 8px; align-content: start; min-width: 0; transition: transform 180ms var(--ease); }
   .v5-related-photo { display: block; aspect-ratio: 4/5; overflow: hidden; background: var(--surface); }
-  .v5-related-link > span:nth-child(2) { font: 400 18px/1.35 'Gloock', serif; }
-  .v5-related-action { color: var(--muted); text-decoration: underline; text-underline-offset: 4px; font-size: 13px; }
+  .v5-related-link > span:nth-child(2) { font: 400 16px/1.35 'Gloock', serif; }
+  .v5-related-action { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; font-size: 13px; }
+  .v5-product-tabs button, .v6-flavor-tabs button, .v5-brunch-buttons button { transition: transform 180ms var(--ease), background-color 180ms var(--ease), border-color 180ms var(--ease); }
+  .v5-related-photo :global(img) { transition: transform 360ms var(--ease); }
   @keyframes v5-panel-reveal { from { opacity: .35; } to { opacity: 1; } }
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     .v5-product-tabs button:not([aria-selected='true']):hover { background: var(--surface); }
     .v6-flavor-tabs button:not([aria-selected='true']):hover { background: var(--surface); }
     .v5-related-link:hover .v5-related-action { color: var(--ink); }
+    .v5-related-link:hover { transform: translateY(-2px); }
+    .v5-related-link:active { transform: translateY(0); }
     .v5-brunch-buttons button:hover { background: var(--surface); }
+    .v5-product-tabs button:hover, .v6-flavor-tabs button:hover, .v5-brunch-buttons button:hover { transform: translateY(-2px); }
+    .v5-product-tabs button:active, .v6-flavor-tabs button:active, .v5-brunch-buttons button:active { transform: translateY(0); }
+    .v5-related-link:hover .v5-related-photo :global(img) { transform: scale(1.015); }
   }
   @media (min-width: 600px) {
     .v5-product-heading { gap: 20px; padding-bottom: 32px; }
@@ -300,6 +313,7 @@ const conciseNotes: Record<string, string> = {
     .v5-studio-practical { gap: 4px; }
     .v5-studio-practical > a { min-height: 24px; }
     .v5-related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .v5-related-link > span:nth-child(2) { font-size: 18px; }
   }
   @media (min-width: 960px) {
     .v5-product { padding-bottom: 64px; }
@@ -337,11 +351,11 @@ const conciseNotes: Record<string, string> = {
     .v5-detail-photo { width: 96px; height: 100px; }
     .v5-product-tabs button { padding: 10px; min-height: 56px; }
     .v5-panel-heading h2 { font-size: 24px; }
-
+    .v5-related-link > span:nth-child(2) { font-size: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .v5-product-explorer.is-ready .v5-product-panel:not([hidden]) { animation: none; }
-    .v5-product-tabs button { transition: none; }
+    .v5-product-tabs button, .v6-flavor-tabs button, .v5-brunch-buttons button, .v5-related-link, .v5-related-photo :global(img) { transition: none; transform: none !important; }
   }
   @media print {
     .v5-product-tabs, .v5-brunch-picker, .v6-flavor-tabs { display: none !important; }

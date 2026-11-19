@@ -1,0 +1,299 @@
+[
+  {
+    "route": "/creations/layer-cakes/",
+    "label": "Fruits",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Fruits",
+    "visibleGroups": [
+      {
+        "heading": "Fruits",
+        "src": "http://127.0.0.1:4321/images/fruits-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/layer-cakes/",
+    "label": "Chocolats",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Chocolats",
+    "visibleGroups": [
+      {
+        "heading": "Chocolats",
+        "src": "http://127.0.0.1:4321/images/chocolat-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/layer-cakes/",
+    "label": "Notes gourmandes",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Notes gourmandes",
+    "visibleGroups": [
+      {
+        "heading": "Notes gourmandes",
+        "src": "http://127.0.0.1:4321/images/notes-gourmandes-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "label": "Fruits",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Fruits",
+    "visibleGroups": [
+      {
+        "heading": "Fruits",
+        "src": "http://127.0.0.1:4321/images/fruits-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "label": "Chocolats",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Chocolats",
+    "visibleGroups": [
+      {
+        "heading": "Chocolats",
+        "src": "http://127.0.0.1:4321/images/chocolat-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "label": "Notes gourmandes",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Cupcakes",
+        "width": 88
+      }
+    ],
+    "selected": "Notes gourmandes",
+    "visibleGroups": [
+      {
+        "heading": "Notes gourmandes",
+        "src": "http://127.0.0.1:4321/images/notes-gourmandes-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "label": "Fruits",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      }
+    ],
+    "selected": "Fruits",
+    "visibleGroups": [
+      {
+        "heading": "Fruits",
+        "src": "http://127.0.0.1:4321/images/fruits-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "label": "Chocolats",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      }
+    ],
+    "selected": "Chocolats",
+    "visibleGroups": [
+      {
+        "heading": "Chocolats",
+        "src": "http://127.0.0.1:4321/images/chocolat-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "label": "Notes gourmandes",
+    "related": [
+      {
+        "scroll": 88,
+        "text": "Layer cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Bento cakes",
+        "width": 88
+      },
+      {
+        "scroll": 88,
+        "text": "Mignardises",
+        "width": 88
+      }
+    ],
+    "selected": "Notes gourmandes",
+    "visibleGroups": [
+      {
+        "heading": "Notes gourmandes",
+        "src": "http://127.0.0.1:4321/images/notes-gourmandes-360.webp"
+      }
+    ],
+    "widths": [
+      90.6640625,
+      90.6640625,
+      90.6640625
+    ]
+  }
+]
