@@ -1370,5 +1370,31 @@
       "Lighthouse or real CWV",
       "production hosting"
     ]
+  },
+  "v11": {
+    "task": "Panneau accueil olive grisé, textes sur une ligne et parcours utiles pour remplacer le vide",
+    "lead": "Impeccable focused polish with Taste and Unslop; established Hallmark direction retained",
+    "scope": [
+      "src/pages/index.astro",
+      "src/styles/global.css",
+      "src/components/CollectionEdit.astro anchors"
+    ],
+    "sources": "Same pinned source checkouts reused; preparation lock preserved",
+    "checks": {
+      "astro": "30 files, 0 errors / warnings / hints; 13 pages built",
+      "static": "13 pages, 0 issues, 0 warnings",
+      "responsive": "8 widths from 320 to 1440 px; title and summary each on one line",
+      "anchors": "mobile target y=115.95 / header=100; desktop target y=127.78 / header=112",
+      "impeccable": "Empty findings list, exit 0",
+      "taste": "Homepage HTML: 0 findings, exit 0",
+      "review": "independent review, no concrete defect"
+    },
+    "photos": "Unchanged from V10, including source JPEG delivery",
+    "report": "docs/qa/v11-verification.md",
+    "limitations": [
+      "Physical phone/iOS/Instagram browser",
+      "Real Core Web Vitals",
+      "Production hosting"
+    ]
   }
 }
