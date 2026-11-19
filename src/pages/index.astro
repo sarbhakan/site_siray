@@ -34,9 +34,10 @@ import { homeSlides as slides, homePhotos } from '../data/photography';
               alt={slide.alt}
               position={slide.position}
               native
+              sourceOriginal
               eager={index === 0}
               defer={index !== 0}
-              sizes="(min-width: 960px) 56vw, 100vw"
+              sizes="(min-width: 1167px) 560px, (min-width: 600px) 48vw, 100vw"
             />
           </span>
         ))}

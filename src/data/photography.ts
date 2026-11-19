@@ -1,6 +1,6 @@
 import credits from '../../docs/image-credits.json';
 
-export interface PhotoRef { image: string; alt: string }
+export interface PhotoRef { image: string; alt: string; position?: string }
 
 export function photo(id: string): PhotoRef {
   const entry = credits.images.find((item) => item.id === id);
@@ -19,12 +19,16 @@ export const collectionPhotography: Record<string, { cover: PhotoRef; detail: Ph
 };
 
 export const homeCollectionPhotography: Record<string, PhotoRef> = {
-  'layer-cakes': photo('layer-journal'),
-  'bento-cakes': photo('bento-fleurs'),
-  mignardises: photo('mignardises-hotdog'),
+  'layer-cakes': { ...photo('layer-journal'), position: '50% 65.789%' },
+  'bento-cakes': { ...photo('bento-fleurs'), position: '50% 100%' },
+  cupcakes: { ...photo('cupcakes-fleurs'), position: '50% 100%' },
+  mignardises: { ...photo('mignardises-hotdog'), position: '50% 50%' },
+  buffets: { ...photo('buffet-ensemble'), position: '50% 100%' },
+  'brunch-box': { ...photo('brunch-toasts'), position: '50% 100%' },
+  plateaux: { ...photo('plateau-grazing'), position: '50% 100%' },
 };
 
-const heroPositions: Record<string, string> = { 'layer-roses': '50% 40%', 'bento-fleurs': '50% 40%', 'brunch-partage': '50% 60%', 'buffet-sale': '50% 80%', 'plateau-charcuterie': '50% 85%' };
+const heroPositions: Record<string, string> = { 'plateau-fruits': '50% 50%', 'cupcakes-fleurs': '50% 100%', 'layer-rouge': '50% 50%' };
 export const homeSlides = Object.entries(heroPositions).map(([id, position]) => ({ ...photo(id), position }));
 export const homePhotos = {
   maison: photo('layer-etages'),

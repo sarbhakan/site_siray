@@ -1339,5 +1339,36 @@
       "report": "docs/qa/v9-review.md"
     },
     "publication": "Git/archives recorded separately after verification; no hosting deployment asserted"
+  },
+  "v10": {
+    "task": "Accueil prune distinct, sources JPEG sans recompression, portraits cadrés, mignardises regroupées, contrôles égaux, Maison et mobile affinés",
+    "lead": "Impeccable polish",
+    "sourcePreparation": "Existing prepare.lock returned by helper; nine recorded checkouts reused without reset or global installation",
+    "modules": [
+      "Impeccable craft-floor/polish and context/detect",
+      "Taste visual photography and copy-lint",
+      "Hallmark existing direction and conventions, no redesign workflow",
+      "Unslop incumbent-brand polish"
+    ],
+    "checks": {
+      "astro": "30 files, 0 errors/warnings/hints; 13 pages built",
+      "responsive": "65 route/width combinations; see v10-responsive.json and v10-verification.md",
+      "flavours": "9 state activations, equal 90.664 px controls at 320 px",
+      "images": "9 source JPEGs identical to originals, no recompression",
+      "static": "No issues/warnings",
+      "impeccable": "detect --json --changed: [] exit0",
+      "taste": "13 HTML; 2 INFO, no WARN/FAIL"
+    },
+    "reports": [
+      "docs/qa/v10-design-notes.md",
+      "docs/qa/v10-verification.md",
+      "docs/qa/v10-assets-check.json"
+    ],
+    "notVerified": [
+      "physical mobile / iOS / Instagram browser",
+      "runtime reduced-motion emulation",
+      "Lighthouse or real CWV",
+      "production hosting"
+    ]
   }
 }

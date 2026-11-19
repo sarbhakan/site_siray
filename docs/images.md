@@ -1,6 +1,20 @@
-# Photographies Siray Signature — V9
+# Photographies Siray Signature — V10
 
-## État courant V9
+## État courant V10
+
+La V10 garde les 28 photographies client et les quatre illustrations du registre. Le diaporama ouvre sur le plateau de fruits, puis présente les cupcakes fleuris et le layer cake rouge, dans un cadre portrait 3:4 plafonné à 560 px sur ordinateur. Ces trois fichiers sont les JPEG fournis, **sans réencodage**. Les sept cartes de prestations de l’accueil utilisent aussi leurs sources JPEG, soit neuf fichiers uniques pour l’ensemble de ces emplacements. Le poids cumulé de ces neuf fichiers est de **1 977 271 octets** ; ils ne sont pas tous chargés au démarrage. Le premier visuel pèse 418 911 octets ; les suivants sont différés et les cartes restent en chargement paresseux.
+
+Le script `scripts/prepare-source-photos-v10.mjs --source /chemin/vers/images` vérifie les empreintes des originaux et l’absence de métadonnées EXIF, ICC, XMP, IPTC et d’orientation avant de copier les fichiers choisis dans `public/images/`. Les SHA-256 des livraisons sont identiques aux sources ; le champ `sourceDelivery` et `docs/qa/v10-image-delivery.json` tracent cette égalité. Les fichiers du corpus dans `images/` restent intacts. Les variantes WebP des fiches et de la galerie ne changent pas.
+
+Les cartes de l’accueil sont toutes en portrait 4:5, avec un point focal propre à leur placement : papier journal 65,789 % vertical, fleurs bento/cupcakes et tables à 100 %, mini hot-dog à 50 %. L’option `sourceOriginal` de `Photo.astro` sélectionne les JPEG natifs sans `srcset` de petite taille. Les dimensions sont réservées dans le HTML. Cette livraison conserve le détail disponible, sans pouvoir ajouter du piqué absent des photographies fournies.
+
+Les mignardises passent dans « Pour se retrouver ». La suggestion de bento cake devient le bento à rubans. La photographie de « L’art de sublimer vos instants gourmands », les trois images de « Des idées à garder » et la galerie approuvée de 26 réalisations sont conservées.
+
+Le registre interne conserve les droits et les attributions. La page publique de crédits reste supprimée à la demande du client. Les rapports de contrôle V10 distinguent vérifications exécutées et limites du test.
+
+---
+
+## Archive V9
 
 Le registre `docs/image-credits.json` contient **28 photographies client** parmi les 44 fichiers fournis, auxquelles s’ajoutent les quatre illustrations conservées. La V9 ajoute le layer cake au fond de papier journal (`layer cakes/9.jpeg`, identifiant `layer-journal`) et le mini hot-dog tenu par une main gantée (`miniardises/5.jpeg`, identifiant `mignardises-hotdog`). Les originaux restent intacts et hors du dossier public. **La galerie conserve sa sélection V8 de 26 photographies, son ordre et ses sept filtres de catégories.** Les deux ajouts servent aux emplacements demandés sans modifier cette galerie approuvée.
 

@@ -1,0 +1,106 @@
+{
+  "deliveries": [
+    {
+      "id": "layer-rouge",
+      "path": "/images/siray-layer-rouge-source-f7ec6bea.jpg",
+      "width": 1324,
+      "height": 1764,
+      "bytes": 89368,
+      "sha256": "f7ec6bea1dd009e1c6d45bdfa580bd0ed15a1fcaae2d57c6bb9edca5bdb5ecce",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "plateau-fruits",
+      "path": "/images/siray-plateau-fruits-source-ed97ca9c.jpg",
+      "width": 1536,
+      "height": 2048,
+      "bytes": 418911,
+      "sha256": "ed97ca9c00e1fff86ad89e32faa2a521eb039bec21169325791c73183c848258",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "path": "/images/siray-cupcakes-fleurs-source-e6ea2586.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 152129,
+      "sha256": "e6ea2586fa68d62ede9946e928dc5cedbbcd40a954570eba22744e06e09978c1",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "layer-journal",
+      "path": "/images/siray-layer-journal-source-359b574e.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 254735,
+      "sha256": "359b574e5e88d9cc2e0c4ae05952c8e13171b313e27db8c56a693c323880b1fc",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "bento-fleurs",
+      "path": "/images/siray-bento-fleurs-source-6ac67c8f.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 151225,
+      "sha256": "6ac67c8fe1516835b6b7a5456d722c728470064e388f9e764a0720cbc1cd8e8e",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "mignardises-hotdog",
+      "path": "/images/siray-mignardises-hotdog-source-cc19353b.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 210804,
+      "sha256": "cc19353b6f9b5e8921949b3328b08d770c58ad266caacc4bd2a49f99eb2628de",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "buffet-ensemble",
+      "path": "/images/siray-buffet-ensemble-source-b8758853.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 195228,
+      "sha256": "b875885328a4940f6b09133412e4b2909103a6a2f39f48d061b0f4fca38da4b1",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "brunch-toasts",
+      "path": "/images/siray-brunch-toasts-source-ab8fdab3.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 271502,
+      "sha256": "ab8fdab3977a7f03122a21d2ecf293c2c123d7d8b204f93126705e999c929bbb",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    },
+    {
+      "id": "plateau-grazing",
+      "path": "/images/siray-plateau-grazing-source-e83fdd2e.jpg",
+      "width": 1152,
+      "height": 2048,
+      "bytes": 233369,
+      "sha256": "e83fdd2e971350a001fd46dfee2f5588b456dd064774e8cbcde45bbb6eb1b435",
+      "format": "jpeg",
+      "identicalOriginal": true,
+      "metadata": "absent in supplied source"
+    }
+  ],
+  "totalBytes": 1977271,
+  "additionalCompression": false,
+  "webpVariantsUnchanged": true
+}

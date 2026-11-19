@@ -11,6 +11,8 @@
   --on-olive: #f5f1e8;
   --on-olive-muted: #e7e4d5;
   --olive-line: #82866f;
+  --hero-ground: #70464e;
+  --hero-muted: #f0dfe3;
   --focus: #717746;
   --title-size: 34px;
   --section-title-size: 28px;
@@ -24,8 +26,14 @@
 }
 html {
   scroll-behavior: smooth;
-  scrollbar-color: var(--muted) var(--paper);
+  scrollbar-width: none;
   scroll-padding-top: var(--header-offset, 116px);
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 body {
   margin: 0;
@@ -177,7 +185,8 @@ ol {
   line-height: 1.4;
   transition:
     background-color 160ms var(--ease),
-    color 160ms var(--ease);
+    color 160ms var(--ease),
+    transform 220ms var(--ease);
 }
 .text-link,
 .card-discover {
@@ -323,7 +332,7 @@ body:has(dialog[open]) {
   text-decoration: underline;
 } /* The first composition is a quiet frame around the photographs. */
 .hero {
-  background: var(--olive);
+  background: var(--hero-ground);
   color: var(--on-olive);
   padding-bottom: 0;
 }
@@ -339,7 +348,7 @@ body:has(dialog[open]) {
 .hero-title p {
   max-width: 38ch;
   margin-top: 12px;
-  color: var(--on-olive-muted);
+  color: var(--hero-muted);
   font-size: 16px;
   line-height: 1.5;
 }
@@ -348,7 +357,7 @@ body:has(dialog[open]) {
   min-height: 44px;
   background: var(--paper);
   border-color: var(--paper);
-  color: var(--olive);
+  color: var(--hero-ground);
 }
 .hero-visual {
   min-width: 0;
@@ -360,10 +369,11 @@ body:has(dialog[open]) {
   border: 0;
   border-radius: 0;
   position: relative;
-  height: clamp(300px, 88vw, 380px);
+  aspect-ratio: 3/4;
+  height: auto;
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
-  background: var(--olive-raised);
+  background: var(--hero-ground);
 }
 .hero-slide {
   position: absolute;
@@ -857,7 +867,7 @@ rather than a page of introduction. */
   }
   .hero .primary-link:hover {
     background: var(--surface);
-    color: var(--olive);
+    color: var(--hero-ground);
   }
   .text-link:hover,
   .card-discover:hover {
@@ -871,6 +881,27 @@ rather than a page of introduction. */
     border-color: var(--line);
   }
 }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .primary-link:hover,
+  .round-link:hover,
+  .header-contact:hover {
+    transform: translateY(-2px);
+  }
+  .text-link,
+  .card-discover {
+    transition: text-underline-offset 220ms var(--ease);
+  }
+  .text-link:hover,
+  .card-discover:hover {
+    text-underline-offset: 9px;
+  }
+  .carnet-images a img {
+    transition: transform 420ms var(--ease);
+  }
+  .carnet-images a:hover img {
+    transform: scale(1.015);
+  }
+}
 @media (min-width: 600px) {
   :root {
     --gutter: 32px;
@@ -882,13 +913,17 @@ rather than a page of introduction. */
     font-size: 36px;
   }
   .hero-title h1 {
-    font-size: 48px;
+    font-size: clamp(38px, 4.8vw, 48px);
   }
   .hero-title {
     padding-block: 32px;
   }
-  .hero-photos {
-    height: 480px;
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(48%, 560px);
+  }
+  .hero-title {
+    align-self: center;
   }
   .collection-section,
   .carnet-section {
@@ -983,7 +1018,7 @@ rather than a page of introduction. */
   }
   .hero {
     display: grid;
-    grid-template-columns: 44% minmax(0, 56%);
+    grid-template-columns: minmax(0, 1fr) min(48%, 560px);
     padding: 0;
     min-height: 0;
   }
@@ -1003,9 +1038,6 @@ rather than a page of introduction. */
   .hero .primary-link {
     margin-top: 32px;
     min-height: 48px;
-  }
-  .hero-photos {
-    height: clamp(520px, 68svh, 760px);
   }
   .collection-section,
   .carnet-section {
