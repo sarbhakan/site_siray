@@ -1,0 +1,23 @@
+{
+  "version": "v9",
+  "files": 130,
+  "htmlPages": 13,
+  "uncompressedBytes": 7089395,
+  "archives": [
+    {
+      "file": "siray-signature-v9-netlify.zip",
+      "target": "netlify",
+      "bytes": 6805513,
+      "sha256": "209d8232dc46ea1cc0d3fb9ee3a06b4d8498dcc748a556af35cf1710ab0bec53"
+    },
+    {
+      "file": "siray-signature-v9-cloudflare-pages.zip",
+      "target": "cloudflare-pages",
+      "bytes": 6805513,
+      "sha256": "209d8232dc46ea1cc0d3fb9ee3a06b4d8498dcc748a556af35cf1710ab0bec53"
+    }
+  ],
+  "verification": "Every ZIP file hash matches the final dist manifest; CRC test passed; credits route absent.",
+  "hostingDeployed": false,
+  "siteUrl": null
+}

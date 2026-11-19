@@ -1,0 +1,8 @@
+{
+  "command": "impeccable context --target src/pages/index.astro",
+  "exitCode": 0,
+  "contextReturned": true,
+  "bytes": 12917,
+  "sha256": "d377153f8b651a468385547aec4bd83e87a98be844662332829330f0e7c3ba85",
+  "scope": "Project context loaded locally; internal instructions intentionally excluded."
+}

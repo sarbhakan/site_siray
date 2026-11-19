@@ -1,7 +1,7 @@
 {
   "notice": "Réalisations fournies par Siray Signature, complétées par quatre illustrations stock explicitement répertoriées.",
   "licenseSummary": "Photos client fournies pour ce site; licences Unsplash et Pexels conservées pour les quatre illustrations complémentaires.",
-  "transforms": "Orientation, cadrage technique, conversion sRGB, redimensionnement sans agrandissement et WebP qualité80; métadonnées retirées. Aucune génération ou retouche créative.",
+  "transforms": "Orientation, cadrage technique, sRGB, WebP sans agrandissement. V9 : diaporama et deux nouveaux cadrages qualité94 à largeur native, variantes88 ; autres assets V8 conservés. Métadonnées retirées.",
   "images": [
     {
       "id": "layer-fruits",
@@ -180,7 +180,7 @@
     },
     {
       "id": "layer-roses",
-      "file": "/images/siray-layer-roses-c9c83e71.webp",
+      "file": "/images/siray-layer-roses-0dd26d2a.webp",
       "alt": "Layer cake ivoire orné de roses rouges et orange",
       "author": "Siray Signature — photos fournies",
       "source": "https://www.instagram.com/siraysignature/",
@@ -214,27 +214,28 @@
         "colourSpace": "srgb",
         "metadata": "removed",
         "format": "webp",
-        "quality": 80,
-        "upscaled": false
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
       },
       "variants": [
         {
-          "path": "/images/siray-layer-roses-c9c83e71.webp",
+          "path": "/images/siray-layer-roses-0dd26d2a.webp",
           "width": 1152,
           "height": 1440,
-          "bytes": 60282
+          "bytes": 143814
         },
         {
-          "path": "/images/siray-layer-roses-c9c83e71-720.webp",
+          "path": "/images/siray-layer-roses-0dd26d2a-720.webp",
           "width": 720,
           "height": 900,
-          "bytes": 33204
+          "bytes": 50860
         },
         {
-          "path": "/images/siray-layer-roses-c9c83e71-360.webp",
+          "path": "/images/siray-layer-roses-0dd26d2a-360.webp",
           "width": 360,
           "height": 450,
-          "bytes": 13212
+          "bytes": 18820
         }
       ]
     },
@@ -540,7 +541,7 @@
     },
     {
       "id": "bento-fleurs",
-      "file": "/images/siray-bento-fleurs-eb9ef548.webp",
+      "file": "/images/siray-bento-fleurs-18f0073c.webp",
       "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
       "author": "Siray Signature — photos fournies",
       "source": "https://www.instagram.com/siraysignature/",
@@ -574,27 +575,28 @@
         "colourSpace": "srgb",
         "metadata": "removed",
         "format": "webp",
-        "quality": 80,
-        "upscaled": false
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
       },
       "variants": [
         {
-          "path": "/images/siray-bento-fleurs-eb9ef548.webp",
+          "path": "/images/siray-bento-fleurs-18f0073c.webp",
           "width": 1152,
           "height": 1440,
-          "bytes": 69148
+          "bytes": 156026
         },
         {
-          "path": "/images/siray-bento-fleurs-eb9ef548-720.webp",
+          "path": "/images/siray-bento-fleurs-18f0073c-720.webp",
           "width": 720,
           "height": 900,
-          "bytes": 38206
+          "bytes": 56024
         },
         {
-          "path": "/images/siray-bento-fleurs-eb9ef548-360.webp",
+          "path": "/images/siray-bento-fleurs-18f0073c-360.webp",
           "width": 360,
           "height": 450,
-          "bytes": 14722
+          "bytes": 20902
         }
       ]
     },
@@ -1075,7 +1077,7 @@
     },
     {
       "id": "brunch-partage",
-      "file": "/images/siray-brunch-partage-cd04c047.webp",
+      "file": "/images/siray-brunch-partage-987b9037.webp",
       "alt": "Brunch box ouverte avec des tartines, de la charcuterie et des fruits",
       "author": "Siray Signature — photos fournies",
       "source": "https://www.instagram.com/siraysignature/",
@@ -1109,27 +1111,28 @@
         "colourSpace": "srgb",
         "metadata": "removed",
         "format": "webp",
-        "quality": 80,
-        "upscaled": false
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
       },
       "variants": [
         {
-          "path": "/images/siray-brunch-partage-cd04c047.webp",
+          "path": "/images/siray-brunch-partage-987b9037.webp",
           "width": 1152,
           "height": 1440,
-          "bytes": 127554
+          "bytes": 278208
         },
         {
-          "path": "/images/siray-brunch-partage-cd04c047-720.webp",
+          "path": "/images/siray-brunch-partage-987b9037-720.webp",
           "width": 720,
           "height": 900,
-          "bytes": 71728
+          "bytes": 100664
         },
         {
-          "path": "/images/siray-brunch-partage-cd04c047-360.webp",
+          "path": "/images/siray-brunch-partage-987b9037-360.webp",
           "width": 360,
           "height": 450,
-          "bytes": 25974
+          "bytes": 36328
         }
       ]
     },
@@ -1255,7 +1258,7 @@
     },
     {
       "id": "buffet-sale",
-      "file": "/images/siray-buffet-sale-f3950b25.webp",
+      "file": "/images/siray-buffet-sale-1c688dea.webp",
       "alt": "Bouchées salées présentées sur des tables drapées de blanc",
       "author": "Siray Signature — photos fournies",
       "source": "https://www.instagram.com/siraysignature/",
@@ -1289,27 +1292,28 @@
         "colourSpace": "srgb",
         "metadata": "removed",
         "format": "webp",
-        "quality": 80,
-        "upscaled": false
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
       },
       "variants": [
         {
-          "path": "/images/siray-buffet-sale-f3950b25.webp",
+          "path": "/images/siray-buffet-sale-1c688dea.webp",
           "width": 1152,
           "height": 1440,
-          "bytes": 105394
+          "bytes": 241806
         },
         {
-          "path": "/images/siray-buffet-sale-f3950b25-720.webp",
+          "path": "/images/siray-buffet-sale-1c688dea-720.webp",
           "width": 720,
           "height": 900,
-          "bytes": 54846
+          "bytes": 81722
         },
         {
-          "path": "/images/siray-buffet-sale-f3950b25-360.webp",
+          "path": "/images/siray-buffet-sale-1c688dea-360.webp",
           "width": 360,
           "height": 450,
-          "bytes": 20412
+          "bytes": 28626
         }
       ]
     },
@@ -1490,7 +1494,7 @@
     },
     {
       "id": "plateau-charcuterie",
-      "file": "/images/siray-plateau-charcuterie-b8691918.webp",
+      "file": "/images/siray-plateau-charcuterie-7fa905c0.webp",
       "alt": "Plateau de charcuteries dressées avec des fruits et des cornichons",
       "author": "Siray Signature — photos fournies",
       "source": "https://www.instagram.com/siraysignature/",
@@ -1524,27 +1528,28 @@
         "colourSpace": "srgb",
         "metadata": "removed",
         "format": "webp",
-        "quality": 80,
-        "upscaled": false
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
       },
       "variants": [
         {
-          "path": "/images/siray-plateau-charcuterie-b8691918.webp",
+          "path": "/images/siray-plateau-charcuterie-7fa905c0.webp",
           "width": 1152,
           "height": 1440,
-          "bytes": 139942
+          "bytes": 297554
         },
         {
-          "path": "/images/siray-plateau-charcuterie-b8691918-720.webp",
+          "path": "/images/siray-plateau-charcuterie-7fa905c0-720.webp",
           "width": 720,
           "height": 900,
-          "bytes": 76518
+          "bytes": 106902
         },
         {
-          "path": "/images/siray-plateau-charcuterie-b8691918-360.webp",
+          "path": "/images/siray-plateau-charcuterie-7fa905c0-360.webp",
           "width": 360,
           "height": 450,
-          "bytes": 27652
+          "bytes": 38412
         }
       ]
     },
@@ -1695,6 +1700,128 @@
       ],
       "id": "notes-gourmandes",
       "sourceType": "stand-in"
+    },
+    {
+      "id": "layer-journal",
+      "file": "/images/siray-layer-journal-94e2c50b.webp",
+      "alt": "Layer cake ivoire et framboises présenté sur des journaux Siray Signature",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 50%",
+      "usageNote": "Photo fournie, cadrage technique V9 sans retouche créative.",
+      "galleryLabel": "Framboises & papier journal",
+      "original": {
+        "folder": "layer cakes",
+        "file": "9.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 254735,
+        "sha256": "359b574e5e88d9cc2e0c4ae05952c8e13171b313e27db8c56a693c323880b1fc"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 680,
+          "width": 1152,
+          "height": 922
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
+      },
+      "variants": [
+        {
+          "path": "/images/siray-layer-journal-94e2c50b.webp",
+          "width": 1152,
+          "height": 922,
+          "bytes": 183354
+        },
+        {
+          "path": "/images/siray-layer-journal-94e2c50b-720.webp",
+          "width": 720,
+          "height": 576,
+          "bytes": 68902
+        },
+        {
+          "path": "/images/siray-layer-journal-94e2c50b-360.webp",
+          "width": 360,
+          "height": 288,
+          "bytes": 25990
+        }
+      ]
+    },
+    {
+      "id": "mignardises-hotdog",
+      "file": "/images/siray-mignardises-hotdog-12452ace.webp",
+      "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "mignardises",
+      "illustrative": false,
+      "focalPoint": "50% 50%",
+      "usageNote": "Photo fournie, cadrage technique V9 sans retouche créative.",
+      "galleryLabel": "Mini hot-dog",
+      "original": {
+        "folder": "miniardises",
+        "file": "5.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 210804,
+        "sha256": "cc19353b6f9b5e8921949b3328b08d770c58ad266caacc4bd2a49f99eb2628de"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 304,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 94,
+        "upscaled": false,
+        "responsiveQuality": 88
+      },
+      "variants": [
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 210474
+        },
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 78892
+        },
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 33258
+        }
+      ]
     }
   ]
 }

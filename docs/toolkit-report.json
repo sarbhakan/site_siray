@@ -1270,5 +1270,74 @@
         "field performance/Lighthouse"
       ]
     }
+  },
+  "v9": {
+    "task": "Refine photographic quality and framing, sticky navigation, Maison and supplied mignardises content",
+    "lead": "impeccable polish",
+    "preparation": "Existing prepare.lock preserved; nine recorded checkouts reused without reset or global installation",
+    "modules": [
+      {
+        "name": "impeccable",
+        "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+        "references": [
+          "SKILL.md",
+          "craft-floor.md",
+          "polish.md"
+        ],
+        "applied": [
+          "Preserve incumbent visual identity",
+          "Actual responsive render and interactive states",
+          "Shared sticky-header offset, portrait imagery, remove unfit panel photographs"
+        ],
+        "checks": [
+          "context exit0 (portable summary in v9-impeccable-context.json)",
+          "detect final source, exit0, no findings"
+        ]
+      },
+      {
+        "name": "taste-skill",
+        "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+        "references": [
+          "SKILL.md",
+          "photos.md",
+          "perf.md"
+        ],
+        "applied": [
+          "Client-owned photographs, native high quality hero sources, progressive loading",
+          "Accurate crop per placement, source provenance and no invented business facts"
+        ],
+        "checks": [
+          "copy-lint built HTML, exit0; v9-taste-copy.json"
+        ]
+      },
+      {
+        "name": "hallmark",
+        "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+        "scope": "Integration guide considered; established foundation preserved, no new Hallmark runtime claimed"
+      },
+      {
+        "name": "unslop",
+        "license": "CC-BY-4.0",
+        "author": "Damir Sokolovsky",
+        "scope": "Incumbent brand polish; photographic material carries the character, quiet interface preserved"
+      }
+    ],
+    "checks": {
+      "astroFiles": 29,
+      "astroErrors": 0,
+      "buildPages": 13,
+      "responsiveCases": 65,
+      "widths": [
+        320,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "activatedProductTabs": 19,
+      "assetAssertions": 143,
+      "report": "docs/qa/v9-review.md"
+    },
+    "publication": "Git/archives recorded separately after verification; no hosting deployment asserted"
   }
 }

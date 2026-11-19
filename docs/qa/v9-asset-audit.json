@@ -1,0 +1,1661 @@
+{
+  "version": "v9",
+  "scope": "Asset metadata and source-level verification; no rendered visual assessment",
+  "baselineCommit": "19e648172b985fb1b0f7a28878dbe8f137752f17",
+  "summary": {
+    "passed": true,
+    "assertions": 143,
+    "registryImages": 32,
+    "clientImages": 28,
+    "stockImages": 4,
+    "variants": 96,
+    "totalVariantBytes": 6412108,
+    "galleryImages": 26,
+    "galleryFilters": 8
+  },
+  "limitations": [
+    "No-upscale verified against original dimensions/crop for all client images. Original stock source files are unavailable here; all four stock illustrations are byte-for-byte retained from V8.",
+    "Image subject identity and perceived framing require visual review; this report verifies the selected source mappings and file integrity."
+  ],
+  "preservedApprovedPhotos": [
+    {
+      "id": "layer-fruits",
+      "file": "/images/siray-layer-fruits-6a211ed1.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "layer-rouge",
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "file": "/images/siray-buffet-ensemble-474a9997.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "buffet-desserts",
+      "file": "/images/siray-buffet-desserts-7f108c7a.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "bento-vert",
+      "file": "/images/siray-bento-vert-e1768ae9.webp",
+      "allVariantsUnchanged": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "allVariantsUnchanged": true
+    }
+  ],
+  "carnet": {
+    "cakes": "layer-coquillages",
+    "tables": "brunch-douceurs",
+    "sweet": "cupcakes"
+  },
+  "gallery": {
+    "ids": [
+      "layer-roses",
+      "brunch-toasts",
+      "bento-rubans",
+      "plateau-fruits",
+      "cupcakes-fleurs",
+      "buffet-ensemble",
+      "mignardises-toasts",
+      "layer-fruits",
+      "plateau-grazing",
+      "bento-vert",
+      "brunch-douceurs",
+      "layer-rouge",
+      "cupcake-presentoir",
+      "buffet-desserts",
+      "mignardises-assortiment",
+      "layer-coquillages",
+      "plateau-charcuterie",
+      "bento-coffrets",
+      "brunch-partage",
+      "cupcakes-coffret",
+      "buffet-sale",
+      "layer-etages",
+      "plateau-fromages",
+      "mignardises-burger",
+      "bento-fleurs",
+      "layer-fleurs"
+    ],
+    "filters": [
+      "all",
+      "layer-cakes",
+      "bento-cakes",
+      "mignardises",
+      "cupcakes",
+      "brunch-box",
+      "buffets",
+      "plateaux"
+    ]
+  },
+  "assertions": [
+    {
+      "name": "original:layer-fruits",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fruits:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fruits:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fruits:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-rouge",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-rouge:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-rouge:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-rouge:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-etages",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-etages:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-etages:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-etages:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-roses",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-roses:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-roses:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-roses:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-coquillages",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-coquillages:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-coquillages:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-coquillages:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-fleurs",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fleurs:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fleurs:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-fleurs:360",
+      "pass": true
+    },
+    {
+      "name": "original:bento-rubans",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-rubans:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-rubans:720",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-rubans:360",
+      "pass": true
+    },
+    {
+      "name": "original:bento-vert",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-vert:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-vert:720",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-vert:360",
+      "pass": true
+    },
+    {
+      "name": "original:bento-coffrets",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-coffrets:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-coffrets:720",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-coffrets:360",
+      "pass": true
+    },
+    {
+      "name": "original:bento-fleurs",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-fleurs:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-fleurs:720",
+      "pass": true
+    },
+    {
+      "name": "variant:bento-fleurs:360",
+      "pass": true
+    },
+    {
+      "name": "original:cupcakes-fleurs",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-fleurs:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-fleurs:720",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-fleurs:360",
+      "pass": true
+    },
+    {
+      "name": "original:cupcake-presentoir",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcake-presentoir:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcake-presentoir:720",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcake-presentoir:360",
+      "pass": true
+    },
+    {
+      "name": "original:cupcakes-coffret",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-coffret:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-coffret:720",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes-coffret:360",
+      "pass": true
+    },
+    {
+      "name": "original:mignardises-toasts",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-toasts:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-toasts:720",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-toasts:360",
+      "pass": true
+    },
+    {
+      "name": "original:mignardises-assortiment",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-assortiment:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-assortiment:720",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-assortiment:360",
+      "pass": true
+    },
+    {
+      "name": "original:mignardises-burger",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-burger:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-burger:720",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-burger:360",
+      "pass": true
+    },
+    {
+      "name": "original:brunch-toasts",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-toasts:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-toasts:720",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-toasts:360",
+      "pass": true
+    },
+    {
+      "name": "original:brunch-douceurs",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-douceurs:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-douceurs:720",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-douceurs:360",
+      "pass": true
+    },
+    {
+      "name": "original:brunch-partage",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-partage:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-partage:720",
+      "pass": true
+    },
+    {
+      "name": "variant:brunch-partage:360",
+      "pass": true
+    },
+    {
+      "name": "original:buffet-ensemble",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-ensemble:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-ensemble:720",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-ensemble:360",
+      "pass": true
+    },
+    {
+      "name": "original:buffet-desserts",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-desserts:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-desserts:720",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-desserts:360",
+      "pass": true
+    },
+    {
+      "name": "original:buffet-sale",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-sale:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-sale:720",
+      "pass": true
+    },
+    {
+      "name": "variant:buffet-sale:360",
+      "pass": true
+    },
+    {
+      "name": "original:plateau-grazing",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-grazing:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-grazing:720",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-grazing:360",
+      "pass": true
+    },
+    {
+      "name": "original:plateau-fruits",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fruits:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fruits:720",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fruits:360",
+      "pass": true
+    },
+    {
+      "name": "original:plateau-fromages",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fromages:1162",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fromages:720",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-fromages:360",
+      "pass": true
+    },
+    {
+      "name": "original:plateau-charcuterie",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-charcuterie:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-charcuterie:720",
+      "pass": true
+    },
+    {
+      "name": "variant:plateau-charcuterie:360",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes:1064",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes:720",
+      "pass": true
+    },
+    {
+      "name": "variant:cupcakes:360",
+      "pass": true
+    },
+    {
+      "name": "variant:fruits:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:fruits:720",
+      "pass": true
+    },
+    {
+      "name": "variant:fruits:360",
+      "pass": true
+    },
+    {
+      "name": "variant:chocolat:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:chocolat:720",
+      "pass": true
+    },
+    {
+      "name": "variant:chocolat:360",
+      "pass": true
+    },
+    {
+      "name": "variant:notes-gourmandes:1200",
+      "pass": true
+    },
+    {
+      "name": "variant:notes-gourmandes:720",
+      "pass": true
+    },
+    {
+      "name": "variant:notes-gourmandes:360",
+      "pass": true
+    },
+    {
+      "name": "original:layer-journal",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-journal:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-journal:720",
+      "pass": true
+    },
+    {
+      "name": "variant:layer-journal:360",
+      "pass": true
+    },
+    {
+      "name": "original:mignardises-hotdog",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-hotdog:1152",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-hotdog:720",
+      "pass": true
+    },
+    {
+      "name": "variant:mignardises-hotdog:360",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:layer-fruits",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:layer-rouge",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:cupcakes-fleurs",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:cupcake-presentoir",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:buffet-ensemble",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:buffet-desserts",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:bento-vert",
+      "pass": true
+    },
+    {
+      "name": "approved-photo-retained:mignardises-assortiment",
+      "pass": true
+    },
+    {
+      "name": "approved-cover-mapping:layer-cakes",
+      "pass": true
+    },
+    {
+      "name": "approved-cover-mapping:cupcakes",
+      "pass": true
+    },
+    {
+      "name": "approved-cover-mapping:buffets",
+      "pass": true
+    },
+    {
+      "name": "bento-cover-is-boxes",
+      "pass": true
+    },
+    {
+      "name": "mignardise-cover-is-hotdog",
+      "pass": true
+    },
+    {
+      "name": "carnet-three-photo-selections-unchanged",
+      "pass": true
+    },
+    {
+      "name": "gallery-26-selections-order-unchanged",
+      "pass": true
+    },
+    {
+      "name": "gallery-eight-filters-unchanged",
+      "pass": true
+    },
+    {
+      "name": "all-32-registry-images-used",
+      "pass": true,
+      "details": {
+        "unusedRegistry": []
+      }
+    },
+    {
+      "name": "no-orphaned-public-images",
+      "pass": true,
+      "details": {
+        "orphaned": []
+      }
+    },
+    {
+      "name": "credits-route-and-public-link-removed",
+      "pass": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "layer-fruits",
+      "path": "/images/siray-layer-fruits-6a211ed1.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 75218,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-fruits",
+      "path": "/images/siray-layer-fruits-6a211ed1-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 39392,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-fruits",
+      "path": "/images/siray-layer-fruits-6a211ed1-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 13958,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-rouge",
+      "path": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "width": 1200,
+      "height": 1599,
+      "bytes": 42816,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-rouge",
+      "path": "/images/siray-layer-rouge-7dc19bb3-720.webp",
+      "width": 720,
+      "height": 959,
+      "bytes": 21172,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-rouge",
+      "path": "/images/siray-layer-rouge-7dc19bb3-360.webp",
+      "width": 360,
+      "height": 480,
+      "bytes": 7302,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-etages",
+      "path": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 61646,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-etages",
+      "path": "/images/siray-layer-etages-4dc5ba8b-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 31758,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-etages",
+      "path": "/images/siray-layer-etages-4dc5ba8b-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 10418,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-roses",
+      "path": "/images/siray-layer-roses-0dd26d2a.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 143814,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-roses",
+      "path": "/images/siray-layer-roses-0dd26d2a-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 50860,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-roses",
+      "path": "/images/siray-layer-roses-0dd26d2a-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 18820,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-coquillages",
+      "path": "/images/siray-layer-coquillages-7c0454c7.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 115214,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-coquillages",
+      "path": "/images/siray-layer-coquillages-7c0454c7-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 54046,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-coquillages",
+      "path": "/images/siray-layer-coquillages-7c0454c7-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 14566,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-fleurs",
+      "path": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 73792,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-fleurs",
+      "path": "/images/siray-layer-fleurs-7ef2db14-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 38638,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-fleurs",
+      "path": "/images/siray-layer-fleurs-7ef2db14-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 13090,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-rubans",
+      "path": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 49570,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-rubans",
+      "path": "/images/siray-bento-rubans-1d8a5a95-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 23898,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-rubans",
+      "path": "/images/siray-bento-rubans-1d8a5a95-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 8640,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-vert",
+      "path": "/images/siray-bento-vert-e1768ae9.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 40416,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-vert",
+      "path": "/images/siray-bento-vert-e1768ae9-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 22346,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-vert",
+      "path": "/images/siray-bento-vert-e1768ae9-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 8434,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-coffrets",
+      "path": "/images/siray-bento-coffrets-78db3bdc.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 178246,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-coffrets",
+      "path": "/images/siray-bento-coffrets-78db3bdc-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 93162,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-coffrets",
+      "path": "/images/siray-bento-coffrets-78db3bdc-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 29186,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-fleurs",
+      "path": "/images/siray-bento-fleurs-18f0073c.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 156026,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-fleurs",
+      "path": "/images/siray-bento-fleurs-18f0073c-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 56024,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "bento-fleurs",
+      "path": "/images/siray-bento-fleurs-18f0073c-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 20902,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 65336,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 32740,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 12264,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 25390,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3-720.webp",
+      "width": 720,
+      "height": 720,
+      "bytes": 12518,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3-360.webp",
+      "width": 360,
+      "height": 360,
+      "bytes": 4470,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "path": "/images/siray-cupcakes-coffret-06215b03.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 135536,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "path": "/images/siray-cupcakes-coffret-06215b03-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 79792,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "path": "/images/siray-cupcakes-coffret-06215b03-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 32388,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "path": "/images/siray-mignardises-toasts-a69b6a95.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 121454,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "path": "/images/siray-mignardises-toasts-a69b6a95-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 65634,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "path": "/images/siray-mignardises-toasts-a69b6a95-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 23904,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "path": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 72172,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "path": "/images/siray-mignardises-assortiment-ca4da982-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 39906,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "path": "/images/siray-mignardises-assortiment-ca4da982-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 17434,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-burger",
+      "path": "/images/siray-mignardises-burger-47af9152.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 109604,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-burger",
+      "path": "/images/siray-mignardises-burger-47af9152-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 62400,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-burger",
+      "path": "/images/siray-mignardises-burger-47af9152-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 27128,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-toasts",
+      "path": "/images/siray-brunch-toasts-6239a88d.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 142574,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-toasts",
+      "path": "/images/siray-brunch-toasts-6239a88d-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 78268,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-toasts",
+      "path": "/images/siray-brunch-toasts-6239a88d-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 29132,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "path": "/images/siray-brunch-douceurs-907f487c.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 127190,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "path": "/images/siray-brunch-douceurs-907f487c-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 69806,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "path": "/images/siray-brunch-douceurs-907f487c-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 25904,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-partage",
+      "path": "/images/siray-brunch-partage-987b9037.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 278208,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-partage",
+      "path": "/images/siray-brunch-partage-987b9037-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 100664,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "brunch-partage",
+      "path": "/images/siray-brunch-partage-987b9037-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 36328,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "path": "/images/siray-buffet-ensemble-474a9997.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 102524,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "path": "/images/siray-buffet-ensemble-474a9997-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 53464,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "path": "/images/siray-buffet-ensemble-474a9997-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 19928,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-desserts",
+      "path": "/images/siray-buffet-desserts-7f108c7a.webp",
+      "width": 1152,
+      "height": 1628,
+      "bytes": 128532,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-desserts",
+      "path": "/images/siray-buffet-desserts-7f108c7a-720.webp",
+      "width": 720,
+      "height": 1018,
+      "bytes": 70156,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-desserts",
+      "path": "/images/siray-buffet-desserts-7f108c7a-360.webp",
+      "width": 360,
+      "height": 509,
+      "bytes": 26618,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-sale",
+      "path": "/images/siray-buffet-sale-1c688dea.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 241806,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-sale",
+      "path": "/images/siray-buffet-sale-1c688dea-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 81722,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "buffet-sale",
+      "path": "/images/siray-buffet-sale-1c688dea-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 28626,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-grazing",
+      "path": "/images/siray-plateau-grazing-5852832b.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 122654,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-grazing",
+      "path": "/images/siray-plateau-grazing-5852832b-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 67640,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-grazing",
+      "path": "/images/siray-plateau-grazing-5852832b-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 25850,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fruits",
+      "path": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 187656,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fruits",
+      "path": "/images/siray-plateau-fruits-3ced1c4c-720.webp",
+      "width": 720,
+      "height": 960,
+      "bytes": 93244,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fruits",
+      "path": "/images/siray-plateau-fruits-3ced1c4c-360.webp",
+      "width": 360,
+      "height": 480,
+      "bytes": 32112,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fromages",
+      "path": "/images/siray-plateau-fromages-b7acbdb5.webp",
+      "width": 1162,
+      "height": 1453,
+      "bytes": 92454,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fromages",
+      "path": "/images/siray-plateau-fromages-b7acbdb5-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 53140,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-fromages",
+      "path": "/images/siray-plateau-fromages-b7acbdb5-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 21994,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "path": "/images/siray-plateau-charcuterie-7fa905c0.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 297554,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "path": "/images/siray-plateau-charcuterie-7fa905c0-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 106902,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "path": "/images/siray-plateau-charcuterie-7fa905c0-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 38412,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "cupcakes",
+      "path": "/images/cupcakes.webp",
+      "width": 1064,
+      "height": 1600,
+      "bytes": 70096,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "cupcakes",
+      "path": "/images/cupcakes-720.webp",
+      "width": 720,
+      "height": 1083,
+      "bytes": 46104,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "cupcakes",
+      "path": "/images/cupcakes-360.webp",
+      "width": 360,
+      "height": 541,
+      "bytes": 18658,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "fruits",
+      "path": "/images/fruits.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 77170,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "fruits",
+      "path": "/images/fruits-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 43896,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "fruits",
+      "path": "/images/fruits-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 17536,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "chocolat",
+      "path": "/images/chocolat.webp",
+      "width": 1200,
+      "height": 801,
+      "bytes": 140792,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "chocolat",
+      "path": "/images/chocolat-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 53040,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "chocolat",
+      "path": "/images/chocolat-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 15014,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "path": "/images/notes-gourmandes.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 53036,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "path": "/images/notes-gourmandes-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 29008,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "path": "/images/notes-gourmandes-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 12386,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": null,
+      "unchangedFromV8": true
+    },
+    {
+      "id": "layer-journal",
+      "path": "/images/siray-layer-journal-94e2c50b.webp",
+      "width": 1152,
+      "height": 922,
+      "bytes": 183354,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-journal",
+      "path": "/images/siray-layer-journal-94e2c50b-720.webp",
+      "width": 720,
+      "height": 576,
+      "bytes": 68902,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "layer-journal",
+      "path": "/images/siray-layer-journal-94e2c50b-360.webp",
+      "width": 360,
+      "height": 288,
+      "bytes": 25990,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-hotdog",
+      "path": "/images/siray-mignardises-hotdog-12452ace.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 210474,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-hotdog",
+      "path": "/images/siray-mignardises-hotdog-12452ace-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 78892,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    },
+    {
+      "id": "mignardises-hotdog",
+      "path": "/images/siray-mignardises-hotdog-12452ace-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 33258,
+      "format": "webp",
+      "metadataRemoved": true,
+      "noUpscale": true
+    }
+  ]
+}

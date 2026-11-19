@@ -1,4 +1,22 @@
-# Photographies Siray Signature — V8
+# Photographies Siray Signature — V9
+
+## État courant V9
+
+Le registre `docs/image-credits.json` contient **28 photographies client** parmi les 44 fichiers fournis, auxquelles s’ajoutent les quatre illustrations conservées. La V9 ajoute le layer cake au fond de papier journal (`layer cakes/9.jpeg`, identifiant `layer-journal`) et le mini hot-dog tenu par une main gantée (`miniardises/5.jpeg`, identifiant `mignardises-hotdog`). Les originaux restent intacts et hors du dossier public. **La galerie conserve sa sélection V8 de 26 photographies, son ordre et ses sept filtres de catégories.** Les deux ajouts servent aux emplacements demandés sans modifier cette galerie approuvée.
+
+Les usages sont distingués par emplacement : le gâteau au papier journal présente les layer cakes sur l’accueil, tandis que les deux photos approuvées de leur fiche restent en place ; le bento fleuri présente cette famille sur l’accueil et la photo des coffrets devient la photo principale de sa fiche ; le mini hot-dog ouvre les mignardises. Les petites photos secondaires approuvées sont conservées. Les cadres des suggestions sont repris pour préserver les sujets. Les photographies horizontales des associations Signature et de la préparation des demandes sont retirées au lieu d’étirer des portraits. « La maison » utilise deux photographies client en portrait 4:5, le gâteau fleuri et le Grazing Platter.
+
+Les **cinq photographies du diaporama** sont préparées à nouveau depuis leurs originaux, à leur largeur native de **1 152 px**, en **WebP qualité 94** pour le grand fichier et **88** pour les petites variantes. Le hero utilise le fichier principal, sans sélection d’une petite variante par `srcset`, tout en conservant le chargement différé des scènes suivantes. Les deux nouvelles photographies sont également préparées en qualité 94/88. Les autres fichiers existants gardent leur préparation V8 en qualité 80. Les dimensions réelles, recadrages et poids sont dans le registre ; la qualité d’encodage ne peut pas créer de détail absent d’un original. Aucun agrandissement, retouche créative ou génération d’image n’est effectué.
+
+La page publique `/credits/` et son lien du footer sont supprimés à la demande de l’utilisateur. La provenance, les auteurs et les licences restent conservés dans le registre interne, ainsi que dans les archives documentaires ci-dessous. Les quatre illustrations restent distinctes des réalisations Siray : le cupcake de l’accueil et les trois images d’ingrédients Fruits, Chocolats et Notes gourmandes.
+
+Ce document décrit les fichiers et décisions V9. Il ne vaut ni résultat de compilation ni contrôle navigateur ; ces vérifications doivent être documentées séparément après exécution.
+
+---
+
+## Archive V8 — première intégration des photographies client
+
+Les sections suivantes, jusqu’à l’archive V6, décrivent l’état **V8**. Les formulations au présent, le lien public de crédits et le contrat de préparation qualité 80 appartiennent à cet historique ; l’état V9 ci-dessus prévaut pour les éléments modifiés.
 
 ## Corpus fourni et sélection
 
@@ -40,7 +58,7 @@ Ce document décrit le choix et le contrat de préparation V8 ; il ne prouve pas
 
 ---
 
-Les informations suivantes décrivent la façade **avant l’intégration des photographies client**. Les noms, auteurs, sources, licences et opérations de la V6 sont conservés comme historique. Les affirmations au présent appartiennent à cette archive et ne remplacent pas l’état V8 décrit ci-dessus.
+Les informations suivantes décrivent la façade **avant l’intégration des photographies client**. Les noms, auteurs, sources, licences et opérations de la V6 sont conservés comme historique. Les affirmations au présent appartiennent à cette archive et ne remplacent pas l’état V9 décrit en tête de ce document.
 
 ## Archive — images provisoires V6
 

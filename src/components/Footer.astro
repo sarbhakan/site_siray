@@ -44,7 +44,6 @@ const links = [
       <p class="signature-footer-area">Bordeaux & Gironde</p>
       <div class="signature-footer-colophon">
         <p>© {year} Siray Signature</p>
-        <a href="/credits/">Crédits des images</a>
       </div>
     </div>
   </div>
@@ -150,23 +149,12 @@ const links = [
     gap: 0 20px;
   }
 
-  .signature-footer-colophon a {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    text-decoration: underline;
-    text-decoration-color: var(--olive-line);
-    text-underline-offset: 4px;
-    transition: text-decoration-color 160ms var(--ease);
-  }
-
   @media (hover: hover) {
     .signature-footer-instagram:hover {
       background: var(--white);
     }
 
-    .signature-footer-nav a:hover,
-    .signature-footer-colophon a:hover {
+    .signature-footer-nav a:hover {
       text-decoration-color: currentColor;
     }
   }
