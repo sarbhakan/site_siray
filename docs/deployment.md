@@ -2,7 +2,7 @@
 
 Le site est une vitrine statique : les pages, styles, scripts, images et polices sont déjà compilés dans les archives. Aucun serveur, base de données ou secret n’est nécessaire à leur consultation. Les commandes restent sur Instagram.
 
-Deux fichiers de livraison sont prévus dans `releases/v11/` : `siray-signature-v11-netlify.zip` et `siray-signature-v11-cloudflare-pages.zip`. Ils contiennent le même site portable, avec `index.html` à la racine. Le présent guide, le manifeste et les sommes SHA-256 sont séparés des ZIP et ne sont pas publiés. Le script de livraison n’ouvre aucun compte et ne déploie rien à distance.
+Deux fichiers de livraison sont prévus dans `releases/v12/` : `siray-signature-v12-netlify.zip` et `siray-signature-v12-cloudflare-pages.zip`. Ils contiennent le même site portable, avec `index.html` à la racine. Le présent guide, le manifeste et les sommes SHA-256 sont séparés des ZIP et ne sont pas publiés. Le script de livraison n’ouvre aucun compte et ne déploie rien à distance.
 
 ## Choisir une plateforme
 
@@ -17,7 +17,7 @@ Les informations commerciales et juridiques non encore fournies doivent être co
 ## Déposer l’archive sur Netlify
 
 1. Se connecter à son compte Netlify Free pour conserver et administrer le site.
-2. Extraire `releases/v11/siray-signature-v11-netlify.zip` dans un dossier. Ce dossier doit contenir directement `index.html`, `404.html`, `_headers`, `_astro/` et `images/`.
+2. Extraire `releases/v12/siray-signature-v12-netlify.zip` dans un dossier. Ce dossier doit contenir directement `index.html`, `404.html`, `_headers`, `_astro/` et `images/`.
 3. Dans [Netlify Drop](https://app.netlify.com/drop), déposer **ce dossier extrait**. Ne pas déposer le dossier des sources, `node_modules`, ni le ZIP non extrait. Aucun build n’est lancé par un dépôt manuel.
 4. Choisir le nom disponible du projet. Vérifier sa visibilité : sur les nouvelles offres, un projet peut rester privé jusqu’à l’action « Make public ». Le rendre public au moment du lancement voulu.
 5. Ouvrir l’adresse de production, puis tester directement `/creations/layer-cakes/`, `/buffets/`, `/plateaux/` et `/contact/`. Une adresse inconnue doit afficher la page 404.
@@ -29,7 +29,7 @@ Les informations commerciales et juridiques non encore fournies doivent être co
 
 1. Se connecter à Cloudflare et ouvrir « Workers & Pages ».
 2. Créer une application Pages et choisir « Drag and drop your files » / « Direct Upload ».
-3. Choisir un nom disponible pour le projet, puis déposer directement `releases/v11/siray-signature-v11-cloudflare-pages.zip`. Le ZIP contient `index.html` à sa racine, sans dossier enveloppant.
+3. Choisir un nom disponible pour le projet, puis déposer directement `releases/v12/siray-signature-v12-cloudflare-pages.zip`. Le ZIP contient `index.html` à sa racine, sans dossier enveloppant.
 4. Lancer « Deploy site » ou « Save and Deploy », puis tester les mêmes pages et une adresse inconnue.
 5. Pour mettre à jour, ouvrir le même projet, choisir « Create a new deployment » et déposer la nouvelle archive en production.
 
@@ -53,7 +53,7 @@ Exemple de préparation locale, depuis le projet avec Node 24. Remplacer le text
 npm ci
 SITE_URL='https://<adresse-attribuee>' npm run build
 python3 scripts/check-site.py
-python3 scripts/package-release.py --dist dist --output-dir releases/v11 --version v11 --site-url 'https://<adresse-attribuee>'
+python3 scripts/package-release.py --dist dist --output-dir releases/v12 --version v12 --site-url 'https://<adresse-attribuee>'
 ```
 
 Si aucune URL n’est encore attribuée, omettre `SITE_URL` et `--site-url`. Le script bloque les URL `localhost` dans le HTML. Il ne remplace pas les métadonnées et ne lance pas de compilation ; `--site-url` vérifie l’origine déjà inscrite dans le résultat compilé. Son manifeste indique si une origine finale a été vérifiée. L’affichage des images de partage n’est pas garanti tant qu’elles utilisent un chemin relatif.
@@ -66,10 +66,10 @@ Le fichier public `_headers` accompagne les deux archives : protections d’en-t
 
 Le script utilise uniquement Python standard. Il vérifie la présence de `index.html`, `404.html` et `_headers`, les limites du dépôt Cloudflare, l’absence d’URL locale dans le HTML et l’intégrité ZIP. Le manifeste liste les fichiers, leurs tailles et leurs SHA-256. Les archives sont reproductibles à contenu identique ; les dates de leurs entrées sont fixes. Les deux ZIP peuvent avoir le même SHA-256 puisqu’ils transportent le même site compatible avec les deux plateformes.
 
-Pour contrôler le téléchargement sur macOS ou Linux, se placer dans le dossier livré `releases/v11/` :
+Pour contrôler le téléchargement sur macOS ou Linux, se placer dans le dossier livré `releases/v12/` :
 
 ```sh
-shasum -a 256 -c siray-signature-v11-SHA256SUMS.txt
+shasum -a 256 -c siray-signature-v12-SHA256SUMS.txt
 ```
 
 Ce contrôle ne remplace pas le test final de l’URL publique, des routes, de la visibilité, des en-têtes HTTP et de la consultation sur mobile après publication. Aucun déploiement distant n’est attesté par la simple création des archives.

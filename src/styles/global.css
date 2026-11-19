@@ -738,78 +738,6 @@ body:has(dialog[open]) {
   margin-top: 20px;
   font-size: 13px;
 }
-.contact-layout {
-  padding-block: 16px 40px;
-  display: grid;
-  gap: 32px;
-}
-.contact-layout h1 {
-  max-width: 16ch;
-}
-.contact-layout > div > p {
-  margin-top: 16px;
-  color: var(--muted);
-}
-.contact-instagram {
-  display: flex;
-  width: fit-content;
-  min-height: 72px;
-  padding-block: 16px;
-  margin-top: 16px;
-  font-size: 24px;
-  line-height: 1.5;
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-.contact-instagram small {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 13px;
-  color: var(--muted);
-  text-decoration: none;
-}
-.contact-aside {
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
-.contact-aside h2 {
-  font-size: 24px;
-}
-.contact-checklist {
-  list-style: none;
-  margin-top: 20px;
-}
-.contact-checklist li {
-  padding-block: 12px;
-  border-bottom: 1px solid var(--line);
-}
-.contact-aside > p {
-  margin-top: 20px;
-  color: var(--muted);
-}
-.faq {
-  display: grid;
-  gap: 24px;
-  padding-block: 0 48px;
-}
-.faq details {
-  border-top: 1px solid var(--line);
-}
-.faq details:last-child {
-  border-bottom: 1px solid var(--line);
-}
-.faq summary {
-  cursor: pointer;
-  min-height: 60px;
-  padding-block: 16px;
-  padding-inline-end: 24px;
-  font-weight: 600;
-}
-.faq details p {
-  padding-bottom: 20px;
-  color: var(--muted);
-}
-.faq p a,
 .prose-page a {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -1264,28 +1192,6 @@ rather than a page of introduction. */
   .house-quote p {
     font-size: 48px;
   }
-  .contact-layout {
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding-block: 24px 64px;
-  }
-  .contact-aside {
-    padding: 24px 32px;
-    background: var(--surface);
-    border: 0;
-  }
-  .contact-layout h1 {
-    font-size: 56px;
-  }
-  .contact-instagram {
-    font-size: 32px;
-    margin-top: 24px;
-  }
-  .faq {
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding-bottom: 64px;
-  }
   .gallery-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 40px 24px;
@@ -1311,9 +1217,6 @@ rather than a page of introduction. */
   }
   .gallery-filter {
     padding-inline: 8px;
-  }
-  .contact-instagram {
-    font-size: 22px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1612,9 +1515,6 @@ html:not(.js) .gallery-controls {
 .house-quote p {
   font-family: 'Gloock', serif;
   font-weight: 400;
-}
-.contact-instagram small {
-  font-size: 14px;
 }
 @media (min-width: 600px) {
   .collection-list {

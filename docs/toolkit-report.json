@@ -1396,5 +1396,40 @@
       "Real Core Web Vitals",
       "Production hosting"
     ]
+  },
+  "v12": {
+    "task": "Clarifier Votre projet et compléter les sept liens directs du footer",
+    "lead": "Impeccable focused polish; Taste factual copy; Unslop incumbent-brand density; established Hallmark conventions retained",
+    "sources": "Existing nine pinned checkouts reused; preparation helper returned pre-existing lock, preserved",
+    "scope": [
+      "src/pages/contact.astro",
+      "src/components/Footer.astro",
+      "src/styles/global.css legacy contact styles",
+      "product and design documentation"
+    ],
+    "business_facts": [
+      "Instagram orders and confirmation",
+      "Anticipation needed even for bento; same or next day difficult",
+      "Pickup normally at creation location, arranged on Instagram",
+      "Home delivery possible in Bordeaux/Gironde with agreed supplement, conditional",
+      "Meat and ingredients halal, no certification invented"
+    ],
+    "checks": {
+      "astro": "30 files without diagnostics; final static build 13 pages",
+      "static": "13 pages, 0 issues, 0 warnings; local HTTP checked",
+      "responsive": "Contact: 7 widths 320–1440 px, no overflow; all footer navigation targets >=44x44 px",
+      "shared_footer": "Home/layer cake at390 and960px: seven correct service links and no overflow",
+      "native_details": "Enter closes, Space reopens, 2px keyboard focus, #allergies visible",
+      "impeccable": "Exit 0, empty findings list",
+      "taste": "Exit 0, one rhythm INFO, no WARN/FAIL",
+      "review": "Independent content/source review and footer contrast review"
+    },
+    "preserved": "V11 home and all photographic assets, existing URLs and business prices",
+    "report": "docs/qa/v12-verification.md",
+    "limitations": [
+      "No physical mobile, iOS/Instagram browser or screen-reader test",
+      "No real order or message sent",
+      "No production hosting deployment"
+    ]
   }
 }
