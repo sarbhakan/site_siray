@@ -1,0 +1,153 @@
+[
+  {
+    "path": "/creations/layer-cakes/",
+    "photos": [
+      {
+        "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-layer-fruits-6a211ed1-720.webp"
+      },
+      {
+        "alt": "Layer cake rouge sur un présentoir argenté",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-layer-rouge-7dc19bb3-360.webp"
+      }
+    ],
+    "tabs": [
+      "Format & décor",
+      "Saveurs classiques",
+      "Associations Signature",
+      "Préparer ma demande"
+    ]
+  },
+  {
+    "path": "/creations/bento-cakes/",
+    "photos": [
+      {
+        "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-bento-rubans-1d8a5a95-720.webp"
+      },
+      {
+        "alt": "Bento cake vert décoré de petites roses et d’un message",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-bento-vert-e1768ae9-360.webp"
+      }
+    ],
+    "tabs": [
+      "Format & décor",
+      "Saveurs classiques",
+      "Préparer ma demande"
+    ]
+  },
+  {
+    "path": "/creations/mignardises/",
+    "photos": [
+      {
+        "alt": "Assortiment de petits toasts et de bouchées sur un plateau blanc",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-mignardises-toasts-a69b6a95-720.webp"
+      },
+      {
+        "alt": "Assortiment de mignardises sucrées et salées avec une verrine au premier plan",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-mignardises-assortiment-ca4da982-360.webp"
+      }
+    ],
+    "tabs": [
+      "Formats & tarifs",
+      "Préparer ma demande"
+    ]
+  },
+  {
+    "path": "/creations/cupcakes/",
+    "photos": [
+      {
+        "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-cupcakes-fleurs-3acb8e0f-720.webp"
+      },
+      {
+        "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-cupcake-presentoir-4d5a78f3-360.webp"
+      }
+    ],
+    "tabs": [
+      "Formats & tarifs",
+      "Les saveurs",
+      "Préparer ma demande"
+    ]
+  },
+  {
+    "path": "/creations/brunch-box/",
+    "photos": [
+      {
+        "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-brunch-toasts-6239a88d-720.webp"
+      },
+      {
+        "alt": "Brunch box ouverte avec des gaufres, des pâtisseries et des fruits",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-brunch-douceurs-907f487c-360.webp"
+      }
+    ],
+    "tabs": [
+      "Les compositions",
+      "Préparer ma demande"
+    ]
+  },
+  {
+    "path": "/buffets/",
+    "photos": [
+      {
+        "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-buffet-ensemble-474a9997-720.webp"
+      },
+      {
+        "alt": "Verrines et desserts sur des présentoirs argentés près de fleurs blanches",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-buffet-desserts-7f108c7a-360.webp"
+      }
+    ],
+    "tabs": [
+      "La prestation",
+      "Demander un devis"
+    ]
+  },
+  {
+    "path": "/plateaux/",
+    "photos": [
+      {
+        "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+        "natural": 390,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-plateau-grazing-5852832b-720.webp"
+      },
+      {
+        "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+        "natural": 136,
+        "source": "client",
+        "src": "http://127.0.0.1:4321/images/siray-plateau-fruits-3ced1c4c-360.webp"
+      }
+    ],
+    "tabs": [
+      "Formats & tarifs",
+      "Préparer ma demande"
+    ]
+  }
+]

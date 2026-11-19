@@ -114,7 +114,20 @@ function initialize() {
       const img = target.querySelector('img');
       if (img) {
         img.loading = 'eager';
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+          delete img.dataset.srcset;
+        }
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
         await img.decode().catch(() => {});
+        // Keep the current photograph when the next one cannot be loaded.
+        if (!img.complete || img.naturalWidth === 0) {
+          if (!disposed && scheduledGeneration === generation && canRun()) schedule();
+          return;
+        }
       }
       if (disposed || scheduledGeneration !== generation || !canRun()) return;
       animation?.kill();
@@ -183,8 +196,27 @@ function initialize() {
     const filters = Array.from(
       gallery.querySelectorAll<HTMLButtonElement>('[data-filter]'),
     );
+    const categories = new Set([
+      'all',
+      'layer-cakes',
+      'bento-cakes',
+      'mignardises',
+      'cupcakes',
+      'brunch-box',
+      'buffets',
+      'plateaux',
+    ]);
+    const categoryAliases: Record<string, string> = {
+      cakes: 'layer-cakes',
+      douceurs: 'mignardises',
+      tables: 'buffets',
+    };
     const filter = (category: string) => {
-      if (!filters.some((button) => button.dataset.filter === category))
+      category = categoryAliases[category] || category;
+      if (
+        !categories.has(category) ||
+        !filters.some((button) => button.dataset.filter === category)
+      )
         category = 'all';
       filters.forEach((button) =>
         button.setAttribute(
@@ -200,13 +232,13 @@ function initialize() {
       const status = gallery.querySelector('.gallery-status');
       if (status)
         status.textContent = `${count} photographie${count > 1 ? 's' : ''}`;
+      return category;
     };
     filters.forEach((button) =>
       button.addEventListener(
         'click',
         () => {
-          const category = button.dataset.filter || 'all';
-          filter(category);
+          const category = filter(button.dataset.filter || 'all');
           history.replaceState(
             null,
             '',
@@ -217,6 +249,11 @@ function initialize() {
       ),
     );
     filter(location.hash.slice(1) || 'all');
+    window.addEventListener(
+      'hashchange',
+      () => filter(location.hash.slice(1) || 'all'),
+      { signal },
+    );
   }
 
   cleanup = () => {

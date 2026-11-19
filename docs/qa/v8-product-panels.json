@@ -1,0 +1,206 @@
+[
+  {
+    "overflow": false,
+    "path": "/creations/layer-cakes/",
+    "requestImages": [],
+    "selected": "Format & décor",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/layer-cakes/",
+    "requestImages": [],
+    "selected": "Saveurs classiques",
+    "visiblePanels": [
+      "saveurs"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/layer-cakes/",
+    "requestImages": [],
+    "selected": "Associations Signature",
+    "visiblePanels": [
+      "signatures"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/layer-cakes/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-layer-etages-4dc5ba8b-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/bento-cakes/",
+    "requestImages": [],
+    "selected": "Format & décor",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/bento-cakes/",
+    "requestImages": [],
+    "selected": "Saveurs classiques",
+    "visiblePanels": [
+      "saveurs"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/bento-cakes/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-bento-coffrets-78db3bdc-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/mignardises/",
+    "requestImages": [],
+    "selected": "Formats & tarifs",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/mignardises/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-mignardises-burger-47af9152-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/cupcakes/",
+    "requestImages": [],
+    "selected": "Formats & tarifs",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/cupcakes/",
+    "requestImages": [],
+    "selected": "Les saveurs",
+    "visiblePanels": [
+      "saveurs"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/cupcakes/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-cupcakes-coffret-06215b03-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/brunch-box/",
+    "requestImages": [],
+    "selected": "Les compositions",
+    "visiblePanels": [
+      "compositions"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/creations/brunch-box/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-brunch-partage-cd04c047-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/buffets/",
+    "requestImages": [],
+    "selected": "La prestation",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/buffets/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-buffet-sale-f3950b25-720.webp"
+      }
+    ],
+    "selected": "Demander un devis",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/plateaux/",
+    "requestImages": [],
+    "selected": "Formats & tarifs",
+    "visiblePanels": [
+      "formats"
+    ]
+  },
+  {
+    "overflow": false,
+    "path": "/plateaux/",
+    "requestImages": [
+      {
+        "client": true,
+        "complete": true,
+        "src": "http://127.0.0.1:4321/images/siray-plateau-fromages-b7acbdb5-720.webp"
+      }
+    ],
+    "selected": "Préparer ma demande",
+    "visiblePanels": [
+      "votre-demande"
+    ]
+  }
+]

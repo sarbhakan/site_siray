@@ -1,3 +1,5 @@
+import { collectionPhotography, galleryPhotos } from './photography';
+
 export const instagram = 'https://www.instagram.com/siraysignature/';
 export const brand = 'Siray Signature';
 
@@ -31,8 +33,7 @@ export const collections: Collection[] = [
     href: '/creations/layer-cakes/',
     name: 'Layer cakes',
     short: 'Un gâteau à votre image',
-    image: 'layer-cake',
-    alt: 'Gâteau blanc à étages décoré de fruits',
+    ...collectionPhotography['layer-cakes'].cover,
     intro:
       'Saveurs et décor à votre image.',
     text: 'Choisissez vos saveurs, vos couleurs et votre décor.',
@@ -59,8 +60,7 @@ export const collections: Collection[] = [
     href: '/creations/bento-cakes/',
     name: 'Bento cakes',
     short: 'Un petit format, un message personnel',
-    image: 'bento-cake',
-    alt: 'Petit gâteau blanc personnalisé dans sa boîte, tenu en main',
+    ...collectionPhotography['bento-cakes'].cover,
     intro:
       'Un petit gâteau, vos couleurs et votre message.',
     text: 'Une saveur classique, un message et un décor à choisir.',
@@ -86,8 +86,7 @@ export const collections: Collection[] = [
     href: '/creations/mignardises/',
     name: 'Mignardises',
     short: 'Les petites pièces sucrées & salées',
-    image: 'macarons-ivoire',
-    alt: 'Macarons clairs disposés sur une table',
+    ...collectionPhotography['mignardises'].cover,
     intro:
       'Des bouchées sucrées, salées ou les deux.',
     text: 'Variétés et quantités à composer selon vos convives.',
@@ -120,8 +119,7 @@ export const collections: Collection[] = [
     href: '/creations/cupcakes/',
     name: 'Cupcakes',
     short: 'Des saveurs à réunir, un décor à choisir',
-    image: 'cupcakes',
-    alt: 'Cupcakes décorés présentés sur une table',
+    ...collectionPhotography['cupcakes'].cover,
     intro:
       'Onze saveurs, un décor à votre image.',
     text: 'Choisissez la quantité, les saveurs et le décor.',
@@ -153,8 +151,7 @@ export const collections: Collection[] = [
     href: '/creations/brunch-box/',
     name: 'Brunch box',
     short: 'Dix compositions pour vos matins gourmands',
-    image: 'brunch',
-    alt: 'Table de brunch avec viennoiseries et fruits',
+    ...collectionPhotography['brunch-box'].cover,
     intro:
       'Dix brunchs sucrés et salés, sur commande.',
     text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
@@ -188,8 +185,7 @@ export const collections: Collection[] = [
     href: '/buffets/',
     name: 'Buffets',
     short: 'Une réception, une table sur mesure',
-    image: 'buffet-gourmand',
-    alt: 'Buffet dressé pour une réception',
+    ...collectionPhotography['buffets'].cover,
     intro:
       'Un buffet sucré, salé ou mixte, installé pour votre événement.',
     text: 'Composition, quantités et décor se définissent selon votre événement.',
@@ -217,8 +213,7 @@ export const collections: Collection[] = [
     href: '/plateaux/',
     name: 'Plateaux',
     short: 'Des compositions à partager',
-    image: 'plateau-sale',
-    alt: 'Plateau de fromages et charcuterie',
+    ...collectionPhotography['plateaux'].cover,
     intro:
       'Cinq compositions à partager.',
     text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
@@ -503,61 +498,4 @@ export const brunchBoxes = [
   },
 ].map((box) => ({ ...box, drink: 'Jus de fruits : orange ou fraise' }));
 
-export const gallery = [
-  {
-    image: 'layer-cake',
-    label: 'Layer cake aux fruits',
-    category: 'cakes',
-    categoryLabel: 'Cakes',
-    alt: 'Layer cake blanc aux fruits',
-  },
-  {
-    image: 'macarons-ivoire',
-    label: 'Macarons ivoire',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Macarons ivoire disposés sur une table',
-  },
-  {
-    image: 'table-reception',
-    label: 'Table de réception',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Table de réception fleurie et desserts',
-  },
-  {
-    image: 'gateau-creme',
-    label: 'Gâteau à la crème',
-    category: 'cakes',
-    categoryLabel: 'Cakes',
-    alt: 'Gâteau décoré de volutes de crème',
-  },
-  {
-    image: 'plateau-sale',
-    label: 'Plateau salé',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Plateau gourmand salé',
-  },
-  {
-    image: 'macarons-rose',
-    label: 'Macarons roses',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Macarons roses et clairs',
-  },
-  {
-    image: 'brunch',
-    label: 'Table de brunch',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Brunch avec fruits et viennoiseries',
-  },
-  {
-    image: 'cupcakes',
-    label: 'Cupcakes',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Cupcakes décorés',
-  },
-];
+export const gallery = galleryPhotos;

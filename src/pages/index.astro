@@ -2,20 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import CollectionEdit from '../components/CollectionEdit.astro';
-const slides = [
-  {
-    image: 'gateau-creme',
-    alt: 'Gâteau sur pied décoré de volutes de crème',
-  },
-  {
-    image: 'macarons-ivoire',
-    alt: 'Macarons ivoire présentés sur un plat',
-  },
-  {
-    image: 'table-reception',
-    alt: 'Table gourmande dressée pour une réception',
-  },
-];
+import { homeSlides as slides, homePhotos } from '../data/photography';
 ---
 
 <Layout title="Accueil" home>
@@ -45,7 +32,9 @@ const slides = [
             <Photo
               name={slide.image}
               alt={slide.alt}
+              position={slide.position}
               eager={index === 0}
+              defer={index !== 0}
               sizes="(min-width: 960px) 56vw, 100vw"
             />
           </span>
@@ -75,8 +64,8 @@ const slides = [
     </div>
     <figure>
       <Photo
-        name="macarons-rose"
-        alt="Macarons aux teintes délicates"
+        name={homePhotos.maison.image}
+        alt={homePhotos.maison.alt}
       />
     </figure>
   </section>
@@ -89,24 +78,24 @@ const slides = [
       </a>
     </div>
     <div class="carnet-images">
-      <a href="/galerie/#cakes">
+      <a href="/galerie/#layer-cakes">
         <Photo
-          name="layer-cake"
-          alt="Gâteau blanc aux fruits rouges"
+          name={homePhotos.cakes.image}
+          alt={homePhotos.cakes.alt}
         />
         <span>Cakes</span>
       </a>
-      <a href="/galerie/#douceurs">
+      <a href="/galerie/#cupcakes">
         <Photo
           name="cupcakes"
           alt="Cupcakes décorés"
         />
         <span>Petites douceurs</span>
       </a>
-      <a href="/galerie/#tables">
+      <a href="/galerie/#brunch-box">
         <Photo
-          name="brunch"
-          alt="Composition de brunch"
+          name={homePhotos.tables.image}
+          alt={homePhotos.tables.alt}
         />
         <span>Tables & brunchs</span>
       </a>

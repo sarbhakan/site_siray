@@ -1,146 +1,1550 @@
 {
-  "notice": "Photographies d’ambiance — ces images illustrent l’univers de Siray Signature et ne représentent pas ses réalisations.",
-  "licenseSummary": "Images sous licences Unsplash et Pexels ; sources et auteurs conservés.",
-  "licenseUrl": "https://unsplash.com/license",
-  "transforms": "Redimensionnement et conversion WebP ; bento-cake recadré sur le gâteau et les mains. Aucune retouche créative ou génération par IA.",
+  "notice": "Réalisations fournies par Siray Signature, complétées par quatre illustrations stock explicitement répertoriées.",
+  "licenseSummary": "Photos client fournies pour ce site; licences Unsplash et Pexels conservées pour les quatre illustrations complémentaires.",
+  "transforms": "Orientation, cadrage technique, conversion sRGB, redimensionnement sans agrandissement et WebP qualité80; métadonnées retirées. Aucune génération ou retouche créative.",
   "images": [
     {
-      "file": "/images/layer-cake.webp",
-      "alt": "Layer cake blanc garni de fruits rouges",
-      "author": "Filipp Romanovski",
-      "source": "https://unsplash.com/photos/a-white-cake-topped-with-berries-and-blueberries-WXpzzYM6k2M",
-      "sourceImage": "https://images.unsplash.com/photo-1690292892715-4130ddae52e8",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "cakes",
-      "illustrative": true,
-      "focalPoint": "50% 44%",
-      "usageNote": "Coupe verticale ; garder les fruits et le socle visibles.",
+      "id": "layer-fruits",
+      "file": "/images/siray-layer-fruits-6a211ed1.webp",
+      "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 70%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Ivoire & fruits rouges",
+      "galleryLabel": "Ivoire & fruits rouges",
+      "original": {
+        "folder": "layer cakes",
+        "file": "4.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 191195,
+        "sha256": "ac39295b997df171bc6d12834a51d5fb135c407f78805e4543ca2021eef435bc"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
       "variants": [
         {
-          "path": "/images/layer-cake.webp",
-          "width": 1067,
-          "height": 1600,
-          "bytes": 64514
+          "path": "/images/siray-layer-fruits-6a211ed1.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 75218
         },
         {
-          "path": "/images/layer-cake-1024.webp",
-          "width": 683,
-          "height": 1024,
-          "bytes": 36368
+          "path": "/images/siray-layer-fruits-6a211ed1-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 39392
         },
         {
-          "path": "/images/layer-cake-640.webp",
-          "width": 427,
-          "height": 640,
-          "bytes": 19330
+          "path": "/images/siray-layer-fruits-6a211ed1-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 13958
         }
       ]
     },
     {
-      "file": "/images/gateau-creme.webp",
-      "alt": "Gâteau blanc aux volutes de crème",
-      "author": "Jonathan Borba",
-      "source": "https://unsplash.com/photos/a-white-frosted-cake-with-swirled-icing-on-a-stand-AAAX_mN2-SE",
-      "sourceImage": "https://images.unsplash.com/photo-1776722092640-d8caee121219",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "cakes",
-      "illustrative": true,
-      "focalPoint": "50% 42%",
-      "usageNote": "Belle matière crème pour le hero ou un portrait. Gâteau d’ambiance, pas un bento authentifié.",
+      "id": "layer-rouge",
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "alt": "Layer cake rouge sur un présentoir argenté",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 65%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Velours rouge",
+      "galleryLabel": "Velours rouge",
+      "original": {
+        "folder": "layer cakes",
+        "file": "2.jpeg",
+        "width": 1324,
+        "height": 1764,
+        "bytes": 89368,
+        "sha256": "f7ec6bea1dd009e1c6d45bdfa580bd0ed15a1fcaae2d57c6bb9edca5bdb5ecce"
+      },
+      "transform": {
+        "crop": null,
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
       "variants": [
         {
-          "path": "/images/gateau-creme.webp",
-          "width": 1067,
-          "height": 1600,
-          "bytes": 49938
+          "path": "/images/siray-layer-rouge-7dc19bb3.webp",
+          "width": 1200,
+          "height": 1599,
+          "bytes": 42816
         },
         {
-          "path": "/images/gateau-creme-1024.webp",
-          "width": 683,
-          "height": 1024,
-          "bytes": 28410
+          "path": "/images/siray-layer-rouge-7dc19bb3-720.webp",
+          "width": 720,
+          "height": 959,
+          "bytes": 21172
         },
         {
-          "path": "/images/gateau-creme-640.webp",
-          "width": 427,
-          "height": 640,
-          "bytes": 15690
+          "path": "/images/siray-layer-rouge-7dc19bb3-360.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 7302
         }
       ]
     },
     {
-      "file": "/images/macarons-ivoire.webp",
-      "alt": "Macarons ivoire sur un présentoir blanc",
-      "author": "Lucas T Photography",
-      "source": "https://unsplash.com/photos/stack-of-cream-colored-macarons-on-a-white-plate-TYQsDIJTJow",
-      "sourceImage": "https://images.unsplash.com/photo-1761115048523-ed6cc1b358ca",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "id": "layer-etages",
+      "file": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "alt": "Gâteau ivoire à deux étages avec des framboises",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 65%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Deux étages",
+      "galleryLabel": "Deux étages",
+      "original": {
+        "folder": "layer cakes",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 162252,
+        "sha256": "a5b6de9f08f40de17555720c25cb53a37467faa70bebc6e20fa57417b513fb10"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-layer-etages-4dc5ba8b.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 61646
+        },
+        {
+          "path": "/images/siray-layer-etages-4dc5ba8b-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 31758
+        },
+        {
+          "path": "/images/siray-layer-etages-4dc5ba8b-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 10418
+        }
+      ]
+    },
+    {
+      "id": "layer-roses",
+      "file": "/images/siray-layer-roses-c9c83e71.webp",
+      "alt": "Layer cake ivoire orné de roses rouges et orange",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 70%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Décor de roses",
+      "galleryLabel": "Décor de roses",
+      "original": {
+        "folder": "layer cakes",
+        "file": "6.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 149146,
+        "sha256": "5741928f93c95aef13bdb970adc758cd89f2434d1de53826bc7ee653903f2923"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-layer-roses-c9c83e71.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 60282
+        },
+        {
+          "path": "/images/siray-layer-roses-c9c83e71-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 33204
+        },
+        {
+          "path": "/images/siray-layer-roses-c9c83e71-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 13212
+        }
+      ]
+    },
+    {
+      "id": "layer-coquillages",
+      "file": "/images/siray-layer-coquillages-7c0454c7.webp",
+      "alt": "Layer cake ivoire décoré de coquillages et de fleurs roses",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 68%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Inspiration marine",
+      "galleryLabel": "Inspiration marine",
+      "original": {
+        "folder": "layer cakes",
+        "file": "7.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 284297,
+        "sha256": "e5f136e812f13c3d097944eb1772f21335c8eef9dcb4c7c5bf5f77e353432167"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-layer-coquillages-7c0454c7.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 115214
+        },
+        {
+          "path": "/images/siray-layer-coquillages-7c0454c7-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 54046
+        },
+        {
+          "path": "/images/siray-layer-coquillages-7c0454c7-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 14566
+        }
+      ]
+    },
+    {
+      "id": "layer-fleurs",
+      "file": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "alt": "Gâteau à deux étages orné de roses roses et de fleurs blanches",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "layer-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 65%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Fleurs & étages",
+      "galleryLabel": "Fleurs & étages",
+      "original": {
+        "folder": "layer cakes",
+        "file": "WhatsApp Image 2026-11-18 at 23.22.18.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 141201,
+        "sha256": "24028b1112654ddf577a69102e75bc4b2ae53d9e4020729554bd3c1188a10ecf"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-layer-fleurs-7ef2db14.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 73792
+        },
+        {
+          "path": "/images/siray-layer-fleurs-7ef2db14-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 38638
+        },
+        {
+          "path": "/images/siray-layer-fleurs-7ef2db14-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 13090
+        }
+      ]
+    },
+    {
+      "id": "bento-rubans",
+      "file": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "bento-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 58%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Rubans & framboises",
+      "galleryLabel": "Rubans & framboises",
+      "original": {
+        "folder": "bento cakes",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 104505,
+        "sha256": "a5a3eb10ea6d217a4c2286086977f998e24b681d344529f2bde0d373541fdfd6"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-bento-rubans-1d8a5a95.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 49570
+        },
+        {
+          "path": "/images/siray-bento-rubans-1d8a5a95-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 23898
+        },
+        {
+          "path": "/images/siray-bento-rubans-1d8a5a95-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 8640
+        }
+      ]
+    },
+    {
+      "id": "bento-vert",
+      "file": "/images/siray-bento-vert-e1768ae9.webp",
+      "alt": "Bento cake vert décoré de petites roses et d’un message",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "bento-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 50%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Décor personnalisé",
+      "galleryLabel": "Décor personnalisé",
+      "original": {
+        "folder": "bento cakes",
+        "file": "7.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 90020,
+        "sha256": "4aad3b87028658e0f12c2e7b4c555a16699826d9a26f82d35629bb42b48af7a0"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 280,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-bento-vert-e1768ae9.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 40416
+        },
+        {
+          "path": "/images/siray-bento-vert-e1768ae9-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 22346
+        },
+        {
+          "path": "/images/siray-bento-vert-e1768ae9-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 8434
+        }
+      ]
+    },
+    {
+      "id": "bento-coffrets",
+      "file": "/images/siray-bento-coffrets-78db3bdc.webp",
+      "alt": "Petits gâteaux présentés dans des coffrets transparents avec des rubans",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "bento-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 62%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. En coffrets",
+      "galleryLabel": "En coffrets",
+      "original": {
+        "folder": "bento cakes",
+        "file": "8.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 258945,
+        "sha256": "4bc6e866eca15f4e1fb2aad58fa81a97477bb1fce181193148ef44f1338b6eba"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-bento-coffrets-78db3bdc.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 178246
+        },
+        {
+          "path": "/images/siray-bento-coffrets-78db3bdc-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 93162
+        },
+        {
+          "path": "/images/siray-bento-coffrets-78db3bdc-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 29186
+        }
+      ]
+    },
+    {
+      "id": "bento-fleurs",
+      "file": "/images/siray-bento-fleurs-eb9ef548.webp",
+      "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "bento-cakes",
+      "illustrative": false,
+      "focalPoint": "50% 70%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Fleurs délicates",
+      "galleryLabel": "Fleurs délicates",
+      "original": {
+        "folder": "bento cakes",
+        "file": "6.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 151225,
+        "sha256": "6ac67c8fe1516835b6b7a5456d722c728470064e388f9e764a0720cbc1cd8e8e"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-bento-fleurs-eb9ef548.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 69148
+        },
+        {
+          "path": "/images/siray-bento-fleurs-eb9ef548-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 38206
+        },
+        {
+          "path": "/images/siray-bento-fleurs-eb9ef548-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 14722
+        }
+      ]
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "cupcakes",
+      "illustrative": false,
+      "focalPoint": "50% 68%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Fleurs & petites douceurs",
+      "galleryLabel": "Fleurs & petites douceurs",
+      "original": {
+        "folder": "cupcakes",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 152129,
+        "sha256": "e6ea2586fa68d62ede9946e928dc5cedbbcd40a954570eba22744e06e09978c1"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 65336
+        },
+        {
+          "path": "/images/siray-cupcakes-fleurs-3acb8e0f-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 32740
+        },
+        {
+          "path": "/images/siray-cupcakes-fleurs-3acb8e0f-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 12264
+        }
+      ]
+    },
+    {
+      "id": "cupcake-presentoir",
+      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "cupcakes",
+      "illustrative": false,
+      "focalPoint": "50% 58%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Sur son présentoir",
+      "galleryLabel": "Sur son présentoir",
+      "original": {
+        "folder": "cupcakes",
+        "file": "1.jpeg",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 57480,
+        "sha256": "10bb32d6863104872796d5cdc866a8ad3c32173162f5f4b10152671172debec3"
+      },
+      "transform": {
+        "crop": null,
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+          "width": 1200,
+          "height": 1200,
+          "bytes": 25390
+        },
+        {
+          "path": "/images/siray-cupcake-presentoir-4d5a78f3-720.webp",
+          "width": 720,
+          "height": 720,
+          "bytes": 12518
+        },
+        {
+          "path": "/images/siray-cupcake-presentoir-4d5a78f3-360.webp",
+          "width": 360,
+          "height": 360,
+          "bytes": 4470
+        }
+      ]
+    },
+    {
+      "id": "cupcakes-coffret",
+      "file": "/images/siray-cupcakes-coffret-06215b03.webp",
+      "alt": "Boîte de cupcakes aux décors variés",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "cupcakes",
+      "illustrative": false,
+      "focalPoint": "50% 65%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Coffret de cupcakes",
+      "galleryLabel": "Coffret de cupcakes",
+      "original": {
+        "folder": "cupcakes",
+        "file": "2.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 256972,
+        "sha256": "830a0b58f063ce81876f910a42ca58fdacb78380b9bcbd66d99ddbbe548adba8"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-cupcakes-coffret-06215b03.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 135536
+        },
+        {
+          "path": "/images/siray-cupcakes-coffret-06215b03-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 79792
+        },
+        {
+          "path": "/images/siray-cupcakes-coffret-06215b03-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 32388
+        }
+      ]
+    },
+    {
+      "id": "mignardises-toasts",
+      "file": "/images/siray-mignardises-toasts-a69b6a95.webp",
+      "alt": "Assortiment de petits toasts et de bouchées sur un plateau blanc",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
       "category": "mignardises",
-      "illustrative": true,
-      "focalPoint": "48% 54%",
-      "usageNote": "Image très calme ; bon cadrage paysage ou carré.",
+      "illustrative": false,
+      "focalPoint": "50% 75%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Toasts & bouchées",
+      "galleryLabel": "Toasts & bouchées",
+      "original": {
+        "folder": "miniardises",
+        "file": "11.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 221218,
+        "sha256": "9a853b49bcdd512884709dd3f5cfeec29944ad283794a465cf4aceaf0c74ed71"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
       "variants": [
         {
-          "path": "/images/macarons-ivoire.webp",
-          "width": 1600,
-          "height": 1067,
-          "bytes": 27754
+          "path": "/images/siray-mignardises-toasts-a69b6a95.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 121454
         },
         {
-          "path": "/images/macarons-ivoire-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 14620
+          "path": "/images/siray-mignardises-toasts-a69b6a95-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 65634
         },
         {
-          "path": "/images/macarons-ivoire-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 8012
+          "path": "/images/siray-mignardises-toasts-a69b6a95-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 23904
         }
       ]
     },
     {
-      "file": "/images/macarons-rose.webp",
-      "alt": "Macarons roses et ivoire sur une assiette",
-      "author": "Diana Polekhina",
-      "source": "https://unsplash.com/photos/a-plate-of-pink-and-white-macaroons-on-a-white-table-Nx6SyYyfNUc",
-      "sourceImage": "https://images.unsplash.com/photo-1612198791424-dffa2eb9eb42",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
+      "id": "mignardises-assortiment",
+      "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "alt": "Assortiment de mignardises sucrées et salées avec une verrine au premier plan",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
       "category": "mignardises",
-      "illustrative": true,
-      "focalPoint": "52% 48%",
-      "usageNote": "Vue du dessus ; conserver la forme circulaire du plateau.",
+      "illustrative": false,
+      "focalPoint": "50% 58%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Sucré & salé",
+      "galleryLabel": "Sucré & salé",
+      "original": {
+        "folder": "miniardises",
+        "file": "8.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 159755,
+        "sha256": "3fa5031710775c31d0f4ee5cc3754f3356e209c59b6b27fcfeeab7c8ddee4953"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
       "variants": [
         {
-          "path": "/images/macarons-rose.webp",
-          "width": 1600,
-          "height": 1008,
-          "bytes": 60946
+          "path": "/images/siray-mignardises-assortiment-ca4da982.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 72172
         },
         {
-          "path": "/images/macarons-rose-1024.webp",
-          "width": 1024,
-          "height": 645,
-          "bytes": 31712
+          "path": "/images/siray-mignardises-assortiment-ca4da982-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 39906
         },
         {
-          "path": "/images/macarons-rose-640.webp",
-          "width": 640,
-          "height": 403,
-          "bytes": 16172
+          "path": "/images/siray-mignardises-assortiment-ca4da982-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 17434
+        }
+      ]
+    },
+    {
+      "id": "mignardises-burger",
+      "file": "/images/siray-mignardises-burger-47af9152.webp",
+      "alt": "Mini-burger présenté devant un assortiment de bouchées sur plateaux",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "mignardises",
+      "illustrative": false,
+      "focalPoint": "50% 58%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Les petits formats",
+      "galleryLabel": "Les petits formats",
+      "original": {
+        "folder": "miniardises",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 220741,
+        "sha256": "8c6fb5bb53b98322fa067624f2bd30a333477b293c185122ef79d3a2546baeb6"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-mignardises-burger-47af9152.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 109604
+        },
+        {
+          "path": "/images/siray-mignardises-burger-47af9152-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 62400
+        },
+        {
+          "path": "/images/siray-mignardises-burger-47af9152-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 27128
+        }
+      ]
+    },
+    {
+      "id": "brunch-toasts",
+      "file": "/images/siray-brunch-toasts-6239a88d.webp",
+      "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "brunch-box",
+      "illustrative": false,
+      "focalPoint": "50% 72%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Le brunch salé",
+      "galleryLabel": "Le brunch salé",
+      "original": {
+        "folder": "brunch box",
+        "file": "2.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 271502,
+        "sha256": "ab8fdab3977a7f03122a21d2ecf293c2c123d7d8b204f93126705e999c929bbb"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-brunch-toasts-6239a88d.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 142574
+        },
+        {
+          "path": "/images/siray-brunch-toasts-6239a88d-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 78268
+        },
+        {
+          "path": "/images/siray-brunch-toasts-6239a88d-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 29132
+        }
+      ]
+    },
+    {
+      "id": "brunch-douceurs",
+      "file": "/images/siray-brunch-douceurs-907f487c.webp",
+      "alt": "Brunch box ouverte avec des gaufres, des pâtisseries et des fruits",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "brunch-box",
+      "illustrative": false,
+      "focalPoint": "50% 70%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Le brunch gourmand",
+      "galleryLabel": "Le brunch gourmand",
+      "original": {
+        "folder": "brunch box",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 217784,
+        "sha256": "fe3d57c7869556ac12c28df45d170dcc28f1e00202c1624c654c9b3580d96aa0"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-brunch-douceurs-907f487c.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 127190
+        },
+        {
+          "path": "/images/siray-brunch-douceurs-907f487c-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 69806
+        },
+        {
+          "path": "/images/siray-brunch-douceurs-907f487c-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 25904
+        }
+      ]
+    },
+    {
+      "id": "brunch-partage",
+      "file": "/images/siray-brunch-partage-cd04c047.webp",
+      "alt": "Brunch box ouverte avec des tartines, de la charcuterie et des fruits",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "brunch-box",
+      "illustrative": false,
+      "focalPoint": "50% 70%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. À partager",
+      "galleryLabel": "À partager",
+      "original": {
+        "folder": "brunch box",
+        "file": "1.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 230686,
+        "sha256": "60f4c627c001f1beb923a04ff4f7c4333a33835c8d6e97380bbd853bde7e0e5d"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-brunch-partage-cd04c047.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 127554
+        },
+        {
+          "path": "/images/siray-brunch-partage-cd04c047-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 71728
+        },
+        {
+          "path": "/images/siray-brunch-partage-cd04c047-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 25974
+        }
+      ]
+    },
+    {
+      "id": "buffet-ensemble",
+      "file": "/images/siray-buffet-ensemble-474a9997.webp",
+      "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "buffets",
+      "illustrative": false,
+      "focalPoint": "50% 75%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. La table dressée",
+      "galleryLabel": "La table dressée",
+      "original": {
+        "folder": "buffets",
+        "file": "1.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 195228,
+        "sha256": "b875885328a4940f6b09133412e4b2909103a6a2f39f48d061b0f4fca38da4b1"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-buffet-ensemble-474a9997.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 102524
+        },
+        {
+          "path": "/images/siray-buffet-ensemble-474a9997-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 53464
+        },
+        {
+          "path": "/images/siray-buffet-ensemble-474a9997-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 19928
+        }
+      ]
+    },
+    {
+      "id": "buffet-desserts",
+      "file": "/images/siray-buffet-desserts-7f108c7a.webp",
+      "alt": "Verrines et desserts sur des présentoirs argentés près de fleurs blanches",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "buffets",
+      "illustrative": false,
+      "focalPoint": "50% 60%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Desserts & présentoirs",
+      "galleryLabel": "Desserts & présentoirs",
+      "original": {
+        "folder": "buffets",
+        "file": "2.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 230195,
+        "sha256": "0566296abc08f77971297e3f36923690d3a283fa957badee6650a93ef7ab0ef0"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 420,
+          "width": 1152,
+          "height": 1628
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-buffet-desserts-7f108c7a.webp",
+          "width": 1152,
+          "height": 1628,
+          "bytes": 128532
+        },
+        {
+          "path": "/images/siray-buffet-desserts-7f108c7a-720.webp",
+          "width": 720,
+          "height": 1018,
+          "bytes": 70156
+        },
+        {
+          "path": "/images/siray-buffet-desserts-7f108c7a-360.webp",
+          "width": 360,
+          "height": 509,
+          "bytes": 26618
+        }
+      ]
+    },
+    {
+      "id": "buffet-sale",
+      "file": "/images/siray-buffet-sale-f3950b25.webp",
+      "alt": "Bouchées salées présentées sur des tables drapées de blanc",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "buffets",
+      "illustrative": false,
+      "focalPoint": "50% 80%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Un buffet sur mesure",
+      "galleryLabel": "Un buffet sur mesure",
+      "original": {
+        "folder": "buffets",
+        "file": "3.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 223268,
+        "sha256": "cf63dffc3d1eb47e5d7c5647cf513f8fcf9395b563f76d5e7f72a31eee99f12d"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-buffet-sale-f3950b25.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 105394
+        },
+        {
+          "path": "/images/siray-buffet-sale-f3950b25-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 54846
+        },
+        {
+          "path": "/images/siray-buffet-sale-f3950b25-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 20412
+        }
+      ]
+    },
+    {
+      "id": "plateau-grazing",
+      "file": "/images/siray-plateau-grazing-5852832b.webp",
+      "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "plateaux",
+      "illustrative": false,
+      "focalPoint": "50% 72%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Grazing Platter",
+      "galleryLabel": "Grazing Platter",
+      "original": {
+        "folder": "plateaux",
+        "file": "2.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 233369,
+        "sha256": "e83fdd2e971350a001fd46dfee2f5588b456dd064774e8cbcde45bbb6eb1b435"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-plateau-grazing-5852832b.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 122654
+        },
+        {
+          "path": "/images/siray-plateau-grazing-5852832b-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 67640
+        },
+        {
+          "path": "/images/siray-plateau-grazing-5852832b-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 25850
+        }
+      ]
+    },
+    {
+      "id": "plateau-fruits",
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "plateaux",
+      "illustrative": false,
+      "focalPoint": "50% 50%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Fruits de saison",
+      "galleryLabel": "Fruits de saison",
+      "original": {
+        "folder": "plateaux",
+        "file": "1.jpeg",
+        "width": 1536,
+        "height": 2048,
+        "bytes": 418911,
+        "sha256": "ed97ca9c00e1fff86ad89e32faa2a521eb039bec21169325791c73183c848258"
+      },
+      "transform": {
+        "crop": null,
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-plateau-fruits-3ced1c4c.webp",
+          "width": 1200,
+          "height": 1600,
+          "bytes": 187656
+        },
+        {
+          "path": "/images/siray-plateau-fruits-3ced1c4c-720.webp",
+          "width": 720,
+          "height": 960,
+          "bytes": 93244
+        },
+        {
+          "path": "/images/siray-plateau-fruits-3ced1c4c-360.webp",
+          "width": 360,
+          "height": 480,
+          "bytes": 32112
+        }
+      ]
+    },
+    {
+      "id": "plateau-fromages",
+      "file": "/images/siray-plateau-fromages-b7acbdb5.webp",
+      "alt": "Plateau de fromages accompagné de fruits et de noix",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "plateaux",
+      "illustrative": false,
+      "focalPoint": "50% 72%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Les fromages",
+      "galleryLabel": "Les fromages",
+      "original": {
+        "folder": "plateaux",
+        "file": "3.jpeg",
+        "width": 1162,
+        "height": 2048,
+        "bytes": 181246,
+        "sha256": "e5f9f500d673b42eb494459a581eeec82efbc7aebe7fce0f273ba58ab7732e52"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 595,
+          "width": 1162,
+          "height": 1453
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-plateau-fromages-b7acbdb5.webp",
+          "width": 1162,
+          "height": 1453,
+          "bytes": 92454
+        },
+        {
+          "path": "/images/siray-plateau-fromages-b7acbdb5-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 53140
+        },
+        {
+          "path": "/images/siray-plateau-fromages-b7acbdb5-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 21994
+        }
+      ]
+    },
+    {
+      "id": "plateau-charcuterie",
+      "file": "/images/siray-plateau-charcuterie-b8691918.webp",
+      "alt": "Plateau de charcuteries dressées avec des fruits et des cornichons",
+      "author": "Siray Signature — photos fournies",
+      "source": "https://www.instagram.com/siraysignature/",
+      "sourceImage": null,
+      "license": "Photo fournie pour le site",
+      "licenseUrl": null,
+      "verifiedAt": "2026-11-19",
+      "licenseVerification": "Fichier fourni par le client pour son site; aucune identité de photographe ou licence publique déduite.",
+      "sourceType": "client",
+      "category": "plateaux",
+      "illustrative": false,
+      "focalPoint": "50% 72%",
+      "usageNote": "Recadrage technique pour limiter les marges vides, sans retouche créative. Les charcuteries",
+      "galleryLabel": "Les charcuteries",
+      "original": {
+        "folder": "plateaux",
+        "file": "4.jpeg",
+        "width": 1152,
+        "height": 2048,
+        "bytes": 248569,
+        "sha256": "118b03f50d62ac92b537a29a41ac03fa20a811e76a022b0ddbae5b1687733723"
+      },
+      "transform": {
+        "crop": {
+          "left": 0,
+          "top": 608,
+          "width": 1152,
+          "height": 1440
+        },
+        "autoOrient": true,
+        "colourSpace": "srgb",
+        "metadata": "removed",
+        "format": "webp",
+        "quality": 80,
+        "upscaled": false
+      },
+      "variants": [
+        {
+          "path": "/images/siray-plateau-charcuterie-b8691918.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 139942
+        },
+        {
+          "path": "/images/siray-plateau-charcuterie-b8691918-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 76518
+        },
+        {
+          "path": "/images/siray-plateau-charcuterie-b8691918-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 27652
         }
       ]
     },
@@ -157,167 +1561,29 @@
       "category": "cupcakes",
       "illustrative": true,
       "focalPoint": "50% 46%",
-      "usageNote": "Portrait ; garder plusieurs cupcakes pour comprendre la répétition.",
+      "usageNote": "Vignette Petites douceurs de l’accueil uniquement, exception conservée à la demande du client.",
       "variants": [
         {
           "path": "/images/cupcakes.webp",
           "width": 1064,
           "height": 1600,
-          "bytes": 69572
+          "bytes": 70096
         },
         {
-          "path": "/images/cupcakes-1024.webp",
-          "width": 681,
-          "height": 1024,
-          "bytes": 38008
+          "path": "/images/cupcakes-720.webp",
+          "width": 720,
+          "height": 1083,
+          "bytes": 46104
         },
         {
-          "path": "/images/cupcakes-640.webp",
-          "width": 426,
-          "height": 640,
-          "bytes": 20074
+          "path": "/images/cupcakes-360.webp",
+          "width": 360,
+          "height": 541,
+          "bytes": 18658
         }
-      ]
-    },
-    {
-      "file": "/images/buffet-gourmand.webp",
-      "alt": "Table de fromages, fruits et bouchées à partager",
-      "author": "Keith Tanner",
-      "source": "https://unsplash.com/photos/a-beautiful-charcuterie-board-full-of-delicious-treats-e4gkH3ZshF8",
-      "sourceImage": "https://images.unsplash.com/photo-1744848279507-f6e20e647792",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "buffets",
-      "illustrative": true,
-      "focalPoint": "50% 62%",
-      "usageNote": "Très large paysage ; idéal pour une respiration horizontale. Éviter une coupe verticale serrée.",
-      "variants": [
-        {
-          "path": "/images/buffet-gourmand.webp",
-          "width": 1600,
-          "height": 681,
-          "bytes": 58596
-        },
-        {
-          "path": "/images/buffet-gourmand-1024.webp",
-          "width": 1024,
-          "height": 436,
-          "bytes": 32272
-        },
-        {
-          "path": "/images/buffet-gourmand-640.webp",
-          "width": 640,
-          "height": 272,
-          "bytes": 17326
-        }
-      ]
-    },
-    {
-      "file": "/images/plateau-sale.webp",
-      "alt": "Planche de fromages et de charcuterie avec fruits",
-      "author": "Anto Meneghini",
-      "source": "https://unsplash.com/photos/a-delicious-charcuterie-board-with-bread-and-greenery-PlHdlc0Ja48",
-      "sourceImage": "https://images.unsplash.com/photo-1754572058122-771d8cb264d2",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "plateaux",
-      "illustrative": true,
-      "focalPoint": "50% 50%",
-      "usageNote": "Portrait très riche ; limiter le voisinage à une typographie sobre.",
-      "variants": [
-        {
-          "path": "/images/plateau-sale.webp",
-          "width": 1067,
-          "height": 1600,
-          "bytes": 322492
-        },
-        {
-          "path": "/images/plateau-sale-1024.webp",
-          "width": 683,
-          "height": 1024,
-          "bytes": 136500
-        },
-        {
-          "path": "/images/plateau-sale-640.webp",
-          "width": 427,
-          "height": 640,
-          "bytes": 53026
-        }
-      ]
-    },
-    {
-      "file": "/images/table-reception.webp",
-      "alt": "Table de réception avec gâteau et petites pâtisseries",
-      "author": "Jonathan Borba",
-      "source": "https://unsplash.com/photos/elegant-dessert-table-with-a-white-cake-and-various-pastries-HKes9_amYnE",
-      "sourceImage": "https://images.unsplash.com/photo-1780586383003-7a8bb9375ae9",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "receptions",
-      "illustrative": true,
-      "focalPoint": "50% 57%",
-      "usageNote": "Paysage ; conserver l’équilibre entre gâteau, petits fours et végétal.",
-      "variants": [
-        {
-          "path": "/images/table-reception.webp",
-          "width": 1600,
-          "height": 1067,
-          "bytes": 179160
-        },
-        {
-          "path": "/images/table-reception-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 97530
-        },
-        {
-          "path": "/images/table-reception-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 51498
-        }
-      ]
-    },
-    {
-      "file": "/images/brunch.webp",
-      "alt": "Viennoiseries, fruits rouges et boissons sur une table",
-      "author": "Juan Pablo Lara",
-      "source": "https://unsplash.com/photos/croissant-pastry-with-berries-and-coffee-on-a-table-xAslUfIkYCE",
-      "sourceImage": "https://images.unsplash.com/photo-1763683944413-731050054d3a",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "brunch",
-      "illustrative": true,
-      "focalPoint": "49% 54%",
-      "usageNote": "Portrait chaleureux ; évoque un moment brunch, pas une box Siray existante.",
-      "variants": [
-        {
-          "path": "/images/brunch.webp",
-          "width": 1067,
-          "height": 1600,
-          "bytes": 120018
-        },
-        {
-          "path": "/images/brunch-1024.webp",
-          "width": 683,
-          "height": 1024,
-          "bytes": 62626
-        },
-        {
-          "path": "/images/brunch-640.webp",
-          "width": 427,
-          "height": 640,
-          "bytes": 31884
-        }
-      ]
+      ],
+      "id": "cupcakes",
+      "sourceType": "stand-in"
     },
     {
       "file": "/images/fruits.webp",
@@ -332,168 +1598,29 @@
       "category": "fruits",
       "illustrative": true,
       "focalPoint": "51% 51%",
-      "usageNote": "Paysage ou carré ; garder la composition de fruits entière. Évoque un plateau frais, sans marque visible.",
+      "usageNote": "Illustration d’ingrédients des volets de saveurs, pas une réalisation Siray.",
       "variants": [
         {
           "path": "/images/fruits.webp",
-          "width": 1600,
-          "height": 1067,
-          "bytes": 105572
+          "width": 1200,
+          "height": 800,
+          "bytes": 77170
         },
         {
-          "path": "/images/fruits-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 61368
-        },
-        {
-          "path": "/images/fruits-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 33254
-        }
-      ]
-    },
-    {
-      "file": "/images/framboises.webp",
-      "alt": "Framboises dans une lumière dorée",
-      "author": "Ben Moore",
-      "source": "https://unsplash.com/photos/pJILiyPdrXI",
-      "sourceImage": "https://images.unsplash.com/11/berries.jpg",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "details",
-      "illustrative": true,
-      "focalPoint": "50% 74%",
-      "usageNote": "Grand espace clair en haut ; image de détail uniquement, sans promesse d’ingrédients.",
-      "variants": [
-        {
-          "path": "/images/framboises.webp",
-          "width": 1600,
-          "height": 1200,
-          "bytes": 37812
-        },
-        {
-          "path": "/images/framboises-1024.webp",
-          "width": 1024,
-          "height": 768,
-          "bytes": 19582
-        },
-        {
-          "path": "/images/framboises-640.webp",
-          "width": 640,
+          "path": "/images/fruits-720.webp",
+          "width": 720,
           "height": 480,
-          "bytes": 10102
-        }
-      ]
-    },
-    {
-      "file": "/images/cupcake-detail.webp",
-      "alt": "Cupcake à la crème blanche sur fond sombre",
-      "author": "Andrew Valdivia",
-      "source": "https://unsplash.com/photos/cupcake-with-white-icing-on-top-uEB9eYRALyc",
-      "sourceImage": "https://images.unsplash.com/photo-1597991772316-2cb16ed1ca3d",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official source page marked “Free to use under the Unsplash License”; official Unsplash licence reviewed.",
-      "category": "details",
-      "illustrative": true,
-      "focalPoint": "50% 48%",
-      "usageNote": "Portrait sombre ; beau contraste de matière, objet isolé.",
-      "variants": [
-        {
-          "path": "/images/cupcake-detail.webp",
-          "width": 1067,
-          "height": 1600,
-          "bytes": 25604
+          "bytes": 43896
         },
         {
-          "path": "/images/cupcake-detail-1024.webp",
-          "width": 683,
-          "height": 1024,
-          "bytes": 11544
-        },
-        {
-          "path": "/images/cupcake-detail-640.webp",
-          "width": 427,
-          "height": 640,
-          "bytes": 5744
-        }
-      ]
-    },
-    {
-      "alt": "Petit gâteau blanc personnalisé dans sa boîte, tenu en main",
-      "author": "Katia Damyan",
-      "source": "https://www.pexels.com/photo/model-in-black-blazer-holding-a-box-with-mini-cake-19908504/",
-      "sourceImage": "https://images.pexels.com/photos/19908504/pexels-photo-19908504.jpeg",
-      "license": "Pexels License",
-      "licenseUrl": "https://www.pexels.com/license/",
-      "focalPoint": "50% 50%",
-      "category": "cakes",
-      "file": "/images/bento-cake.webp",
-      "illustrative": true,
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
-      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
-      "variants": [
-        {
-          "path": "/images/bento-cake.webp",
-          "width": 1202,
-          "height": 819,
-          "bytes": 28388
-        },
-        {
-          "path": "/images/bento-cake-1024.webp",
-          "width": 1024,
-          "height": 698,
-          "bytes": 23294
-        },
-        {
-          "path": "/images/bento-cake-640.webp",
-          "width": 640,
-          "height": 436,
-          "bytes": 13530
+          "path": "/images/fruits-360.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 17536
         }
       ],
-      "cropNote": "Recadrage technique sur le gâteau et les mains ; visage exclu, aucune identité présentée comme cliente."
-    },
-    {
-      "alt": "Petit gâteau personnalisé aux cœurs colorés, tenu en main",
-      "author": "Muneer ahmed ok",
-      "source": "https://unsplash.com/photos/hands-holding-a-small-cake-decorated-with-hearts-AKI3g3Xsm5A",
-      "sourceImage": "https://images.unsplash.com/photo-1762950350879-650b940db566",
-      "license": "Unsplash License",
-      "licenseUrl": "https://unsplash.com/license",
-      "focalPoint": "50% 48%",
-      "category": "cakes",
-      "file": "/images/bento-detail.webp",
-      "illustrative": true,
-      "verifiedAt": "2026-11-18",
-      "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
-      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
-      "variants": [
-        {
-          "path": "/images/bento-detail.webp",
-          "width": 1600,
-          "height": 1067,
-          "bytes": 70746
-        },
-        {
-          "path": "/images/bento-detail-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 39768
-        },
-        {
-          "path": "/images/bento-detail-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 22520
-        }
-      ]
+      "id": "fruits",
+      "sourceType": "stand-in"
     },
     {
       "alt": "Morceaux de chocolat noir, au lait et blanc sur un tissu brun",
@@ -508,27 +1635,29 @@
       "illustrative": true,
       "verifiedAt": "2026-11-18",
       "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
-      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "usageNote": "Illustration d’ingrédients des volets de saveurs, pas une réalisation Siray.",
       "variants": [
         {
           "path": "/images/chocolat.webp",
-          "width": 1280,
-          "height": 854,
-          "bytes": 182122
+          "width": 1200,
+          "height": 801,
+          "bytes": 140792
         },
         {
-          "path": "/images/chocolat-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 112298
+          "path": "/images/chocolat-720.webp",
+          "width": 720,
+          "height": 480,
+          "bytes": 53040
         },
         {
-          "path": "/images/chocolat-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 34548
+          "path": "/images/chocolat-360.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 15014
         }
-      ]
+      ],
+      "id": "chocolat",
+      "sourceType": "stand-in"
     },
     {
       "alt": "Pistaches décortiquées dans un bol blanc",
@@ -543,27 +1672,29 @@
       "illustrative": true,
       "verifiedAt": "2026-11-18",
       "licenseVerification": "Official photo page and licence reviewed. Photo inspected at full size before inclusion.",
-      "usageNote": "Visuel provisoire à remplacer par une réalisation Siray autorisée.",
+      "usageNote": "Illustration d’ingrédients des volets de saveurs, pas une réalisation Siray.",
       "variants": [
         {
           "path": "/images/notes-gourmandes.webp",
-          "width": 1600,
-          "height": 1067,
-          "bytes": 91362
+          "width": 1200,
+          "height": 800,
+          "bytes": 53036
         },
         {
-          "path": "/images/notes-gourmandes-1024.webp",
-          "width": 1024,
-          "height": 683,
-          "bytes": 50810
+          "path": "/images/notes-gourmandes-720.webp",
+          "width": 720,
+          "height": 480,
+          "bytes": 29008
         },
         {
-          "path": "/images/notes-gourmandes-640.webp",
-          "width": 640,
-          "height": 427,
-          "bytes": 27922
+          "path": "/images/notes-gourmandes-360.webp",
+          "width": 360,
+          "height": 240,
+          "bytes": 12386
         }
-      ]
+      ],
+      "id": "notes-gourmandes",
+      "sourceType": "stand-in"
     }
   ]
 }

@@ -1,4 +1,48 @@
-# Images provisoires — V6
+# Photographies Siray Signature — V8
+
+## Corpus fourni et sélection
+
+Les photographies de réalisations intégrées à la V8 proviennent des fichiers fournis par le client dans `images/`, à la racine de l’espace de travail. Elles couvrent les gâteaux, les brunch box, les mignardises, les buffets et les plateaux. Les prises de vue sont sélectionnées pour leur netteté, la lisibilité du sujet sur téléphone et la variété des scènes. La sélection finale comprend **26 photographies client**. La liste exacte, les noms de fichiers livrés et leurs usages sont consignés dans le manifeste V8 `docs/image-credits.json`.
+
+Les revues de sélection sont consignées dans `docs/qa/v8-photo-review-cakes.md` et `docs/qa/v8-photo-review-tables.md`. Le doublon exact `miniardises/6.jpeg`, identique à `miniardises/5.jpeg`, n’ajoute pas une nouvelle photographie à la sélection. Les photos de préparations ne permettent pas de déduire une recette complète, le nom d’une formule, une quantité de convives, une provenance, une allergie ou une certification.
+
+## Provenance et droits
+
+Le manifeste distingue deux provenances :
+
+- Les photographies fournies pour le site portent `sourceType: "client"` et `illustrative: false`. Le champ d’attribution est `author: "Siray Signature — photos fournies"`, avec le compte [@siraysignature](https://www.instagram.com/siraysignature/) comme lien de provenance. `license: "Photo fournie pour le site"` et `licenseUrl: null` consignent cette mise à disposition ; ils ne désignent pas une licence publique standard et n’inventent pas un photographe nominatif.
+- Les quatre illustrations conservées portent `sourceType: "stand-in"` et `illustrative: true`. Leurs auteurs, pages sources et licences restent ceux vérifiés dans le registre initial. Elles ne sont pas attribuées aux réalisations Siray Signature.
+
+La page `/credits/` présente les photographies fournies par la maison dans un paragraphe distinct, puis les quatre crédits d’illustrations. Le lien **« Crédits des images »** demeure dans le footer. Il n’y a pas de légendes de provenance répétées dans les fiches ou la galerie.
+
+## Illustrations conservées
+
+Seules les quatre images ci-dessous restent utilisées comme illustrations dans la V8. La photographie de cupcakes est conservée sur l’accueil avec l’accord de l’utilisateur ; les trois autres illustrent les familles de saveurs, sans promettre une recette précise.
+
+| Fichier | Usage V8 | Auteur et source | Licence |
+| --- | --- | --- | --- |
+| `/images/cupcakes.webp` | Photographie de cupcakes de l’accueil. | [Sara Cervera](https://unsplash.com/photos/cupcakes-with-white-icing-on-top-I8U6XXVmdKo) | [Unsplash License](https://unsplash.com/license) |
+| `/images/fruits.webp` | Volet Fruits des saveurs. | [Katja Ano](https://unsplash.com/photos/a-plate-of-fruit-with-oranges-strawberries-and-blueberries-Zp_nqma-4aY) | [Unsplash License](https://unsplash.com/license) |
+| `/images/chocolat.webp` | Volet Chocolats des saveurs. | [Tamanna Rumee](https://unsplash.com/photos/assorted-chocolate-pieces-scattered-on-a-dark-cloth-l3fpWq7zExM) | [Unsplash License](https://unsplash.com/license) |
+| `/images/notes-gourmandes.webp` | Volet Notes gourmandes des saveurs. | [David Trinks](https://unsplash.com/photos/a-white-bowl-filled-with-pistachios-on-top-of-a-table-9deyN2wkeM8) | [Unsplash License](https://unsplash.com/license) |
+
+Aucun visuel Unsplash+, ni photographie de Grolet, Louis Vuitton ou Hermès, n’est intégré. Les anciennes illustrations retirées restent documentées dans l’archive V6 ci-dessous pour conserver la traçabilité ; cette archive ne décrit pas la sélection courante.
+
+## Préparation technique V8
+
+La chaîne V8 prépare des fichiers **WebP locaux en qualité 80**. Les photographies client reçoivent des variantes responsives de **360, 720 et 1 152 px de largeur**, avec un plafond de **1 200 px** et aucun agrandissement au-delà de la source. Les quatre illustrations conservées sont également réoptimisées en 360, 720 et au maximum 1 200 px, sans agrandissement. La rotation EXIF est appliquée, les couleurs sont converties en sRGB et les métadonnées sont retirées des fichiers livrés. Les originaux fournis restent intacts, hors du dossier public. Les clés des fichiers client comportent une empreinte ; chaque entrée du registre conserve aussi un identifiant sémantique.
+
+Le traitement se limite à la conversion, au redimensionnement et aux cadrages techniques. Les grandes marges hautes vides peuvent être retirées quand elles gênent la lecture du sujet ; le ratio après ce cadrage est conservé dans les variantes. Les dimensions, poids et points focaux réels sont consignés dans le manifeste, et ne doivent pas être déduits du seul nom de fichier. **Aucune retouche créative, génération ou modification des gâteaux, des garnitures ou des scènes n’est effectuée.** Les points focaux adaptent le sujet à son cadre sans ajout de décor ni filtre de couleur. La photographie principale et ses variantes se remplacent ensemble ; les textes alternatifs décrivent ce qui est réellement visible.
+
+Les photographies portrait sont favorisées sur mobile. Les points focaux proposés dans les revues doivent être vérifiés dans les cadres réels : retenir le bas des brunch box, retirer une partie du mur des buffets et préserver les extrémités des plateaux. Un même fichier ne doit pas être répété dans plusieurs volets d’une même fiche pour remplir des emplacements. Les images Fruits, Chocolats et Notes gourmandes restent liées à leur famille ; les bento cakes sont illustrés par de vrais bento cakes fournis, sans remplacement par un cupcake.
+
+Ce document décrit le choix et le contrat de préparation V8 ; il ne prouve pas à lui seul la génération des variantes, une compilation ou une validation navigateur. Les contrôles réalisés et les éventuels écarts sont consignés séparément dans les rapports V8 de `docs/qa/`.
+
+---
+
+Les informations suivantes décrivent la façade **avant l’intégration des photographies client**. Les noms, auteurs, sources, licences et opérations de la V6 sont conservés comme historique. Les affirmations au présent appartiennent à cette archive et ne remplacent pas l’état V8 décrit ci-dessus.
+
+## Archive — images provisoires V6
 
 Les photographies servent à composer et à vérifier la façade en attendant les réalisations autorisées de Siray Signature. Elles ne montrent pas les créations de la maison et ne doivent pas être présentées comme « nos réalisations ». Les parcours ne répètent plus de légende de provenance ; le lien **« Crédits des images »** du footer donne accès aux auteurs et licences. Le registre `docs/image-credits.json` reste la référence pour chaque fichier.
 
@@ -6,7 +50,7 @@ Les sources utilisent deux licences : [Unsplash License](https://unsplash.com/li
 
 Les images sont locales et converties en WebP. Chaque série comporte le fichier principal `/images/nom.webp` et les variantes `/images/nom-1024.webp` et `/images/nom-640.webp`. Le côté long est plafonné respectivement à 1 600, 1 024 et 640 px, sans agrandissement de la source. Les portraits ont donc une largeur inférieure à ces valeurs. Utiliser les dimensions réelles du manifeste pour les descripteurs `srcset` ; le nom de variante n’est pas sa largeur garantie.
 
-## Nouveaux visuels V6
+### Nouveaux visuels V6
 
 Les quatre ajouts distinguent le format bento des cupcakes et associent une image aux familles de saveurs. `bento-cake` est l’image principale du bento ; `bento-detail` est réservé à la préparation de sa demande. Ces photographies restent des substituts, à remplacer par les réalisations Siray.
 
@@ -19,7 +63,7 @@ Les quatre ajouts distinguent le format bento des cupcakes et associent une imag
 
 Le fichier `bento-cake.webp` provient de Pexels. Un recadrage technique retire le visage présent dans la source et conserve le gâteau avec les mains ; il ne modifie ni le gâteau ni sa décoration. Les autres ajouts viennent d’Unsplash. Les transformations consignées sont le redimensionnement, la conversion et les cadrages techniques ; aucune retouche créative ou génération d’image n’est revendiquée.
 
-## Autres visuels conservés
+### Autres visuels conservés à la V6
 
 | Fichier | Usage et cadrage | Point focal | Auteur et source | Licence |
 | --- | --- | --- | --- | --- |
@@ -36,7 +80,7 @@ Le fichier `bento-cake.webp` provient de Pexels. Un recadrage technique retire l
 | `/images/framboises.webp` | Grand espace clair en haut ; image de détail uniquement, sans promesse d’ingrédients. | 50% 74% | [Ben Moore](https://unsplash.com/photos/pJILiyPdrXI) | [Unsplash License](https://unsplash.com/license) |
 | `/images/cupcake-detail.webp` | Portrait sombre ; beau contraste de matière, objet isolé. | 50% 48% | [Andrew Valdivia](https://unsplash.com/photos/cupcake-with-white-icing-on-top-uEB9eYRALyc) | [Unsplash License](https://unsplash.com/license) |
 
-## Remplacement par les photographies de Siray
+### Procédure de remplacement documentée à la V6
 
 Remplacer la photographie principale et toutes ses variantes ensemble. Décrire ce qui est réellement visible dans le texte alternatif, adapter le point focal à la nouvelle composition, puis mettre à jour le manifeste et les crédits publics. Ne pas déduire des images provisoires des saveurs, recettes, tailles, personnes clientes ou tarifs absents du contenu métier.
 

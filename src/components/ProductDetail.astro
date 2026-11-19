@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from './Photo.astro';
+import { collectionPhotography, photo } from '../data/photography';
 import PlatterChoices from './PlatterChoices.astro';
 import BuffetService from './BuffetService.astro';
 import {
@@ -29,19 +30,9 @@ const tabs = [
   ...(layer ? [{ id: 'signatures', label: 'Associations Signature' }] : []),
   { id: 'votre-demande', label: buffet ? 'Demander un devis' : 'Préparer ma demande' },
 ];
-const secondary: Record<string, { image: string; alt: string }> = {
-  'layer-cakes': { image: 'gateau-creme', alt: 'Volutes de crème sur un gâteau' },
-  'bento-cakes': { image: 'gateau-creme', alt: 'Détail de volutes de crème sur un gâteau' },
-  mignardises: { image: 'macarons-rose', alt: 'Macarons roses et ivoire' },
-  cupcakes: { image: 'cupcake-detail', alt: 'Cupcake à la crème blanche sur fond sombre' },
-  'brunch-box': { image: 'fruits', alt: 'Fraises, myrtilles et oranges' },
-  buffets: { image: 'table-reception', alt: 'Table de réception et pâtisseries' },
-  plateaux: { image: 'buffet-gourmand', alt: 'Fromages, fruits et bouchées à partager' },
-};
-const detailPhoto = secondary[item.slug];
-const requestPhoto = item.slug === 'bento-cakes'
-  ? { image: 'bento-detail', alt: 'Bento cake décoré d’un cœur' }
-  : { image: item.image, alt: item.alt };
+const detailPhoto = collectionPhotography[item.slug].detail;
+const requestPhoto = collectionPhotography[item.slug].request;
+const signaturePhoto = photo('layer-fleurs');
 const flavorImages = [
   { name: 'fruits', alt: 'Fraises, myrtilles et oranges' },
   { name: 'chocolat', alt: 'Chocolat noir, blanc et au lait' },
@@ -157,7 +148,7 @@ const conciseNotes: Record<string, string> = {
           {layer && (
             <section id="signatures" class="v5-product-panel" data-v5-panel>
               <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>Neuf compositions réservées aux layer cakes.</p></div>
-              <div class="v5-signature-intro"><Photo name="framboises" alt="Framboises dans une lumière dorée" sizes="(min-width: 960px) 45vw, 100vw" /></div>
+              <div class="v5-signature-intro"><Photo name={signaturePhoto.image} alt={signaturePhoto.alt} sizes="(min-width: 960px) 45vw, 100vw" /></div>
               <dl class="v6-signature-menu">{signatureFlavors.map((flavor) => <div><dt>{flavor.name}</dt><dd>{flavor.composition}</dd></div>)}</dl>
             </section>
           )}
@@ -197,7 +188,7 @@ const conciseNotes: Record<string, string> = {
   .v5-product-studio { display: grid; gap: 28px; overflow-anchor: none; }
   .v5-product-media { min-width: 0; }
   .v5-photo-composition { position: relative; padding: 0 28px 20px 0; }
-  .v5-product-photo { height: 224px; overflow: hidden; background: var(--surface); }
+  .v5-product-photo { height: auto; aspect-ratio: 4/5; overflow: hidden; background: var(--surface); }
   .v5-product-photo :global(img), .v5-detail-photo :global(img), .v6-flavor-photo :global(img), .v5-signature-intro :global(img), .v5-request-photo :global(img), .v5-related-photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .v5-detail-photo { position: absolute; right: 0; bottom: 0; width: 112px; height: 116px; border: 8px solid var(--paper); background: var(--surface); }
   .v5-product-explorer { min-width: 0; }
@@ -297,7 +288,7 @@ const conciseNotes: Record<string, string> = {
   }
   @media (min-width: 600px) {
     .v5-product-heading { gap: 20px; padding-bottom: 32px; }
-    .v5-product-photo { height: 360px; }
+    .v5-product-photo { height: auto; }
     .v5-photo-composition { padding-right: 48px; padding-bottom: 24px; }
     .v5-detail-photo { width: 180px; height: 184px; }
     .v5-product-tabs button { font-size: 14px; }

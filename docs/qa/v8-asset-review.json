@@ -1,0 +1,2133 @@
+{
+  "version": "V8",
+  "audit": "read-only assets, references and provenance",
+  "generatedAtUTC": "2026-11-19T00:22:44.091370+00:00",
+  "scope": {
+    "root": ".",
+    "sourceFiles": [
+      "docs/image-credits.json",
+      "src/data/photography.ts",
+      "src/data/site.ts",
+      "src/components/Photo.astro",
+      "src/components/ProductDetail.astro",
+      "src/pages/index.astro",
+      "src/pages/galerie.astro",
+      "src/pages/la-maison.astro",
+      "src/layouts/Layout.astro",
+      "src/scripts/site.ts"
+    ],
+    "excluded": [
+      "Browser rendering and network measurements",
+      "Build and Git",
+      "External licence re-verification",
+      "Full pixel decoding: WebP dimensions/metadata checked from RIFF and VP8/VP8L/VP8X headers"
+    ]
+  },
+  "summary": {
+    "pass": true,
+    "checks": 31,
+    "passed": 31,
+    "failed": [],
+    "registryImages": 30,
+    "sourceTypes": {
+      "client": 26,
+      "stand-in": 4
+    },
+    "webPFiles": 90,
+    "galleryCounts": {
+      "layer-cakes": 6,
+      "brunch-box": 3,
+      "bento-cakes": 4,
+      "plateaux": 4,
+      "cupcakes": 3,
+      "buffets": 3,
+      "mignardises": 3
+    }
+  },
+  "checks": [
+    {
+      "name": "30 entries: 26 client and 4 stand-in",
+      "pass": true,
+      "evidence": {
+        "client": 26,
+        "stand-in": 4
+      }
+    },
+    {
+      "name": "IDs, main files and 90 variant paths are unique",
+      "pass": true,
+      "evidence": {
+        "ids": 30,
+        "mainFiles": 30,
+        "variantPaths": 90
+      }
+    },
+    {
+      "name": "Registered variants exactly match 90 public WebP files",
+      "pass": true,
+      "evidence": {
+        "diskCount": 90,
+        "missing": [],
+        "unregistered": []
+      }
+    },
+    {
+      "name": "All 90 dimensions, byte sizes and RIFF lengths match",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "name": "No EXIF, XMP or ICC metadata chunks in 90 files",
+      "pass": true,
+      "evidence": {
+        "VP8 ": 90
+      }
+    },
+    {
+      "name": "Generated variants are byte-distinct",
+      "pass": true,
+      "evidence": {
+        "distinctHashes": 90
+      }
+    },
+    {
+      "name": "All entries have alt/category/focalPoint and 3 variants",
+      "pass": true,
+      "evidence": {
+        "entriesChecked": 30
+      }
+    },
+    {
+      "name": "26 client files match supplied original bytes and SHA-256",
+      "pass": true,
+      "evidence": {
+        "checked": 26,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "Crop bounds and generated dimensions do not imply upscaling",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "name": "Client versus illustration flags are consistent",
+      "pass": true,
+      "evidence": {
+        "stockIDs": [
+          "cupcakes",
+          "fruits",
+          "chocolat",
+          "notes-gourmandes"
+        ]
+      }
+    },
+    {
+      "name": "Client credit does not invent public licence or photographer identity",
+      "pass": true,
+      "evidence": {
+        "clientEntries": 26
+      }
+    },
+    {
+      "name": "Four stock entries preserve author/source/licence fields",
+      "pass": true,
+      "evidence": {
+        "verification": "Current registry fields only; external licence verification not repeated."
+      }
+    },
+    {
+      "name": "All central photo identifiers resolve",
+      "pass": true,
+      "evidence": {
+        "referencedIDs": 26,
+        "unknown": []
+      }
+    },
+    {
+      "name": "Seven distinct category covers are client images",
+      "pass": true,
+      "evidence": {
+        "layer-cakes": "layer-fruits",
+        "bento-cakes": "bento-rubans",
+        "mignardises": "mignardises-toasts",
+        "cupcakes": "cupcakes-fleurs",
+        "brunch-box": "brunch-toasts",
+        "buffets": "buffet-ensemble",
+        "plateaux": "plateau-grazing"
+      }
+    },
+    {
+      "name": "Each of seven sheets has three distinct client views",
+      "pass": true,
+      "evidence": [
+        {
+          "category": "layer-cakes",
+          "cover": "layer-fruits",
+          "detail": "layer-rouge",
+          "request": "layer-etages",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "bento-cakes",
+          "cover": "bento-rubans",
+          "detail": "bento-vert",
+          "request": "bento-coffrets",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "mignardises",
+          "cover": "mignardises-toasts",
+          "detail": "mignardises-assortiment",
+          "request": "mignardises-burger",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "cupcakes",
+          "cover": "cupcakes-fleurs",
+          "detail": "cupcake-presentoir",
+          "request": "cupcakes-coffret",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "brunch-box",
+          "cover": "brunch-toasts",
+          "detail": "brunch-douceurs",
+          "request": "brunch-partage",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "buffets",
+          "cover": "buffet-ensemble",
+          "detail": "buffet-desserts",
+          "request": "buffet-sale",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        },
+        {
+          "category": "plateaux",
+          "cover": "plateau-grazing",
+          "detail": "plateau-fruits",
+          "request": "plateau-fromages",
+          "threeDistinctIDs": true,
+          "threeDistinctOriginals": true,
+          "allClient": true,
+          "sameCategory": true
+        }
+      ]
+    },
+    {
+      "name": "Five distinct client hero slides, charcuterie fifth, no cover reused",
+      "pass": true,
+      "evidence": {
+        "hero": {
+          "layer-roses": "50% 40%",
+          "bento-fleurs": "50% 40%",
+          "brunch-partage": "50% 60%",
+          "buffet-sale": "50% 80%",
+          "plateau-charcuterie": "50% 85%"
+        },
+        "intersectionWithCovers": []
+      }
+    },
+    {
+      "name": "No exact image repeated across the home composition",
+      "pass": true,
+      "evidence": {
+        "count": 16,
+        "distinct": 16,
+        "ids": [
+          "layer-roses",
+          "bento-fleurs",
+          "brunch-partage",
+          "buffet-sale",
+          "plateau-charcuterie",
+          "layer-fruits",
+          "bento-rubans",
+          "mignardises-toasts",
+          "cupcakes-fleurs",
+          "brunch-toasts",
+          "buffet-ensemble",
+          "plateau-grazing",
+          "layer-etages",
+          "layer-coquillages",
+          "brunch-douceurs",
+          "cupcakes"
+        ]
+      }
+    },
+    {
+      "name": "26 unique gallery photos are client images across seven categories",
+      "pass": true,
+      "evidence": {
+        "counts": {
+          "layer-cakes": 6,
+          "brunch-box": 3,
+          "bento-cakes": 4,
+          "plateaux": 4,
+          "cupcakes": 3,
+          "buffets": 3,
+          "mignardises": 3
+        },
+        "ids": [
+          "layer-roses",
+          "brunch-toasts",
+          "bento-rubans",
+          "plateau-fruits",
+          "cupcakes-fleurs",
+          "buffet-ensemble",
+          "mignardises-toasts",
+          "layer-fruits",
+          "plateau-grazing",
+          "bento-vert",
+          "brunch-douceurs",
+          "layer-rouge",
+          "cupcake-presentoir",
+          "buffet-desserts",
+          "mignardises-assortiment",
+          "layer-coquillages",
+          "plateau-charcuterie",
+          "bento-coffrets",
+          "brunch-partage",
+          "cupcakes-coffret",
+          "buffet-sale",
+          "layer-etages",
+          "plateau-fromages",
+          "mignardises-burger",
+          "bento-fleurs",
+          "layer-fleurs"
+        ]
+      }
+    },
+    {
+      "name": "Gallery filters are all plus seven category IDs",
+      "pass": true,
+      "evidence": [
+        "all",
+        "layer-cakes",
+        "bento-cakes",
+        "mignardises",
+        "cupcakes",
+        "brunch-box",
+        "buffets",
+        "plateaux"
+      ]
+    },
+    {
+      "name": "Gallery rejects stock references at data mapping time",
+      "pass": true,
+      "evidence": {
+        "source": "src/data/photography.ts galleryPhotos"
+      }
+    },
+    {
+      "name": "Every literal Photo name resolves",
+      "pass": true,
+      "evidence": [
+        {
+          "source": "src/pages/index.astro",
+          "name": "cupcakes",
+          "resolved": true,
+          "sourceType": "stand-in"
+        }
+      ]
+    },
+    {
+      "name": "Only stock product literal is the allowed home carnet cupcake",
+      "pass": true,
+      "evidence": {
+        "literalStock": [
+          {
+            "source": "src/pages/index.astro",
+            "name": "cupcakes",
+            "resolved": true,
+            "sourceType": "stand-in"
+          }
+        ],
+        "ingredientIllustrations": [
+          "fruits",
+          "chocolat",
+          "notes-gourmandes"
+        ],
+        "interpretation": "Three ingredient stock images are illustrations, never gallery/hero/category cover/detail/request photographs."
+      }
+    },
+    {
+      "name": "All seven collection records use their photography cover",
+      "pass": true,
+      "evidence": [
+        "layer-cakes",
+        "bento-cakes",
+        "mignardises",
+        "cupcakes",
+        "brunch-box",
+        "buffets",
+        "plateaux"
+      ]
+    },
+    {
+      "name": "Photo provenance marker comes from sourceType",
+      "pass": true,
+      "evidence": {
+        "unknownFallback": "stand-in"
+      }
+    },
+    {
+      "name": "Deferred images retain placeholder, no active srcset, real data references and dimensions",
+      "pass": true,
+      "evidence": {
+        "scope": "Source contract; output DOM/network not measured."
+      }
+    },
+    {
+      "name": "Home first scene is eager and inactive scenes are deferred",
+      "pass": true,
+      "evidence": {
+        "firstImageFallback": true,
+        "inactiveSceneDataOnly": true
+      }
+    },
+    {
+      "name": "Hero hydration order is eager, srcset, src, decode then stale guard",
+      "pass": true,
+      "evidence": {
+        "characterOffsets": [
+          3406,
+          3473,
+          3594,
+          3673
+        ]
+      }
+    },
+    {
+      "name": "Cleanup invalidates pending changes and removes listeners/observer",
+      "pass": true,
+      "evidence": {
+        "scope": "Source review only"
+      }
+    },
+    {
+      "name": "Hero still respects reduced motion, visibility and user surface control",
+      "pass": true,
+      "evidence": {
+        "scope": "No visible pause control added; photographic native surface remains."
+      }
+    },
+    {
+      "name": "Hero has scoped position override",
+      "pass": true,
+      "evidence": {
+        "layer-roses": "50% 40%",
+        "bento-fleurs": "50% 40%",
+        "brunch-partage": "50% 60%",
+        "buffet-sale": "50% 80%",
+        "plateau-charcuterie": "50% 85%"
+      }
+    },
+    {
+      "name": "Inspected snapshot stable throughout audit",
+      "pass": true,
+      "evidence": []
+    }
+  ],
+  "reviewNotes": [
+    {
+      "severity": "resilience consideration",
+      "topic": "Decode failure",
+      "finding": "Existing decode().catch(() => {}) permits a transition after a decode/network failure. V8 hydration retains this previous behavior. Optional improvement: keep the current frame if the target remains broken, retry or skip. No source edited."
+    },
+    {
+      "severity": "scope limit",
+      "topic": "Transition reset",
+      "finding": "Cleanup invalidates pending changes and releases listeners/observer. A request already started before navigation is not explicitly cancelled; browser request behavior and route timing were not tested."
+    },
+    {
+      "severity": "scope limit",
+      "topic": "Provenance",
+      "finding": "Client status is supported by hashes matching files supplied by the user and the explicit registry wording, without deriving a photographer identity or public licence."
+    }
+  ],
+  "sourceSHA256": {
+    "docs/image-credits.json": "8bd38d3ba6f929737be0d333bc55bb4db00e33593ddd68187b2be8e3e1391d36",
+    "src/data/photography.ts": "4db5367d2834be2bfb336a91fb8c822676674b8c5e06918c01c113284d1fd075",
+    "src/data/site.ts": "a8005a6e71cc0584cd50cd9e6ab7d230d49ab1a92846ced11a9ba60d810eb8be",
+    "src/components/Photo.astro": "e0044dbe159102a37619f80fdf05c3d087de5451cae4805afddb7a8724f69b93",
+    "src/components/ProductDetail.astro": "adee89f75be566f99599366da606117fc0314a2e7696aabb00ad099d872bce3c",
+    "src/pages/index.astro": "f7ec0b7e6b0fcea4c3d7707cbb8d3b47088d23de8558bcc3942235bd964ee5af",
+    "src/pages/galerie.astro": "65ff34dd2a79c1f15705b7882fd6006c72b711414e4c64373e32a0f816a68145",
+    "src/pages/la-maison.astro": "e5fe89e614e71aaa56bfcd7541b99fa2c1eac53453637da8fe9446aaa1823fc6",
+    "src/layouts/Layout.astro": "c674b58dc1708374c854aa2303b52a33476af23f20b757d37e7dec4d9c679281",
+    "src/scripts/site.ts": "b104f2ee7a9f6351d3b80a5748b15787a6c4683e7a09d77eef4ca87078b6bee6"
+  },
+  "originalFiles": [
+    {
+      "id": "layer-fruits",
+      "path": "../images/layer cakes/4.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "layer-rouge",
+      "path": "../images/layer cakes/2.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "layer-etages",
+      "path": "../images/layer cakes/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "layer-roses",
+      "path": "../images/layer cakes/6.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "layer-coquillages",
+      "path": "../images/layer cakes/7.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "layer-fleurs",
+      "path": "../images/layer cakes/WhatsApp Image 2026-11-18 at 23.22.18.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "bento-rubans",
+      "path": "../images/bento cakes/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "bento-vert",
+      "path": "../images/bento cakes/7.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "bento-coffrets",
+      "path": "../images/bento cakes/8.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "bento-fleurs",
+      "path": "../images/bento cakes/6.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "path": "../images/cupcakes/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "path": "../images/cupcakes/1.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "path": "../images/cupcakes/2.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "path": "../images/miniardises/11.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "path": "../images/miniardises/8.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "mignardises-burger",
+      "path": "../images/miniardises/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "brunch-toasts",
+      "path": "../images/brunch box/2.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "path": "../images/brunch box/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "brunch-partage",
+      "path": "../images/brunch box/1.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "path": "../images/buffets/1.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "buffet-desserts",
+      "path": "../images/buffets/2.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "buffet-sale",
+      "path": "../images/buffets/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "plateau-grazing",
+      "path": "../images/plateaux/2.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "plateau-fruits",
+      "path": "../images/plateaux/1.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "plateau-fromages",
+      "path": "../images/plateaux/3.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "path": "../images/plateaux/4.jpeg",
+      "hashMatches": true,
+      "bytesMatch": true,
+      "cropInBounds": true,
+      "noUpscaleFromDeclaredDimensions": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "layer-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fruits-6a211ed1.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 75218,
+      "sha256": "6a211ed1a3b9a85a92072525a0647542d63bf55f12355a0d5fcaaf17ffe2f9d3",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fruits-6a211ed1-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 39392,
+      "sha256": "3dfd1eb306c53dd77a0c7c743e6e84799cbec706d46cbea1bb8d74a53d83bc05",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fruits-6a211ed1-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 13958,
+      "sha256": "1df4ccdf1ff57af2e57e1ebb72b58402db8f3091babdb38ad07400f3cf832181",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-rouge",
+      "sourceType": "client",
+      "path": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "width": 1200,
+      "height": 1599,
+      "bytes": 42816,
+      "sha256": "7dc19bb3231e6badb87183df8c26364ec1c0a8f76ed2d98ab7eaa44f0e1a0488",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-rouge",
+      "sourceType": "client",
+      "path": "/images/siray-layer-rouge-7dc19bb3-720.webp",
+      "width": 720,
+      "height": 959,
+      "bytes": 21172,
+      "sha256": "d58c0e8324b3125932861bf434d78be7a92d182c0a695216660f01e73edc31ed",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-rouge",
+      "sourceType": "client",
+      "path": "/images/siray-layer-rouge-7dc19bb3-360.webp",
+      "width": 360,
+      "height": 480,
+      "bytes": 7302,
+      "sha256": "686d1901a1bb65f0872ae65954f0173a65126610d3b0b11a2022935a24c0ab6e",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-etages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 61646,
+      "sha256": "4dc5ba8b340ec786072b31a21f6b662c5a7b1c906ff795ad818064a1e9f1d712",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-etages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-etages-4dc5ba8b-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 31758,
+      "sha256": "48dec50ec863cae5cf47da5e579018d0d7041dfa215c6a512d71c6901b7d9024",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-etages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-etages-4dc5ba8b-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 10418,
+      "sha256": "fc0f76b4bbb95eb6e3debc99ad2823dd42c2d567587f1062d9dbcbf6ee1c1d8a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-roses",
+      "sourceType": "client",
+      "path": "/images/siray-layer-roses-c9c83e71.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 60282,
+      "sha256": "c9c83e71927494c01781a6c87c06dbdd8cb6137095e69b35ee70eddabbf8a75a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-roses",
+      "sourceType": "client",
+      "path": "/images/siray-layer-roses-c9c83e71-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 33204,
+      "sha256": "9dddee7df6741cccb97370a6be7802cf19b8450a61d69b19c27501995ff16f72",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-roses",
+      "sourceType": "client",
+      "path": "/images/siray-layer-roses-c9c83e71-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 13212,
+      "sha256": "e9eb402d35aba634cf918d28862a6f0ef770462ed2687ff1492d34723e8e59a3",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-coquillages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-coquillages-7c0454c7.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 115214,
+      "sha256": "7c0454c71330acc237066dd3e1635f85b5805858f6d8ba31a6c6bcfa1a203095",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-coquillages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-coquillages-7c0454c7-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 54046,
+      "sha256": "4c322c02ffdd610ffbce9b381758e71c553f3b9f8aff3c2f8681f9f183c3d2b0",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-coquillages",
+      "sourceType": "client",
+      "path": "/images/siray-layer-coquillages-7c0454c7-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 14566,
+      "sha256": "37853da781a9a27466a7f20ba2c2f97e4de978c9a073cdc80a0bd179b07a9564",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 73792,
+      "sha256": "7ef2db142fe6a17788c7c3e0bd2235aee652a9b1c680e84a88560174aa374692",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fleurs-7ef2db14-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 38638,
+      "sha256": "db8846042701c2529b1111b8164ddd0ce476356a4f19bb8b45fcb073d57d7af5",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "layer-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-layer-fleurs-7ef2db14-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 13090,
+      "sha256": "d246f0faa5500ad21862609869ae4bdbef91b5826d650a0a3d649f7f2c9b2658",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-rubans",
+      "sourceType": "client",
+      "path": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 49570,
+      "sha256": "1d8a5a95cd57676964c54d6cd009a1ca7620bdcc541220f6072d1097d7292809",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-rubans",
+      "sourceType": "client",
+      "path": "/images/siray-bento-rubans-1d8a5a95-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 23898,
+      "sha256": "8f77bb0492abcb022c01330547fa0c5532a49d56bb3df6657540a6aa4c0e1271",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-rubans",
+      "sourceType": "client",
+      "path": "/images/siray-bento-rubans-1d8a5a95-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 8640,
+      "sha256": "8aad21cbfcb63f7f044439a2f5f6bb7ba906c0014c616afd78870e088e4dc16b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-vert",
+      "sourceType": "client",
+      "path": "/images/siray-bento-vert-e1768ae9.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 40416,
+      "sha256": "e1768ae99f6a6db7acc8335d6ee2050af3ff0145999bf5a008e008f41bc0ea4d",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-vert",
+      "sourceType": "client",
+      "path": "/images/siray-bento-vert-e1768ae9-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 22346,
+      "sha256": "9300f00015a763b794caf1715f18b113b02a15ffb07b13a779e76a9ba2a01667",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-vert",
+      "sourceType": "client",
+      "path": "/images/siray-bento-vert-e1768ae9-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 8434,
+      "sha256": "77c2bc7a8f6c0a731eb84178f36b0e44985f381295a5578ca44980f369ea3253",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-coffrets",
+      "sourceType": "client",
+      "path": "/images/siray-bento-coffrets-78db3bdc.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 178246,
+      "sha256": "78db3bdc4f5432892d0c007115ccc08f22da846ce20c642b1f00ad6b3e5f0312",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-coffrets",
+      "sourceType": "client",
+      "path": "/images/siray-bento-coffrets-78db3bdc-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 93162,
+      "sha256": "23da5eeec7a479cf457d772afff092a60409b475d7678232731dbdb59272425e",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-coffrets",
+      "sourceType": "client",
+      "path": "/images/siray-bento-coffrets-78db3bdc-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 29186,
+      "sha256": "357e8fb50ba2407bc996a5d4c85525ee9fa10ec58a28e4489cc4caed080d169e",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-bento-fleurs-eb9ef548.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 69148,
+      "sha256": "eb9ef5483714e1ba38652d22bfe93e2d39416f5ec801d3c973ef41b444846ff2",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-bento-fleurs-eb9ef548-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 38206,
+      "sha256": "f7c9a4bf4e0c4b4a511f0ae1a40fce63fe2f84fc407554b9a2258e7c0f5a4141",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "bento-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-bento-fleurs-eb9ef548-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 14722,
+      "sha256": "e277b9edd216cba172285eee2835da16481362feb7dd60ce9250f02b501cc230",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 65336,
+      "sha256": "3acb8e0f66ca9308f2bfc4d4c5f982b5564e5f08c5a0ce04a545df358659ace8",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 32740,
+      "sha256": "56673b1a72e71bcecb07b4ad8c1ef0e69c2bf26fa00da4de84613d84b335341b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-fleurs",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-fleurs-3acb8e0f-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 12264,
+      "sha256": "a6f56b11a66effa729b1007b01bf1f60dcbfc274404d39a847b65c001d69c54a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "sourceType": "client",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 25390,
+      "sha256": "4d5a78f386d35ca5000d4ebe932affae705f5343044d8e03443f1f5dfcd069fe",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "sourceType": "client",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3-720.webp",
+      "width": 720,
+      "height": 720,
+      "bytes": 12518,
+      "sha256": "9a355b4b14209280f4c7922893098e8e601ee46d7a8239800323245b8b934e77",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcake-presentoir",
+      "sourceType": "client",
+      "path": "/images/siray-cupcake-presentoir-4d5a78f3-360.webp",
+      "width": 360,
+      "height": 360,
+      "bytes": 4470,
+      "sha256": "4b896e5b68b673f7adf2d11ea90002b277b3f66bccabeea00024c10ce4396013",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-coffret-06215b03.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 135536,
+      "sha256": "06215b034f82e6581fc3393a595a208dba97815e364c8578245d9a2deb0888c1",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-coffret-06215b03-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 79792,
+      "sha256": "d116a242d6284b80684ed7c991dac55c5a4ecb100fbc72327889fc1f4a0df2f3",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes-coffret",
+      "sourceType": "client",
+      "path": "/images/siray-cupcakes-coffret-06215b03-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 32388,
+      "sha256": "9636e123256ff75e2e79d4b7fed5ee29cbb54ddb2a5ac58e0277ed7dee4324c6",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-toasts-a69b6a95.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 121454,
+      "sha256": "a69b6a95225c6ca03bfd82fad4bcc30bc357d3fa074a0482e9c771e5888af793",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-toasts-a69b6a95-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 65634,
+      "sha256": "3f2b509f504e90e74e94dc0a952841a7581f48ac03b7830680b790e778a65434",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-toasts-a69b6a95-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 23904,
+      "sha256": "23b32a55159245cf0396f7b26d2ed9ca04e356b974848a021754143e491d0997",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 72172,
+      "sha256": "ca4da98247dd72f086029363eaab8aeb5ac2c2bb218916850d9c74cf1b800c9d",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-assortiment-ca4da982-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 39906,
+      "sha256": "ff8ebb678fda4304205cb1d64d8bf223e88b5d4e8bc19823535a3473b4a5752b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-assortiment",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-assortiment-ca4da982-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 17434,
+      "sha256": "f321223a904f2fe08e3133a889ac8d3a9c4d5e37a2f7c5520cf72494dcbc97db",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-burger",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-burger-47af9152.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 109604,
+      "sha256": "47af91529e9d593380e357964d84c7e15b630cbec7bab065c0a405cb55734093",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-burger",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-burger-47af9152-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 62400,
+      "sha256": "541f108fbae837b02024149d5e41e751d7f3cff4e8b42432fd9158df8029df3a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "mignardises-burger",
+      "sourceType": "client",
+      "path": "/images/siray-mignardises-burger-47af9152-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 27128,
+      "sha256": "36b1a9f76f511ac023253cb60bdfb9b1e65fbd27e83d31d420f3bdb40c0c2150",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-toasts-6239a88d.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 142574,
+      "sha256": "6239a88d3fed414e2f44b8e78de52426543fe71a7a768942484914265546b100",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-toasts-6239a88d-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 78268,
+      "sha256": "20fef620b7b4107da06849cb7639be7348d310c1d5757cf23e526f74ab1c3e85",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-toasts",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-toasts-6239a88d-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 29132,
+      "sha256": "4b0037710ef87ea1c0a0a198e4257d480ed72fefbde992de97d6814a11ec7472",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-douceurs-907f487c.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 127190,
+      "sha256": "907f487ce01c522d5918c24ede2561f7cd549bf88e1b91bb5646850d64d63de0",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-douceurs-907f487c-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 69806,
+      "sha256": "5aa6e30a1401a2a72d348b46656490edef82b84b76ce73366f395039d0c3e90c",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-douceurs",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-douceurs-907f487c-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 25904,
+      "sha256": "b00c70c84c51324edcb9960ea4a93c8638344ed1baf2a58a030a8c1476a62cfd",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-partage",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-partage-cd04c047.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 127554,
+      "sha256": "cd04c047585f916df7b760f4e4f1a6af5a8f80a7419e719cea355dd0434a0ea3",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-partage",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-partage-cd04c047-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 71728,
+      "sha256": "6a4a28fae44b56ae0a85b6a3b82d5c130b2808ada9224a9576f17da362f87398",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "brunch-partage",
+      "sourceType": "client",
+      "path": "/images/siray-brunch-partage-cd04c047-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 25974,
+      "sha256": "2d795ace656d3027324b386cb3b601a341c76ac60d2556c933a33304203f17f2",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-ensemble-474a9997.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 102524,
+      "sha256": "474a9997a488026ed8c641ed0da8af86ff61a4a24e23ab545cc4dba9b522862f",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-ensemble-474a9997-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 53464,
+      "sha256": "f9648a30de1249aa37f9637367fc0697de3abdffc49eafa3d4129c19d833c21a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-ensemble",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-ensemble-474a9997-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 19928,
+      "sha256": "4f1ce043e4849ddc6ff0b1ebdd93d964e2e2955392cfcf71869be5defd4ddc12",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-desserts",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-desserts-7f108c7a.webp",
+      "width": 1152,
+      "height": 1628,
+      "bytes": 128532,
+      "sha256": "7f108c7a8a4bdbb7a8be4a3b9a045385e8ce17ce6143e9b122d497da2323700f",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-desserts",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-desserts-7f108c7a-720.webp",
+      "width": 720,
+      "height": 1018,
+      "bytes": 70156,
+      "sha256": "1a1d2c7aa07760e2895f4ae00a168ba06fa60c232acc741adf15ec6329243d51",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-desserts",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-desserts-7f108c7a-360.webp",
+      "width": 360,
+      "height": 509,
+      "bytes": 26618,
+      "sha256": "b301969793e5f45e962ced899fb2d010477489060778fd3deb73629805368627",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-sale",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-sale-f3950b25.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 105394,
+      "sha256": "f3950b255d2a961e98bf1427478032bd609969c04bbd8e99c79c9ef0b0b06b47",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-sale",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-sale-f3950b25-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 54846,
+      "sha256": "317af31bbee1fed342c90b0539be72e3c4294a3a35ce942524ee89e8e1490beb",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "buffet-sale",
+      "sourceType": "client",
+      "path": "/images/siray-buffet-sale-f3950b25-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 20412,
+      "sha256": "06021d5ffb14569228aa3b86afb3f75c1e8692e670c66c8c6aa6090f591a100b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-grazing",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-grazing-5852832b.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 122654,
+      "sha256": "5852832b01d0479396ce365dba764261705ac0304ac1516462ff8c06d8f2a19c",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-grazing",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-grazing-5852832b-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 67640,
+      "sha256": "e00641932af11365806dadaf2a15c24a35dfe92ca0d88aebafec4c6951a94627",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-grazing",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-grazing-5852832b-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 25850,
+      "sha256": "d903707b25ee5f5d22fcc4d2cfdaabb50796b5d5afd27f5068e4c54b9878fe0a",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 187656,
+      "sha256": "3ced1c4cd7bd248e16581c795ac0bf6b2edc7a561e683f389f25606b06caa79f",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fruits-3ced1c4c-720.webp",
+      "width": 720,
+      "height": 960,
+      "bytes": 93244,
+      "sha256": "48327447e9a423a26072fabfe7c324e9b060d5a456649c1d333f9e71bdd4dae4",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fruits",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fruits-3ced1c4c-360.webp",
+      "width": 360,
+      "height": 480,
+      "bytes": 32112,
+      "sha256": "949ae9ebf36312236a5bac1931c5ddcfa4593a71ac6e27ef32dc64b4c07df4e3",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fromages",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fromages-b7acbdb5.webp",
+      "width": 1162,
+      "height": 1453,
+      "bytes": 92454,
+      "sha256": "b7acbdb51c5e79651de2b7dc94703188a5728374508ad39eddffb7c9d8fa8580",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fromages",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fromages-b7acbdb5-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 53140,
+      "sha256": "7023f785abfed400898e3072ddbdfbf6f1022e58cadd8abd27b21f6b67e3ba90",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-fromages",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-fromages-b7acbdb5-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 21994,
+      "sha256": "e53bd04812c1bdfe9b1c7ec6687ad8089c49ff830e0267dbc5a0d70f441c6e32",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-charcuterie-b8691918.webp",
+      "width": 1152,
+      "height": 1440,
+      "bytes": 139942,
+      "sha256": "b8691918cef04f1be308643532aacaf22b121bbdfc63489346ab41696e4a181e",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-charcuterie-b8691918-720.webp",
+      "width": 720,
+      "height": 900,
+      "bytes": 76518,
+      "sha256": "1fccdb3fcf6c6458bdb7fbc0a0b2f2a30ddc9d36a3b99ca6d7dbef2344e94d53",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "plateau-charcuterie",
+      "sourceType": "client",
+      "path": "/images/siray-plateau-charcuterie-b8691918-360.webp",
+      "width": 360,
+      "height": 450,
+      "bytes": 27652,
+      "sha256": "380230178427250b5131e7813ebd0bf8e7a860d6e0c9e286c1efe6a40c72ffee",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes",
+      "sourceType": "stand-in",
+      "path": "/images/cupcakes.webp",
+      "width": 1064,
+      "height": 1600,
+      "bytes": 70096,
+      "sha256": "da8cb882b962d89eb179c602c598582dc7ab703b990ae86ee88f8bf0f892e4a4",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes",
+      "sourceType": "stand-in",
+      "path": "/images/cupcakes-720.webp",
+      "width": 720,
+      "height": 1083,
+      "bytes": 46104,
+      "sha256": "5dd8d36f6b8490d3cf358d2eb9709272b071f38b89b1d844029eb07f68bab4f8",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "cupcakes",
+      "sourceType": "stand-in",
+      "path": "/images/cupcakes-360.webp",
+      "width": 360,
+      "height": 541,
+      "bytes": 18658,
+      "sha256": "ebb8a811e2d0af803393bcec2203ef6bf503e58c524ef3034c134ba0c57f1f3d",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "fruits",
+      "sourceType": "stand-in",
+      "path": "/images/fruits.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 77170,
+      "sha256": "b104ce7ef0434ff0e907621ec6b01f1ea3c34869a83b7c5d27900743ecdbfbc7",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "fruits",
+      "sourceType": "stand-in",
+      "path": "/images/fruits-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 43896,
+      "sha256": "8bd43a574d165f2ac106f66a797efda26ab7af3cf8f50dc8fa2bfa09075e2fa1",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "fruits",
+      "sourceType": "stand-in",
+      "path": "/images/fruits-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 17536,
+      "sha256": "e3ba45b3cc772b7bbefb17f463e8862c35e37da853de84d673973ae744d07552",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "chocolat",
+      "sourceType": "stand-in",
+      "path": "/images/chocolat.webp",
+      "width": 1200,
+      "height": 801,
+      "bytes": 140792,
+      "sha256": "f7c5748c8cdfbc1aa2c3ebd55760bc421aaf47b1a9694e601350e0c6b4219831",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "chocolat",
+      "sourceType": "stand-in",
+      "path": "/images/chocolat-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 53040,
+      "sha256": "117c5887bddd635263eb34dd08977f060228562f19e199c4f45283aedc94d560",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "chocolat",
+      "sourceType": "stand-in",
+      "path": "/images/chocolat-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 15014,
+      "sha256": "361c1fae1f5777bf5ae41a0904510bf4e2df61776f83b37495b994f7b8a56760",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "sourceType": "stand-in",
+      "path": "/images/notes-gourmandes.webp",
+      "width": 1200,
+      "height": 800,
+      "bytes": 53036,
+      "sha256": "02bf3f45975fa54c6583b31590a8224a44e905f3aaa3fb4205f045953a29d97b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "sourceType": "stand-in",
+      "path": "/images/notes-gourmandes-720.webp",
+      "width": 720,
+      "height": 480,
+      "bytes": 29008,
+      "sha256": "cf3b89f6800033aa3d3ff8da82ade0538bbf1ca8ea9284fd0fba0d4f337835d5",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    },
+    {
+      "id": "notes-gourmandes",
+      "sourceType": "stand-in",
+      "path": "/images/notes-gourmandes-360.webp",
+      "width": 360,
+      "height": 240,
+      "bytes": 12386,
+      "sha256": "11f945ef99c309fc61830f1c05fcd0ac765c5088e489ff40210809dc8e8b1a5b",
+      "chunks": [
+        "VP8 "
+      ],
+      "dimensionsMatch": true,
+      "bytesMatch": true,
+      "riffLengthMatch": true,
+      "metadataAbsent": true
+    }
+  ],
+  "followup": "Root a ajouté une garde après decode : une image sans largeur naturelle ne remplace pas la scène courante ; le chargement est retenté au prochain cycle. Branche nominale vérifiée au navigateur, panne réseau non simulée.",
+  "pathRedaction": "Chemins absolus locaux remplacés par des chemins relatifs ou des libellés de dossiers temporaires avant publication."
+}

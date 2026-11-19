@@ -2,6 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import credits from '../../docs/image-credits.json';
 import { instagram } from '../data/site';
+
+const illustrationFiles = new Set([
+  '/images/cupcakes.webp',
+  '/images/fruits.webp',
+  '/images/chocolat.webp',
+  '/images/notes-gourmandes.webp',
+]);
+const illustrations = credits.images.filter(
+  (photo) => photo.illustrative && illustrationFiles.has(photo.file),
+);
 ---
 
 <Layout title="Photos & informations">
@@ -15,19 +25,32 @@ import { instagram } from '../data/site';
       <h1>Photos & informations</h1>
       <h2>Crédits des images</h2>
       <p>
-        Les photographies de cette première version illustrent un univers
-        gourmand. Elles ne représentent pas des réalisations Siray Signature et
-        ne constituent pas un catalogue contractuel. Elles seront remplacées par
-        les photographies de la maison.
+        Les photographies de réalisations présentées sur ce site ont été fournies
+        par Siray Signature. Elles montrent les créations et les mises en scène
+        de la maison, à découvrir aussi sur son{' '}
+        <a href={instagram} target="_blank" rel="noopener noreferrer">
+          compte Instagram
+        </a>.
       </p>
-      <p>Les sources et les licences de chaque image sont indiquées ci-dessous.</p>
+      <h3>Images d’illustration</h3>
+      <p>
+        Une photographie de cupcakes sur l’accueil et les trois images des volets
+        Fruits, Chocolats et Notes gourmandes restent des illustrations. Elles ne
+        représentent pas des réalisations Siray Signature. Leurs auteurs, sources
+        et licences sont indiqués ci-dessous.
+      </p>
       <ul class="credit-list">
-        {credits.images.map((photo) => (
+        {illustrations.map((photo) => (
           <li>
             <a href={photo.source} target="_blank" rel="noopener noreferrer">
               {photo.author}
             </a>{' '}
-            : {photo.alt}. <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>
+            : {photo.alt}.{' '}
+            {photo.licenseUrl ? (
+              <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">
+                {photo.license}
+              </a>
+            ) : photo.license}
           </li>
         ))}
       </ul>

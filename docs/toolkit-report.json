@@ -1175,5 +1175,100 @@
       "No-JS runtime, print, reduced-motion emulation",
       "Production hosting or field performance"
     ]
+  },
+  "v8": {
+    "task": "Siray Signature V8",
+    "date": "2026-11-19",
+    "preparation": "Helper invoked on main: existing prepare.lock retained, exit1. Nine pinned checkouts reused, no reset/global install/hooks/new dependencies.",
+    "modules": [
+      {
+        "name": "impeccable",
+        "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+        "entrypoint": "Previously read in this conversation",
+        "references": [
+          "craft-floor.md",
+          "optimize.md"
+        ],
+        "decisions": [
+          "Lead: responsive real photography, metadata removal, native lazy images and deferred hero loading",
+          "Portrait mobile media preserves complete products; photo-specific focal positions"
+        ],
+        "checks": {
+          "context": {
+            "exitCode": 0,
+            "report": "docs/qa/v8-impeccable-context.json"
+          },
+          "detect": {
+            "exitCode": 0,
+            "stdout": "[]",
+            "scope": "Source-limited detector; not visual proof"
+          }
+        }
+      },
+      {
+        "name": "taste-skill",
+        "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+        "references": [
+          "photos.md",
+          "perf.md"
+        ],
+        "decisions": [
+          "26 provided photographs, image provenance and editorial placement; no fabricated flavor or photographer",
+          "Five hero images distinct from seven cover cards; responsive sources and fixed dimensions"
+        ],
+        "checks": {
+          "copyLint": "14 explicit HTML paths, exit0, two informational findings; docs/qa/v8-copy-lint.json"
+        }
+      },
+      {
+        "name": "hallmark",
+        "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+        "scope": "Existing visual foundation retained. Orchestrator integration guide considered; no additional Hallmark runtime/redesign claimed."
+      },
+      {
+        "name": "unslop",
+        "author": "Damir Sokolovsky (@heydamir)",
+        "license": "CC-BY-4.0",
+        "source": "https://github.com/heydamir/unslop/tree/main/skills/unslop",
+        "scope": "Prior design foundation retained; no new exhaustive Unslop pass claimed."
+      }
+    ],
+    "agents": [
+      "cakes:23 source photos, image component and gallery JS,31 asset invariants",
+      "tables:21 source photos, credits,26 crops and7 browser screenshots",
+      "hosting:official sources, archive tooling/config/guide, reference docs and sync preflight"
+    ],
+    "checks": {
+      "astroCheck": {
+        "files": 28,
+        "errors": 0,
+        "warnings": 0,
+        "hints": 0
+      },
+      "buildPages": 14,
+      "responsiveCases": 70,
+      "widths": [
+        320,
+        390,
+        430,
+        768,
+        1440
+      ],
+      "productPanels": 18,
+      "galleryFilters": 8,
+      "webpFiles": 90,
+      "assetChecks": 31,
+      "archives": "docs/qa/v8-release.json",
+      "staticHttp": "docs/qa/v8-static.json",
+      "browser": "docs/qa/v8-browser-review.md",
+      "notVerified": [
+        "physical mobile",
+        "iOS/Safari/Instagram",
+        "screen reader",
+        "network failure simulation",
+        "production deployment",
+        "field performance/Lighthouse"
+      ]
+    }
   }
 }

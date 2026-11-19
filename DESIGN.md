@@ -1,4 +1,4 @@
-# Siray Signature — système visuel V7
+# Siray Signature — système visuel V8
 
 Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/data/site.ts`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
@@ -30,17 +30,17 @@ Le footer commun reprend l’olive et le logo réel dans un ensemble compact. Il
 
 ## Les sept prestations
 
-Les URL publiques sont distinctes et stables :
+Les URL publiques sont distinctes et stables. Chaque famille dispose de photographies fournies pour Siray Signature ; les fichiers sélectionnés et leurs usages sont consignés dans le registre `docs/image-credits.json` :
 
-| Famille     | URL                       | Image provisoire |
-| ----------- | ------------------------- | --------------------------- |
-| Layer cakes | `/creations/layer-cakes/` | `layer-cake`                |
-| Bento cakes | `/creations/bento-cakes/` | `bento-cake`                |
-| Mignardises | `/creations/mignardises/` | `macarons-ivoire`           |
-| Cupcakes    | `/creations/cupcakes/`    | `cupcakes`                  |
-| Brunch box  | `/creations/brunch-box/`  | `brunch`                    |
-| Buffets     | `/buffets/`               | `buffet-gourmand`           |
-| Plateaux    | `/plateaux/`              | `plateau-sale`              |
+| Famille | URL |
+| --- | --- |
+| Layer cakes | `/creations/layer-cakes/` |
+| Bento cakes | `/creations/bento-cakes/` |
+| Mignardises | `/creations/mignardises/` |
+| Cupcakes | `/creations/cupcakes/` |
+| Brunch box | `/creations/brunch-box/` |
+| Buffets | `/buffets/` |
+| Plateaux | `/plateaux/` |
 
 `ProductDetail.astro` compose les sept fiches comme un espace de découverte : photographies à gauche sur ordinateur, panneau à volets à droite. À partir de 960 px, seule la composition photographique latérale est sticky, à 28 px du haut ; les onglets principaux et les familles de saveurs défilent avec la page. Sur téléphone, la composition photo est compacte et les boutons principaux bordés forment deux colonnes. Un seul volet est affiché après initialisation JavaScript. Les rubriques sont adaptées à chaque famille : formats et décor, tarifs, saveurs, Signature ou préparation de la demande. Le volet actif utilise l’olive plein, les autres conservent une bordure visible. Les tarifs par quantité des cupcakes et mignardises restent de vrais tableaux HTML à chiffres tabulaires. Les plateaux utilisent une présentation ouvrante native qui garde le nom et le prix visibles.
 
@@ -64,11 +64,15 @@ Le hero passe automatiquement d’une scène à l’autre toutes les **6 500 ms*
 
 Le survol et le focus ne modifient pas la lecture. Les changements se suspendent lorsque la photo quitte la vue ou que l’onglet devient inactif. La préférence `prefers-reduced-motion` conserve une photo statique sans fondu et désactive le bouton photographique. Les transitions CSS sont également réduites. Le décodage d’une image est vérifié avant le fondu, avec invalidation des opérations obsolètes lors d’un changement d’état.
 
-Les filtres de la galerie mettent à jour les photos visibles, leur décompte et l’état sélectionné. Les images ne sont plus cliquables : ni zoom, ni bouton plus, ni visionneuse. Le menu mobile utilise un dialogue natif. Le module `product-explorer.ts` renforce progressivement les volets principaux et les familles de saveurs : rôles tablist/tab/tabpanel, sélection unique, tabindex itinérant, flèches/Home/End et sélecteur brunch synchronisé. Les écouteurs sont nettoyés avant les transitions Astro puis réinitialisés sur la nouvelle page. Sans JavaScript, les commandes de volets et de sélection restent cachées, et tous les contenus sont déroulés. À l’impression, les contenus masqués sont réaffichés. Le fondu des volets est désactivé en mouvement réduit. Les liens, images et contenus principaux sont accessibles dans le HTML ; sans initialisation du diaporama, la première photo reste affichée et sa surface est désactivée.
+Les filtres de la galerie parcourent les 26 photographies fournies, mettent à jour les photos visibles, leur décompte et l’état sélectionné. Les images ne sont plus cliquables : ni zoom, ni bouton plus, ni visionneuse. Le menu mobile utilise un dialogue natif. Le module `product-explorer.ts` renforce progressivement les volets principaux et les familles de saveurs : rôles tablist/tab/tabpanel, sélection unique, tabindex itinérant, flèches/Home/End et sélecteur brunch synchronisé. Les écouteurs sont nettoyés avant les transitions Astro puis réinitialisés sur la nouvelle page. Sans JavaScript, les commandes de volets et de sélection restent cachées, et tous les contenus sont déroulés. À l’impression, les contenus masqués sont réaffichés. Le fondu des volets est désactivé en mouvement réduit. Les liens, images et contenus principaux sont accessibles dans le HTML ; sans initialisation du diaporama, la première photo reste affichée et sa surface est désactivée.
 
-## Contenus à compléter
+## Photographies et livraison V8
 
-Les photos des réalisations réelles restent à fournir. Les WebP provisoires sont locaux, sous licences Unsplash et Pexels, avec variantes responsives, dimensions et points focaux dans `docs/image-credits.json`. Les bento cakes ont désormais une image principale `bento-cake` et une image de demande `bento-detail` ; les panneaux de saveurs utilisent aussi les nouveaux visuels `chocolat` et `notes-gourmandes`. Le premier bento est recadré techniquement sur le gâteau et les mains, sans visage. Ces images restent des substituts à remplacer par les photographies autorisées de Siray. Les crédits sont accessibles depuis le footer, sans légende de provenance répétée dans les fiches ou la galerie. Aucune de ces images n’est présentée comme une réalisation Siray Signature.
+La sélection V8 réunit **26 photographies client parmi les 44 fournies**, dans les sept catégories. Ces réalisations remplacent les substituts des prestations et composent la galerie de 26 images. Les bento cakes sont illustrés par les bento cakes fournis. Les originaux restent intacts, hors de `public/` ; les fichiers publics sont des variantes WebP optimisées. Le registre `docs/image-credits.json` conserve les dimensions, les variantes, la provenance et la distinction entre photographie client et illustration. `docs/images.md` décrit la sélection et les cadrages.
+
+Les seules illustrations stock conservées sont les trois visuels d’ingrédients Fruits, Chocolats et Notes gourmandes, ainsi que la photographie de cupcakes de l’accueil, maintenue à titre d’exception. Elles restent créditées et ne deviennent pas des réalisations Siray. Les crédits sont accessibles depuis le footer, sans légende de provenance répétée dans les fiches ou la galerie. Les photos réelles de cette passe ne sont plus en attente.
+
+La livraison prépare deux archives du site statique, Netlify et Cloudflare Pages, avec guide, manifeste et SHA-256 séparés du contenu publié. Aucune publication distante n’est encore attestée. Le guide `docs/deployment.md` décrit les procédures et les limites gratuites. L’origine finale est configurable sans inventer de domaine ; l’export conserve ses chemins depuis la racine du site.
 
 Les informations légales complètes de l’entreprise et de l’hébergeur restent à renseigner avant le lancement commercial. Les demandes et la confirmation des commandes passent par [@siraysignature sur Instagram](https://www.instagram.com/siraysignature/).
 
@@ -76,4 +80,4 @@ Les informations légales complètes de l’entreprise et de l’hébergeur rest
 
 La reprise s’appuie sur [Unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop), par **Damir Sokolovsky**, sous **CC BY 4.0**, installé localement dans `~/.codex/skills/unslop/`. Ses passes guident le rythme, la palette issue du logo, la réduction des ornements, la copie et le mouvement. Taste complète la hiérarchie des pages et les textes ; Impeccable complète le responsive, les états, l’accessibilité et la critique. Les sources du Dev Toolkit restent dans `.dev-toolkit/vendor` et leur utilisation est consignée dans `docs/toolkit-report.json`.
 
-Ce document décrit l’implémentation ; il ne constitue pas un verdict de contrôle du rendu. Les rapports V7 de `docs/qa/` distinguent les sources, les contributions d’implémentation et les contrôles réellement effectués. Les rapports V1 à V6 restent historiques. Une note d’implémentation ne prouve ni une compilation ni un résultat navigateur ; ce document n’anticipe pas le rapport de contrôle de la passe principale.
+Ce document décrit l’implémentation ; il ne constitue pas un verdict de contrôle du rendu. Les documents V8 de `docs/qa/` décrivent la sélection et la préparation photographiques ainsi que la recherche d’hébergement. Les résultats finaux de l’intégration et de la livraison doivent être consignés après exécution, avec leur périmètre. Les rapports V1 à V7 décrivent les versions précédentes. Une note d’implémentation ne prouve ni une compilation, ni un résultat navigateur, ni une publication ; ce document n’anticipe pas le rapport de contrôle de la passe principale.

@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import { gallery } from '../data/site';
+import { galleryFilters } from '../data/photography';
 ---
 
-<Layout title="La galerie" image="macarons-rose">
+<Layout title="La galerie" image={gallery[0].image}>
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
@@ -31,28 +32,11 @@ import { gallery } from '../data/site';
         role="group"
         aria-label="Filtrer les photographies"
       >
-        <button type="button" class="gallery-filter" data-filter="all" aria-pressed="true">
-          Tout voir
-        </button>
-        <button type="button" class="gallery-filter" data-filter="cakes" aria-pressed="false">
-          Cakes
-        </button>
-        <button
-          type="button"
-          class="gallery-filter"
-          data-filter="douceurs"
-          aria-pressed="false"
-        >
-          Douceurs
-        </button>
-        <button
-          type="button"
-          class="gallery-filter"
-          data-filter="tables"
-          aria-pressed="false"
-        >
-          Tables
-        </button>
+        {galleryFilters.map((filter) => (
+          <button type="button" class="gallery-filter" data-filter={filter.id} aria-pressed={filter.id === 'all'}>
+            {filter.label}
+          </button>
+        ))}
       </div>
       <span class="gallery-status" aria-live="polite">
         {gallery.length} photographies
