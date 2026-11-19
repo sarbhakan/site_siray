@@ -1,0 +1,73 @@
+{
+  "pages": 13,
+  "issues": [],
+  "warnings": [],
+  "metrics": [
+    {
+      "route": "404.html",
+      "html_bytes": 7803,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "buffets/index.html",
+      "html_bytes": 18680,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "contact/index.html",
+      "html_bytes": 10083,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/bento-cakes/index.html",
+      "html_bytes": 21103,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/brunch-box/index.html",
+      "html_bytes": 32491,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/cupcakes/index.html",
+      "html_bytes": 21732,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/index.html",
+      "html_bytes": 14768,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/layer-cakes/index.html",
+      "html_bytes": 23073,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "creations/mignardises/index.html",
+      "html_bytes": 20756,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "galerie/index.html",
+      "html_bytes": 27032,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "index.html",
+      "html_bytes": 21000,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "la-maison/index.html",
+      "html_bytes": 13846,
+      "initial_js_gzip_bytes": 34056
+    },
+    {
+      "route": "plateaux/index.html",
+      "html_bytes": 20449,
+      "initial_js_gzip_bytes": 34056
+    }
+  ],
+  "scope": "Static HTML and optional HTTP only; browser focus, rendering, contrast and touch require separate checks."
+}

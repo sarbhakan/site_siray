@@ -1,0 +1,238 @@
+{
+  "changed": [
+    {
+      "id": "layer-roses",
+      "original": "layer cakes/6.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-layer-roses-0dd26d2a.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 143814
+        },
+        {
+          "path": "/images/siray-layer-roses-0dd26d2a-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 50860
+        },
+        {
+          "path": "/images/siray-layer-roses-0dd26d2a-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 18820
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 608,
+        "width": 1152,
+        "height": 1440
+      }
+    },
+    {
+      "id": "bento-fleurs",
+      "original": "bento cakes/6.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-bento-fleurs-18f0073c.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 156026
+        },
+        {
+          "path": "/images/siray-bento-fleurs-18f0073c-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 56024
+        },
+        {
+          "path": "/images/siray-bento-fleurs-18f0073c-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 20902
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 608,
+        "width": 1152,
+        "height": 1440
+      }
+    },
+    {
+      "id": "brunch-partage",
+      "original": "brunch box/1.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-brunch-partage-987b9037.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 278208
+        },
+        {
+          "path": "/images/siray-brunch-partage-987b9037-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 100664
+        },
+        {
+          "path": "/images/siray-brunch-partage-987b9037-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 36328
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 608,
+        "width": 1152,
+        "height": 1440
+      }
+    },
+    {
+      "id": "buffet-sale",
+      "original": "buffets/3.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-buffet-sale-1c688dea.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 241806
+        },
+        {
+          "path": "/images/siray-buffet-sale-1c688dea-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 81722
+        },
+        {
+          "path": "/images/siray-buffet-sale-1c688dea-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 28626
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 608,
+        "width": 1152,
+        "height": 1440
+      }
+    },
+    {
+      "id": "plateau-charcuterie",
+      "original": "plateaux/4.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-plateau-charcuterie-7fa905c0.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 297554
+        },
+        {
+          "path": "/images/siray-plateau-charcuterie-7fa905c0-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 106902
+        },
+        {
+          "path": "/images/siray-plateau-charcuterie-7fa905c0-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 38412
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 608,
+        "width": 1152,
+        "height": 1440
+      }
+    },
+    {
+      "id": "layer-journal",
+      "original": "layer cakes/9.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-layer-journal-94e2c50b.webp",
+          "width": 1152,
+          "height": 922,
+          "bytes": 183354
+        },
+        {
+          "path": "/images/siray-layer-journal-94e2c50b-720.webp",
+          "width": 720,
+          "height": 576,
+          "bytes": 68902
+        },
+        {
+          "path": "/images/siray-layer-journal-94e2c50b-360.webp",
+          "width": 360,
+          "height": 288,
+          "bytes": 25990
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 680,
+        "width": 1152,
+        "height": 922
+      }
+    },
+    {
+      "id": "mignardises-hotdog",
+      "original": "miniardises/5.jpeg",
+      "variants": [
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace.webp",
+          "width": 1152,
+          "height": 1440,
+          "bytes": 210474
+        },
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace-720.webp",
+          "width": 720,
+          "height": 900,
+          "bytes": 78892
+        },
+        {
+          "path": "/images/siray-mignardises-hotdog-12452ace-360.webp",
+          "width": 360,
+          "height": 450,
+          "bytes": 33258
+        }
+      ],
+      "crop": {
+        "left": 0,
+        "top": 304,
+        "width": 1152,
+        "height": 1440
+      }
+    }
+  ],
+  "clientPhotos": 28,
+  "totalBytes": 6412108,
+  "heroNativeBytes": [
+    {
+      "id": "layer-roses",
+      "bytes": 143814
+    },
+    {
+      "id": "bento-fleurs",
+      "bytes": 156026
+    },
+    {
+      "id": "brunch-partage",
+      "bytes": 278208
+    },
+    {
+      "id": "buffet-sale",
+      "bytes": 241806
+    },
+    {
+      "id": "plateau-charcuterie",
+      "bytes": 297554
+    }
+  ]
+}

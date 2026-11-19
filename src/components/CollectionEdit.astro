@@ -1,6 +1,7 @@
 ---
 import Photo from './Photo.astro';
 import { collections } from '../data/site';
+import { homeCollectionPhotography } from '../data/photography';
 
 const celebrations = ['layer-cakes', 'bento-cakes', 'cupcakes', 'mignardises']
   .map((slug) => collections.find((item) => item.slug === slug)!);
@@ -29,8 +30,9 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
         >
           <div class="collection-piece-photo">
             <Photo
-              name={item.image}
-              alt={item.alt}
+              name={homeCollectionPhotography[item.slug]?.image || item.image}
+              alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
+              position="50% 50%"
               sizes={item.slug === 'layer-cakes'
                 ? '(min-width: 960px) 46vw, 100vw'
                 : '(min-width: 960px) 23vw, 45vw'}
@@ -60,8 +62,9 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
         >
           <div class="collection-piece-photo">
             <Photo
-              name={item.image}
-              alt={item.alt}
+              name={homeCollectionPhotography[item.slug]?.image || item.image}
+              alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
+              position="50% 50%"
               sizes={item.slug === 'buffets'
                 ? '(min-width: 960px) 46vw, 100vw'
                 : '(min-width: 960px) 23vw, 45vw'}
@@ -195,7 +198,7 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
     align-items: center;
   }
   .collection-piece--mignardises .collection-piece-photo {
-    aspect-ratio: 1;
+    aspect-ratio: 4/5;
   }
   .collection-piece--mignardises .collection-piece-caption {
     padding-top: 0;
@@ -257,14 +260,14 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
       font-size: 28px;
     }
     .collection-piece--layer-cakes .collection-piece-photo {
-      aspect-ratio: 16/10;
+      aspect-ratio: 5/4;
     }
     .collection-piece--mignardises {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 24px;
     }
     .collection-piece--mignardises .collection-piece-photo {
-      aspect-ratio: 16/9;
+      aspect-ratio: 4/5;
     }
   }
   @media (min-width: 960px) {
@@ -292,7 +295,7 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
     }
     .collection-piece--bento-cakes .collection-piece-photo,
     .collection-piece--cupcakes .collection-piece-photo {
-      aspect-ratio: 4/3;
+      aspect-ratio: 4/5;
     }
     .collection-piece--mignardises {
       grid-column: 2/4;
@@ -301,7 +304,7 @@ const gatherings = ['buffets', 'brunch-box', 'plateaux']
       gap: 24px;
     }
     .collection-piece--mignardises .collection-piece-photo {
-      aspect-ratio: 4/3;
+      aspect-ratio: 4/5;
     }
     .collection-piece--mignardises h4 {
       font-size: 22px;

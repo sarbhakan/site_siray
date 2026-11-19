@@ -1,0 +1,173 @@
+[
+  {
+    "route": "/creations/layer-cakes/",
+    "tab": "Format & décor",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/layer-cakes/",
+    "tab": "Saveurs classiques",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/layer-cakes/",
+    "tab": "Associations Signature",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/layer-cakes/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "tab": "Format & décor",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "tab": "Saveurs classiques",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/bento-cakes/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/mignardises/",
+    "tab": "Formats & tarifs",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/mignardises/",
+    "tab": "Les bouchées",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/mignardises/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "tab": "Formats & tarifs",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "tab": "Les saveurs",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/cupcakes/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/brunch-box/",
+    "tab": "Les compositions",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/creations/brunch-box/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/buffets/",
+    "tab": "La prestation",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/buffets/",
+    "tab": "Demander un devis",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/plateaux/",
+    "tab": "Formats & tarifs",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  },
+  {
+    "route": "/plateaux/",
+    "tab": "Préparer ma demande",
+    "overflow": false,
+    "requestAllergy": false,
+    "requestImages": 0,
+    "selected": 1,
+    "visible": 1
+  }
+]

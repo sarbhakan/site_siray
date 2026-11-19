@@ -25,7 +25,7 @@
 html {
   scroll-behavior: smooth;
   scrollbar-color: var(--muted) var(--paper);
-  scroll-padding-top: 80px;
+  scroll-padding-top: var(--header-offset, 116px);
 }
 body {
   margin: 0;
@@ -439,7 +439,7 @@ body:has(dialog[open]) {
   margin-top: 16px;
 }
 .maison-feature figure {
-  aspect-ratio: 5/4;
+  aspect-ratio: 4/5;
 }
 .maison-feature img {
   width: 100%;
@@ -498,7 +498,7 @@ body:has(dialog[open]) {
 }
 .intro-bottom p {
   color: var(--muted);
-  max-width: 56ch;
+  max-width: none;
 }
 .page-count,
 .small-label,
@@ -904,7 +904,7 @@ rather than a page of introduction. */
     padding-block: 48px;
   }
   .maison-feature figure {
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/5;
   }
   .carnet-images {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1048,8 +1048,8 @@ rather than a page of introduction. */
     max-width: 46ch;
   }
   .maison-feature figure {
-    height: 440px;
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 4/5;
   }
   .carnet-images {
     align-items: start;
@@ -1299,9 +1299,16 @@ html:not(.js) .gallery-controls {
 }
 
 /* The supplied olive identity anchors every page. */
+:root {
+  --header-offset: calc(100px + env(safe-area-inset-top) + 16px);
+}
 .site-header {
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+@media (min-width: 960px) {
+  :root { --header-offset: calc(112px + env(safe-area-inset-top) + 16px); }
 }
 .site-header .brand {
   min-height: 88px;

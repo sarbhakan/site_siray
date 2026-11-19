@@ -10,12 +10,18 @@ export function photo(id: string): PhotoRef {
 
 export const collectionPhotography: Record<string, { cover: PhotoRef; detail: PhotoRef; request: PhotoRef }> = {
   'layer-cakes': { cover: photo('layer-fruits'), detail: photo('layer-rouge'), request: photo('layer-etages') },
-  'bento-cakes': { cover: photo('bento-rubans'), detail: photo('bento-vert'), request: photo('bento-coffrets') },
-  mignardises: { cover: photo('mignardises-toasts'), detail: photo('mignardises-assortiment'), request: photo('mignardises-burger') },
+  'bento-cakes': { cover: photo('bento-coffrets'), detail: photo('bento-vert'), request: photo('bento-coffrets') },
+  mignardises: { cover: photo('mignardises-hotdog'), detail: photo('mignardises-assortiment'), request: photo('mignardises-burger') },
   cupcakes: { cover: photo('cupcakes-fleurs'), detail: photo('cupcake-presentoir'), request: photo('cupcakes-coffret') },
   'brunch-box': { cover: photo('brunch-toasts'), detail: photo('brunch-douceurs'), request: photo('brunch-partage') },
   buffets: { cover: photo('buffet-ensemble'), detail: photo('buffet-desserts'), request: photo('buffet-sale') },
   plateaux: { cover: photo('plateau-grazing'), detail: photo('plateau-fruits'), request: photo('plateau-fromages') },
+};
+
+export const homeCollectionPhotography: Record<string, PhotoRef> = {
+  'layer-cakes': photo('layer-journal'),
+  'bento-cakes': photo('bento-fleurs'),
+  mignardises: photo('mignardises-hotdog'),
 };
 
 const heroPositions: Record<string, string> = { 'layer-roses': '50% 40%', 'bento-fleurs': '50% 40%', 'brunch-partage': '50% 60%', 'buffet-sale': '50% 80%', 'plateau-charcuterie': '50% 85%' };

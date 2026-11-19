@@ -1,0 +1,43 @@
+---
+const savory = [
+  { name: 'Mini-burgers', detail: 'Viande, poulet ou poisson.' },
+  { name: 'Sandwiches', detail: 'Bagels, wraps, navettes et club sandwiches.' },
+  { name: 'Mini-pizzas & hot-dogs', detail: '' },
+  { name: 'Nems & bouchées chaudes', detail: '' },
+  { name: 'Verrines salées', detail: 'Salades, crudités et fruits de mer.' },
+  { name: 'Toasts', detail: 'Des garnitures variées.' },
+  { name: 'Coupelles & compositions grazing', detail: 'Fromages, charcuteries, crudités et fruits frais.' },
+  { name: 'Bouchées raffinées', detail: 'Autour du gravlax de truite, des crevettes, de la mozzarella et des tomates.' },
+];
+---
+
+<div class="mignardise-menu">
+  <section aria-labelledby="coin-gourmand">
+    <h2 id="coin-gourmand">Le coin gourmand</h2>
+    <p class="mignardise-intro">Un assortiment de bouchées salées, entre classiques revisités et créations gourmandes.</p>
+    <ul class="mignardise-savory">
+      {savory.map((choice) => <li><h3>{choice.name}</h3>{choice.detail && <p>{choice.detail}</p>}</li>)}
+    </ul>
+    <p class="mignardise-finale">Et d’autres créations selon vos envies.</p>
+  </section>
+  <section class="mignardise-sweet" aria-labelledby="touche-sucree">
+    <h2 id="touche-sucree">La touche sucrée</h2>
+    <p>Pour terminer sur une note de douceur, une sélection de verrines sucrées déclinées en différentes saveurs et textures.</p>
+  </section>
+</div>
+
+<style>
+  .mignardise-menu h2 { font-size: 26px; line-height: 1.25; }
+  .mignardise-menu p { max-width: none; font-size: 16px; line-height: 1.625; }
+  .mignardise-intro { margin-top: 12px; color: var(--muted); }
+  .mignardise-savory { margin-top: 24px; list-style: none; }
+  .mignardise-savory > li { padding-block: 14px; border-top: 1px solid var(--line); }
+  .mignardise-savory h3 { font: 600 16px/1.5 'Manrope', sans-serif; }
+  .mignardise-savory p { margin: 4px 0 0; color: var(--muted); font-size: 16px; line-height: 1.625; }
+  .mignardise-finale { margin-top: 12px; color: var(--muted); }
+  .mignardise-sweet { margin-top: 32px; padding-block: 24px; border-top: 1px solid var(--olive-line); border-bottom: 1px solid var(--olive-line); }
+  .mignardise-sweet p { margin-top: 12px; }
+  @media (min-width: 960px) {
+    .mignardise-menu h2 { font-size: 28px; }
+  }
+</style>
