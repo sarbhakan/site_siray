@@ -1,0 +1,320 @@
+[
+  {
+    "button": {
+      "height": 48,
+      "width": 273,
+      "x": 16,
+      "y": -70.3359375
+    },
+    "clientWidth": 305,
+    "footer": {
+      "height": 326.5,
+      "logo": 88,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 699.1796875
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 699.1796875
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 699.1796875
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 743.1796875
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 743.1796875
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 743.1796875
+        }
+      ]
+    },
+    "practical": {
+      "height": 63.5,
+      "width": 183.0859375,
+      "x": 60.953125,
+      "y": -10.3359375
+    },
+    "requested": 320,
+    "scrollWidth": 305
+  },
+  {
+    "button": {
+      "height": 48,
+      "width": 335,
+      "x": 20,
+      "y": -93.2421875
+    },
+    "clientWidth": 375,
+    "footer": {
+      "height": 329,
+      "logo": 88,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 730.8671875
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 730.8671875
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 730.8671875
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 774.8671875
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 774.8671875
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 774.8671875
+        }
+      ]
+    },
+    "practical": {
+      "height": 63.5,
+      "width": 183.0859375,
+      "x": 95.953125,
+      "y": -33.2421875
+    },
+    "requested": 390,
+    "scrollWidth": 375
+  },
+  {
+    "button": {
+      "height": 48,
+      "width": 375,
+      "x": 20,
+      "y": -92.9921875
+    },
+    "clientWidth": 415,
+    "footer": {
+      "height": 309,
+      "logo": 88,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 720.9921875
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 720.9921875
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 720.9921875
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 720.9921875
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 764.9921875
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 764.9921875
+        }
+      ]
+    },
+    "practical": {
+      "height": 63.5,
+      "width": 183.0859375,
+      "x": 115.953125,
+      "y": -32.9921875
+    },
+    "requested": 430,
+    "scrollWidth": 415
+  },
+  {
+    "button": {
+      "height": 48,
+      "width": 175.6796875,
+      "x": 32,
+      "y": 216.5078125
+    },
+    "clientWidth": 753,
+    "footer": {
+      "height": 213.3671875,
+      "logo": 96,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 767.7421875
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 767.7421875
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 767.7421875
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 767.7421875
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 767.7421875
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 767.7421875
+        }
+      ]
+    },
+    "practical": {
+      "height": 47.5,
+      "width": 183.0859375,
+      "x": 227.6796875,
+      "y": 216.7578125
+    },
+    "requested": 768,
+    "scrollWidth": 753
+  },
+  {
+    "button": {
+      "height": 48,
+      "width": 175.6796875,
+      "x": 436.421875,
+      "y": 121.75
+    },
+    "clientWidth": 945,
+    "footer": {
+      "height": 213.3671875,
+      "logo": 96,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 767.640625
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 767.640625
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 767.640625
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 767.640625
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 767.640625
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 767.640625
+        }
+      ]
+    },
+    "practical": {
+      "height": 47.5,
+      "width": 183.0859375,
+      "x": 632.1015625,
+      "y": 122
+    },
+    "requested": 960,
+    "scrollWidth": 945
+  },
+  {
+    "button": {
+      "height": 48,
+      "width": 175.6796875,
+      "x": 640.421875,
+      "y": 121.75
+    },
+    "clientWidth": 1425,
+    "footer": {
+      "height": 213.3671875,
+      "logo": 96,
+      "nav": [
+        {
+          "height": 44,
+          "text": "Nos prestations",
+          "y": 895.640625
+        },
+        {
+          "height": 44,
+          "text": "Brunch box",
+          "y": 895.640625
+        },
+        {
+          "height": 44,
+          "text": "Buffets",
+          "y": 895.640625
+        },
+        {
+          "height": 44,
+          "text": "Plateaux",
+          "y": 895.640625
+        },
+        {
+          "height": 44,
+          "text": "Galerie",
+          "y": 895.640625
+        },
+        {
+          "height": 44,
+          "text": "La maison",
+          "y": 895.640625
+        }
+      ]
+    },
+    "practical": {
+      "height": 47.5,
+      "width": 183.0859375,
+      "x": 836.1015625,
+      "y": 122
+    },
+    "requested": 1440,
+    "scrollWidth": 1425
+  }
+]

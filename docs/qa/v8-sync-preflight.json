@@ -1,0 +1,2027 @@
+{
+  "date": "2026-11-19",
+  "scope": "Préflight en lecture seule : aucun fichier utilisateur ni objet Git modifié. Base lue dans le temporaire.",
+  "baseCommit": "bc643c8f3362517e2143a60c6d08a3d2f4d0df39",
+  "tempRoot": ".",
+  "mainRoot": ".",
+  "method": "Tree Git de base dans TEMP et SHA-1 Git blob calculé directement sur les fichiers MAIN ; métadonnées seules pour les doublons non suivis. GIT_OPTIONAL_LOCKS=0. Commandes et lecture groupée bornées à 3 s.",
+  "diagnostic": {
+    "globalMainDiffTimeoutSeconds": 3,
+    "targetedMainReadWorks": true,
+    "trackedMainDatalessCount": 0,
+    "datalessGitObjectCount": 342,
+    "datalessGitObjectExamples": [
+      ".git/objects/61/c1fcf9a0a9f41716a4d9c1fbe33d19b3ccb225",
+      ".git/objects/61/015d9df1597f63b11fa5800c344e2ce825f12a",
+      ".git/objects/61/8a4c06eaed4a9bd4609521ad6fa3793fbb5394",
+      ".git/objects/61/8bab300c5d9fb24546d86cec8715fd4a636ad0",
+      ".git/objects/0d/f314c086cde92404a6c1af0cbdf9cdbf8c7623",
+      ".git/objects/95/5ea8d83298e1862adce275d271fdde949f317e",
+      ".git/objects/95/9484e2da86ead286e3e314608976d5a93c05f7",
+      ".git/objects/59/082a3d0625546001ade1295e7848ab0e58d512",
+      ".git/objects/66/c51de6411c908cd4f2cbc7154965fb93924d4b",
+      ".git/objects/3e/9eb0b7a057283ef6d7deab243b14940da4e883"
+    ],
+    "probableCause": "Objets Git locaux dématérialisés par le fournisseur de fichiers macOS ; le diff global bloque, alors que les chemins de travail suivis sont lisibles."
+  },
+  "counts": {
+    "baseTracked": 210,
+    "tempChangedTracked": 65,
+    "tempUntracked": 108,
+    "mainUntracked": 7,
+    "mainWorkingTreeChangedVsBase": 0,
+    "mainStagedChangedVsBase": 0,
+    "conflicts": 0,
+    "unknownBasePaths": 0
+  },
+  "mainReadElapsedSeconds": 0.156,
+  "mainReadTimedOut": false,
+  "mainChangesVsBase": [],
+  "mainIndexChangesVsBase": [],
+  "unknownBasePaths": [],
+  "conflicts": [],
+  "mainUntrackedPreserve": [
+    {
+      "path": "AGENTS 2.md",
+      "size": 1650,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "DESIGN 2.md",
+      "size": 6100,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "PRODUCT 2.md",
+      "size": 2944,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "README 2.md",
+      "size": 6935,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "docs/toolkit-report 2.json",
+      "size": 20724,
+      "dataless": false,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "public/favicon 2.svg",
+      "size": 227,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    },
+    {
+      "path": "src/components/Footer 2.astro",
+      "size": 5451,
+      "dataless": true,
+      "preserve": true,
+      "contentRead": false
+    }
+  ],
+  "v8Paths": [
+    {
+      "path": "AGENTS.md",
+      "tempStatus": "M",
+      "baseOid": "72f623a707ee3546265a528fe0833f0950b0b888",
+      "main": {
+        "path": "AGENTS.md",
+        "status": "read",
+        "oid": "72f623a707ee3546265a528fe0833f0950b0b888",
+        "sha256": "4a3f55760bd94c5339e46323072ac2a5dd8eb5da9c46f2dda62ea2798b95d40f",
+        "size": 6032
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "DESIGN.md",
+      "tempStatus": "M",
+      "baseOid": "04eade1271f95785767aa3612e5022bce9a2c3bc",
+      "main": {
+        "path": "DESIGN.md",
+        "status": "read",
+        "oid": "04eade1271f95785767aa3612e5022bce9a2c3bc",
+        "sha256": "f6c79e7fe59fd9ae9363dcb191326f5ca9e39564532d89c73866d1ed8f2df9c1",
+        "size": 16041
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "PRODUCT.md",
+      "tempStatus": "M",
+      "baseOid": "e9a3711cf4078e77fcf9a63a13a6d298d318970a",
+      "main": {
+        "path": "PRODUCT.md",
+        "status": "read",
+        "oid": "e9a3711cf4078e77fcf9a63a13a6d298d318970a",
+        "sha256": "cca2083338f7bb76f0499377bf56623af0e60f76565bd9a2c654c53d02c0a68d",
+        "size": 7214
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "README.md",
+      "tempStatus": "M",
+      "baseOid": "97403280b863ddb45595379faf58f809a8173966",
+      "main": {
+        "path": "README.md",
+        "status": "read",
+        "oid": "97403280b863ddb45595379faf58f809a8173966",
+        "sha256": "3666274798de7e71aa81db66390de32b8ec6de94ab1195a5791bb6062a6bcfb6",
+        "size": 10654
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "astro.config.mjs",
+      "tempStatus": "M",
+      "baseOid": "45715b926f27d346abbe7bd35c0402b2e115d985",
+      "main": {
+        "path": "astro.config.mjs",
+        "status": "read",
+        "oid": "45715b926f27d346abbe7bd35c0402b2e115d985",
+        "sha256": "02dc6525133430135f1ab14e41017959d6909f6ddf7082f800cf1cd2f6e3bba1",
+        "size": 199
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "docs/image-credits.json",
+      "tempStatus": "M",
+      "baseOid": "f24dfe532ab1d604e14e2e0e1f8ad697c1349c1b",
+      "main": {
+        "path": "docs/image-credits.json",
+        "status": "read",
+        "oid": "f24dfe532ab1d604e14e2e0e1f8ad697c1349c1b",
+        "sha256": "184fc3e9a8d4286b68c991dee658fbcf78b5f457e0764e3c482fee83ac574d19",
+        "size": 20655
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "docs/images.md",
+      "tempStatus": "M",
+      "baseOid": "f7a92854fb1c01054559b001684f414e02ed4a71",
+      "main": {
+        "path": "docs/images.md",
+        "status": "read",
+        "oid": "f7a92854fb1c01054559b001684f414e02ed4a71",
+        "sha256": "4fb9684907a560b2b97c28fec4deb48d427e51344e08a7ce560d7efc96c445dc",
+        "size": 7918
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-cake-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "67c3f0a033e787055fb220d85fe2e0d565dd01d8",
+      "main": {
+        "path": "public/images/bento-cake-1024.webp",
+        "status": "read",
+        "oid": "67c3f0a033e787055fb220d85fe2e0d565dd01d8",
+        "sha256": "3addf23b8a14858d710e64c36bc773a697b566eb466d9de3d03e2fb5ac2df181",
+        "size": 23294
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-cake-640.webp",
+      "tempStatus": "D",
+      "baseOid": "5bf967761a6798df2f26185a3010a36b5f1e3771",
+      "main": {
+        "path": "public/images/bento-cake-640.webp",
+        "status": "read",
+        "oid": "5bf967761a6798df2f26185a3010a36b5f1e3771",
+        "sha256": "869b847e5da3040f3c07af79f252ccb1645130639e23e675626a9a56946ff5a8",
+        "size": 13530
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-cake.webp",
+      "tempStatus": "D",
+      "baseOid": "77b8569dcefa11e13edaccc14cc3e7b04a6a5b49",
+      "main": {
+        "path": "public/images/bento-cake.webp",
+        "status": "read",
+        "oid": "77b8569dcefa11e13edaccc14cc3e7b04a6a5b49",
+        "sha256": "8e34afe50b0a192296a8275cd1fcf23d8cec20c205e5269a147cfe6003e62127",
+        "size": 28388
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-detail-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "1048e025ef7641b8c088d3cd9339b6d1e7f21481",
+      "main": {
+        "path": "public/images/bento-detail-1024.webp",
+        "status": "read",
+        "oid": "1048e025ef7641b8c088d3cd9339b6d1e7f21481",
+        "sha256": "07436ef63fa793165714687f987ca4c4ca7afdec58cc72fa6cf3f1cc0709f855",
+        "size": 39768
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-detail-640.webp",
+      "tempStatus": "D",
+      "baseOid": "a2ae1759c0549ad422396bc5aae959ff112a73f4",
+      "main": {
+        "path": "public/images/bento-detail-640.webp",
+        "status": "read",
+        "oid": "a2ae1759c0549ad422396bc5aae959ff112a73f4",
+        "sha256": "3b5d6e46da85e048d589b7a4baf54ce18609b5fff25a535fc5bd1d293347037e",
+        "size": 22520
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/bento-detail.webp",
+      "tempStatus": "D",
+      "baseOid": "6d869cd2622d5d16c120d500231c79546e4e06f7",
+      "main": {
+        "path": "public/images/bento-detail.webp",
+        "status": "read",
+        "oid": "6d869cd2622d5d16c120d500231c79546e4e06f7",
+        "sha256": "eb7097f61ea3f3763edb93ea66b03730fca65fa79b28f205ca941bd0089883ac",
+        "size": 70746
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/brunch-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "aba40c5f353a22c04158d81e5fa1916ae7faee32",
+      "main": {
+        "path": "public/images/brunch-1024.webp",
+        "status": "read",
+        "oid": "aba40c5f353a22c04158d81e5fa1916ae7faee32",
+        "sha256": "6595910c3868e0bebe73ae69a45410051288b22fb13d7b755ab03d046d33f93b",
+        "size": 62626
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/brunch-640.webp",
+      "tempStatus": "D",
+      "baseOid": "072ef3f8eddba3bd0b545e3f094cca3f7df783b3",
+      "main": {
+        "path": "public/images/brunch-640.webp",
+        "status": "read",
+        "oid": "072ef3f8eddba3bd0b545e3f094cca3f7df783b3",
+        "sha256": "978ac3a303d34d8cadd8732dbb9b17e952bb5d51b9c0a11034d1e692d2305ae5",
+        "size": 31884
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/brunch.webp",
+      "tempStatus": "D",
+      "baseOid": "5eaa00d4e472517536cf7286efb47453f363b67a",
+      "main": {
+        "path": "public/images/brunch.webp",
+        "status": "read",
+        "oid": "5eaa00d4e472517536cf7286efb47453f363b67a",
+        "sha256": "4d2b33ade3b8a1916a9ad72fd803be7f6d6f4c5c1dc95ea6cb2409e994e952c6",
+        "size": 120018
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/buffet-gourmand-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "d57a056d43f7138b65eafdb5c6a5608754246610",
+      "main": {
+        "path": "public/images/buffet-gourmand-1024.webp",
+        "status": "read",
+        "oid": "d57a056d43f7138b65eafdb5c6a5608754246610",
+        "sha256": "b13110e712c199fd5bc09bd8c1281b35e292a482e0c0557ca3e331f7973473da",
+        "size": 32272
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/buffet-gourmand-640.webp",
+      "tempStatus": "D",
+      "baseOid": "84e56901b47428b8a47019b8f72e1eb397f32353",
+      "main": {
+        "path": "public/images/buffet-gourmand-640.webp",
+        "status": "read",
+        "oid": "84e56901b47428b8a47019b8f72e1eb397f32353",
+        "sha256": "52fff2422421833635cebfd9b2164747b78b830e2b7d4d7a1a8867c3209ac6aa",
+        "size": 17326
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/buffet-gourmand.webp",
+      "tempStatus": "D",
+      "baseOid": "4e270a839fded1f7b73c29dd5355b1ef93c252bd",
+      "main": {
+        "path": "public/images/buffet-gourmand.webp",
+        "status": "read",
+        "oid": "4e270a839fded1f7b73c29dd5355b1ef93c252bd",
+        "sha256": "2770a3d753f380f3201bd9273b068d9798176ba4815d46d31aec8103b6c2df47",
+        "size": 58596
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/chocolat-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "b18e7d6e4b2f510906179692a05381b120e338e0",
+      "main": {
+        "path": "public/images/chocolat-1024.webp",
+        "status": "read",
+        "oid": "b18e7d6e4b2f510906179692a05381b120e338e0",
+        "sha256": "b2b7a5383e8d5c54f9c55cbfdfba77f2deb2c6534da34973664aa00ad06087de",
+        "size": 112298
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/chocolat-640.webp",
+      "tempStatus": "D",
+      "baseOid": "30a49b527ecbfc18a99e4fc02c22a2c9976d1a90",
+      "main": {
+        "path": "public/images/chocolat-640.webp",
+        "status": "read",
+        "oid": "30a49b527ecbfc18a99e4fc02c22a2c9976d1a90",
+        "sha256": "4769e9cc67f4b658a3d89e56d62b7907f1a6a0ba57b94b456ed7c1c0864d64ae",
+        "size": 34548
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/chocolat.webp",
+      "tempStatus": "M",
+      "baseOid": "d38a031e71cd71e4be71d04595870d89bc0361a0",
+      "main": {
+        "path": "public/images/chocolat.webp",
+        "status": "read",
+        "oid": "d38a031e71cd71e4be71d04595870d89bc0361a0",
+        "sha256": "14f0f888c45cce3b9da300006f238e9016bdf55329b1ecca4144ac937de1b4f6",
+        "size": 182122
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcake-detail-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "64f1eccebc1c058501fafde79acc1d5b42454b87",
+      "main": {
+        "path": "public/images/cupcake-detail-1024.webp",
+        "status": "read",
+        "oid": "64f1eccebc1c058501fafde79acc1d5b42454b87",
+        "sha256": "732a05c76f51831b0d381b176eac7eebc3892bb56ce053f6682728b09e18f95c",
+        "size": 11544
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcake-detail-640.webp",
+      "tempStatus": "D",
+      "baseOid": "747f6ea345c24156710d76410c44a427f5d5608a",
+      "main": {
+        "path": "public/images/cupcake-detail-640.webp",
+        "status": "read",
+        "oid": "747f6ea345c24156710d76410c44a427f5d5608a",
+        "sha256": "14d1d531d2463ae5f176c62c45aa6f0d0d314bebae72d68ecbbd897b7bcaa693",
+        "size": 5744
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcake-detail.webp",
+      "tempStatus": "D",
+      "baseOid": "f09cd45b906cc33a47d17fc3d4516918d19f614f",
+      "main": {
+        "path": "public/images/cupcake-detail.webp",
+        "status": "read",
+        "oid": "f09cd45b906cc33a47d17fc3d4516918d19f614f",
+        "sha256": "8d1edafc0177dbc3c4cf6b84dfd5362cb1ae522411546c321f14f56f545f5c73",
+        "size": 25604
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcakes-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "db1a0ae22b6b60711007e256ca662320080ebde3",
+      "main": {
+        "path": "public/images/cupcakes-1024.webp",
+        "status": "read",
+        "oid": "db1a0ae22b6b60711007e256ca662320080ebde3",
+        "sha256": "64b110d8734de5bd4de26d7e8e20d85709e1846ad38be2dd9b7b2156b9d0fc85",
+        "size": 38008
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcakes-640.webp",
+      "tempStatus": "D",
+      "baseOid": "af7f12ba9ea4bab3af4924e9f90426bb888e3195",
+      "main": {
+        "path": "public/images/cupcakes-640.webp",
+        "status": "read",
+        "oid": "af7f12ba9ea4bab3af4924e9f90426bb888e3195",
+        "sha256": "d95eab28f6c6ca292618a2ce819be63cfa6ee32335452d67e283b5a9edf32d6e",
+        "size": 20074
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/cupcakes.webp",
+      "tempStatus": "M",
+      "baseOid": "0410a029812f6ee26592d20f5383037ae47546f1",
+      "main": {
+        "path": "public/images/cupcakes.webp",
+        "status": "read",
+        "oid": "0410a029812f6ee26592d20f5383037ae47546f1",
+        "sha256": "d6665c8e7e57b6f3bd351159a8b870d28f4de86830a134301d344d0cc827852e",
+        "size": 69572
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/framboises-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "fac41c8a99d7e0182e00f82edee2658df45dcf01",
+      "main": {
+        "path": "public/images/framboises-1024.webp",
+        "status": "read",
+        "oid": "fac41c8a99d7e0182e00f82edee2658df45dcf01",
+        "sha256": "21bc74d68a7a7da229f358a2a68e474d245486cfe14522d388d24f139e24b50e",
+        "size": 19582
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/framboises-640.webp",
+      "tempStatus": "D",
+      "baseOid": "429cb6562ba7e9b82ec0b03092c6f375af6fbfdb",
+      "main": {
+        "path": "public/images/framboises-640.webp",
+        "status": "read",
+        "oid": "429cb6562ba7e9b82ec0b03092c6f375af6fbfdb",
+        "sha256": "61f235f216d04e7b77eb44ea9a59f895bbe496e3838eb47bb604968d303c596c",
+        "size": 10102
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/framboises.webp",
+      "tempStatus": "D",
+      "baseOid": "d594ffa41846e648215098ae08e17ad12c7b3487",
+      "main": {
+        "path": "public/images/framboises.webp",
+        "status": "read",
+        "oid": "d594ffa41846e648215098ae08e17ad12c7b3487",
+        "sha256": "2e19249627a285f73002aa9c4f08a028bd9f4007e6828974933b27d402fbf3ba",
+        "size": 37812
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/fruits-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "6ac40878d353a378c4c526fad9a7c2a624a296a8",
+      "main": {
+        "path": "public/images/fruits-1024.webp",
+        "status": "read",
+        "oid": "6ac40878d353a378c4c526fad9a7c2a624a296a8",
+        "sha256": "ae4f5c64dee4244c123f4a52b109f0e5cf3d2880d6bfbd60fce523c6da1f08a1",
+        "size": 61368
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/fruits-640.webp",
+      "tempStatus": "D",
+      "baseOid": "eecca5f0bcaec4d5c260ea1de822210a3adfd90b",
+      "main": {
+        "path": "public/images/fruits-640.webp",
+        "status": "read",
+        "oid": "eecca5f0bcaec4d5c260ea1de822210a3adfd90b",
+        "sha256": "ef26a89b3083425c6db825e1e4e8aff45b9e39e5a9629b95ce788ac446638060",
+        "size": 33254
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/fruits.webp",
+      "tempStatus": "M",
+      "baseOid": "58e07d6978c3836aec2013a1650cd35a987637ca",
+      "main": {
+        "path": "public/images/fruits.webp",
+        "status": "read",
+        "oid": "58e07d6978c3836aec2013a1650cd35a987637ca",
+        "sha256": "67d6e081008f4d050d1f1628fd4e6efe18b811c6dd87267adc416b6127201f9d",
+        "size": 105572
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/gateau-creme-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "8bd8db7d96b0c07dbcadf473bcce4f2ab9afa496",
+      "main": {
+        "path": "public/images/gateau-creme-1024.webp",
+        "status": "read",
+        "oid": "8bd8db7d96b0c07dbcadf473bcce4f2ab9afa496",
+        "sha256": "e0ea27ddfc69469b121b836036f6f47aa30be0c205ac197665e732252e9acb5e",
+        "size": 28410
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/gateau-creme-640.webp",
+      "tempStatus": "D",
+      "baseOid": "98e624f431729cee3ddaa1e23fcecce0ec85e6ad",
+      "main": {
+        "path": "public/images/gateau-creme-640.webp",
+        "status": "read",
+        "oid": "98e624f431729cee3ddaa1e23fcecce0ec85e6ad",
+        "sha256": "cbf521aa4742bbd65cd94aec97db7c719203dea4198ab757ec0d615c059863d1",
+        "size": 15690
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/gateau-creme.webp",
+      "tempStatus": "D",
+      "baseOid": "826a0467b2ebc39fbb13318249ab6238822df4e0",
+      "main": {
+        "path": "public/images/gateau-creme.webp",
+        "status": "read",
+        "oid": "826a0467b2ebc39fbb13318249ab6238822df4e0",
+        "sha256": "a3c39d276fd2521b0644ab640dfa199dd949cd0f04f9f9c71464a3a835c01fc3",
+        "size": 49938
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/layer-cake-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "a31c74de602832c95cc2623d6ee3d68219900d17",
+      "main": {
+        "path": "public/images/layer-cake-1024.webp",
+        "status": "read",
+        "oid": "a31c74de602832c95cc2623d6ee3d68219900d17",
+        "sha256": "fae268856c25240b2a86d98b142050913158944fddfaff49c0ad96fae1405282",
+        "size": 36368
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/layer-cake-640.webp",
+      "tempStatus": "D",
+      "baseOid": "1c807a94467c533522127deea85b4d74876f1bf3",
+      "main": {
+        "path": "public/images/layer-cake-640.webp",
+        "status": "read",
+        "oid": "1c807a94467c533522127deea85b4d74876f1bf3",
+        "sha256": "99495d376241719a2a07b263bab3979ad63320d23e347fc63536f9548330ba0f",
+        "size": 19330
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/layer-cake.webp",
+      "tempStatus": "D",
+      "baseOid": "17392581366c071db2102328cde8fa0d0cda2f47",
+      "main": {
+        "path": "public/images/layer-cake.webp",
+        "status": "read",
+        "oid": "17392581366c071db2102328cde8fa0d0cda2f47",
+        "sha256": "e62d2e08024ee84aef81552e20a9032283042b2bfdaa6d98667dbfb505da50f3",
+        "size": 64514
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-ivoire-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "cddd42c408dc72224b2de69402dcdd79df502e34",
+      "main": {
+        "path": "public/images/macarons-ivoire-1024.webp",
+        "status": "read",
+        "oid": "cddd42c408dc72224b2de69402dcdd79df502e34",
+        "sha256": "63818c736122545840ba2d4c3190ea33d79891fb28a01b230276138aa2773c18",
+        "size": 14620
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-ivoire-640.webp",
+      "tempStatus": "D",
+      "baseOid": "adbd7d9a3c05e2ce7cf1ef652c44bc93454aae94",
+      "main": {
+        "path": "public/images/macarons-ivoire-640.webp",
+        "status": "read",
+        "oid": "adbd7d9a3c05e2ce7cf1ef652c44bc93454aae94",
+        "sha256": "43d2ec9dfc5ba2a40c42e8429270d5e1697e32d35e5c6370e4efbb995ffd0a27",
+        "size": 8012
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-ivoire.webp",
+      "tempStatus": "D",
+      "baseOid": "ce834bf0bff6db2dba56986fbf58cb35a19a96c5",
+      "main": {
+        "path": "public/images/macarons-ivoire.webp",
+        "status": "read",
+        "oid": "ce834bf0bff6db2dba56986fbf58cb35a19a96c5",
+        "sha256": "8e76122257a6ae9215b0ab79c304ea7fa1d96aa370e144b35228bbce21f87b7d",
+        "size": 27754
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-rose-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "dd70b3e38b0cd1f2f948267b8dea8b7b1738456d",
+      "main": {
+        "path": "public/images/macarons-rose-1024.webp",
+        "status": "read",
+        "oid": "dd70b3e38b0cd1f2f948267b8dea8b7b1738456d",
+        "sha256": "e386edd58f1e0fcb5a2c677ae12f0b44145190910d92ca861c58ebf54929f6f6",
+        "size": 31712
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-rose-640.webp",
+      "tempStatus": "D",
+      "baseOid": "5c5ca3b23156556e389e97e0cf74779f8163db4b",
+      "main": {
+        "path": "public/images/macarons-rose-640.webp",
+        "status": "read",
+        "oid": "5c5ca3b23156556e389e97e0cf74779f8163db4b",
+        "sha256": "fb2df3deac7b2ecfed8c216ef21535dda498aa58eff018052ffc59c335a9f9ea",
+        "size": 16172
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/macarons-rose.webp",
+      "tempStatus": "D",
+      "baseOid": "a895320247e4dccc9c7bbfc088d8fb36520e4bab",
+      "main": {
+        "path": "public/images/macarons-rose.webp",
+        "status": "read",
+        "oid": "a895320247e4dccc9c7bbfc088d8fb36520e4bab",
+        "sha256": "03e3045629191549a74ffd85a50fc28a1c4b3a0cf3d2363560114d9e8c55314c",
+        "size": 60946
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/notes-gourmandes-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "39f21cf1eb4e1ea8751f26e577aa455dc940a721",
+      "main": {
+        "path": "public/images/notes-gourmandes-1024.webp",
+        "status": "read",
+        "oid": "39f21cf1eb4e1ea8751f26e577aa455dc940a721",
+        "sha256": "bbba8be0ef4e31f13d5428735f488e473d85aae5e96c6035a89a392263987140",
+        "size": 50810
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/notes-gourmandes-640.webp",
+      "tempStatus": "D",
+      "baseOid": "da18e353bad899e81baee952796d34dcbe733339",
+      "main": {
+        "path": "public/images/notes-gourmandes-640.webp",
+        "status": "read",
+        "oid": "da18e353bad899e81baee952796d34dcbe733339",
+        "sha256": "effea012b52046ea902fccdaaf8fb5adeaec186d234898985351dbb2ea6e016c",
+        "size": 27922
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/notes-gourmandes.webp",
+      "tempStatus": "M",
+      "baseOid": "79b4b308a3f7970718620893563874d06a59c83d",
+      "main": {
+        "path": "public/images/notes-gourmandes.webp",
+        "status": "read",
+        "oid": "79b4b308a3f7970718620893563874d06a59c83d",
+        "sha256": "819584adce8a78f77b142dbde4b95db6f14f18eaf16702d0c09e937230b9752c",
+        "size": 91362
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/plateau-sale-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "00e90f68118fcfd075ff83a1e7efe351d8461b26",
+      "main": {
+        "path": "public/images/plateau-sale-1024.webp",
+        "status": "read",
+        "oid": "00e90f68118fcfd075ff83a1e7efe351d8461b26",
+        "sha256": "6edde71535fa17d1e08e17ea579f69f35d4007f92a935f3dd84d6b73ea679fb9",
+        "size": 136500
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/plateau-sale-640.webp",
+      "tempStatus": "D",
+      "baseOid": "2cedf62f8e63552d0f0ea6c4be67dc7504508994",
+      "main": {
+        "path": "public/images/plateau-sale-640.webp",
+        "status": "read",
+        "oid": "2cedf62f8e63552d0f0ea6c4be67dc7504508994",
+        "sha256": "c87e9d087afd524c6a68f6cfbe9f2f348383a76b7ccebb5abaf0bc3c343b1d53",
+        "size": 53026
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/plateau-sale.webp",
+      "tempStatus": "D",
+      "baseOid": "7122663eaea2a59ee11ff2a05cc26c54abf03eda",
+      "main": {
+        "path": "public/images/plateau-sale.webp",
+        "status": "read",
+        "oid": "7122663eaea2a59ee11ff2a05cc26c54abf03eda",
+        "sha256": "5539012345f22c062e2799736674357158c39f330bb3c6dd1ba91cbf2c054680",
+        "size": 322492
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/table-reception-1024.webp",
+      "tempStatus": "D",
+      "baseOid": "1200779e02928d1b07043873831cf56d11690a74",
+      "main": {
+        "path": "public/images/table-reception-1024.webp",
+        "status": "read",
+        "oid": "1200779e02928d1b07043873831cf56d11690a74",
+        "sha256": "ec760af9bb3350f66fdc547c6b578d22f288205c12d07bf5c948c719e64ec771",
+        "size": 97530
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/table-reception-640.webp",
+      "tempStatus": "D",
+      "baseOid": "f811910dc53c3fcd81eddf31f5bd29eb386ce723",
+      "main": {
+        "path": "public/images/table-reception-640.webp",
+        "status": "read",
+        "oid": "f811910dc53c3fcd81eddf31f5bd29eb386ce723",
+        "sha256": "5a9edf6824fffd2e5d589817aab7a08cc765e4933ad0c628f27be95b0696dee9",
+        "size": 51498
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "public/images/table-reception.webp",
+      "tempStatus": "D",
+      "baseOid": "d6daec009745e2d0a84c869a72eecfcf484ce6ed",
+      "main": {
+        "path": "public/images/table-reception.webp",
+        "status": "read",
+        "oid": "d6daec009745e2d0a84c869a72eecfcf484ce6ed",
+        "sha256": "ee6c016ac25484cc6b39eecf2575e22f5511e065fdb1727d66a0d8e062c2dd4e",
+        "size": 179160
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/components/Photo.astro",
+      "tempStatus": "M",
+      "baseOid": "6a00080c76dbfa1698f945591b0fdea5ce995920",
+      "main": {
+        "path": "src/components/Photo.astro",
+        "status": "read",
+        "oid": "6a00080c76dbfa1698f945591b0fdea5ce995920",
+        "sha256": "960c2fb971e7f035b47559e92928f00ab610d804b76b190a02e173bba4de1d84",
+        "size": 891
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/components/ProductDetail.astro",
+      "tempStatus": "M",
+      "baseOid": "21f24bb9d7516b10d1fb2813831357e09c9adef0",
+      "main": {
+        "path": "src/components/ProductDetail.astro",
+        "status": "read",
+        "oid": "21f24bb9d7516b10d1fb2813831357e09c9adef0",
+        "sha256": "1805fb7e6b0e88bf0d7086fe1074fd82b60a27e6f66a06148855bcb11f6d1f45",
+        "size": 27054
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/data/site.ts",
+      "tempStatus": "M",
+      "baseOid": "c95d21e68b6e3732a3db383a28db08f861ec3561",
+      "main": {
+        "path": "src/data/site.ts",
+        "status": "read",
+        "oid": "c95d21e68b6e3732a3db383a28db08f861ec3561",
+        "sha256": "0346a0036ed55546ca5c1e35214bd8a05bc06c4ad92a04e955421b4671c70ff2",
+        "size": 16552
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/layouts/Layout.astro",
+      "tempStatus": "M",
+      "baseOid": "007c783e237388da2d0cd2359a24d902141d273b",
+      "main": {
+        "path": "src/layouts/Layout.astro",
+        "status": "read",
+        "oid": "007c783e237388da2d0cd2359a24d902141d273b",
+        "sha256": "d2f0561d50f6be95e5f0534e0fb232275e913ee511940a373956e013a0420033",
+        "size": 5520
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/pages/credits.astro",
+      "tempStatus": "M",
+      "baseOid": "e5c9922d82bbe249f4e69979e459090a8d99a806",
+      "main": {
+        "path": "src/pages/credits.astro",
+        "status": "read",
+        "oid": "e5c9922d82bbe249f4e69979e459090a8d99a806",
+        "sha256": "6ebe97cc66da8bd36f3ac47c926cf82e30b4b7cc41afb8376fa86e87b51130f8",
+        "size": 2390
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/pages/galerie.astro",
+      "tempStatus": "M",
+      "baseOid": "d1b50cafe623b6c3c3d893142d007f2dc2678323",
+      "main": {
+        "path": "src/pages/galerie.astro",
+        "status": "read",
+        "oid": "d1b50cafe623b6c3c3d893142d007f2dc2678323",
+        "sha256": "3c6918af966155fd1ea45b6463ec81f7b38f354b7dfe558382541736c1d60456",
+        "size": 2199
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "tempStatus": "M",
+      "baseOid": "f872ad2bdf810349f075b00e88bbed8be4e7e976",
+      "main": {
+        "path": "src/pages/index.astro",
+        "status": "read",
+        "oid": "f872ad2bdf810349f075b00e88bbed8be4e7e976",
+        "sha256": "73b1e54b108cf39992fb839fa8f46fca97bf31b2d9596fdd3005db007c07ebe5",
+        "size": 3041
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/pages/la-maison.astro",
+      "tempStatus": "M",
+      "baseOid": "59082a3d0625546001ade1295e7848ab0e58d512",
+      "main": {
+        "path": "src/pages/la-maison.astro",
+        "status": "read",
+        "oid": "59082a3d0625546001ade1295e7848ab0e58d512",
+        "sha256": "c31245d43dffb9f7ad0bb3df05c76d4044c18630a4fda0590a5a177ea06dd7ae",
+        "size": 1822
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/scripts/site.ts",
+      "tempStatus": "M",
+      "baseOid": "955ea8d83298e1862adce275d271fdde949f317e",
+      "main": {
+        "path": "src/scripts/site.ts",
+        "status": "read",
+        "oid": "955ea8d83298e1862adce275d271fdde949f317e",
+        "sha256": "f26dff6f9b39f46cb48fdd70ce3a800521c51c6bf4a306f5f6a4b48342256260",
+        "size": 6856
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": "src/styles/global.css",
+      "tempStatus": "M",
+      "baseOid": "1ab8e786687406ba26a9e4083a234a0fc6a3b577",
+      "main": {
+        "path": "src/styles/global.css",
+        "status": "read",
+        "oid": "1ab8e786687406ba26a9e4083a234a0fc6a3b577",
+        "sha256": "7d9674fd0b5d631dff238eaa40bb9a8d73f189e6b7c9be6fb684ec25ad4162dc",
+        "size": 28465
+      },
+      "syncDecision": "safe-main-matches-base"
+    },
+    {
+      "path": ".env.example",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": ".env.example",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/deployment.md",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/deployment.md",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-asset-review.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-asset-review.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-build.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-build.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-copy-lint.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-copy-lint.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-crop-review.md",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-crop-review.md",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-cupcakes-mobile.jpg",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-cupcakes-mobile.jpg",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-gallery-filters.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-gallery-filters.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-gallery-mobile.jpg",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-gallery-mobile.jpg",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-home-desktop.jpg",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-home-desktop.jpg",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-home-mobile.jpg",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-home-mobile.jpg",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-hosting-research.md",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-hosting-research.md",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-image-optimization.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-image-optimization.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-impeccable-context.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-impeccable-context.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-impeccable-detect.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-impeccable-detect.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-photo-review-cakes.md",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-photo-review-cakes.md",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-photo-review-tables.md",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-photo-review-tables.md",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-responsive.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-responsive.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "docs/qa/v8-static.json",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "docs/qa/v8-static.json",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/_headers",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/_headers",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/chocolat-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/chocolat-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/chocolat-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/chocolat-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/cupcakes-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/cupcakes-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/cupcakes-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/cupcakes-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/fruits-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/fruits-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/fruits-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/fruits-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/notes-gourmandes-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/notes-gourmandes-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/notes-gourmandes-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/notes-gourmandes-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-coffrets-78db3bdc-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-coffrets-78db3bdc-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-coffrets-78db3bdc-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-coffrets-78db3bdc-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-coffrets-78db3bdc.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-coffrets-78db3bdc.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-fleurs-eb9ef548-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-fleurs-eb9ef548-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-fleurs-eb9ef548-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-fleurs-eb9ef548-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-fleurs-eb9ef548.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-fleurs-eb9ef548.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-rubans-1d8a5a95-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-rubans-1d8a5a95-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-rubans-1d8a5a95-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-rubans-1d8a5a95-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-rubans-1d8a5a95.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-rubans-1d8a5a95.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-vert-e1768ae9-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-vert-e1768ae9-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-vert-e1768ae9-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-vert-e1768ae9-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-bento-vert-e1768ae9.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-bento-vert-e1768ae9.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-douceurs-907f487c-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-douceurs-907f487c-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-douceurs-907f487c-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-douceurs-907f487c-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-douceurs-907f487c.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-douceurs-907f487c.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-partage-cd04c047-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-partage-cd04c047-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-partage-cd04c047-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-partage-cd04c047-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-partage-cd04c047.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-partage-cd04c047.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-toasts-6239a88d-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-toasts-6239a88d-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-toasts-6239a88d-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-toasts-6239a88d-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-brunch-toasts-6239a88d.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-brunch-toasts-6239a88d.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-desserts-7f108c7a-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-desserts-7f108c7a-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-desserts-7f108c7a-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-desserts-7f108c7a-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-desserts-7f108c7a.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-desserts-7f108c7a.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-ensemble-474a9997-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-ensemble-474a9997-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-ensemble-474a9997-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-ensemble-474a9997-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-ensemble-474a9997.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-ensemble-474a9997.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-sale-f3950b25-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-sale-f3950b25-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-sale-f3950b25-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-sale-f3950b25-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-buffet-sale-f3950b25.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-buffet-sale-f3950b25.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcake-presentoir-4d5a78f3-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcake-presentoir-4d5a78f3-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcake-presentoir-4d5a78f3-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcake-presentoir-4d5a78f3-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcake-presentoir-4d5a78f3.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-coffret-06215b03-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-coffret-06215b03-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-coffret-06215b03-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-coffret-06215b03-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-coffret-06215b03.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-coffret-06215b03.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-fleurs-3acb8e0f-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-fleurs-3acb8e0f-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-fleurs-3acb8e0f-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-fleurs-3acb8e0f-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-coquillages-7c0454c7-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-coquillages-7c0454c7-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-coquillages-7c0454c7-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-coquillages-7c0454c7-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-coquillages-7c0454c7.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-coquillages-7c0454c7.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-etages-4dc5ba8b-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-etages-4dc5ba8b-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-etages-4dc5ba8b-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-etages-4dc5ba8b-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-etages-4dc5ba8b.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-etages-4dc5ba8b.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fleurs-7ef2db14-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fleurs-7ef2db14-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fleurs-7ef2db14-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fleurs-7ef2db14-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fleurs-7ef2db14.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fleurs-7ef2db14.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fruits-6a211ed1-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fruits-6a211ed1-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fruits-6a211ed1-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fruits-6a211ed1-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-fruits-6a211ed1.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-fruits-6a211ed1.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-roses-c9c83e71-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-roses-c9c83e71-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-roses-c9c83e71-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-roses-c9c83e71-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-roses-c9c83e71.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-roses-c9c83e71.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-rouge-7dc19bb3-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-rouge-7dc19bb3-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-rouge-7dc19bb3-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-rouge-7dc19bb3-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-layer-rouge-7dc19bb3.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-layer-rouge-7dc19bb3.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-assortiment-ca4da982-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-assortiment-ca4da982-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-assortiment-ca4da982-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-assortiment-ca4da982-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-assortiment-ca4da982.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-assortiment-ca4da982.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-burger-47af9152-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-burger-47af9152-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-burger-47af9152-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-burger-47af9152-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-burger-47af9152.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-burger-47af9152.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-toasts-a69b6a95-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-toasts-a69b6a95-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-toasts-a69b6a95-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-toasts-a69b6a95-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-mignardises-toasts-a69b6a95.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-mignardises-toasts-a69b6a95.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-charcuterie-b8691918-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-charcuterie-b8691918-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-charcuterie-b8691918-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-charcuterie-b8691918-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-charcuterie-b8691918.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-charcuterie-b8691918.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fromages-b7acbdb5-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fromages-b7acbdb5-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fromages-b7acbdb5-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fromages-b7acbdb5-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fromages-b7acbdb5.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fromages-b7acbdb5.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fruits-3ced1c4c-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fruits-3ced1c4c-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fruits-3ced1c4c-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fruits-3ced1c4c-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-fruits-3ced1c4c.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-fruits-3ced1c4c.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-grazing-5852832b-360.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-grazing-5852832b-360.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-grazing-5852832b-720.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-grazing-5852832b-720.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "public/images/siray-plateau-grazing-5852832b.webp",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "public/images/siray-plateau-grazing-5852832b.webp",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "scripts/package-release.py",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "scripts/package-release.py",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    },
+    {
+      "path": "src/data/photography.ts",
+      "tempStatus": "?",
+      "baseOid": null,
+      "main": {
+        "path": "src/data/photography.ts",
+        "status": "absent"
+      },
+      "syncDecision": "safe-new-path"
+    }
+  ],
+  "limitations": [
+    "Le rapport ne valide ni compilation, ni rendu, ni publication.",
+    "Les sept doublons non suivis n’ont pas été lus et doivent rester inchangés.",
+    "Le contenu des objets Git dataless n’a pas été forcé en lecture."
+  ],
+  "pathRedaction": "Chemins absolus locaux remplacés par des chemins relatifs ou des libellés de dossiers temporaires avant publication."
+}

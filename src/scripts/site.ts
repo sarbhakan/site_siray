@@ -98,7 +98,7 @@ function initialize() {
       surface.setAttribute(
         'aria-label',
         reduced.matches
-          ? 'Photographies d’ambiance'
+          ? 'Les créations en images'
           : pausedByUser
             ? 'Reprendre le défilement des photographies'
             : 'Figer le défilement des photographies',
@@ -114,7 +114,20 @@ function initialize() {
       const img = target.querySelector('img');
       if (img) {
         img.loading = 'eager';
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+          delete img.dataset.srcset;
+        }
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
         await img.decode().catch(() => {});
+        // Keep the current photograph when the next one cannot be loaded.
+        if (!img.complete || img.naturalWidth === 0) {
+          if (!disposed && scheduledGeneration === generation && canRun()) schedule();
+          return;
+        }
       }
       if (disposed || scheduledGeneration !== generation || !canRun()) return;
       animation?.kill();
@@ -176,95 +189,34 @@ function initialize() {
   }
 
   const gallery = document.querySelector<HTMLElement>('[data-gallery]');
-  const lightbox = document.querySelector<HTMLDialogElement>('.lightbox');
-  if (gallery && lightbox) {
-    const items = Array.from(
-      gallery.querySelectorAll<HTMLElement>('[data-lightbox-index]'),
-    );
+  if (gallery) {
     const figures = Array.from(
       gallery.querySelectorAll<HTMLElement>('.gallery-card'),
     );
     const filters = Array.from(
       gallery.querySelectorAll<HTMLButtonElement>('[data-filter]'),
     );
-    const image = lightbox.querySelector<HTMLImageElement>('img')!;
-    const caption = lightbox.querySelector<HTMLElement>('.lightbox-caption')!;
-    let selected = items[0];
-    let origin: HTMLElement | undefined;
-    const visibleItems = () =>
-      items.filter(
-        (item) => !item.closest<HTMLElement>('.gallery-card')?.hidden,
-      );
-    const show = (item: HTMLElement) => {
-      selected = item;
-      image.src = item.dataset.image || '';
-      image.alt = item.querySelector('img')?.alt || '';
-      const visible = visibleItems();
-      caption.textContent = `${item.dataset.caption} · ${visible.indexOf(item) + 1} / ${visible.length}`;
+    const categories = new Set([
+      'all',
+      'layer-cakes',
+      'bento-cakes',
+      'mignardises',
+      'cupcakes',
+      'brunch-box',
+      'buffets',
+      'plateaux',
+    ]);
+    const categoryAliases: Record<string, string> = {
+      cakes: 'layer-cakes',
+      douceurs: 'mignardises',
+      tables: 'buffets',
     };
-    const move = (direction: number) => {
-      const visible = visibleItems();
-      show(
-        visible[
-          (visible.indexOf(selected) + direction + visible.length) %
-            visible.length
-        ],
-      );
-    };
-    items.forEach((item) =>
-      item.addEventListener(
-        'click',
-        (event) => {
-          event.preventDefault();
-          origin = item;
-          show(item);
-          lightbox.showModal();
-        },
-        { signal },
-      ),
-    );
-    lightbox
-      .querySelector('[data-lightbox-close]')
-      ?.addEventListener('click', () => lightbox.close(), { signal });
-    lightbox
-      .querySelector('[data-lightbox-next]')
-      ?.addEventListener('click', () => move(1), { signal });
-    lightbox
-      .querySelector('[data-lightbox-prev]')
-      ?.addEventListener('click', () => move(-1), { signal });
-    lightbox.addEventListener(
-      'keydown',
-      (event) => {
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          move(1);
-        }
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          move(-1);
-        }
-      },
-      { signal },
-    );
-    lightbox.addEventListener('close', () => origin?.focus(), { signal });
-    let startX = 0;
-    lightbox.addEventListener(
-      'touchstart',
-      (event) => {
-        startX = event.changedTouches[0].screenX;
-      },
-      { signal, passive: true },
-    );
-    lightbox.addEventListener(
-      'touchend',
-      (event) => {
-        const distance = event.changedTouches[0].screenX - startX;
-        if (Math.abs(distance) > 70) move(distance < 0 ? 1 : -1);
-      },
-      { signal, passive: true },
-    );
     const filter = (category: string) => {
-      if (!filters.some((button) => button.dataset.filter === category))
+      category = categoryAliases[category] || category;
+      if (
+        !categories.has(category) ||
+        !filters.some((button) => button.dataset.filter === category)
+      )
         category = 'all';
       filters.forEach((button) =>
         button.setAttribute(
@@ -280,13 +232,13 @@ function initialize() {
       const status = gallery.querySelector('.gallery-status');
       if (status)
         status.textContent = `${count} photographie${count > 1 ? 's' : ''}`;
+      return category;
     };
     filters.forEach((button) =>
       button.addEventListener(
         'click',
         () => {
-          const category = button.dataset.filter || 'all';
-          filter(category);
+          const category = filter(button.dataset.filter || 'all');
           history.replaceState(
             null,
             '',
@@ -297,9 +249,11 @@ function initialize() {
       ),
     );
     filter(location.hash.slice(1) || 'all');
-    cleanups.push(() => {
-      if (lightbox.open) lightbox.close();
-    });
+    window.addEventListener(
+      'hashchange',
+      () => filter(location.hash.slice(1) || 'all'),
+      { signal },
+    );
   }
 
   cleanup = () => {

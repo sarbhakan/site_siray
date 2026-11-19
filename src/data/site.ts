@@ -1,3 +1,5 @@
+import { collectionPhotography, galleryPhotos } from './photography';
+
 export const instagram = 'https://www.instagram.com/siraysignature/';
 export const brand = 'Siray Signature';
 
@@ -5,6 +7,7 @@ export interface Tariff {
   label: string;
   price: number;
   detail?: string;
+  description?: string;
 }
 
 export interface Collection {
@@ -30,11 +33,10 @@ export const collections: Collection[] = [
     href: '/creations/layer-cakes/',
     name: 'Layer cakes',
     short: 'Un gâteau à votre image',
-    image: 'layer-cake',
-    alt: 'Gâteau blanc à étages décoré de fruits, photographie d’ambiance',
+    ...collectionPhotography['layer-cakes'].cover,
     intro:
-      'Un gâteau sur commande, à partir de 10 parts. Saveurs classiques ou associations Signature, décor et couleurs se choisissent avec vous.',
-    text: 'Une photo d’inspiration, une inscription, les couleurs de votre événement : nous imaginons votre layer cake autour de vos envies.',
+      'Saveurs et décor à votre image.',
+    text: 'Choisissez vos saveurs, vos couleurs et votre décor.',
     possibilities: [
       '10 parts minimum',
       'Couleurs, thème, inscription et décoration personnalisables',
@@ -58,11 +60,10 @@ export const collections: Collection[] = [
     href: '/creations/bento-cakes/',
     name: 'Bento cakes',
     short: 'Un petit format, un message personnel',
-    image: 'gateau-creme',
-    alt: 'Gâteau à la crème, photographie d’ambiance illustrative',
+    ...collectionPhotography['bento-cakes'].cover,
     intro:
-      'Un gâteau au format standard, à personnaliser avec un message, des couleurs et un décor choisis pour votre occasion.',
-    text: 'Choisissez une saveur classique, puis partagez votre idée de décor. Une photo d’inspiration nous aide à préciser votre création.',
+      'Un petit gâteau, vos couleurs et votre message.',
+    text: 'Une saveur classique, un message et un décor à choisir.',
     possibilities: [
       'Format standard',
       'Inscription, couleurs, thème et décoration personnalisables',
@@ -75,7 +76,7 @@ export const collections: Collection[] = [
     tariffs: [],
     orderFields: [
       'La saveur classique souhaitée',
-      'Le modèle et votre photo d’inspiration',
+      'Le modèle ou une photo d’inspiration',
       'L’inscription, les couleurs, le thème et le décor',
       'La date souhaitée',
     ],
@@ -85,11 +86,10 @@ export const collections: Collection[] = [
     href: '/creations/mignardises/',
     name: 'Mignardises',
     short: 'Les petites pièces sucrées & salées',
-    image: 'macarons-ivoire',
-    alt: 'Macarons clairs disposés sur une table, photographie d’ambiance',
+    ...collectionPhotography['mignardises'].cover,
     intro:
-      'Des pièces sucrées et salées réunies en plateaux prêts à disposer, pour vos événements et vos réceptions.',
-    text: 'Choisissez les variétés et leur répartition. La composition s’ajuste à vos envies et au nombre de convives.',
+      'Des bouchées sucrées, salées ou les deux.',
+    text: 'Variétés et quantités à composer selon vos convives.',
     possibilities: [
       'Sucré, salé ou les deux',
       'Plateaux prêts à disposer',
@@ -119,11 +119,10 @@ export const collections: Collection[] = [
     href: '/creations/cupcakes/',
     name: 'Cupcakes',
     short: 'Des saveurs à réunir, un décor à choisir',
-    image: 'cupcakes',
-    alt: 'Cupcakes décorés présentés sur une table, photographie d’ambiance',
+    ...collectionPhotography['cupcakes'].cover,
     intro:
-      'De 6 à 30 pièces, des cupcakes à composer parmi onze saveurs et à personnaliser selon votre occasion.',
-    text: 'Sélectionnez vos saveurs et le nombre de pièces, puis échangeons sur le décor et les couleurs souhaités.',
+      'Onze saveurs, un décor à votre image.',
+    text: 'Choisissez la quantité, les saveurs et le décor.',
     possibilities: [
       'Cinq formats, de 6 à 30 pièces',
       'Onze saveurs au choix',
@@ -152,18 +151,17 @@ export const collections: Collection[] = [
     href: '/creations/brunch-box/',
     name: 'Brunch box',
     short: 'Dix compositions pour vos matins gourmands',
-    image: 'brunch',
-    alt: 'Table de brunch avec viennoiseries et fruits, photographie d’ambiance',
+    ...collectionPhotography['brunch-box'].cover,
     intro:
-      'Dix compositions sucrées et salées, à offrir ou à partager. Choisissez votre brunch, nous le préparons sur commande.',
+      'Dix brunchs sucrés et salés, sur commande.',
     text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
     possibilities: [
       'Dix compositions au choix',
       'Sucré, salé et jus de fruits',
-      '30 € par personne, 35 € pour Anatolia',
+      'Neuf compositions à 30 € par personne ; Anatolia à 35 € par personne',
     ],
     occasion: 'Brunchs & cadeaux',
-    priceSummary: '30 € par personne · Anatolia 35 €',
+    priceSummary: '9 compositions à 30 € / personne. Anatolia à 35 € / personne.',
     priceNote:
       'Toutes nos brunch box sont proposées à 30 € par personne, à l’exception d’Anatolia, à 35 € par personne.',
     tariffs: [
@@ -187,11 +185,10 @@ export const collections: Collection[] = [
     href: '/buffets/',
     name: 'Buffets',
     short: 'Une réception, une table sur mesure',
-    image: 'buffet-gourmand',
-    alt: 'Buffet dressé pour une réception, photographie d’ambiance',
+    ...collectionPhotography['buffets'].cover,
     intro:
-      'Un buffet sucré, salé ou mixte, pensé pour votre événement et vos convives. De la sélection des gourmandises à la mise en place.',
-    text: 'Nous étudions avec vous la composition, les quantités, le dressage et la décoration. Thème, couleurs et inspirations donnent le ton de votre table.',
+      'Un buffet sucré, salé ou mixte, installé pour votre événement.',
+    text: 'Composition, quantités et décor se définissent selon votre événement.',
     possibilities: [
       'Composition sucrée, salée ou mixte',
       'Sélection et quantités adaptées à vos invités',
@@ -203,12 +200,12 @@ export const collections: Collection[] = [
       'Chaque buffet fait l’objet d’un devis personnalisé selon les quantités, les produits sélectionnés et les besoins de mise en place.',
     tariffs: [],
     orderFields: [
-      'Le nombre d’invités et de mignardises par personne',
-      'La composition : sucrée, salée ou mixte',
-      'Le lieu, la date et l’horaire de la réception',
-      'Les besoins de mise en place et de dressage',
-      'Le thème, les couleurs, la décoration et vos inspirations',
-      'Toute demande particulière pour la présentation',
+      'Le lieu de l’événement',
+      'La date et l’horaire',
+      'Le nombre de convives',
+      'Le nombre de mignardises par personne',
+      'Le thème, les couleurs et vos inspirations',
+      'La composition souhaitée : sucrée, salée ou mixte',
     ],
   },
   {
@@ -216,10 +213,9 @@ export const collections: Collection[] = [
     href: '/plateaux/',
     name: 'Plateaux',
     short: 'Des compositions à partager',
-    image: 'plateau-sale',
-    alt: 'Plateau de fromages et charcuterie, photographie d’ambiance',
+    ...collectionPhotography['plateaux'].cover,
     intro:
-      'Charcuterie, fromages, fruits frais ou crudités : une sélection de plateaux pour compléter vos tables gourmandes.',
+      'Cinq compositions à partager.',
     text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
     possibilities: [
       'Cinq plateaux au choix',
@@ -231,14 +227,31 @@ export const collections: Collection[] = [
     priceNote:
       'Précisez le nombre de convives et la quantité de chaque plateau lors de votre demande.',
     tariffs: [
-      { label: 'Plateau de charcuterie', price: 70 },
-      { label: 'Plateau de fromages', price: 70 },
-      { label: 'Grazing Platter', price: 60 },
-      { label: 'Plateau de fruits frais', price: 50 },
+      {
+        label: 'Plateau de charcuterie',
+        price: 70,
+        description: 'Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées.',
+      },
+      {
+        label: 'Plateau de fromages',
+        price: 70,
+        description: 'Une sélection de fromages de qualité, aux arômes et aux affinages variés.',
+      },
+      {
+        label: 'Grazing Platter',
+        price: 60,
+        description: 'Fromages, biscuits, fruits frais et secs, accompagnés de confitures.',
+      },
+      {
+        label: 'Plateau de fruits frais',
+        price: 50,
+        description: 'Un assortiment de fruits frais de saison.',
+      },
       {
         label: 'Plateau de crudités',
         price: 45,
-        detail: 'Houmous, tzatziki et sauce aïoli',
+        detail: 'Houmous, tzatziki et sauce ail et fines herbes',
+        description: 'Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes.',
       },
     ],
     orderFields: [
@@ -248,6 +261,25 @@ export const collections: Collection[] = [
       'La date souhaitée',
       'Vos éventuelles restrictions alimentaires',
     ],
+  },
+];
+
+export const buffetServiceSteps: { title: string; text: string }[] = [
+  {
+    title: 'Installation avant l’événement',
+    text: 'Installation avant l’événement, avec une présentation soignée des mignardises.',
+  },
+  {
+    title: 'Présentation & décoration',
+    text: 'Plateaux, présentoirs et supports composent une mise en scène harmonieuse.',
+  },
+  {
+    title: 'Personnalisation',
+    text: 'Votre thème, vos couleurs et vos inspirations guident la présentation et la décoration.',
+  },
+  {
+    title: 'Retrait du matériel',
+    text: 'Le matériel Siray Signature est récupéré à la fin de votre événement.',
   },
 ];
 
@@ -466,61 +498,4 @@ export const brunchBoxes = [
   },
 ].map((box) => ({ ...box, drink: 'Jus de fruits : orange ou fraise' }));
 
-export const gallery = [
-  {
-    image: 'layer-cake',
-    label: 'Layer cake aux fruits',
-    category: 'cakes',
-    categoryLabel: 'Cakes',
-    alt: 'Layer cake blanc aux fruits',
-  },
-  {
-    image: 'macarons-ivoire',
-    label: 'Macarons ivoire',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Macarons ivoire disposés sur une table',
-  },
-  {
-    image: 'table-reception',
-    label: 'Table de réception',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Table de réception fleurie et desserts',
-  },
-  {
-    image: 'gateau-creme',
-    label: 'Gâteau à la crème',
-    category: 'cakes',
-    categoryLabel: 'Cakes',
-    alt: 'Gâteau décoré de volutes de crème',
-  },
-  {
-    image: 'plateau-sale',
-    label: 'Plateau salé',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Plateau gourmand salé',
-  },
-  {
-    image: 'macarons-rose',
-    label: 'Macarons roses',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Macarons roses et clairs',
-  },
-  {
-    image: 'brunch',
-    label: 'Table de brunch',
-    category: 'tables',
-    categoryLabel: 'Tables',
-    alt: 'Brunch avec fruits et viennoiseries',
-  },
-  {
-    image: 'cupcakes',
-    label: 'Cupcakes',
-    category: 'douceurs',
-    categoryLabel: 'Douceurs',
-    alt: 'Cupcakes décorés',
-  },
-];
+export const gallery = galleryPhotos;

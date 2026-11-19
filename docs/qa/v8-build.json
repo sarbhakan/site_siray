@@ -1,0 +1,13 @@
+{
+  "check": {
+    "exitCode": 0,
+    "stdout": "01:23:38 [types] Generated 58ms\n01:23:38 [check] Getting diagnostics for Astro files in ....\nResult (28 files): \n- 0 errors\n- 0 warnings\n- 0 hints\n\n",
+    "stderr": ""
+  },
+  "build": {
+    "exitCode": 0,
+    "stdout": "01:23:39 [types] Generated 24ms\n01:23:39 [build] output: \"static\"\n01:23:39 [build] mode: \"static\"\n01:23:39 [build] directory: ./dist/\n01:23:39 [build] Collecting build info...\n01:23:39 [build] ✓ Completed in 41ms.\n01:23:39 [build] Building static entrypoints...\n01:23:40 [vite] ✓ built in 175ms\n01:23:40 [vite] ✓ built in 79ms\n01:23:40 [build] Rearranging server assets...\n\n generating static routes \n01:23:40   ├─ /404.html (+10ms) \n01:23:40   ├─ /buffets/index.html (+3ms) \n01:23:40   ├─ /contact/index.html (+2ms) \n01:23:40   ├─ /creations/layer-cakes/index.html (+2ms) \n01:23:40   ├─ /creations/bento-cakes/index.html (+2ms) \n01:23:40   ├─ /creations/mignardises/index.html (+5ms) \n01:23:40   ├─ /creations/cupcakes/index.html (+1ms) \n01:23:40   ├─ /creations/brunch-box/index.html (+2ms) \n01:23:40   ├─ /creations/index.html (+2ms) \n01:23:40   ├─ /credits/index.html (+1ms) \n01:23:40   ├─ /galerie/index.html (+2ms) \n01:23:40   ├─ /la-maison/index.html (+1ms) \n01:23:40   ├─ /plateaux/index.html (+1ms) \n01:23:40   ├─ /robots.txt (+1ms) \n01:23:40   ├─ /index.html (+2ms) \n01:23:40 ✓ Completed in 47ms.\n\n01:23:40 [build] ✓ Completed in 346ms.\n01:23:40 [build] 14 page(s) built in 401ms\n01:23:40 [build] Complete!\n",
+    "stderr": ""
+  },
+  "pathRedaction": "Chemins absolus locaux remplacés par des chemins relatifs ou des libellés de dossiers temporaires avant publication."
+}

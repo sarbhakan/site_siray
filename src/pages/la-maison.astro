@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
+import { photo } from '../data/photography';
+const maisonPhoto = photo('mignardises-toasts');
 ---
 
-<Layout title="La maison" image="macarons-ivoire">
+<Layout title="La maison" image={maisonPhoto.image}>
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
@@ -23,8 +25,8 @@ import Photo from '../components/Photo.astro';
   </section>
   <div class="wide-photo">
     <Photo
-      name="macarons-ivoire"
-      alt="Macarons ivoire et détails de table, photographie d’ambiance"
+      name={maisonPhoto.image}
+      alt={maisonPhoto.alt}
       eager
       sizes="100vw"
     />

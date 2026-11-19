@@ -1,0 +1,279 @@
+{
+ "files": [
+  {
+   "words": 89,
+   "headings": [
+    "Page introuvable"
+   ],
+   "findings": [],
+   "file": "dist/404.html",
+   "kind": "service"
+  },
+  {
+   "words": 307,
+   "headings": [
+    "Buffets",
+    "Une table à composer ensemble",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [],
+   "file": "dist/buffets/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 307,
+   "headings": [
+    "Votre projet gourmand",
+    "Les détails utiles",
+    "Vos questions"
+   ],
+   "findings": [
+    {
+     "sev": "INFO",
+     "id": "copy-rhythm",
+     "count": 0,
+     "msg": "15 sentences, mean 16.6 words, spread 23.0, 0% of 4 words or fewer",
+     "fix": "",
+     "examples": [],
+     "hits": []
+    }
+   ],
+   "file": "dist/contact/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 330,
+   "headings": [
+    "Bento cakes",
+    "Le format, puis votre décor",
+    "Quinze saveurs classiques",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [
+    {
+     "sev": "INFO",
+     "id": "copy-rhythm",
+     "count": 0,
+     "msg": "17 sentences, mean 13.5 words, spread 10.7, 6% of 4 words or fewer",
+     "fix": "",
+     "examples": [],
+     "hits": []
+    }
+   ],
+   "file": "dist/creations/bento-cakes/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 725,
+   "headings": [
+    "Brunch box",
+    "Dix brunchs au choix",
+    "Elegancia",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Prestige",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Le Parisien",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Faisalia",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Signature",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Brunchetta",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Dolcezza",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Amarizia",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Seralia",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Anatolia",
+    "Le sucré",
+    "Le salé",
+    "La boisson",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [],
+   "file": "dist/creations/brunch-box/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 325,
+   "headings": [
+    "Cupcakes",
+    "Les formats & leurs tarifs",
+    "Onze saveurs à découvrir",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [],
+   "file": "dist/creations/cupcakes/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 277,
+   "headings": [
+    "À chaque occasion, sa création",
+    "Layer cakes",
+    "Bento cakes",
+    "Mignardises",
+    "Cupcakes",
+    "Brunch box",
+    "Buffets",
+    "Plateaux"
+   ],
+   "findings": [],
+   "file": "dist/creations/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 441,
+   "headings": [
+    "Layer cakes",
+    "Le format, puis votre décor",
+    "Quinze saveurs classiques",
+    "Les associations Signature",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [
+    {
+     "sev": "INFO",
+     "id": "copy-rhythm",
+     "count": 0,
+     "msg": "25 sentences, mean 13.0 words, spread 16.3, 4% of 4 words or fewer",
+     "fix": "",
+     "examples": [],
+     "hits": []
+    }
+   ],
+   "file": "dist/creations/layer-cakes/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 299,
+   "headings": [
+    "Mignardises",
+    "Les formats & leurs tarifs",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [],
+   "file": "dist/creations/mignardises/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 361,
+   "headings": [
+    "Photos & informations",
+    "Photographies d'ambiance",
+    "Demandes & commandes",
+    "Confidentialité",
+    "À propos de cette première version"
+   ],
+   "findings": [],
+   "file": "dist/credits/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 157,
+   "headings": [
+    "Le carnet des envies"
+   ],
+   "findings": [],
+   "file": "dist/galerie/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 240,
+   "headings": [
+    "Vos instants gourmands",
+    "La carte Siray",
+    "Pour célébrer",
+    "Layer cakes",
+    "Bento cakes",
+    "Cupcakes",
+    "Mignardises",
+    "Pour se retrouver",
+    "Buffets",
+    "Brunch box",
+    "Plateaux",
+    "L'art de sublimer vos instants gourmands",
+    "Des idées à garder"
+   ],
+   "findings": [],
+   "file": "dist/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 182,
+   "headings": [
+    "La maison Siray",
+    "Le sur-mesure, ensemble"
+   ],
+   "findings": [],
+   "file": "dist/la-maison/index.html",
+   "kind": "service"
+  },
+  {
+   "words": 305,
+   "headings": [
+    "Plateaux",
+    "Les formats & leurs tarifs",
+    "Les détails à nous partager",
+    "À découvrir aussi"
+   ],
+   "findings": [],
+   "file": "dist/plateaux/index.html",
+   "kind": "service"
+  }
+ ],
+ "cross": {
+  "heroes": [
+   "404.html: Page introuvable",
+   "buffets/index.html: Buffets",
+   "contact/index.html: Votre projet gourmand",
+   "creations/bento-cakes/index.html: Bento cakes",
+   "creations/brunch-box/index.html: Brunch box",
+   "creations/cupcakes/index.html: Cupcakes",
+   "creations/index.html: À chaque occasion, sa création",
+   "creations/layer-cakes/index.html: Layer cakes",
+   "creations/mignardises/index.html: Mignardises",
+   "credits/index.html: Photos & informations",
+   "galerie/index.html: Le carnet des envies",
+   "index.html: Vos instants gourmands",
+   "la-maison/index.html: La maison Siray",
+   "plateaux/index.html: Plateaux"
+  ],
+  "shared": [
+   "\"les dtails nous\" in 7 files: buffets/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/cupcakes/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html, plateaux/index.html",
+   "\"dtails nous partager\" in 7 files: buffets/index.html, creations/bento-cakes/index.html, creations/brunch-box/index.html, creations/cupcakes/index.html, creations/layer-cakes/index.html, creations/mignardises/index.html, plateaux/index.html",
+   "\"le format puis\" in 2 files: creations/bento-cakes/index.html, creations/layer-cakes/index.html",
+   "\"format puis votre\" in 2 files: creations/bento-cakes/index.html, creations/layer-cakes/index.html",
+   "\"puis votre dcor\" in 2 files: creations/bento-cakes/index.html, creations/layer-cakes/index.html",
+   "\"quinze saveurs classiques\" in 2 files: creations/bento-cakes/index.html, creations/layer-cakes/index.html",
+   "\"les formats leurs\" in 3 files: creations/cupcakes/index.html, creations/mignardises/index.html, plateaux/index.html",
+   "\"formats leurs tarifs\" in 3 files: creations/cupcakes/index.html, creations/mignardises/index.html, plateaux/index.html"
+  ]
+ }
+}

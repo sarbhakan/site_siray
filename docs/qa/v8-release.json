@@ -1,0 +1,27 @@
+{
+  "output_dir": "../releases/v8",
+  "files": 125,
+  "html_pages": 14,
+  "archives": [
+    {
+      "file": "siray-signature-v8-netlify.zip",
+      "target": "netlify",
+      "bytes": 5427910,
+      "sha256": "069b104e7701932295c5cece1558689fce21b431477f2dd0859eabc1c5213900"
+    },
+    {
+      "file": "siray-signature-v8-cloudflare-pages.zip",
+      "target": "cloudflare-pages",
+      "bytes": 5427910,
+      "sha256": "069b104e7701932295c5cece1558689fce21b431477f2dd0859eabc1c5213900"
+    }
+  ],
+  "manifest": "siray-signature-v8-manifest.json",
+  "guide": "siray-signature-v8-deployment.md",
+  "checksums": "siray-signature-v8-SHA256SUMS.txt",
+  "warnings": [
+    "URL de production non vérifiée : le site reste portable. Après attribution du nom, recompiler avec SITE_URL puis recréer les archives pour les métadonnées de partage et de référencement.",
+    "14 image(s) de partage utilisent un chemin relatif ; une origine finale est nécessaire pour garantir leur interprétation par les réseaux sociaux."
+  ],
+  "pathRedaction": "Chemins absolus locaux remplacés par des chemins relatifs ou des libellés de dossiers temporaires avant publication."
+}

@@ -1,0 +1,161 @@
+{
+  "plateaux": [
+    [
+      {
+        "description": "Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées.",
+        "name": "Plateau de charcuterie70 €",
+        "open": true
+      },
+      {
+        "description": null,
+        "name": "Plateau de fromages70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Grazing Platter60 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fruits frais50 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de crudités45 €",
+        "open": false
+      }
+    ],
+    [
+      {
+        "description": null,
+        "name": "Plateau de charcuterie70 €",
+        "open": false
+      },
+      {
+        "description": "Une sélection de fromages de qualité, aux arômes et aux affinages variés.",
+        "name": "Plateau de fromages70 €",
+        "open": true
+      },
+      {
+        "description": null,
+        "name": "Grazing Platter60 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fruits frais50 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de crudités45 €",
+        "open": false
+      }
+    ],
+    [
+      {
+        "description": null,
+        "name": "Plateau de charcuterie70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fromages70 €",
+        "open": false
+      },
+      {
+        "description": "Fromages, biscuits, fruits frais et secs, accompagnés de confitures.",
+        "name": "Grazing Platter60 €",
+        "open": true
+      },
+      {
+        "description": null,
+        "name": "Plateau de fruits frais50 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de crudités45 €",
+        "open": false
+      }
+    ],
+    [
+      {
+        "description": null,
+        "name": "Plateau de charcuterie70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fromages70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Grazing Platter60 €",
+        "open": false
+      },
+      {
+        "description": "Un assortiment de fruits frais de saison.",
+        "name": "Plateau de fruits frais50 €",
+        "open": true
+      },
+      {
+        "description": null,
+        "name": "Plateau de crudités45 €",
+        "open": false
+      }
+    ],
+    [
+      {
+        "description": null,
+        "name": "Plateau de charcuterie70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fromages70 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Grazing Platter60 €",
+        "open": false
+      },
+      {
+        "description": null,
+        "name": "Plateau de fruits frais50 €",
+        "open": false
+      },
+      {
+        "description": "Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes.",
+        "name": "Plateau de crudités45 €",
+        "open": true
+      }
+    ]
+  ],
+  "keyboard": "Enter collapsed the expanded crudités summary, observed in accessibility tree.",
+  "gallery": [
+    {
+      "filter": "Cakes",
+      "count": 2
+    },
+    {
+      "filter": "Douceurs",
+      "count": 3
+    },
+    {
+      "filter": "Tables",
+      "count": 3
+    },
+    {
+      "filter": "Tout voir",
+      "count": 8
+    }
+  ],
+  "brunch": "Anatolia selected: 35 € / personne, full sweet/savory/drink menu visible.",
+  "mobileMenu": "Opened at 320 px; Accueil link returned to homepage.",
+  "console": []
+}

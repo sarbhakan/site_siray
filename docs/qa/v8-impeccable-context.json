@@ -1,0 +1,9 @@
+{
+  "command": "cached impeccable context --target src/components/Photo.astro",
+  "returncode": 0,
+  "contextReturned": true,
+  "stdoutCharacters": 12494,
+  "stdoutSha256": "b6666a6c1b283dcb506ee358ea31c29099793d6a396eacddd7af3892fa0860da",
+  "publicationScope": "Résultat du contrôle uniquement. Sortie brute conservée localement hors du dépôt ; elle contient le contexte de travail de l’outil et ne fait pas partie du site livré.",
+  "stderrPresent": false
+}

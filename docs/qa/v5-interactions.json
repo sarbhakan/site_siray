@@ -1,0 +1,326 @@
+{
+  "tabs": [
+    {
+      "route": "/creations/layer-cakes/",
+      "label": "Format & décor",
+      "focus": "Format & décor",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Format & décor"
+      ]
+    },
+    {
+      "route": "/creations/layer-cakes/",
+      "label": "Saveurs classiques",
+      "focus": "Saveurs classiques",
+      "overflow": false,
+      "panels": [
+        "saveurs"
+      ],
+      "selected": [
+        "Saveurs classiques"
+      ]
+    },
+    {
+      "route": "/creations/layer-cakes/",
+      "label": "Associations Signature",
+      "focus": "Associations Signature",
+      "overflow": false,
+      "panels": [
+        "signatures"
+      ],
+      "selected": [
+        "Associations Signature"
+      ]
+    },
+    {
+      "route": "/creations/layer-cakes/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "label": "Format & décor",
+      "focus": "Format & décor",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Format & décor"
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "label": "Saveurs classiques",
+      "focus": "Saveurs classiques",
+      "overflow": false,
+      "panels": [
+        "saveurs"
+      ],
+      "selected": [
+        "Saveurs classiques"
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/creations/mignardises/",
+      "label": "Formats & tarifs",
+      "focus": "Formats & tarifs",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Formats & tarifs"
+      ]
+    },
+    {
+      "route": "/creations/mignardises/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "label": "Formats & tarifs",
+      "focus": "Formats & tarifs",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Formats & tarifs"
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "label": "Les saveurs",
+      "focus": "Les saveurs",
+      "overflow": false,
+      "panels": [
+        "saveurs"
+      ],
+      "selected": [
+        "Les saveurs"
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/creations/brunch-box/",
+      "label": "Les compositions",
+      "focus": "Les compositions",
+      "overflow": false,
+      "panels": [
+        "compositions"
+      ],
+      "selected": [
+        "Les compositions"
+      ]
+    },
+    {
+      "route": "/creations/brunch-box/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/buffets/",
+      "label": "Composer le buffet",
+      "focus": "Composer le buffet",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Composer le buffet"
+      ]
+    },
+    {
+      "route": "/buffets/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    },
+    {
+      "route": "/plateaux/",
+      "label": "Formats & tarifs",
+      "focus": "Formats & tarifs",
+      "overflow": false,
+      "panels": [
+        "formats"
+      ],
+      "selected": [
+        "Formats & tarifs"
+      ]
+    },
+    {
+      "route": "/plateaux/",
+      "label": "Préparer ma demande",
+      "focus": "Préparer ma demande",
+      "overflow": false,
+      "panels": [
+        "votre-demande"
+      ],
+      "selected": [
+        "Préparer ma demande"
+      ]
+    }
+  ],
+  "keyboard": [
+    {
+      "focus": "Saveurs classiques",
+      "key": "ArrowRight",
+      "selected": "Saveurs classiques"
+    },
+    {
+      "focus": "Préparer ma demande",
+      "key": "End",
+      "selected": "Préparer ma demande"
+    },
+    {
+      "focus": "Format & décor",
+      "key": "Home",
+      "selected": "Format & décor"
+    }
+  ],
+  "disclosure": {
+    "openGroups": [
+      "ChocolatsVoir"
+    ]
+  },
+  "brunchMobile": {
+    "options": [
+      "Elegancia — 30 € / personne",
+      "Prestige — 30 € / personne",
+      "Le Parisien — 30 € / personne",
+      "Faisalia — 30 € / personne",
+      "Signature — 30 € / personne",
+      "Brunchetta — 30 € / personne",
+      "Dolcezza — 30 € / personne",
+      "Amarizia — 30 € / personne",
+      "Seralia — 30 € / personne",
+      "Anatolia — 35 € / personne"
+    ],
+    "selected": "9"
+  },
+  "brunchDesktop": {
+    "resizeSelection": "Anatolia35 €/ personne",
+    "choices": [
+      {
+        "name": "Elegancia",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Prestige",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Le Parisien",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Faisalia",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Signature",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Brunchetta",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Dolcezza",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Amarizia",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Seralia",
+        "price": "30 € / personne",
+        "visible": 1
+      },
+      {
+        "name": "Anatolia",
+        "price": "35 € / personne",
+        "visible": 1
+      }
+    ]
+  },
+  "navigation": {
+    "bento": true,
+    "bentoTabs": 3,
+    "bentoFlavors": "saveurs",
+    "backLayer": 4,
+    "layerSignature": "signatures"
+  },
+  "regression": {
+    "filteredPhotos": true,
+    "dialogOpen": true,
+    "dialogClosed": true,
+    "menuNavigationLayer": 4
+  },
+  "console": []
+}

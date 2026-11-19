@@ -1,0 +1,21 @@
+---
+import { buffetServiceSteps } from '../data/site';
+---
+
+<ol class="buffet-service">
+  {buffetServiceSteps.map((step, index) => (
+    <li>
+      <span class="buffet-step-number" aria-hidden="true">{index + 1}</span>
+      <div><h3>{step.title}</h3><p>{step.text}</p></div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .buffet-service { margin: 0; padding: 0; list-style: none; }
+  .buffet-service li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding-block: 20px; border-top: 1px solid var(--line); }
+  .buffet-service li:last-child { border-bottom: 1px solid var(--line); }
+  .buffet-step-number { font: 400 22px/1.4 'Gloock', serif; color: var(--olive); }
+  .buffet-service h3 { margin: 0 0 8px; font: 600 16px/1.5 'Manrope', sans-serif; }
+  .buffet-service p { max-width: none; font-size: 16px; line-height: 1.625; color: var(--muted); }
+</style>
