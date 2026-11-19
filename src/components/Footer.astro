@@ -1,15 +1,13 @@
 ---
-import { instagram } from '../data/site';
+import { collections, instagram } from '../data/site';
 import BrandMark from './BrandMark.astro';
 
 const year = new Date().getFullYear();
-const links = [
+const siteLinks = [
   { href: '/creations/', label: 'Nos prestations' },
-  { href: '/creations/brunch-box/', label: 'Brunch box' },
-  { href: '/buffets/', label: 'Buffets' },
-  { href: '/plateaux/', label: 'Plateaux' },
   { href: '/galerie/', label: 'Galerie' },
   { href: '/la-maison/', label: 'La maison' },
+  { href: '/contact/', label: 'Votre projet' },
 ];
 ---
 
@@ -26,9 +24,9 @@ const links = [
     </a>
   </div>
 
-  <nav class="signature-footer-nav" aria-label="Explorer Siray Signature">
-    {links.map((link) => (
-      <a href={link.href}>{link.label}</a>
+  <nav class="signature-footer-nav" aria-label="Les sept prestations">
+    {collections.map((collection) => (
+      <a href={collection.href}>{collection.name}</a>
     ))}
   </nav>
 
@@ -46,6 +44,11 @@ const links = [
         <p>© {year} Siray Signature</p>
       </div>
     </div>
+    <nav class="signature-footer-site" aria-label="Explorer Siray Signature">
+      {siteLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
   </div>
 </footer>
 
@@ -90,15 +93,16 @@ const links = [
   }
 
   .signature-footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0 20px;
-    margin-block: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+    margin-block: 12px;
   }
 
-  .signature-footer-nav a {
+  .signature-footer-nav a,
+  .signature-footer-site a {
     display: inline-flex;
+    min-width: 44px;
     min-height: 44px;
     align-items: center;
     padding-block: 8px;
@@ -113,6 +117,7 @@ const links = [
 
   .signature-footer-bottom {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 12px;
     padding-top: 8px;
@@ -133,6 +138,7 @@ const links = [
 
   .signature-footer-meta {
     min-width: 0;
+    flex: 1;
     color: var(--on-olive-muted);
     font-size: 13px;
     line-height: 20px;
@@ -149,12 +155,25 @@ const links = [
     gap: 0 20px;
   }
 
+  .signature-footer-site {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-basis: 100%;
+    column-gap: 16px;
+  }
+
+  .signature-footer-site a {
+    color: var(--on-olive-muted);
+    font-size: 13px;
+  }
+
   @media (hover: hover) {
     .signature-footer-instagram:hover {
       background: var(--white);
     }
 
-    .signature-footer-nav a:hover {
+    .signature-footer-nav a:hover,
+    .signature-footer-site a:hover {
       text-decoration-color: currentColor;
     }
   }
@@ -175,6 +194,14 @@ const links = [
       flex-shrink: 0;
     }
 
+    .signature-footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 24px;
+      margin-block: 12px;
+    }
+
     .signature-footer-bottom {
       gap: 16px;
     }
@@ -185,17 +212,23 @@ const links = [
 
     .signature-footer-meta {
       display: flex;
-      flex: 1;
       flex-wrap: wrap;
       align-items: center;
       gap: 0 24px;
     }
+
+    .signature-footer-site {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 20px;
+    }
   }
 
   @media (min-width: 960px) {
-    .signature-footer-nav {
-      flex-wrap: nowrap;
-      gap: 24px;
+    .signature-footer-site {
+      flex-basis: auto;
+      margin-inline-start: auto;
+      column-gap: 20px;
     }
   }
 

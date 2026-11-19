@@ -1,0 +1,1033 @@
+{
+  "contact": [
+    {
+      "footerHeight": 492.9140625,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 136
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 136
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "footerHeight": 495.4140625,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 167
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 167
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "footerHeight": 325.3671875,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 56.34375
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 95.53125
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 59.9765625
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 70.7265625
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 600
+    },
+    {
+      "footerHeight": 281.3671875,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 56.34375
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 95.53125
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 59.9765625
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 70.7265625
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "footerHeight": 221.3671875,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 56.34375
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 95.53125
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 59.9765625
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 70.7265625
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 960
+    },
+    {
+      "footerHeight": 221.3671875,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 56.34375
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 95.53125
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 59.9765625
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 70.7265625
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 1280
+    },
+    {
+      "footerHeight": 221.3671875,
+      "footerTargets": [
+        {
+          "height": 44,
+          "label": "Layer cakes",
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "label": "Bento cakes",
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "label": "Mignardises",
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "label": "Cupcakes",
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "label": "Brunch box",
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "label": "Buffets",
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "label": "Plateaux",
+          "width": 56.34375
+        },
+        {
+          "height": 44,
+          "label": "Nos prestations",
+          "width": 95.53125
+        },
+        {
+          "height": 44,
+          "label": "Galerie",
+          "width": 44
+        },
+        {
+          "height": 44,
+          "label": "La maison",
+          "width": 59.9765625
+        },
+        {
+          "height": 44,
+          "label": "Votre projet",
+          "width": 70.7265625
+        }
+      ],
+      "mainTextSizes": [
+        {
+          "font": "16px",
+          "role": "project-lead"
+        },
+        {
+          "font": "14px",
+          "role": "project-channel"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": "project-area"
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        },
+        {
+          "font": "16px",
+          "role": ""
+        }
+      ],
+      "overflow": false,
+      "width": 1440
+    }
+  ],
+  "sharedFooter": [
+    {
+      "overflow": false,
+      "path": "/",
+      "services": [
+        "/creations/layer-cakes/",
+        "/creations/bento-cakes/",
+        "/creations/mignardises/",
+        "/creations/cupcakes/",
+        "/creations/brunch-box/",
+        "/buffets/",
+        "/plateaux/"
+      ],
+      "undersized": [],
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "path": "/",
+      "services": [
+        "/creations/layer-cakes/",
+        "/creations/bento-cakes/",
+        "/creations/mignardises/",
+        "/creations/cupcakes/",
+        "/creations/brunch-box/",
+        "/buffets/",
+        "/plateaux/"
+      ],
+      "undersized": [],
+      "width": 960
+    },
+    {
+      "overflow": false,
+      "path": "/creations/layer-cakes/",
+      "services": [
+        "/creations/layer-cakes/",
+        "/creations/bento-cakes/",
+        "/creations/mignardises/",
+        "/creations/cupcakes/",
+        "/creations/brunch-box/",
+        "/buffets/",
+        "/plateaux/"
+      ],
+      "undersized": [],
+      "width": 390
+    },
+    {
+      "overflow": false,
+      "path": "/creations/layer-cakes/",
+      "services": [
+        "/creations/layer-cakes/",
+        "/creations/bento-cakes/",
+        "/creations/mignardises/",
+        "/creations/cupcakes/",
+        "/creations/brunch-box/",
+        "/buffets/",
+        "/plateaux/"
+      ],
+      "undersized": [],
+      "width": 960
+    }
+  ],
+  "nativeDetails": {
+    "closed": {
+      "focus": "solid",
+      "open": false
+    },
+    "opened": {
+      "focus": "2px",
+      "open": true
+    }
+  },
+  "allergiesAnchor": {
+    "headerBottom": 100,
+    "open": true,
+    "targetY": 455.2421875
+  }
+}
