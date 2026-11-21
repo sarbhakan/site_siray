@@ -60,6 +60,21 @@
 .siray-preview-photo { margin: 0; min-width: 0; max-width: 420px; padding: 12px; border-radius: 8px; background: var(--siray-paper); }
 .siray-preview-photo figcaption { display: grid; gap: 4px; padding-top: 10px; color: var(--siray-ink); font-size: 14px; line-height: 1.5; }
 .siray-preview-photo figcaption span { color: var(--siray-muted); }
+/* Keep the picture beside the crop sliders on phones, rather than above
+   them outside the viewport. Text and gallery fields keep the full width. */
+@media (max-width: 719px) {
+  .siray-photo-editor { padding: 12px; }
+  .siray-photo-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 14px; }
+  .siray-photo-preview { grid-column: 1; grid-row: 1; }
+  .siray-photo-settings { display: contents; }
+  .siray-crop-controls { grid-column: 2; grid-row: 1; }
+  .siray-photo-settings > :is(.siray-studio-field, .siray-gallery-fields) { grid-column: 1 / -1; }
+  .siray-crop-controls > .siray-studio-help, .siray-photo-preview > .siray-studio-help { display: none; }
+  .siray-preview-switch { gap: 6px; }
+  .siray-preview-switch button { flex-basis: 100%; padding-inline: 6px; }
+  .siray-range-label { font-size: 14px; gap: 0 6px; }
+  .siray-crop-controls > .siray-studio-button { padding-inline: 6px; font-size: 14px; }
+}
 @media (min-width: 720px) {
   .siray-photo-toolbar { flex-direction: row; align-items: center; gap: 20px; }
   .siray-photo-toolbar .siray-studio-button { flex: none; }

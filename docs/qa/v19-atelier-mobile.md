@@ -2,7 +2,7 @@
 
 ## Diagnostic et intégrité
 
-Les sauvegardes de Selin ed4869f (photo/description d’accessibilité) et 74949b6 (dont Fezalia) avaient déjà été déployées avec succès par Cloudflare. La légende visible « Décor de roses » n’avait pas été modifiée, d’où la distinction renforcée entre légende et texte alternatif. Les nouvelles sauvegardes ac1d9df et 8de96e9 ont été récupérées pendant cette passe et conservées. Aucun JSON métier ni fichier d’authentification n’est modifié par V19.
+Les sauvegardes de Selin ed4869f (photo/description d’accessibilité) et 74949b6 (dont Fezalia) avaient déjà été déployées avec succès par Cloudflare. La légende visible « Décor de roses » n’avait pas été modifiée, d’où la distinction renforcée entre légende et texte alternatif. Les nouvelles sauvegardes ac1d9df, 8de96e9, 03d45da et 38e5e97 ont été récupérées pendant cette passe et conservées. Les sauvegardes métier de Selin sont conservées. Le test authentifié final da03d6c modifie uniquement l’introduction de Votre projet en « Une date, une envie : imaginons votre création ensemble. » ; aucun tarif n’est modifié. Aucun fichier d’authentification n’est modifié par V19.
 
 ## Implémentation
 
@@ -25,4 +25,6 @@ Publication confirmée par empreintes SHA-256 canoniques des trois fichiers édi
 
 Le guide et l’écran de connexion sont consultables ; les contenus éditables et l’enregistrement demandent une session autorisée. Deux humains ont le droit d’écriture, y compris sur le code ; ce n’est pas un rôle « contenus seulement ». Le fonctionnement gratuit, le domaine et les services sont conservés. Les sessions existantes restent soumises à leur cycle de vie ; toute révocation future doit aussi retirer les droits GitHub et l’ID autorisé.
 
-Les aperçus sont représentatifs, pas un rendu exact de chaque navigateur. Les contrôles de largeur ne remplacent pas un essai sur iPhone physique ou dans Instagram. L’enregistrement authentifié réel et la publication V19 doivent être constatés sur le domaine après livraison ; leur résultat n’est pas déduit des tests locaux.
+Les aperçus sont représentatifs, pas un rendu exact de chaque navigateur. Les contrôles de largeur ne remplacent pas un essai sur iPhone physique ou dans Instagram. L’enregistrement authentifié réel est constaté en vue 390×844 : commit da03d6c, état « Modifications enregistrées — mise en ligne en cours », puis « Vos modifications sont en ligne » après concordance du témoin public. Le contenu publié est contrôlé séparément sur /contact/. La barre reste visible au-dessus du CMS et les aperçus natifs photo sont chargés sans iframe. Les images importées par le widget utilisent le contrat public pickFile, dont la sauvegarde des objets imbriqués est vérifiée dans les sources et tests officiels Sveltia ; le téléversement V19 observé dans le banc local ne constitue pas un nouvel import authentifié en production.
+
+Le cadrage mobile a été affiné après ce contrôle : photo et curseurs côte à côte, texte alternatif et légende pleine largeur. Banc visuel local sur les scripts livrés : image et deux curseurs visibles simultanément, commande Haut–bas au clavier, description conservée. Aucune donnée métier supplémentaire requise.

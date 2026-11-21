@@ -1459,7 +1459,9 @@
       "extra_sections_tests": 45,
       "presave_tests": 57,
       "publication_tests": 16,
-      "widget_assertions": 154
+      "widget_assertions": 154,
+      "authenticated_mobile_save": "da03d6c : pending then live confirmation; viewport390x844; content witness matched",
+      "direct_photo_preview": "production observed, no iframe; loaded image and crop updates"
     },
     "auth_permissions_changed": false,
     "fees_added": false
