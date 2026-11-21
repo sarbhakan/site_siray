@@ -14,6 +14,7 @@
       "occasion": "Anniversaires & réceptions",
       "priceSummary": "À partir de 10 parts",
       "priceNote": "Le tarif est communiqué en message privé selon le nombre de parts, les saveurs et le niveau de personnalisation.",
+      "panelNote": "Tarif personnalisé en message privé.",
       "tariffs": [],
       "orderFields": [
         "Le nombre de parts souhaité, à partir de 10",
@@ -21,8 +22,7 @@
         "La saveur classique ou l’association Signature",
         "Les couleurs, le thème, l’inscription et le décor",
         "La date de votre événement"
-      ],
-      "panelNote": "Tarif personnalisé en message privé."
+      ]
     },
     {
       "slug": "bento-cakes",
@@ -38,14 +38,14 @@
       "occasion": "Cadeaux & petites occasions",
       "priceSummary": "Un format standard à personnaliser",
       "priceNote": "Le tarif est communiqué en message privé selon la personnalisation et les éléments décoratifs souhaités.",
+      "panelNote": "Tarif personnalisé en message privé.",
       "tariffs": [],
       "orderFields": [
         "La saveur classique souhaitée",
         "Le modèle ou une photo d’inspiration",
         "L’inscription, les couleurs, le thème et le décor",
         "La date souhaitée"
-      ],
-      "panelNote": "Tarif personnalisé en message privé."
+      ]
     },
     {
       "slug": "mignardises",
@@ -59,31 +59,45 @@
         "Variétés et répartition à définir ensemble"
       ],
       "occasion": "Événements & réceptions",
+      "priceSummary": "",
       "priceNote": "Les quantités supplémentaires sont proposées sur devis. Les compositions peuvent être ajustées selon vos besoins et le nombre de convives.",
+      "panelNote": "Quantités supplémentaires sur devis.",
       "tariffs": [
         {
           "label": "35 pièces",
-          "price": 70
+          "price": 70,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "70 pièces",
-          "price": 135
+          "price": 135,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "105 pièces",
-          "price": 200
+          "price": 200,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "140 pièces",
-          "price": 260
+          "price": 260,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "175 pièces",
-          "price": 320
+          "price": 320,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "210 pièces",
-          "price": 380
+          "price": 380,
+          "description": "",
+          "detail": ""
         }
       ],
       "orderFields": [
@@ -91,8 +105,7 @@
         "Les variétés sucrées et/ou salées",
         "La répartition entre les différentes variétés",
         "La date de votre événement"
-      ],
-      "panelNote": "Quantités supplémentaires sur devis."
+      ]
     },
     {
       "slug": "cupcakes",
@@ -106,27 +119,39 @@
         "Personnalisation sur demande"
       ],
       "occasion": "Cadeaux & tables sucrées",
+      "priceSummary": "",
       "priceNote": "Toute personnalisation spécifique fait l’objet d’un supplément tarifaire.",
+      "panelNote": "Personnalisation spécifique avec supplément.",
       "tariffs": [
         {
           "label": "6 pièces",
-          "price": 18
+          "price": 18,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "12 pièces",
-          "price": 34
+          "price": 34,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "18 pièces",
-          "price": 50
+          "price": 50,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "24 pièces",
-          "price": 64
+          "price": 64,
+          "description": "",
+          "detail": ""
         },
         {
           "label": "30 pièces",
-          "price": 78
+          "price": 78,
+          "description": "",
+          "detail": ""
         }
       ],
       "orderFields": [
@@ -134,8 +159,7 @@
         "Les saveurs sélectionnées",
         "Votre personnalisation ou une photo d’inspiration",
         "La date souhaitée"
-      ],
-      "panelNote": "Personnalisation spécifique avec supplément."
+      ]
     },
     {
       "slug": "brunch-box",
@@ -147,14 +171,17 @@
         "Sucré, salé et jus de fruits"
       ],
       "occasion": "Brunchs & cadeaux",
+      "priceSummary": "",
+      "priceNote": "",
+      "panelNote": "Personnes et heure de retrait à préciser.",
+      "tariffs": [],
       "orderFields": [
         "La composition choisie",
         "Le nombre de personnes",
         "La date souhaitée",
         "L’heure de retrait",
         "Vos demandes particulières éventuelles"
-      ],
-      "panelNote": "Personnes et heure de retrait à préciser."
+      ]
     },
     {
       "slug": "buffets",
@@ -170,6 +197,7 @@
       "occasion": "Réceptions & événements",
       "priceSummary": "Une prestation sur devis",
       "priceNote": "Chaque buffet fait l’objet d’un devis personnalisé selon les quantités, les produits sélectionnés et les besoins de mise en place.",
+      "panelNote": "Chaque prestation fait l’objet d’un devis personnalisé.",
       "tariffs": [],
       "orderFields": [
         "Le lieu de l’événement",
@@ -178,8 +206,7 @@
         "Le nombre de mignardises par personne",
         "Le thème, les couleurs et vos inspirations",
         "La composition souhaitée : sucrée, salée ou mixte"
-      ],
-      "panelNote": "Chaque prestation fait l’objet d’un devis personnalisé."
+      ]
     },
     {
       "slug": "plateaux",
@@ -193,33 +220,39 @@
         "Toutes nos viandes sont halal"
       ],
       "occasion": "Tables & moments à partager",
+      "priceSummary": "",
       "priceNote": "Précisez le nombre de convives et la quantité de chaque plateau lors de votre demande.",
+      "panelNote": "Précisez les quantités et le nombre de convives.",
       "tariffs": [
         {
           "label": "Plateau de charcuterie",
           "price": 70,
-          "description": "Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées."
+          "description": "Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées.",
+          "detail": ""
         },
         {
           "label": "Plateau de fromages",
           "price": 70,
-          "description": "Une sélection de fromages de qualité, aux arômes et aux affinages variés."
+          "description": "Une sélection de fromages de qualité, aux arômes et aux affinages variés.",
+          "detail": ""
         },
         {
           "label": "Grazing Platter",
           "price": 60,
-          "description": "Fromages, biscuits, fruits frais et secs, accompagnés de confitures."
+          "description": "Fromages, biscuits, fruits frais et secs, accompagnés de confitures.",
+          "detail": ""
         },
         {
           "label": "Plateau de fruits frais",
           "price": 50,
-          "description": "Un assortiment de fruits frais de saison."
+          "description": "Un assortiment de fruits frais de saison.",
+          "detail": ""
         },
         {
           "label": "Plateau de crudités",
           "price": 45,
-          "detail": "Houmous, tzatziki et sauce ail et fines herbes",
-          "description": "Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes."
+          "description": "Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes.",
+          "detail": "Houmous, tzatziki et sauce ail et fines herbes"
         }
       ],
       "orderFields": [
@@ -228,26 +261,7 @@
         "Le nombre de convives",
         "La date souhaitée",
         "Vos éventuelles restrictions alimentaires"
-      ],
-      "panelNote": "Précisez les quantités et le nombre de convives."
-    }
-  ],
-  "buffetServiceSteps": [
-    {
-      "title": "Installation avant l’événement",
-      "text": "Installation avant l’événement, avec une présentation soignée des mignardises."
-    },
-    {
-      "title": "Présentation & décoration",
-      "text": "Plateaux, présentoirs et supports composent une mise en scène harmonieuse."
-    },
-    {
-      "title": "Personnalisation",
-      "text": "Votre thème, vos couleurs et vos inspirations guident la présentation et la décoration."
-    },
-    {
-      "title": "Retrait du matériel",
-      "text": "Le matériel Siray Signature est récupéré à la fin de votre événement."
+      ]
     }
   ],
   "classicFlavorGroups": [
@@ -413,7 +427,7 @@
       "drink": "Jus de fruits : orange ou fraise"
     },
     {
-      "name": "Faisalia",
+      "name": "Fezalia",
       "price": 30,
       "sweet": [
         "Baghrir",
@@ -562,5 +576,23 @@
     "savoryFinale": "Et d’autres créations selon vos envies.",
     "sweetTitle": "La touche sucrée",
     "sweetText": "Pour terminer sur une note de douceur, une sélection de verrines sucrées déclinées en différentes saveurs et textures."
-  }
+  },
+  "buffetServiceSteps": [
+    {
+      "title": "Installation avant l’événement",
+      "text": "Installation avant l’événement, avec une présentation soignée des mignardises."
+    },
+    {
+      "title": "Présentation & décoration",
+      "text": "Plateaux, présentoirs et supports composent une mise en scène harmonieuse."
+    },
+    {
+      "title": "Personnalisation",
+      "text": "Votre thème, vos couleurs et vos inspirations guident la présentation et la décoration."
+    },
+    {
+      "title": "Retrait du matériel",
+      "text": "Le matériel Siray Signature est récupéré à la fin de votre événement."
+    }
+  ]
 }
