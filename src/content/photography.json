@@ -213,11 +213,11 @@
   },
   "gallery": [
     {
-      "file": "/src/assets/uploads/20261121-f6ec8ec22f41.webp",
       "alt": "Layer cake ivoire orné de framboises",
-      "position": "50% 70%",
-      "label": "Décor de roses",
-      "category": "layer-cakes"
+      "category": "layer-cakes",
+      "file": "/src/assets/uploads/20261121-f6ec8ec22f41.webp",
+      "label": "Engagement cake",
+      "position": "50% 70%"
     },
     {
       "file": "/images/siray-brunch-toasts-6239a88d.webp",
@@ -227,11 +227,11 @@
       "category": "brunch-box"
     },
     {
-      "file": "/images/siray-bento-rubans-1d8a5a95.webp",
       "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
-      "position": "50% 58%",
-      "label": "Rubans & framboises",
-      "category": "bento-cakes"
+      "category": "bento-cakes",
+      "file": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "label": "Une douceur ornée de framboises",
+      "position": "50% 50%"
     },
     {
       "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
@@ -360,11 +360,11 @@
       "category": "buffets"
     },
     {
-      "file": "/images/siray-layer-etages-4dc5ba8b.webp",
       "alt": "Gâteau ivoire à deux étages avec des framboises",
-      "position": "50% 65%",
-      "label": "Deux étages",
-      "category": "layer-cakes"
+      "category": "layer-cakes",
+      "file": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "label": "Layer cake vintage à étages",
+      "position": "50% 65%"
     },
     {
       "file": "/images/siray-plateau-fromages-b7acbdb5.webp",
@@ -381,18 +381,18 @@
       "category": "mignardises"
     },
     {
-      "file": "/images/siray-bento-fleurs-18f0073c.webp",
       "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
-      "position": "50% 70%",
-      "label": "Fleurs délicates",
-      "category": "bento-cakes"
+      "category": "bento-cakes",
+      "file": "/images/siray-bento-fleurs-18f0073c.webp",
+      "label": "Douceur fleurie",
+      "position": "50% 70%"
     },
     {
-      "file": "/images/siray-layer-fleurs-7ef2db14.webp",
       "alt": "Gâteau à deux étages orné de roses roses et de fleurs blanches",
-      "position": "50% 65%",
-      "label": "Fleurs & étages",
-      "category": "layer-cakes"
+      "category": "layer-cakes",
+      "file": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "label": "Wedding cake orné de fleurs fraîches",
+      "position": "50% 65%"
     }
   ]
 }
