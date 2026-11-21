@@ -1,12 +1,14 @@
 ---
 import { buffetServiceSteps } from '../data/site';
+const preview = Boolean((Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath);
+const steps = buffetServiceSteps.length || !preview ? buffetServiceSteps : [{ title: '', text: '' }];
 ---
 
-<ol class="buffet-service">
-  {buffetServiceSteps.map((step, index) => (
-    <li>
-      <span class="buffet-step-number" aria-hidden="true">{index + 1}</span>
-      <div><h3>{step.title}</h3><p>{step.text}</p></div>
+<ol class="buffet-service" data-preview-each="catalog.buffetServiceSteps">
+  {steps.map((step, index) => (
+    <li hidden={buffetServiceSteps.length === 0}>
+      <span class="buffet-step-number" aria-hidden="true" data-preview-text=".number">{index + 1}</span>
+      <div><h3 data-preview-text=".title">{step.title}</h3><p data-preview-text=".text">{step.text}</p></div>
     </li>
   ))}
 </ol>

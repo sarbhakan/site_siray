@@ -1,19 +1,21 @@
 ---
 import { mignardiseMenu as menu } from '../data/site';
+const preview = Boolean((Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath);
+const savory = menu.savory.length || !preview ? menu.savory : [{ name: '', detail: '' }];
 ---
 
 <div class="mignardise-menu">
   <section aria-labelledby="coin-gourmand">
-    <h2 id="coin-gourmand">{menu.savoryTitle}</h2>
-    <p class="mignardise-intro">{menu.savoryIntro}</p>
-    <ul class="mignardise-savory">
-      {menu.savory.map((choice) => <li><h3>{choice.name}</h3>{choice.detail && <p>{choice.detail}</p>}</li>)}
+    <h2 id="coin-gourmand" data-preview-text="catalog.mignardiseMenu.savoryTitle">{menu.savoryTitle}</h2>
+    <p class="mignardise-intro" data-preview-text="catalog.mignardiseMenu.savoryIntro">{menu.savoryIntro}</p>
+    <ul class="mignardise-savory" data-preview-each="catalog.mignardiseMenu.savory">
+      {savory.map((choice) => <li hidden={menu.savory.length === 0}><h3 data-preview-text=".name">{choice.name}</h3><p hidden={!choice.detail} data-preview-visible=".detail" data-preview-text=".detail">{choice.detail}</p></li>)}
     </ul>
-    <p class="mignardise-finale">{menu.savoryFinale}</p>
+    <p class="mignardise-finale" data-preview-text="catalog.mignardiseMenu.savoryFinale">{menu.savoryFinale}</p>
   </section>
   <section class="mignardise-sweet" aria-labelledby="touche-sucree">
-    <h2 id="touche-sucree">{menu.sweetTitle}</h2>
-    <p>{menu.sweetText}</p>
+    <h2 id="touche-sucree" data-preview-text="catalog.mignardiseMenu.sweetTitle">{menu.sweetTitle}</h2>
+    <p data-preview-text="catalog.mignardiseMenu.sweetText">{menu.sweetText}</p>
   </section>
 </div>
 

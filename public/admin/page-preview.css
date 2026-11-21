@@ -1,0 +1,45 @@
+/* The full-page preview is isolated from the visitor page in a same-origin frame. */
+.siray-page-launcher, .siray-page-dialog {
+  --siray-paper: #f5f1e8; --siray-surface: #e9e4d7; --siray-white: #fffcf6;
+  --siray-ink: #303528; --siray-muted: #626452; --siray-olive: #4e533d; --siray-line: #c4c6b5;
+  color: var(--siray-ink); font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color-scheme: light; box-sizing: border-box;
+}
+.siray-page-launcher { display: grid; gap: 10px; padding: 16px; background: var(--siray-paper); border-radius: 12px; }
+.siray-page-launcher p { margin: 0; font-size: 14px; color: var(--siray-muted); }
+.siray-page-dialog { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--siray-paper); overflow: hidden; }
+.siray-page-dialog[open] { display: grid; grid-template-rows: auto auto auto minmax(0,1fr); }
+.siray-page-dialog::backdrop { background: rgb(28 33 23 / 74%); }
+.siray-page-dialog * { box-sizing: border-box; }
+.siray-page-dialog :focus-visible, .siray-page-launcher :focus-visible { outline: 3px solid #535c2e; outline-offset: 3px; }
+.siray-page-dialog ::selection { background: var(--siray-olive); color: var(--siray-paper); }
+.siray-page-header { display: flex; align-items: center; gap: 16px; justify-content: space-between; padding: calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px)); border-bottom: 1px solid var(--siray-line); }
+.siray-page-header h2 { margin: 0; font: 400 24px/1.2 'Gloock', Georgia, serif; }
+.siray-page-header h2:focus { outline: none; }
+.siray-page-header p { margin: 6px 0 0; max-width: 70ch; color: var(--siray-muted); font-size: 13px; }
+.siray-page-header button { flex: none; padding: 10px 14px; font-size: 14px; }
+.siray-page-tools { display: grid; grid-template-columns: minmax(160px,1fr) minmax(220px,1fr); align-items: end; gap: 16px; padding: 12px 16px; }
+.siray-page-tools label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.siray-page-tools select { width: 100%; min-height: 44px; padding: 8px; background: var(--siray-white); border: 1px solid var(--siray-line); border-radius: 6px; color: var(--siray-ink); font: 400 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.siray-page-devices { display: flex; gap: 8px; }
+.siray-page-devices button { display: flex; flex: 1; flex-wrap: wrap; justify-content: center; gap: 2px 8px; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid var(--siray-line); border-radius: 6px; background: var(--siray-white); color: var(--siray-ink); font: 600 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: pointer; touch-action: manipulation; }
+.siray-page-devices button[aria-pressed='true'] { background: var(--siray-olive); color: var(--siray-paper); border-color: var(--siray-olive); }
+.siray-page-devices small { font-size: 11px; font-weight: 400; }
+.siray-page-status { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 16px 8px; color: var(--siray-muted); font-size: 12px; text-align: center; }
+.siray-page-status button { min-height: 44px; padding: 8px; color: var(--siray-ink); background: transparent; border: 1px solid var(--siray-line); border-radius: 6px; font: inherit; cursor: pointer; }
+.siray-page-stage { display: flex; justify-content: center; min-width: 0; min-height: 0; overflow: hidden; background: #d7d6c8; padding-bottom: env(safe-area-inset-bottom,0px); }
+.siray-page-viewport { flex: none; overflow: hidden; background: var(--siray-paper); }
+.siray-page-viewport iframe { display: block; border: 0; max-width: none; transform-origin: 0 0; background: var(--siray-paper); }
+.siray-photo-add-form { display: grid; gap: 20px; padding: 20px 16px; }
+.siray-photo-add-preview { width: min(100%,360px); margin-inline: auto; }
+.siray-photo-add-fields { display: grid; align-content: start; gap: 16px; }
+@media (min-width:760px) { .siray-photo-add-form { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width:600px) {
+  .siray-page-header { align-items: flex-start; gap: 10px; padding-top: calc(12px + env(safe-area-inset-top,0px)); }
+  .siray-page-header h2 { font-size: 21px; }
+  .siray-page-header p { display: none; }
+  .siray-page-header button { min-height: 44px; max-width: 100px; padding: 7px 9px; font-size: 12px; }
+  .siray-page-tools { grid-template-columns: minmax(0,1fr); gap: 8px; padding: 8px 12px; }
+  .siray-page-tools label { grid-template-columns: auto minmax(0,1fr); align-items: center; gap: 12px; }
+  .siray-page-devices button { padding-block: 6px; }
+}

@@ -1,0 +1,25 @@
+---
+import Home from '../../index.astro';
+import Prestations from '../../creations/index.astro';
+import Gallery from '../../galerie.astro';
+import Maison from '../../la-maison.astro';
+import Project from '../../contact.astro';
+import ProductDetail from '../../../components/ProductDetail.astro';
+import { collections } from '../../../data/site';
+
+export function getStaticPaths() {
+  return ['accueil', 'prestations', 'layer-cakes', 'bento-cakes', 'mignardises', 'cupcakes', 'brunch-box', 'buffets', 'plateaux', 'galerie', 'maison', 'projet']
+    .map((view) => ({ params: { view } }));
+}
+const view = Astro.params.view!;
+const item = collections.find((entry) => entry.slug === view);
+const routes: Record<string, string> = { accueil: '/', prestations: '/creations/', galerie: '/galerie/', maison: '/la-maison/', projet: '/contact/' };
+(Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath = item?.href || routes[view];
+const pages = { accueil: Home, prestations: Prestations, galerie: Gallery, maison: Maison, projet: Project };
+const Page = pages[view as keyof typeof pages] || Home;
+---
+
+{item ? <ProductDetail item={item} /> : <Page />}
+<script>
+  import '../../../scripts/page-preview';
+</script>

@@ -12,6 +12,7 @@ interface Props {
   zoom?: number;
   native?: boolean;
   sourceOriginal?: boolean;
+  previewKey?: string;
 }
 const {
   name,
@@ -24,6 +25,7 @@ const {
   zoom,
   native = false,
   sourceOriginal = false,
+  previewKey,
 } = Astro.props;
 const media = await resolveMedia(name, { native, sourceOriginal });
 const { src, srcset } = media;
@@ -32,7 +34,7 @@ const transparentPixel =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 ---
 
-<span class:list={['siray-photo-crop', { 'siray-photo-crop--zoomed': magnification > 1 }]}>
+<span data-preview-image={previewKey} data-preview-file={previewKey ? name : undefined} class:list={['siray-photo-crop', { 'siray-photo-crop--zoomed': magnification > 1 }]}>
 <img
   src={defer ? transparentPixel : src}
   srcset={defer ? undefined : srcset}

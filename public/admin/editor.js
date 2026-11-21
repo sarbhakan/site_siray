@@ -11,6 +11,7 @@
   try {
     if (!window.CMS || !window.SirayStudioWidgets) throw new Error('Chargement incomplet');
     window.SirayStudioWidgets.init(window.CMS);
+    window.SirayPagePreview.init(window.CMS);
     window.SirayContentValidation.init(window.CMS);
     window.SirayPublication.init(window.CMS);
     document.getElementById('admin-loading')?.remove();

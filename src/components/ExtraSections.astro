@@ -1,20 +1,25 @@
 ---
 import type { ExtraSection } from '../data/site';
 
-interface Props { sections: ExtraSection[] }
-const { sections } = Astro.props;
+interface Props { sections: ExtraSection[]; slug: string }
+const { sections, slug } = Astro.props;
+const preview = (Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath;
+const renderSections = sections.length ? sections : preview ? [{ title: '', text: '', items: [''], button: { label: '', href: '/' } }] : [];
 ---
 
-{sections.map((section, index) => (
-  <section id={`extra-${index}`} class="v5-product-panel extra-section" data-v5-panel aria-labelledby={`extra-heading-${index}`}>
-    <h2 id={`extra-heading-${index}`}>{section.title}</h2>
-    <p class="extra-section-text">{section.text}</p>
-    {section.items && section.items.length > 0 && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}
-    {section.button && <a class="round-link" href={section.button.href}>{section.button.label}</a>}
+<div class="extra-sections" data-preview-each={`catalog.collections.${slug}.extraSections`}>
+{renderSections.map((section, index) => (
+  <section id={`extra-${index}`} class="v5-product-panel extra-section" data-v5-panel aria-labelledby={`extra-heading-${index}`} hidden={sections.length === 0} data-preview-attr-id=".panelId" data-preview-attr-aria-labelledby=".headingId">
+    <h2 id={`extra-heading-${index}`} data-preview-attr-id=".headingId" data-preview-text=".title">{section.title}</h2>
+    <p class="extra-section-text" data-preview-text=".text">{section.text}</p>
+    {(section.items?.length || preview) && <ul data-preview-each=".items" data-preview-visible=".items" hidden={!section.items?.length}>{(section.items?.length ? section.items : ['']).map((item) => <li data-preview-text=".">{item}</li>)}</ul>}
+    {(section.button || preview) && <a class="round-link" href={section.button?.href || '/'} data-preview-text=".button.label" data-preview-attr-href=".button.href" data-preview-visible=".button.label" hidden={!section.button?.label}>{section.button?.label || (preview ? 'Bouton de la rubrique à compléter' : '')}</a>}
   </section>
 ))}
+</div>
 
 <style>
+  .extra-sections { display: contents; }
   .extra-section { min-width: 0; padding-block: 8px 28px; border-top: 1px solid var(--line); padding-top: 32px; scroll-margin-top: var(--header-offset, 128px); overflow-wrap: anywhere; }
   .extra-section h2 { font-size: 26px; line-height: 1.25; }
   .extra-section-text { max-width: none; margin-top: 12px; color: var(--muted); font-size: 16px; line-height: 1.625; white-space: pre-line; }

@@ -14,34 +14,34 @@ const page = pages.maison;
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
       <span>/</span>
-      <span aria-current="page">{page.pageTitle}</span>
+      <span aria-current="page" data-preview-text="pages.maison.pageTitle">{page.pageTitle}</span>
     </nav>
   </div>
   <section class="page-intro section-pad">
-    <h1>{page.title}</h1>
+    <h1 data-preview-text="pages.maison.title">{page.title}</h1>
     <div class="intro-bottom">
-      <p>{page.intro}</p>
+      <p data-preview-text="pages.maison.intro">{page.intro}</p>
     </div>
   </section>
 
   <section class="maison-editorial section-pad" aria-labelledby="maison-world-title">
     <figure class="maison-portrait">
-      <Photo name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position={cakePhoto.position} zoom={cakePhoto.zoom} />
+      <Photo previewKey="photography.homePhotos.maisonCake" name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position={cakePhoto.position} zoom={cakePhoto.zoom} />
     </figure>
     <div class="maison-copy">
-      <h2 id="maison-world-title">{page.worldTitle}</h2>
-      <p>
+      <h2 id="maison-world-title" data-preview-text="pages.maison.worldTitle">{page.worldTitle}</h2>
+      <p data-preview-text="pages.maison.worldText">
         {page.worldText}
       </p>
       <div class="maison-focus">
-        <h3>{page.pastryTitle}</h3>
-        <p>
+        <h3 data-preview-text="pages.maison.pastryTitle">{page.pastryTitle}</h3>
+        <p data-preview-text="pages.maison.pastryText">
           {page.pastryText}
         </p>
       </div>
       <div class="maison-focus">
-        <h3>{page.sharingTitle}</h3>
-        <p>
+        <h3 data-preview-text="pages.maison.sharingTitle">{page.sharingTitle}</h3>
+        <p data-preview-text="pages.maison.sharingText">
           {page.sharingText}
         </p>
       </div>
@@ -50,22 +50,22 @@ const page = pages.maison;
 
   <section class="maison-bespoke section-pad" aria-labelledby="maison-bespoke-title">
     <div class="maison-copy">
-      <h2 id="maison-bespoke-title">{page.bespokeTitle}</h2>
-      <p>
+      <h2 id="maison-bespoke-title" data-preview-text="pages.maison.bespokeTitle">{page.bespokeTitle}</h2>
+      <p data-preview-text="pages.maison.bespokeText">
         {page.bespokeText}
       </p>
       <p>
-        {page.exploreBefore}{' '}<a class="maison-inline-link" href="/creations/">{page.exploreLink}</a>{' '}{page.exploreAfter}
+        <span data-preview-text="pages.maison.exploreBefore">{page.exploreBefore}</span>{' '}<a class="maison-inline-link" href="/creations/" data-preview-text="pages.maison.exploreLink">{page.exploreLink}</a>{' '}<span data-preview-text="pages.maison.exploreAfter">{page.exploreAfter}</span>
       </p>
-      <p>
+      <p data-preview-text="pages.maison.orderingText">
         {page.orderingText}
       </p>
-      <p class="maison-practical">
+      <p class="maison-practical" data-preview-text="pages.maison.practicalText">
         {page.practicalText}
       </p>
     </div>
     <figure class="maison-portrait maison-portrait--table">
-      <Photo name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position={tablePhoto.position} zoom={tablePhoto.zoom} />
+      <Photo previewKey="photography.homePhotos.maisonTable" name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position={tablePhoto.position} zoom={tablePhoto.zoom} />
     </figure>
   </section>
 </Layout>

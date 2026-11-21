@@ -30,6 +30,7 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
         >
           <div class="collection-piece-photo">
             <Photo
+              previewKey={`photography.collections.${item.slug}.home`}
               name={homeCollectionPhotography[item.slug]?.image || item.image}
               alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
               position={homeCollectionPhotography[item.slug]?.position} zoom={homeCollectionPhotography[item.slug]?.zoom}
@@ -41,8 +42,8 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
             />
           </div>
           <div class="collection-piece-caption">
-            <h4>{item.name}</h4>
-            <p>{item.short}</p>
+            <h4 data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</h4>
+            <p data-preview-text={`catalog.collections.${item.slug}.short`}>{item.short}</p>
             <span class="collection-piece-action">Découvrir</span>
           </div>
         </a>
@@ -64,6 +65,7 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
         >
           <div class="collection-piece-photo">
             <Photo
+              previewKey={`photography.collections.${item.slug}.home`}
               name={homeCollectionPhotography[item.slug]?.image || item.image}
               alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
               position={homeCollectionPhotography[item.slug]?.position} zoom={homeCollectionPhotography[item.slug]?.zoom}
@@ -73,8 +75,8 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
             />
           </div>
           <div class="collection-piece-caption">
-            <h4>{item.name}</h4>
-            <p>{item.short}</p>
+            <h4 data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</h4>
+            <p data-preview-text={`catalog.collections.${item.slug}.short`}>{item.short}</p>
             <span class="collection-piece-action">Découvrir</span>
           </div>
         </a>

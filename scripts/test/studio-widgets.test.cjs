@@ -15,6 +15,7 @@ const React = {
   useImperativeHandle: (ref, get) => { if (ref) ref.current = get(); }, forwardRef: component => component,
 };
 const sandbox = { globalThis: {}, Intl, Object, Array, Number, String, Error };
+vm.runInNewContext(fs.readFileSync(`${repo}/public/admin/photo-gallery.js`, 'utf8'), sandbox);
 vm.runInNewContext(fs.readFileSync(`${repo}/public/admin/studio-widgets.js`, 'utf8'), sandbox);
 const api = sandbox.globalThis.SirayStudioWidgets;
 // Sveltia renders field previews directly when no collection template or custom
@@ -121,8 +122,8 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     assert.equal(next.position, '23% 65.789%'); assert.equal(next.file, value.file); assert.equal(next.retained, 'preserved');
   });
   await nodes(control).find(n => n.props.id === 'photo').props.onClick();
-  test('Upload preserves metadata and raw blob', () => {
-    assert.equal(next.file, 'blob:https://site.test/new'); assert.equal(next.alt, value.alt); assert.equal(next.position, '23% 65.789%'); assert.equal(next.retained, 'preserved');
+  test('A chosen upload awaits gallery metadata without replacing the live image', () => {
+    assert.equal(next.file, value.file); assert.equal(next.alt, value.alt); assert.equal(next.position, '23% 65.789%'); assert.equal(next.retained, 'preserved');
   });
   test('Picker keeps the official single-image pipeline and refuses arbitrary URL entry', () => {
     assert.equal(pickerOptions.kind, 'image'); assert.equal(pickerOptions.multiple, false); assert.equal(pickerOptions.allowURL, false);
@@ -464,17 +465,17 @@ for (const photo of photos) test('Native photo preview renders the existing obje
   });
   const replacedDuringPinch=dragRig();startPinch(replacedDuringPinch);
   await nodes(replacedDuringPinch.control).find(n=>n.props.id==='drag').props.onClick();
-  test('Replacing a source cancels both fingers before accepting the new image', () => {
+  test('Choosing a source cancels both fingers while awaiting photo metadata', () => {
     const rig=replacedDuringPinch,count=rig.changes.length;
-    assert.equal(rig.captured.size,0);assert.equal(rig.changes.at(-1).file,'blob:https://site.test/replacement');
+    assert.equal(rig.captured.size,0);assert.equal(rig.changes.at(-1)?.file||rig.value.file,rig.value.file);
     rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:200}));assert.equal(rig.changes.length,count);
   });
   const replacedDuringDrag=dragRig();
   replacedDuringDrag.frame.props.onPointerDown(replacedDuringDrag.event());
   await nodes(replacedDuringDrag.control).find(n=>n.props.id==='drag').props.onClick();
-  test('Replacing a source during a drag cannot overwrite its crop from stale dimensions', () => {
+  test('Choosing a source during a drag cannot overwrite its crop from stale dimensions', () => {
     const rig=replacedDuringDrag,count=rig.changes.length;
-    assert.equal(rig.changes.at(-1).file,'blob:https://site.test/replacement');
+    assert.equal(rig.changes.at(-1)?.file||rig.value.file,rig.value.file);
     rig.frame.props.onPointerMove(rig.event({clientX:100}));
     assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,0);
   });
@@ -515,6 +516,90 @@ for (const photo of photos) test('Native photo preview renders the existing obje
 
   const button = (tree,label) => nodes(tree).find(n=>n.type==='button'&&strings(n)===label);
   const clone = value => JSON.parse(JSON.stringify(value));
+  async function photoDialogRig({ known = false, gallery = false } = {}) {
+    const value = {file:'/images/original.webp',alt:'Ancienne photo',label:'Ancien gâteau',category:'layer-cakes',
+      position:'20% 80%',zoom:1.8,retained:'preserved'};
+    const selected='blob:https://site.test/new-photo',changes=[],focus=[];
+    const source={gallery:known?[{file:selected,alt:'Une pièce en chocolat',label:'Chocolat',category:'cupcakes',position:'35% 60%',zoom:1.2}]:[]};
+    const props={value,field:{get:key=>({photo_context:'cover',show_gallery_fields:gallery})[key]},forID:'add-photo',getAsset,
+      entry:{get:key=>key==='data'?{toJS:()=>source}:undefined},pickFile:async()=>({value:selected}),onChange:next=>changes.push(next)};
+    const oldDoc=sandbox.globalThis.document;
+    const doc={body:{style:{overflow:'auto'}},documentElement:{style:{overflow:'clip'}}};sandbox.globalThis.document=doc;
+    const trigger={isConnected:true,focus:()=>focus.push('trigger')};
+    const dialog={open:false,showModal(){this.open=true;},close(){this.open=false;},
+      querySelector:selector=>({focus:()=>focus.push(selector)}),getBoundingClientRect:()=>({left:20,top:20,right:300,bottom:700})};
+    const parent=hookRunner(widgets['siray-photo'].controlComponent,props);parent.render();
+    await nodes(parent.tree).find(n=>n.props.id==='add-photo').props.onClick({currentTarget:trigger});parent.render();
+    const modalNode=nodes(parent.tree).find(n=>n.type?.name==='PhotoMetadataDialog');assert.ok(modalNode,'Chosen photo opens its metadata dialog');
+    const modal=hookRunner(modalNode.type,modalNode.props,n=>n.type==='dialog'?dialog:null);modal.render();
+    return {value,selected,changes,source,props,parent,modal,dialog,doc,focus,
+      input:(key,value)=>{nodes(modal.tree).find(n=>n.props.id===`add-photo-new-photo-${key}`).props.onChange({target:{value}});modal.render();},
+      confirm:()=>button(modal.tree,'Utiliser cette photo').props.onClick(),
+      dismiss:()=>button(modal.tree,'Annuler').props.onClick(),
+      unmount(){modal.unmount();parent.unmount();sandbox.globalThis.document=oldDoc;}};
+  }
+  const stagedPhoto=await photoDialogRig();
+  test('Photo selection opens a naming dialog and makes no editor change before confirmation',()=>{
+    assert.equal(stagedPhoto.changes.length,0);assert.equal(stagedPhoto.dialog.open,true);
+    assert.equal(stagedPhoto.doc.body.style.overflow,'hidden');
+    assert.equal(stagedPhoto.focus[0],'input');assert.ok(strings(stagedPhoto.modal.tree).includes('Catégorie de la galerie'));
+    assert.equal(nodes(stagedPhoto.modal.tree).find(n=>n.props.whole===true).props.photo.file,stagedPhoto.selected);
+    assert.equal(nodes(stagedPhoto.modal.tree).filter(n=>n.type==='form').length,0);
+  });
+  test('The metadata confirmation rejects missing values and focuses the missing field',()=>{
+    stagedPhoto.confirm();stagedPhoto.modal.render();assert.equal(stagedPhoto.changes.length,0);
+    assert.ok(nodes(stagedPhoto.modal.tree).some(n=>n.props.role==='alert'));
+    assert.ok(stagedPhoto.focus.at(-1).includes('-label'));
+    stagedPhoto.input('label','  Un gâteau fleuri  ');stagedPhoto.confirm();stagedPhoto.modal.render();
+    assert.ok(stagedPhoto.focus.at(-1).includes('-category'));
+    stagedPhoto.input('category','bento-cakes');stagedPhoto.confirm();stagedPhoto.modal.render();
+    assert.ok(stagedPhoto.focus.at(-1).includes('-alt'));
+  });
+  test('Confirmation writes the classified original blob, resets crop and archives the old photo in one editor change',()=>{
+    stagedPhoto.input('alt','  Un petit gâteau aux fleurs blanches  ');stagedPhoto.confirm();stagedPhoto.parent.render();
+    assert.equal(stagedPhoto.changes.length,1);const next=stagedPhoto.changes[0];
+    assert.equal(next.file,stagedPhoto.selected);assert.equal(next.label,'Un gâteau fleuri');
+    assert.equal(next.category,'bento-cakes');assert.equal(next.alt,'Un petit gâteau aux fleurs blanches');
+    assert.equal(next.position,'50% 50%');assert.equal(next.zoom,1);assert.equal(next.retained,'preserved');
+    assert.equal(next._galleryArchive[0].file,stagedPhoto.value.file);
+    assert.ok(!nodes(stagedPhoto.parent.tree).some(n=>n.type?.name==='PhotoMetadataDialog'));
+    assert.equal(stagedPhoto.value.position,'20% 80%');stagedPhoto.unmount();
+    assert.equal(stagedPhoto.doc.body.style.overflow,'auto');assert.equal(stagedPhoto.doc.documentElement.style.overflow,'clip');
+    assert.equal(stagedPhoto.focus.at(-1),'trigger');
+  });
+  const reusedPhoto=await photoDialogRig({known:true});
+  test('Reusing a gallery file preloads its caption, category and accessibility description',()=>{
+    assert.equal(nodes(reusedPhoto.modal.tree).find(n=>n.props.id==='add-photo-new-photo-label').props.value,'Chocolat');
+    assert.equal(nodes(reusedPhoto.modal.tree).find(n=>n.props.id==='add-photo-new-photo-category').props.value,'cupcakes');
+    assert.equal(nodes(reusedPhoto.modal.tree).find(n=>n.props.id==='add-photo-new-photo-alt').props.value,'Une pièce en chocolat');
+    assert.equal(nodes(reusedPhoto.modal.tree).find(n=>n.props.id==='add-photo-new-photo-label').props.readOnly,true);
+    assert.equal(nodes(reusedPhoto.modal.tree).find(n=>n.props.id==='add-photo-new-photo-category').props.disabled,true);
+    assert.ok(strings(reusedPhoto.modal.tree).includes('ouvrez la rubrique Galerie'));
+    reusedPhoto.input('label','Ignorer');reusedPhoto.input('category','buffets');reusedPhoto.input('alt','Description de cet emplacement');
+    reusedPhoto.confirm();assert.equal(reusedPhoto.changes.length,1);
+    assert.equal(reusedPhoto.changes[0].label,'Chocolat');assert.equal(reusedPhoto.changes[0].category,'cupcakes');
+    assert.equal(reusedPhoto.changes[0].alt,'Description de cet emplacement');
+    assert.equal(reusedPhoto.changes[0].position,'50% 50%');assert.equal(reusedPhoto.source.gallery[0].position,'35% 60%');reusedPhoto.unmount();
+  });
+  const galleryPhoto=await photoDialogRig({known:true,gallery:true});
+  test('Known-file metadata locking does not lock the ordinary gallery editing fields',()=>{
+    assert.notEqual(nodes(galleryPhoto.parent.tree).find(n=>n.props.id==='add-photo-label').props.readOnly,true);
+    assert.notEqual(nodes(galleryPhoto.parent.tree).find(n=>n.props.id==='add-photo-category').props.disabled,true);
+    galleryPhoto.dismiss();galleryPhoto.unmount();
+  });
+  const cancelledPhoto=await photoDialogRig({known:true});
+  test('Cancelling the metadata dialog leaves the chosen upload unreferenced and original photo unchanged',()=>{
+    cancelledPhoto.input('label','Ne pas utiliser');cancelledPhoto.dismiss();cancelledPhoto.parent.render();
+    assert.equal(cancelledPhoto.changes.length,0);assert.equal(cancelledPhoto.value.label,'Ancien gâteau');
+    assert.ok(!nodes(cancelledPhoto.parent.tree).some(n=>n.type?.name==='PhotoMetadataDialog'));cancelledPhoto.unmount();
+  });
+  const stalePhoto=await photoDialogRig({known:true});
+  test('A metadata confirmation cannot overwrite a different source arriving through CMS props',()=>{
+    stalePhoto.parent.render({...stalePhoto.props,value:{...stalePhoto.value,file:'/images/elsewhere.webp'}});
+    const modalNode=nodes(stalePhoto.parent.tree).find(n=>n.type?.name==='PhotoMetadataDialog');stalePhoto.modal.render(modalNode.props);
+    stalePhoto.confirm();stalePhoto.parent.render();assert.equal(stalePhoto.changes.length,0);
+    assert.ok(strings(stalePhoto.parent.tree).includes('Cet emplacement a changé'));stalePhoto.unmount();
+  });
   function modalRig(overrides = {}) {
     const value = {file:'/images/fullscreen.webp',alt:'Gâteau fleuri',retained:'preserved',...overrides};
     const changes=[], focus=[], lifecycle={show:0,close:0};

@@ -55,6 +55,13 @@
           "file": "src/content/photography.json",
           "fields": [
             {
+              "name": "_pagePreview",
+              "label": "Aperçu du site",
+              "widget": "siray-page-preview",
+              "required": false,
+              "preview_kind": "photos"
+            },
+            {
               "name": "homeSlides",
               "label": "Diaporama de l’accueil",
               "widget": "list",
@@ -205,6 +212,13 @@
           "label": "Catalogue et tarifs",
           "file": "src/content/catalog.json",
           "fields": [
+            {
+              "name": "_pagePreview",
+              "label": "Aperçu du site",
+              "widget": "siray-page-preview",
+              "required": false,
+              "preview_kind": "catalogue"
+            },
             {
               "name": "collections",
               "label": "Les sept prestations",
@@ -624,6 +638,13 @@
           "label": "Textes des pages",
           "file": "src/content/pages.json",
           "fields": [
+            {
+              "name": "_pagePreview",
+              "label": "Aperçu du site",
+              "widget": "siray-page-preview",
+              "required": false,
+              "preview_kind": "pages"
+            },
             {
               "name": "home",
               "label": "Accueil",

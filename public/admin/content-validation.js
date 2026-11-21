@@ -119,9 +119,17 @@
         if (!isPhotos && collection !== 'catalogue' && path !== 'src/content/catalog.json' && path !== '/src/content/catalog.json') return;
         const data = entryValue(entry, 'data');
         const plain = typeof data?.toJS === 'function' ? data.toJS() : data;
-        if (isPhotos) validatePhotography(plain);
-        else validateCatalogue(plain);
-        // Return nothing: valid content is saved exactly as entered, with no reformatting here.
+        if (isPhotos) {
+          if (!window.SirayPhotoGallery) throw new Error('La galerie n’a pas pu être préparée. Gardez cette page ouverte et rechargez l’éditeur après avoir conservé votre brouillon.');
+          const prepared = window.SirayPhotoGallery.prepare(plain);
+          validatePhotography(prepared);
+          if (JSON.stringify(prepared) !== JSON.stringify(plain)) {
+            // Sveltia 0.270 public preSave API: return the updated Immutable entry.
+            // Asset blobs (including archive choices) have already been resolved.
+            if (typeof entry?.set !== 'function') throw new Error('L’enregistrement de la galerie nécessite Sveltia CMS.');
+            return entry.set('data', prepared);
+          }
+        } else validateCatalogue(plain);
       },
     });
     registered.add(CMS);

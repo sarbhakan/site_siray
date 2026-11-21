@@ -25,7 +25,8 @@ const {
   home = false,
 } = Astro.props;
 const socialImage = await resolveMedia(image);
-const pathname = Astro.url.pathname;
+const previewPath = (Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath;
+const pathname = previewPath || Astro.url.pathname;
 const links = [
   { href: '/galerie/', label: 'Galerie' },
   { href: '/la-maison/', label: 'La maison' },
@@ -45,9 +46,10 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
+    {previewPath && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#4e533d" />
     <meta name="description" content={description} />
-    <title>{title === 'Accueil' ? 'Siray Signature — Vos instants gourmands, Bordeaux' : `${title} — Siray Signature`}</title>
+    <title>{`${previewPath ? 'Aperçu — ' : ''}${title === 'Accueil' ? 'Siray Signature — Vos instants gourmands, Bordeaux' : `${title} — Siray Signature`}`}</title>
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:title" content={`${title} — Siray Signature`} />
@@ -83,7 +85,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
                 href={item.href}
                 aria-current={pathname === item.href ? 'page' : undefined}
               >
-                {item.name}
+                <span data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</span>
               </a>
             ))}
           </div>

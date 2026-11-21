@@ -147,3 +147,9 @@ Le cadrage V21 se règle aussi en faisant glisser directement la photo dans son 
 Le cadrage V22 permet aussi de pincer à deux doigts pour zoomer et dézoomer de1à2, autour de leur milieu. Pour reconnaître le pincement dès le zoom1, le cadre résultat chargé intercepte désormais les gestes même sans débordement ; on défile à côté. Le retrait d’un doigt reprend le déplacement et les curseurs restent utilisables.
 
 Le cadrage V23 s’ouvre aussi en grand dans un dialogue natif : plein écran sur téléphone, fenêtre centrée sur grand écran. La photo garde les proportions du site et réutilise les mêmes gestes. Les actions Annuler et Valider restent visibles ; les réglages précis se replient pour laisser de la place à la photo. Le brouillon reste indépendant du formulaire jusqu’à validation ; seuls position et zoom changent, sans toucher aux légendes. Annuler ou Échap garde le réglage précédent, rétablit le focus et le défilement. Enregistrer reste l’étape de publication.
+
+## Atelier V24 — pages complètes et mémoire des photographies
+
+Le bouton « Prévisualiser les pages » donne une vue fidèle des douze pages, à 390 px ou 1 280 px, en réutilisant leur balisage et leurs interactions réels. Le dialogue plein écran protège le retour au formulaire ; aucune action de publication n’y figure. La rubrique en cours est la seule source de brouillon et cette portée est annoncée. L’iframe reste de même origine, avec messages validés, et aucune valeur éditée n’est interprétée comme HTML.
+
+Le choix d’une nouvelle photographie précède son insertion : image entière, nom visible, catégorie parmi sept, description. Au prochain enregistrement, elle et ses choix précédents rejoignent la galerie. Une photo réutilisée garde sa place, son nom et son cadrage de galerie ; les cadrages des pages sont indépendants. La galerie devient la mémoire des réalisations, sans fichiers dupliqués lorsqu’une même photo est utilisée sur plusieurs pages.

@@ -14,6 +14,11 @@
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
 
+/admin/apercu/*
+  ! X-Frame-Options
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'
+
 /publication.json
   Cache-Control: no-store, max-age=0
   X-Robots-Tag: noindex, nofollow

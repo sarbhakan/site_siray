@@ -134,7 +134,7 @@
     }
 
     const PhotoControl = forwardRef(function PhotoControl(props, ref) {
-      const { value, field, forID, onChange, pickFile, getAsset } = props;
+      const { value, field, forID, onChange, pickFile, getAsset, entry } = props;
       const cropOnly = props.cropOnly === true;
       const incoming = photoValue(value);
       // Respond to every input locally, without waiting for the CMS data bridge.
@@ -149,6 +149,7 @@
       const [whole, setWhole] = useState(false);
       const [dimensions, setDimensions] = useState(null);
       const [fullScreen, setFullScreen] = useState(null);
+      const [pendingPhoto, setPendingPhoto] = useState(null);
       const stageRef = useRef(null);
       const [stageSize, setStageSize] = useState(null);
       const dragRef = useRef(null);
@@ -284,7 +285,8 @@
         },
       }), [current.file, current.alt, current.label, current.category, gallery]);
 
-      const choosePhoto = async () => {
+      const choosePhoto = async event => {
+        const trigger = event?.currentTarget;
         endDrag();
         setBusy(true);
         setError('');
@@ -292,10 +294,15 @@
         try {
           const selected = await pickFile({ kind: 'image', accept: 'image/jpeg,image/png,image/webp,image/avif,image/heic,image/heif', multiple: false, allowURL: false });
           if (!selected || Array.isArray(selected)) return;
-          // Do not rewrite the temporary blob URL: Sveltia replaces it at save time.
-          update({ file: selected.value, position: currentRef.current.position || '50% 50%' });
-          setWhole(false);
-          setNotice('Photo choisie. Vérifiez le cadrage et la description, puis enregistrez.');
+          if (!global.SirayPhotoGallery) throw new Error('Le classement des photos n’est pas chargé.');
+          const data = plain(typeof entry?.get === 'function' ? entry.get('data') : entry?.data) || {};
+          const existing = global.SirayPhotoGallery.find(data, selected.value);
+          const reuse = Array.isArray(data.gallery) && data.gallery.some(photo => photo?.file === selected.value && global.SirayPhotoGallery.valid(photo));
+          // The picker uses the official upload/optimization pipeline. Keep its
+          // blob intact; Sveltia resolves it, including archive values, at save.
+          setPendingPhoto({ photo: { file: selected.value, label: existing?.label || '',
+            category: existing?.category || (gallery ? currentRef.current.category : '') || '', alt: existing?.alt || '' },
+            previousFile: currentRef.current.file, trigger, reuse });
         } catch {
           setError('Cette photo n’a pas pu être ajoutée. Réessayez avec une photo JPEG, PNG, WebP ou HEIC de moins de 20 Mo.');
         } finally { setBusy(false); }
@@ -414,8 +421,86 @@
             if (currentRef.current.file === fullScreen.photo.file) { update(patch); setView(selectedView); setWhole(false); }
             setFullScreen(null);
           } }),
+        pendingPhoto && h(PhotoMetadataDialog, { photo: pendingPhoto.photo, forID: `${forID}-new-photo`, getAsset,
+          trigger: pendingPhoto.trigger, reuse: pendingPhoto.reuse, onClose: () => setPendingPhoto(null), onConfirm: photo => {
+            // Never overwrite a source changed elsewhere while the dialog was open.
+            if (currentRef.current.file !== pendingPhoto.previousFile) {
+              setPendingPhoto(null); setError('Cet emplacement a changé. Choisissez à nouveau la photo.'); return;
+            }
+            const data = plain(typeof entry?.get === 'function' ? entry.get('data') : entry?.data) || {};
+            const same = photo.file === currentRef.current.file;
+            const next = { ...photo, position: same ? currentRef.current.position || '50% 50%' : '50% 50%',
+              zoom: same ? photoZoom(currentRef.current.zoom) : 1 };
+            update(global.SirayPhotoGallery.archiveReplacement(currentRef.current, next, data));
+            setPendingPhoto(null); setWhole(false);
+            setNotice('Photo choisie. Vérifiez le cadrage, puis enregistrez. Elle sera aussi conservée dans la galerie.');
+          } }),
       );
     });
+
+    function PhotoMetadataDialog({ photo, forID, getAsset, trigger, reuse = false, onClose, onConfirm }) {
+      const [draft, setDraft] = useState({ ...photo }), [error, setError] = useState('');
+      const dialogRef = useRef(null);
+      useEffect(() => {
+        const dialog = dialogRef.current, doc = global.document;
+        const previous = [doc.body.style.overflow, doc.documentElement.style.overflow];
+        dialog.showModal();
+        doc.body.style.overflow = 'hidden'; doc.documentElement.style.overflow = 'hidden';
+        dialog.querySelector(reuse ? 'textarea' : 'input').focus({ preventScroll: true });
+        return () => {
+          doc.body.style.overflow = previous[0]; doc.documentElement.style.overflow = previous[1];
+          if (dialog.open) dialog.close();
+          if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+        };
+      }, []);
+      const change = (key, value) => { setDraft(previous => ({ ...previous, [key]: value })); setError(''); };
+      const confirm = () => {
+        const next = { ...draft, label: draft.label?.trim() || '', alt: draft.alt?.trim() || '' };
+        const missing = !next.label ? 'label' : !CATEGORY_NAMES[next.category] ? 'category' : !next.alt ? 'alt' : null;
+        if (missing) {
+          setError('Renseignez le nom, la catégorie et la description pour conserver cette photo dans la galerie.');
+          dialogRef.current.querySelector(`[id="${forID}-${missing}"]`)?.focus({ preventScroll: true });
+          return;
+        }
+        onConfirm(next);
+      };
+      return h('dialog', { ref: dialogRef, className: 'siray-crop-dialog siray-photo-dialog',
+        'aria-labelledby': `${forID}-title`, 'aria-describedby': `${forID}-instructions`,
+        onCancel: event => { event.preventDefault(); event.stopPropagation(); onClose(); },
+        onKeyDown: event => {
+          event.stopPropagation();
+          if (event.key === 'Escape') { event.preventDefault(); onClose(); }
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') event.preventDefault();
+        },
+        onClick: event => {
+          if (event.target !== event.currentTarget) return;
+          const r = event.currentTarget.getBoundingClientRect();
+          if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) onClose();
+        } },
+        h('header', { className: 'siray-dialog-header' }, h('h2', { id: `${forID}-title` }, 'Nommer et classer la photo'),
+          h('p', { id: `${forID}-instructions` }, 'Cette photo restera dans la galerie, même si vous changez ensuite le visuel de la page.')),
+        h('div', { className: 'siray-dialog-body siray-photo-add-form' },
+          h('div', { className: 'siray-photo-add-preview' }, h(ImageFrame, { photo: draft, getAsset, whole: true, ratio: 4 / 3 })),
+          h('div', { className: 'siray-photo-add-fields' },
+            reuse && h('p', { className: 'siray-studio-help' }, 'Photo déjà présente dans la galerie. Pour changer son nom ou sa catégorie, ouvrez la rubrique Galerie. La description et le cadrage de cet emplacement restent indépendants.'),
+            h('label', { className: 'siray-studio-field', htmlFor: `${forID}-label` }, h('span', null, 'Nom de la photo'),
+              h('input', { id: `${forID}-label`, type: 'text', required: true, maxLength: 120, value: draft.label || '',
+                readOnly: reuse, onChange: event => { if (!reuse) change('label', event.target.value); } }),
+              h('small', null, 'Un titre court, visible sous la photo dans la galerie.')),
+            h('label', { className: 'siray-studio-field', htmlFor: `${forID}-category` }, h('span', null, 'Catégorie de la galerie'),
+              h('select', { id: `${forID}-category`, required: true, disabled: reuse, value: draft.category || '', onChange: event => { if (!reuse) change('category', event.target.value); } },
+                h('option', { value: '', disabled: true }, 'Choisir une catégorie'),
+                ...CATEGORY_OPTIONS.map(([id, label]) => h('option', { key: id, value: id }, label)))),
+            h('label', { className: 'siray-studio-field', htmlFor: `${forID}-alt` }, h('span', null, 'Description de la photo'),
+              h('textarea', { id: `${forID}-alt`, required: true, maxLength: 500, rows: 3, value: draft.alt || '',
+                onChange: event => change('alt', event.target.value) }),
+              h('small', null, 'Décrivez ce qui est visible pour les personnes qui ne voient pas l’image.')),
+            error && h('p', { role: 'alert', className: 'siray-studio-error' }, error))),
+        h('footer', { className: 'siray-dialog-footer' }, h('p', null, 'Après validation, ajustez le cadrage puis enregistrez pour publier.'),
+          h('div', { className: 'siray-dialog-actions' },
+            h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary', onClick: onClose }, 'Annuler'),
+            h('button', { type: 'button', className: 'siray-studio-button', onClick: confirm }, 'Utiliser cette photo'))));
+    }
 
     function FullScreenCrop({ photo, field, forID, getAsset, initialView, trigger, onClose, onConfirm }) {
       const [draft, setDraft] = useState({ ...photo });

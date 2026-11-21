@@ -1585,5 +1585,35 @@
       "Fallback moteur Impeccable déjà documenté en V19 ; références directes relues."
     ],
     "report": "docs/qa/v23-cadrage-plein-ecran.md"
+  },
+  "v24": {
+    "task": "V24 aperçu des pages avant publication et conservation des photos dans la galerie",
+    "date": "2026-11-21",
+    "decisions": [
+      "Vraies pages Astro et mêmes composants, douze vues mobile390/ordinateur1280",
+      "Brouillon de la rubrique ouverte seulement, transmis en mémoire à iframe sameorigin par contratnonce/source/origin",
+      "Nom,catégorie etdescriptionobligatoires avantchoixphotoconfirmé",
+      "Galerie enrichie atomiquement via APIpubliquepreSave, référencesblobsrésoluesparSveltiaavantvalidation",
+      "Anciennes photos et choix successifs conservés, dédoublonnage par fichier et cadrages indépendants",
+      "Neuf fichiers de réalisations déjà utilisés ajoutés à la galerie, touslescadragesettextesexistantsconservés"
+    ],
+    "security": [
+      "aucun changement de compte,droit,Workerou secret",
+      "en-tête DENY conservé ailleurs; seule route/admin/apercu autoriseiframe sameorigin",
+      "textContent etattributsautorisés; URLsfiltrées; messagessource/origin/nonce contrôlés",
+      "aperçus noindex,no-store; pas de brouillon sur le serveur"
+    ],
+    "verification": [
+      "263 cas Node passés, avec248assertionswidgetet24assertionsgalerie dansleursfichiers",
+      "Build Astro0erreur0avertissement,1hintpublicationtestpréexistant",
+      "NavigateurReactréel: texte, tarif19,5€, nouvellerubriqueavecHTMLlittéral, vraiephoto blob et galerie47avecancienfichierconservé",
+      "Revueindépendante ducontratSveltia, donnéescatalogue, messages et seeds:listesvides corrigés"
+    ],
+    "limits": [
+      "Prévisualise la rubrique ouverte; deuxautresrubriquesenversionpubliée",
+      "Testmobileémulé; pasde nouvelessaiphysiqueiPhone/Android",
+      "SeulEnregistrerlancepublicationCloudflare; aperçu sanspublication"
+    ],
+    "report": "docs/qa/v24-apercu-pages-galerie.md"
   }
 }

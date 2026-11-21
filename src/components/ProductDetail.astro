@@ -13,6 +13,8 @@ import {
 
 interface Props { item: Collection }
 const { item } = Astro.props;
+const preview = Boolean((Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath);
+const seed = <T,>(values: T[], fallback: T): T[] => values.length || !preview ? values : [fallback];
 const classic = ['layer-cakes', 'bento-cakes'].includes(item.slug);
 const brunch = item.slug === 'brunch-box';
 const layer = item.slug === 'layer-cakes';
@@ -47,32 +49,32 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
 ---
 
 <Layout title={item.name} image={item.image} description={`${item.name} sur commande à Bordeaux et en Gironde. ${item.intro}`}>
-  <article class="v5-product section-pad">
+  <article class="v5-product section-pad" data-preview-product={item.slug}>
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
-      <a href="/">Accueil</a><span>/</span><a href="/creations/">Nos prestations</a><span>/</span><span aria-current="page">{item.name}</span>
+      <a href="/">Accueil</a><span>/</span><a href="/creations/">Nos prestations</a><span>/</span><span aria-current="page" data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</span>
     </nav>
 
     <header class="v5-product-heading">
-      <h1>{item.name}</h1>
+      <h1 data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</h1>
       <div>
-        <p class="v5-product-intro">{item.intro}</p>
+        <p class="v5-product-intro" data-preview-text={`catalog.collections.${item.slug}.intro`}>{item.intro}</p>
         {brunch ? (
-          <p class="v5-product-price">{brunchPriceGroups.map((group) => <span>{group.label} à <strong>{euro(group.price)} / personne</strong></span>)}</p>
-        ) : <p class="v5-product-price">{item.priceSummary}</p>}
+          <p class="v5-product-price" data-preview-each="catalog.brunchPriceGroups">{brunchPriceGroups.map((group) => <span><span data-preview-text=".label">{group.label}</span> à <strong data-preview-text=".pricePerPerson">{euro(group.price)} / personne</strong></span>)}</p>
+        ) : <p class="v5-product-price" data-preview-text={`catalog.collections.${item.slug}.priceSummary`}>{item.priceSummary}</p>}
       </div>
     </header>
 
     <div class="v5-product-studio">
       <aside class="v5-product-media" aria-label="Inspirations photographiques">
         <div class="v5-photo-composition">
-          <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} position={item.position} zoom={item.zoom} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
-          <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} position={detailPhoto.position} zoom={detailPhoto.zoom} sizes="(min-width: 960px) 18vw, 35vw" /></div>
+          <div class="v5-product-photo"><Photo previewKey={`photography.collections.${item.slug}.cover`} name={item.image} alt={item.alt} position={item.position} zoom={item.zoom} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
+          <div class="v5-detail-photo"><Photo previewKey={`photography.collections.${item.slug}.detail`} name={detailPhoto.image} alt={detailPhoto.alt} position={detailPhoto.position} zoom={detailPhoto.zoom} sizes="(min-width: 960px) 18vw, 35vw" /></div>
         </div>
       </aside>
 
       <div class="v5-product-explorer" data-v5-tabset>
-        <nav class="v5-product-tabs" data-v5-tablist hidden aria-label={`Découvrir les ${item.name.toLowerCase()}`}>
-          {tabs.map((tab) => <button type="button" id={`volet-${tab.id}`} data-v5-tab={tab.id}>{tab.label}</button>)}
+        <nav class="v5-product-tabs" data-v5-tablist data-preview-each={`catalog.collections.${item.slug}.previewTabs`} hidden aria-label={`Découvrir les ${item.name.toLowerCase()}`}>
+          {tabs.map((tab) => <button type="button" id={`volet-${tab.id}`} data-v5-tab={tab.id} data-preview-attr-id=".buttonId" data-preview-attr-data-v5-tab=".id" data-preview-text=".label">{tab.label}</button>)}
         </nav>
 
         <div class="v5-product-panels">
@@ -80,58 +82,58 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
             {brunch ? (
               <>
                 <span id="formats"></span>
-                <div class="v5-panel-heading"><h2>{capitalize(countInFrench(brunchBoxes.length))} {brunchBoxes.length === 1 ? 'brunch' : 'brunchs'} au choix</h2><p>Du sucré, du salé et un jus de fruits dans chaque composition.</p></div>
+                <div class="v5-panel-heading"><h2 data-preview-text="catalog.brunchHeading">{capitalize(countInFrench(brunchBoxes.length))} {brunchBoxes.length === 1 ? 'brunch' : 'brunchs'} au choix</h2><p>Du sucré, du salé et un jus de fruits dans chaque composition.</p></div>
                 <div class="v5-brunch" data-v5-brunch>
                   <div class="v5-brunch-picker" data-v5-brunch-controls hidden>
                     <label for="brunch-composition">Choisissez une composition</label>
-                    <div class="v5-brunch-select"><select id="brunch-composition" data-v5-brunch-select aria-controls="brunch-details">
-                      {brunchBoxes.map((box, index) => <option value={index}>{box.name} — {euro(box.price)} / personne</option>)}
+                    <div class="v5-brunch-select"><select id="brunch-composition" data-v5-brunch-select data-preview-each="catalog.brunchBoxes" aria-controls="brunch-details">
+                      {brunchBoxes.map((box, index) => <option value={index} data-preview-attr-value=".index" data-preview-text=".optionLabel">{box.name} — {euro(box.price)} / personne</option>)}
                     </select></div>
-                    <div class="v5-brunch-buttons" role="group" aria-label="Choisissez une composition">
-                      {brunchBoxes.map((box, index) => <button type="button" data-v5-box-choice={index}><span>{box.name}</span><span>{euro(box.price)}<small>/ personne</small></span></button>)}
+                    <div class="v5-brunch-buttons" data-preview-each="catalog.brunchBoxes" role="group" aria-label="Choisissez une composition">
+                      {brunchBoxes.map((box, index) => <button type="button" data-v5-box-choice={index} data-preview-attr-data-v5-box-choice=".index"><span data-preview-text=".name">{box.name}</span><span><span data-preview-text=".priceLabel">{euro(box.price)}</span><small>/ personne</small></span></button>)}
                     </div>
                     <p class="sr-only" data-v5-brunch-status role="status"></p>
                   </div>
-                  <div id="brunch-details" class="v5-brunch-details">
+                  <div id="brunch-details" class="v5-brunch-details" data-preview-each="catalog.brunchBoxes">
                     {brunchBoxes.map((box, index) => (
-                      <section class="v5-box-composition" data-v5-box={index} aria-labelledby={`brunch-${index}`}>
-                        <header><h3 id={`brunch-${index}`}>{box.name}</h3><p><strong>{euro(box.price)}</strong> / personne</p></header>
-                        <div class="v5-box-menu"><div><h4>Le sucré</h4><ul>{box.sweet.map((food) => <li>{food}</li>)}</ul></div><div><h4>Le salé</h4><ul>{box.savory.map((food) => <li>{food}</li>)}</ul></div><div class="v5-box-drink"><h4>La boisson</h4><p>{box.drink}</p></div></div>
+                      <section class="v5-box-composition" data-v5-box={index} aria-labelledby={`brunch-${index}`} data-preview-attr-data-v5-box=".index" data-preview-attr-aria-labelledby=".headingId">
+                        <header><h3 id={`brunch-${index}`} data-preview-attr-id=".headingId" data-preview-text=".name">{box.name}</h3><p><strong data-preview-text=".priceLabel">{euro(box.price)}</strong> / personne</p></header>
+                        <div class="v5-box-menu"><div><h4>Le sucré</h4><ul data-preview-each=".sweet">{seed(box.sweet, '').map((food) => <li hidden={box.sweet.length === 0} data-preview-text=".">{food}</li>)}</ul></div><div><h4>Le salé</h4><ul data-preview-each=".savory">{seed(box.savory, '').map((food) => <li hidden={box.savory.length === 0} data-preview-text=".">{food}</li>)}</ul></div><div class="v5-box-drink"><h4>La boisson</h4><p data-preview-text=".drink">{box.drink}</p></div></div>
                       </section>
                     ))}
                   </div>
                 </div>
-                <p class="v5-panel-note">{item.panelNote}</p>
+                <p class="v5-panel-note" data-preview-text={`catalog.collections.${item.slug}.panelNote`}>{item.panelNote}</p>
               </>
             ) : (
               <>
-                <div class="v5-panel-heading"><h2>{classic ? 'Le format, puis votre décor' : buffet ? 'Mise en place du buffet' : platters ? 'Les plateaux à partager' : 'Les formats & leurs tarifs'}</h2><p>{platters ? 'Découvrez la composition de chaque plateau.' : item.text}</p></div>
+                <div class="v5-panel-heading"><h2>{classic ? 'Le format, puis votre décor' : buffet ? 'Mise en place du buffet' : platters ? 'Les plateaux à partager' : 'Les formats & leurs tarifs'}</h2><p data-preview-text={platters ? undefined : `catalog.collections.${item.slug}.text`}>{platters ? 'Découvrez la composition de chaque plateau.' : item.text}</p></div>
                 {buffet && <BuffetService />}
                 {platters && <PlatterChoices tariffs={item.tariffs} />}
-                {!platters && item.tariffs.length > 0 && (
-                  <table class="v5-product-prices">
+                {!platters && (item.tariffs.length > 0 || (Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath) && (
+                  <table class="v5-product-prices" hidden={item.tariffs.length === 0} data-preview-visible={`catalog.collections.${item.slug}.tariffs`}>
                     <caption class="sr-only">Les tarifs des {item.name.toLowerCase()}</caption>
                     <thead><tr><th scope="col">{item.slug === 'plateaux' ? 'Plateau' : 'Quantité'}</th><th scope="col">Tarif</th></tr></thead>
-                    <tbody>{item.tariffs.map((tariff) => <tr><th scope="row">{tariff.label}{tariff.detail && <small>{tariff.detail}</small>}</th><td>{euro(tariff.price)}</td></tr>)}</tbody>
+                    <tbody data-preview-each={`catalog.collections.${item.slug}.tariffs`}>{(item.tariffs.length ? item.tariffs : [{ label: '', price: 0, detail: '' }]).map((tariff) => <tr><th scope="row"><span data-preview-text=".label">{tariff.label}</span><small hidden={!tariff.detail} data-preview-visible=".detail" data-preview-text=".detail">{tariff.detail}</small></th><td data-preview-text=".priceLabel">{euro(tariff.price)}</td></tr>)}</tbody>
                   </table>
                 )}
-                {!buffet && !platters && <ul class="v5-product-options">{item.possibilities.map((possibility, index) => <li>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>}
-                <p class="v5-panel-note">{item.panelNote}</p>
+                {!buffet && !platters && <ul class="v5-product-options" data-preview-each={`catalog.collections.${item.slug}.previewPossibilities`}>{seed(item.possibilities, '').map((possibility, index) => <li hidden={item.possibilities.length === 0} data-preview-text=".text" data-preview-first-strong>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>}
+                <p class="v5-panel-note" data-preview-text={`catalog.collections.${item.slug}.panelNote`}>{item.panelNote}</p>
               </>
             )}
           </section>
 
           {(classic || cupcakes) && (
             <section id="saveurs" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>{capitalize(countInFrench(flavorCount))} {flavorCount === 1 ? 'saveur' : 'saveurs'} {cupcakes ? 'à découvrir' : flavorCount === 1 ? 'classique' : 'classiques'}</h2><p>Choisissez une famille pour retrouver ses saveurs.</p></div>
+              <div class="v5-panel-heading"><h2 data-preview-text={`catalog.collections.${item.slug}.flavorHeading`}>{capitalize(countInFrench(flavorCount))} {flavorCount === 1 ? 'saveur' : 'saveurs'} {cupcakes ? 'à découvrir' : flavorCount === 1 ? 'classique' : 'classiques'}</h2><p>Choisissez une famille pour retrouver ses saveurs.</p></div>
               <div class="v6-flavor-explorer" data-v6-flavors>
                 <nav class="v6-flavor-tabs" data-v6-flavor-controls hidden aria-label="Familles de saveurs">
-                  {flavorGroups.map((group, index) => <button type="button" id={`${item.slug}-famille-${index}`} data-v6-flavor-choice={`${item.slug}-saveur-${index}`}>{group.name}</button>)}
+                  {flavorGroups.map((group, index) => <button type="button" id={`${item.slug}-famille-${index}`} data-v6-flavor-choice={`${item.slug}-saveur-${index}`} data-preview-text={`catalog.collections.${item.slug}.flavorGroups.${index}.name`}>{group.name}</button>)}
                 </nav>
                 {flavorGroups.map((group, index) => <section id={`${item.slug}-saveur-${index}`} class="v6-flavor-group" data-v6-flavor-panel>
-                  <h3>{group.name}</h3>
+                  <h3 data-preview-text={`catalog.collections.${item.slug}.flavorGroups.${index}.name`}>{group.name}</h3>
                   <div class="v6-flavor-photo"><Photo name={flavorImages[index].name} alt={flavorImages[index].alt} sizes="(min-width: 960px) 45vw, 100vw" /></div>
-                  <ul>{group.flavors.map((flavor) => <li>{flavor}</li>)}</ul>
+                  <ul data-preview-each={`catalog.collections.${item.slug}.flavorGroups.${index}.flavors`}>{seed(group.flavors, '').map((flavor) => <li hidden={group.flavors.length === 0} data-preview-text=".">{flavor}</li>)}</ul>
                 </section>)}
               </div>
               {classic && <p class="v5-panel-note v6-supplement"><strong>Mélange de saveurs : supplément.</strong></p>}
@@ -140,8 +142,8 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
 
           {layer && (
             <section id="signatures" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>{capitalize(countInFrench(signatureFlavors.length))} {signatureFlavors.length === 1 ? 'composition réservée' : 'compositions réservées'} aux layer cakes.</p></div>
-              <dl class="v6-signature-menu">{signatureFlavors.map((flavor) => <div><dt>{flavor.name}</dt><dd>{flavor.composition}</dd></div>)}</dl>
+              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p data-preview-text="catalog.signatureHeading">{capitalize(countInFrench(signatureFlavors.length))} {signatureFlavors.length === 1 ? 'composition réservée' : 'compositions réservées'} aux layer cakes.</p></div>
+              <dl class="v6-signature-menu" data-preview-each="catalog.signatureFlavors">{seed(signatureFlavors, { name: '', composition: '' }).map((flavor) => <div hidden={signatureFlavors.length === 0}><dt data-preview-text=".name">{flavor.name}</dt><dd data-preview-text=".composition">{flavor.composition}</dd></div>)}</dl>
             </section>
           )}
 
@@ -151,11 +153,11 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
             </section>
           )}
 
-          <ExtraSections sections={extraSections} />
+          <ExtraSections sections={extraSections} slug={item.slug} />
 
           <section id="votre-demande" class="v5-product-panel" data-v5-panel>
             <div class="v5-panel-heading"><h2>{buffet ? 'Votre demande de devis' : 'Les détails à nous partager'}</h2><p>{buffet ? 'Partagez ces informations sur Instagram pour établir votre devis.' : 'Partagez ces détails sur Instagram.'}</p></div>
-            <div class="v5-request-plan"><ul>{item.orderFields.map((field) => <li>{field}</li>)}</ul></div>
+            <div class="v5-request-plan"><ul data-preview-each={`catalog.collections.${item.slug}.orderFields`}>{seed(item.orderFields, '').map((field) => <li hidden={item.orderFields.length === 0} data-preview-text=".">{field}</li>)}</ul></div>
             <p class="v5-order-note">Les tarifs peuvent varier selon les personnalisations. Un devis est établi si nécessaire.</p>
           </section>
         </div>
@@ -171,7 +173,7 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
       <div class="v5-related-heading"><h2>À découvrir aussi</h2><a href="/creations/">Toutes les prestations</a></div>
       <div class="v5-related-grid">{related.map((other) => {
         const relatedPhoto = collectionPhotography[other.slug].request;
-        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position={relatedPhoto.position} zoom={relatedPhoto.zoom} /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
+        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo previewKey={`photography.collections.${other.slug}.request`} name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position={relatedPhoto.position} zoom={relatedPhoto.zoom} /></span><span data-preview-text={`catalog.collections.${other.slug}.name`}>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
       })}</div>
     </nav>
   </article>

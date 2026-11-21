@@ -167,7 +167,9 @@ const pageFields = [
 
 const collection = (name, label, file, fields, description) => ({
   name, label, description, format: 'json', editor: { preview: true },
-  files: [{ name, label, file, fields, preview_path: ({photos: 'galerie/', catalogue: 'creations/', pages: ''})[name] }],
+  files: [{ name, label, file, fields: [field('_pagePreview', 'Aperçu du site', 'siray-page-preview', {
+    required: false, preview_kind: name,
+  }), ...fields], preview_path: ({photos: 'galerie/', catalogue: 'creations/', pages: ''})[name] }],
 });
 const config = {
   $schema: 'https://unpkg.com/@sveltia/cms@0.270.0/schema/sveltia-cms.json',

@@ -11,32 +11,33 @@ const page = pages.home;
   <section class="hero" data-hero aria-label="L’univers Siray Signature">
     <div class="hero-title">
       <div class="hero-copy">
-        <h1>{page.title}</h1>
-        <p class="hero-summary">{page.summary}</p>
-        <p class="hero-description">
+        <h1 data-preview-text="pages.home.title">{page.title}</h1>
+        <p class="hero-summary" data-preview-text="pages.home.summary">{page.summary}</p>
+        <p class="hero-description" data-preview-text="pages.home.description">
           {page.description}
         </p>
-        <a href="/creations/" class="primary-link">
+        <a href="/creations/" class="primary-link" data-preview-text="pages.home.discoverLabel">
           {page.discoverLabel}
         </a>
       </div>
       <div class="hero-guide">
         <nav class="hero-paths" aria-label="Explorer selon votre occasion">
           <a href="#pour-celebrer">
-            <span class="hero-path-title">{page.celebrateTitle}</span>
-            <span class="hero-path-detail">{page.celebrateDetail}</span>
+            <span class="hero-path-title" data-preview-text="pages.home.celebrateTitle">{page.celebrateTitle}</span>
+            <span class="hero-path-detail" data-preview-text="pages.home.celebrateDetail">{page.celebrateDetail}</span>
           </a>
           <a href="#pour-se-retrouver">
-            <span class="hero-path-title">{page.gatherTitle}</span>
-            <span class="hero-path-detail">{page.gatherDetail}</span>
+            <span class="hero-path-title" data-preview-text="pages.home.gatherTitle">{page.gatherTitle}</span>
+            <span class="hero-path-detail" data-preview-text="pages.home.gatherDetail">{page.gatherDetail}</span>
           </a>
         </nav>
-        <p class="hero-location"><span>{page.location}</span><span>{page.locationOrderNote}</span></p>
+        <p class="hero-location"><span data-preview-text="pages.home.location">{page.location}</span><span data-preview-text="pages.home.locationOrderNote">{page.locationOrderNote}</span></p>
       </div>
     </div>
     <div class="hero-visual">
       <button
         class="hero-photos"
+        data-preview-each="photography.homeSlides"
         data-slide-surface
         type="button"
         disabled
@@ -50,6 +51,7 @@ const page = pages.home;
             aria-hidden={index !== 0}
           >
             <Photo
+              previewKey="."
               name={slide.image}
               alt={slide.alt}
               position={slide.position} zoom={slide.zoom}
@@ -68,23 +70,23 @@ const page = pages.home;
   <CollectionEdit />
 
   <div class="service-note section-pad">
-    <p class="service-note-summary">{page.orderNote} <span aria-hidden="true">·</span> {page.halalNote}</p>
-    <a href="/contact/#allergies">{page.allergiesLabel}</a>
+    <p class="service-note-summary"><span data-preview-text="pages.home.orderNote">{page.orderNote}</span> <span aria-hidden="true">·</span> <span data-preview-text="pages.home.halalNote">{page.halalNote}</span></p>
+    <a href="/contact/#allergies" data-preview-text="pages.home.allergiesLabel">{page.allergiesLabel}</a>
   </div>
 
   <section class="maison-feature section-pad">
     <div class="maison-feature-copy">
-      <h2>{page.maisonTitle}</h2>
-      <p>
+      <h2 data-preview-text="pages.home.maisonTitle">{page.maisonTitle}</h2>
+      <p data-preview-text="pages.home.maisonText">
         {page.maisonText}
       </p>
-      <a class="text-link" href="/la-maison/">
+      <a class="text-link" href="/la-maison/" data-preview-text="pages.home.maisonLink">
         {page.maisonLink}
       </a>
     </div>
     <figure>
       <Photo
-        name={homePhotos.maison.image}
+        previewKey="photography.homePhotos.maison" name={homePhotos.maison.image}
         alt={homePhotos.maison.alt}
         position={homePhotos.maison.position} zoom={homePhotos.maison.zoom}
       />
@@ -93,35 +95,35 @@ const page = pages.home;
 
   <section class="carnet-section section-pad">
     <div class="section-heading">
-      <h2>{page.galleryTitle}</h2>
-      <a href="/galerie/" class="text-link">
+      <h2 data-preview-text="pages.home.galleryTitle">{page.galleryTitle}</h2>
+      <a href="/galerie/" class="text-link" data-preview-text="pages.home.galleryLink">
         {page.galleryLink}
       </a>
     </div>
     <div class="carnet-images">
       <a href="/galerie/#layer-cakes">
         <Photo
-          name={homePhotos.cakes.image}
+          previewKey="photography.homePhotos.cakes" name={homePhotos.cakes.image}
           alt={homePhotos.cakes.alt}
           position={homePhotos.cakes.position} zoom={homePhotos.cakes.zoom}
         />
-        <span>{page.cakesLabel}</span>
+        <span data-preview-text="pages.home.cakesLabel">{page.cakesLabel}</span>
       </a>
       <a href="/galerie/#cupcakes">
         <Photo
-          name={homePhotos.petitesDouceurs.image}
+          previewKey="photography.homePhotos.petitesDouceurs" name={homePhotos.petitesDouceurs.image}
           alt={homePhotos.petitesDouceurs.alt}
           position={homePhotos.petitesDouceurs.position} zoom={homePhotos.petitesDouceurs.zoom}
         />
-        <span>{page.sweetsLabel}</span>
+        <span data-preview-text="pages.home.sweetsLabel">{page.sweetsLabel}</span>
       </a>
       <a href="/galerie/#brunch-box">
         <Photo
-          name={homePhotos.tables.image}
+          previewKey="photography.homePhotos.tables" name={homePhotos.tables.image}
           alt={homePhotos.tables.alt}
           position={homePhotos.tables.position} zoom={homePhotos.tables.zoom}
         />
-        <span>{page.tablesLabel}</span>
+        <span data-preview-text="pages.home.tablesLabel">{page.tablesLabel}</span>
       </a>
     </div>
   </section>

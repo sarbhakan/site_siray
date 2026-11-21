@@ -5,6 +5,9 @@ import { instagram } from '../data/site';
 
 const messageDetails = pages.project.messageDetails;
 const page = pages.project;
+const preview = Boolean((Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath);
+const steps = page.steps.length || !preview ? page.steps : [{ title: '', text: '' }];
+const details = messageDetails.length || !preview ? messageDetails : [{ label: '', text: '' }];
 ---
 
 <Layout
@@ -15,78 +18,67 @@ const page = pages.project;
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
       <span>/</span>
-      <span aria-current="page">{page.pageTitle}</span>
+      <span aria-current="page" data-preview-text="pages.project.pageTitle">{page.pageTitle}</span>
     </nav>
   </div>
 
   <section class="project-intro section-pad" aria-labelledby="project-title">
     <div class="project-opening">
-      <h1 id="project-title">{page.title}</h1>
-      <p class="project-lead">{page.lead}</p>
+      <h1 id="project-title" data-preview-text="pages.project.title">{page.title}</h1>
+      <p class="project-lead" data-preview-text="pages.project.lead">{page.lead}</p>
       <div class="project-action">
-        <a class="primary-link" href={instagram} target="_blank" rel="noopener noreferrer">
+        <a class="primary-link" href={instagram} target="_blank" rel="noopener noreferrer" data-preview-text="pages.project.instagramLabel">
           {page.instagramLabel}
         </a>
-        <span>{page.instagramHandle}</span>
+        <span data-preview-text="pages.project.instagramHandle">{page.instagramHandle}</span>
       </div>
-      <p class="project-channel">{page.channel}</p>
+      <p class="project-channel" data-preview-text="pages.project.channel">{page.channel}</p>
       <div class="project-timing">
-        <h2>{page.timingTitle}</h2>
-        <p>{page.timingLead}{' '}<strong>{page.timingEmphasis}</strong></p>
-        <p>{page.timingText}</p>
+        <h2 data-preview-text="pages.project.timingTitle">{page.timingTitle}</h2>
+        <p><span data-preview-text="pages.project.timingLead">{page.timingLead}</span>{' '}<strong data-preview-text="pages.project.timingEmphasis">{page.timingEmphasis}</strong></p>
+        <p data-preview-text="pages.project.timingText">{page.timingText}</p>
       </div>
     </div>
 
     <div class="project-process">
-      <h2>{page.processTitle}</h2>
-      <ol>
-        <li>
-          <h3>{page.steps[0].title}</h3>
-          <p>{page.steps[0].text}</p>
-        </li>
-        <li>
-          <h3>{page.steps[1].title}</h3>
-          <p>{page.steps[1].text}</p>
-        </li>
-        <li>
-          <h3>{page.steps[2].title}</h3>
-          <p>{page.steps[2].text}</p>
-        </li>
+      <h2 data-preview-text="pages.project.processTitle">{page.processTitle}</h2>
+      <ol data-preview-each="pages.project.steps">
+        {steps.map((step) => <li hidden={page.steps.length === 0}><h3 data-preview-text=".title">{step.title}</h3><p data-preview-text=".text">{step.text}</p></li>)}
       </ol>
     </div>
   </section>
 
   <section class="project-practical section-pad" aria-label="Préparer votre demande">
     <div class="project-message">
-      <h2>{page.messageTitle}</h2>
-      <p>{page.messageIntro}</p>
-      <dl>
-        {messageDetails.map((item) => (
-          <div>
-            <dt>{item.label}</dt>
-            <dd>{item.text}</dd>
+      <h2 data-preview-text="pages.project.messageTitle">{page.messageTitle}</h2>
+      <p data-preview-text="pages.project.messageIntro">{page.messageIntro}</p>
+      <dl data-preview-each="pages.project.messageDetails">
+        {details.map((item) => (
+          <div hidden={messageDetails.length === 0}>
+            <dt data-preview-text=".label">{item.label}</dt>
+            <dd data-preview-text=".text">{item.text}</dd>
           </div>
         ))}
       </dl>
-      <a class="text-link" href="/creations/">{page.exploreLabel}</a>
+      <a class="text-link" href="/creations/" data-preview-text="pages.project.exploreLabel">{page.exploreLabel}</a>
     </div>
 
     <div class="project-arrangements">
-      <h2>{page.arrangementsTitle}</h2>
-      <p class="project-area">{page.area}</p>
+      <h2 data-preview-text="pages.project.arrangementsTitle">{page.arrangementsTitle}</h2>
+      <p class="project-area" data-preview-text="pages.project.area">{page.area}</p>
       <div class="project-handover">
-        <h3>{page.pickupTitle}</h3>
-        <p>{page.pickupText}</p>
-        <h3>{page.deliveryTitle}</h3>
-        <p>{page.deliveryLead}{' '}<strong>{page.deliveryEmphasis}</strong>{' '}{page.deliveryText}</p>
+        <h3 data-preview-text="pages.project.pickupTitle">{page.pickupTitle}</h3>
+        <p data-preview-text="pages.project.pickupText">{page.pickupText}</p>
+        <h3 data-preview-text="pages.project.deliveryTitle">{page.deliveryTitle}</h3>
+        <p><span data-preview-text="pages.project.deliveryLead">{page.deliveryLead}</span>{' '}<strong data-preview-text="pages.project.deliveryEmphasis">{page.deliveryEmphasis}</strong>{' '}<span data-preview-text="pages.project.deliveryText">{page.deliveryText}</span></p>
       </div>
       <div class="project-food">
-        <h3>{page.foodTitle}</h3>
-        <p><strong>{page.foodText}</strong></p>
+        <h3 data-preview-text="pages.project.foodTitle">{page.foodTitle}</h3>
+        <p><strong data-preview-text="pages.project.foodText">{page.foodText}</strong></p>
       </div>
       <details class="project-allergies" id="allergies" open>
-        <summary>{page.allergiesTitle}</summary>
-        <p>{page.allergiesText}</p>
+        <summary data-preview-text="pages.project.allergiesTitle">{page.allergiesTitle}</summary>
+        <p data-preview-text="pages.project.allergiesText">{page.allergiesText}</p>
       </details>
     </div>
   </section>

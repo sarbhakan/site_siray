@@ -42,12 +42,12 @@ import { galleryFilters } from '../data/photography';
         {gallery.length} photographies
       </span>
     </div>
-    <div class="gallery-grid">
+    <div class="gallery-grid" data-preview-each="photography.gallery">
       {gallery.map((photo, index) => (
-        <figure class="gallery-card" data-category={photo.category}>
+        <figure class="gallery-card" data-category={photo.category} data-preview-attr-data-category=".category">
           <div class="gallery-photo">
             <Photo
-              name={photo.image}
+              previewKey="." name={photo.image}
               alt={photo.alt}
               position={photo.position} zoom={photo.zoom}
               eager={index < 2}
@@ -55,8 +55,8 @@ import { galleryFilters } from '../data/photography';
             />
           </div>
           <figcaption>
-            <span>{photo.label}</span>
-            <span>{photo.categoryLabel}</span>
+            <span data-preview-text=".label">{photo.label}</span>
+            <span data-preview-text=".categoryLabel">{photo.categoryLabel}</span>
           </figcaption>
         </figure>
       ))}

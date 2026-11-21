@@ -9,6 +9,7 @@ let crop;
 try { crop = await server.ssrLoadModule('/src/lib/photo-crop.ts'); }
 finally { await server.close(); }
 const window = {};
+runInNewContext(await readFile(new URL('../../public/admin/photo-gallery.js', import.meta.url), 'utf8'), { window, URL });
 runInNewContext(await readFile(new URL('../../public/admin/content-validation.js', import.meta.url), 'utf8'), { window, URL, WeakSet });
 const client = window.SirayContentValidation;
 const photography = JSON.parse(await readFile(new URL('../../src/content/photography.json', import.meta.url), 'utf8'));

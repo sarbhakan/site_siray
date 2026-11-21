@@ -32,6 +32,7 @@ import { collections } from '../../data/site';
           aria-label={`Découvrir : ${item.name}`}
         >
           <Photo
+            previewKey={`photography.collections.${item.slug}.cover`}
             name={item.image}
             alt={item.alt}
             position={item.position}
@@ -42,10 +43,10 @@ import { collections } from '../../data/site';
         </a>
         <div class="catalog-entry-copy">
           <h2>
-            <a href={item.href}>{item.name}</a>
+            <a href={item.href} data-preview-text={`catalog.collections.${item.slug}.name`}>{item.name}</a>
           </h2>
-          <p>{item.intro}</p>
-          <p class="catalog-price">{item.priceSummary}</p>
+          <p data-preview-text={`catalog.collections.${item.slug}.intro`}>{item.intro}</p>
+          <p class="catalog-price" data-preview-text={`catalog.collections.${item.slug}.priceSummary`}>{item.priceSummary}</p>
           <a href={item.href} class="text-link">
             Compositions & détails
           </a>

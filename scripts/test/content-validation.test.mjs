@@ -6,6 +6,7 @@ import { createServer } from 'vite';
 
 const source = await readFile(new URL('../../public/admin/content-validation.js', import.meta.url), 'utf8');
 const window = {};
+runInNewContext(await readFile(new URL('../../public/admin/photo-gallery.js', import.meta.url), 'utf8'), { window, URL });
 runInNewContext(source, { window, URL, WeakSet });
 const client = window.SirayContentValidation;
 const server = await createServer({ configFile: false, server: { middlewareMode: true, watch: null, hmr: false, ws: false }, appType: 'custom', logLevel: 'silent' });
@@ -69,6 +70,20 @@ test('whole-document photo checks preserve every current photo and gallery entry
   const before = JSON.stringify(data), { save } = capture();
   assert.equal(save({ entry: entry(data, 'photos', 'src/content/photography.json') }), undefined);
   assert.equal(JSON.stringify(data), before);
+});
+
+test('preSave atomically returns an enriched Immutable entry and strips temporary archives', () => {
+  const current = galleryPhoto({ file: '/src/assets/uploads/new.webp', _galleryArchive: [galleryPhoto({file: '/src/assets/uploads/previous.webp'})] });
+  const data = { homeSlides: [current], homePhotos: {}, collections: [], gallery: [] };
+  const { save } = capture();
+  const original = entry(data, 'photos', 'src/content/photography.json');
+  original.set = (key, value) => ({ key, value, marker: 'immutable-entry' });
+  const result = save({ entry: original });
+  assert.equal(result.key, 'data');
+  assert.equal(result.marker, 'immutable-entry');
+  assert.deepEqual(asJSON(result.value.gallery.map(photo => photo.file)), ['/src/assets/uploads/previous.webp', '/src/assets/uploads/new.webp']);
+  assert.equal(result.value.homeSlides[0]._galleryArchive, undefined);
+  assert.equal(data.homeSlides[0]._galleryArchive.length, 1);
 });
 
 for (const [field, value, message] of [

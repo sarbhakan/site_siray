@@ -8,15 +8,15 @@ const euro = (price: number) => new Intl.NumberFormat('fr-FR', {
 }).format(price);
 ---
 
-<div class="platter-choices">
+<div class="platter-choices" data-preview-each="catalog.collections.plateaux.tariffs">
   {tariffs.map((tariff) => (
     <details name="plateaux" class="platter-choice">
       <summary>
-        <span class="platter-name">{tariff.label}</span>
-        <span class="platter-price">{euro(tariff.price)}</span>
+        <span class="platter-name" data-preview-text=".label">{tariff.label}</span>
+        <span class="platter-price" data-preview-text=".priceLabel">{euro(tariff.price)}</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
       </summary>
-      <div class="platter-description"><p>{tariff.description || tariff.detail}</p></div>
+      <div class="platter-description"><p data-preview-text=".previewDescription">{tariff.description || tariff.detail}</p></div>
     </details>
   ))}
 </div>
