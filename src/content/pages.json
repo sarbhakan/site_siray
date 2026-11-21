@@ -10,6 +10,7 @@
     "gatherTitle": "Pour se retrouver",
     "gatherDetail": "Mignardises, brunch box, buffets & plateaux",
     "location": "Bordeaux & Gironde",
+    "locationOrderNote": "Créations sur commande",
     "orderNote": "Sur commande",
     "halalNote": "Toutes nos viandes sont halal",
     "allergiesLabel": "Allergies & intolérances",
@@ -20,10 +21,10 @@
     "galleryLink": "Ouvrir la galerie",
     "cakesLabel": "Cakes",
     "sweetsLabel": "Petites douceurs",
-    "tablesLabel": "Tables & brunchs",
-    "locationOrderNote": "Créations sur commande"
+    "tablesLabel": "Tables & brunchs"
   },
   "maison": {
+    "pageTitle": "La maison",
     "title": "La maison Siray",
     "intro": "Cakes, mignardises et buffets sur mesure, à Bordeaux et en Gironde.",
     "worldTitle": "L’art de sublimer vos instants gourmands",
@@ -38,10 +39,10 @@
     "exploreLink": "nos prestations",
     "exploreAfter": "pour découvrir les sept familles, leurs compositions et leurs tarifs. Les options et les informations à transmettre sont réunies dans chaque fiche.",
     "orderingText": "Les demandes et les commandes se préparent sur Instagram. Indiquez votre date, le nombre de personnes et vos inspirations pour que nous puissions échanger sur votre projet à Bordeaux ou en Gironde.",
-    "practicalText": "Toutes nos viandes sont halal. Signalez vos allergies et intolérances lors de votre demande, avant la confirmation de la commande.",
-    "pageTitle": "La maison"
+    "practicalText": "Toutes nos viandes sont halal. Signalez vos allergies et intolérances lors de votre demande, avant la confirmation de la commande."
   },
   "project": {
+    "pageTitle": "Votre projet",
     "metaDescription": "Préparez votre commande Siray Signature sur Instagram : personnalisation, anticipation, retrait sur place et livraison possible à Bordeaux et en Gironde.",
     "title": "Votre projet gourmand",
     "lead": "Une idée, une date, quelques envies : imaginons votre création ensemble.",
@@ -53,22 +54,22 @@
     "timingEmphasis": "même pour un bento cake.",
     "timingText": "Les demandes pour le jour même ou le lendemain sont difficiles à réaliser. La disponibilité et le délai nécessaire sont confirmés par message.",
     "processTitle": "De l’idée à la commande",
+    "steps": [
+      {
+        "title": "Présentez votre envie",
+        "text": "Envoyez votre date, la prestation souhaitée et le nombre de personnes. Quelques inspirations nous aideront à vous proposer une création adaptée."
+      },
+      {
+        "title": "Personnalisons les détails",
+        "text": "Nous précisons ensemble le format, les saveurs et le décor selon la prestation. Le tarif est établi en fonction de votre demande ; les buffets font l’objet d’un devis personnalisé."
+      },
+      {
+        "title": "Convenons des modalités",
+        "text": "La disponibilité, le tarif et les modalités de retrait ou de livraison sont convenus sur Instagram avant confirmation de la commande."
+      }
+    ],
     "messageTitle": "Dans votre premier message",
-    "messageIntro": "Ces quelques renseignements nous permettent de vous répondre plus précisément.",
-    "exploreLabel": "Explorer les sept prestations",
-    "arrangementsTitle": "Retrait & livraison",
-    "area": "Bordeaux & Gironde",
-    "pickupTitle": "À récupérer sur place",
-    "pickupText": "Le retrait se fait généralement sur le lieu de création des prestations. Le lieu et l’horaire sont convenus ensemble sur Instagram.",
-    "deliveryTitle": "Une livraison à domicile ?",
-    "deliveryLead": "Elle peut être envisagée à Bordeaux et en Gironde,",
-    "deliveryEmphasis": "avec un supplément",
-    "deliveryText": "précisé lors de l’échange. Sa possibilité est à confirmer selon votre demande.",
-    "foodTitle": "Des créations halal",
-    "foodText": "Nos viandes et les ingrédients utilisés sont halal.",
-    "allergiesTitle": "Allergies & intolérances",
-    "allergiesText": "Signalez-les dès votre premier message. Les ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation.",
-    "pageTitle": "Votre projet",
+    "messageIntro": "Ces renseignements nous permettent de vous répondre plus précisément.",
     "messageDetails": [
       {
         "label": "La date",
@@ -91,19 +92,18 @@
         "text": "Toute allergie, intolérance ou restriction alimentaire."
       }
     ],
-    "steps": [
-      {
-        "title": "Présentez votre envie",
-        "text": "Envoyez votre date, la prestation souhaitée et le nombre de personnes. Quelques inspirations nous aideront à vous proposer une création adaptée."
-      },
-      {
-        "title": "Personnalisons les détails",
-        "text": "Nous précisons ensemble le format, les saveurs et le décor selon la prestation. Le tarif est établi en fonction de votre demande ; les buffets font l’objet d’un devis personnalisé."
-      },
-      {
-        "title": "Convenons des modalités",
-        "text": "La disponibilité, le tarif et les modalités de retrait ou de livraison sont convenus sur Instagram avant confirmation de la commande."
-      }
-    ]
+    "exploreLabel": "Explorer les sept prestations",
+    "arrangementsTitle": "Retrait & livraison",
+    "area": "Bordeaux & Gironde",
+    "pickupTitle": "À récupérer sur place",
+    "pickupText": "Le retrait se fait généralement sur le lieu de création des prestations. Le lieu et l’horaire sont convenus ensemble sur Instagram.",
+    "deliveryTitle": "Une livraison à domicile ?",
+    "deliveryLead": "Elle peut être envisagée à Bordeaux et en Gironde,",
+    "deliveryEmphasis": "avec un supplément",
+    "deliveryText": "précisé lors de l’échange. Sa possibilité est à confirmer selon votre demande.",
+    "foodTitle": "Des créations halal",
+    "foodText": "Nos viandes et les ingrédients utilisés sont halal.",
+    "allergiesTitle": "Allergies & intolérances",
+    "allergiesText": "Signalez-les dès votre premier message. Les ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation."
   }
 }
