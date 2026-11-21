@@ -229,9 +229,10 @@
     {
       "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
       "category": "bento-cakes",
-      "file": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "file": "/src/assets/uploads/20261121-846f6285c71d.webp",
       "label": "Une douceur ornée de framboises",
-      "position": "33% 15%"
+      "position": "50% 50%",
+      "zoom": 1
     },
     {
       "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
@@ -434,6 +435,40 @@
       "alt": "Verrine crevettes",
       "file": "/src/assets/uploads/20261121-2af946d5cbb0.webp",
       "label": "Verrine crevette & avocat",
+      "position": "50% 50%",
+      "category": "mignardises"
+    },
+    {
+      "alt": "Bento cake orné de fruits rouges",
+      "file": "/src/assets/uploads/20261121-c3f557fd39d3.webp",
+      "label": "Bento cake orné de fruits rouges",
+      "position": "50% 81%",
+      "category": "bento-cakes"
+    },
+    {
+      "alt": "Bento cake pour enfant",
+      "file": "/src/assets/uploads/20261121-818f76255a63.webp",
+      "label": "Bento cake pour enfant",
+      "position": "50% 67%",
+      "category": "bento-cakes"
+    },
+    {
+      "alt": "Layer cake vintage",
+      "file": "/src/assets/uploads/20261121-8ebbdce8e5e0.webp",
+      "label": "Layer cake vintage",
+      "position": "50% 50%"
+    },
+    {
+      "alt": "Assortiment de mignardises",
+      "file": "/src/assets/uploads/20261121-bdff89980e81.webp",
+      "label": "Plateau de diverses variétés de mignardises",
+      "position": "57% 50%",
+      "category": "mignardises"
+    },
+    {
+      "alt": "Mini burger",
+      "file": "/src/assets/uploads/20261121-abd66ab43e32.webp",
+      "label": "Le bleu & noix",
       "position": "50% 50%",
       "category": "mignardises"
     }
