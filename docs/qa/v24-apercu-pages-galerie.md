@@ -15,6 +15,7 @@ Migration : les 37 emplacements et les 37 anciennes entrées de galerie sont con
 - Navigateur React réel en 390 × 844 : texte d’accueil modifié dans le brouillon, tarif de 19,5 € pour six cupcakes, nouvelle rubrique interactive avec HTML affiché littéralement, nouvelle photo blob chargée sur l’accueil et dans la galerie. L’ancienne photo reste présente. Le retour au formulaire conserve les modifications. Aucune donnée métier de test enregistrée.
 - Vue ordinateur de 1 280 px réduite sur téléphone ; largeur, hauteur et absence de débordement du dialogue contrôlées.
 - Revue indépendante : format postMessage aligné avec parseur testé, modèles pour les listes initialement vides complétés, fragments de navigation transmis. API publique Sveltia et calculs partagés du catalogue vérifiés.
+- CMS publié sur le domaine : le brouillon d’une description de photo est visible dans l’aperçu complet, sans publication. Essai annulé, sortie puis retour dans la fiche avec Enregistrer désactivé. En-têtes SAMEORIGIN sur les aperçus et DENY sur la page publique confirmés. L’accroche d’accueil ne force plus une ligne unique : les textes longs saisis dans le CMS restent lisibles sur mobile.
 
 ## Sécurité et portée
 

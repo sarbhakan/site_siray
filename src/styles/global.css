@@ -399,7 +399,8 @@ body:has(dialog[open]) {
   font-size: clamp(24px, 7.5vw, 36px);
   line-height: 1.12;
   letter-spacing: -0.03em;
-  white-space: nowrap;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 .hero-summary {
   max-width: none;
@@ -407,7 +408,8 @@ body:has(dialog[open]) {
   color: var(--hero-muted);
   font-size: 16px;
   line-height: 1.5;
-  white-space: nowrap;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
 }
 .hero-description {
   max-width: 48ch;
