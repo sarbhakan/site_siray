@@ -46,35 +46,102 @@ function initialize() {
   const menu = document.querySelector<HTMLDialogElement>('#mobile-menu');
   const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   if (menu && menuToggle) {
+    let menuMotion: Animation | undefined;
+    let closing = false;
+    const stopMenuMotion = () => {
+      const previous = menuMotion;
+      menuMotion = undefined;
+      previous?.cancel();
+    };
+    const closeMenu = () => {
+      stopMenuMotion();
+      closing = false;
+      if (menu.open) menu.close();
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+    const moveMenu = (
+      from: string,
+      to: string,
+      duration: number,
+      easing: string,
+      complete = () => {},
+    ) => {
+      const animation = menu.animate(
+        [{ transform: from }, { transform: to }],
+        { duration, easing, fill: 'both' },
+      );
+      menuMotion = animation;
+      void animation.finished.then(() => {
+        // A close, resize or Astro navigation can supersede this animation.
+        if (menuMotion !== animation) return;
+        menuMotion = undefined;
+        animation.cancel();
+        complete();
+      }, () => {});
+    };
+    const requestMenuClose = () => {
+      if (!menu.open || closing) return;
+      if (reduced.matches || typeof menu.animate !== 'function') {
+        closeMenu();
+        return;
+      }
+      // Start from the current position, even when opening is interrupted.
+      const position = getComputedStyle(menu).transform;
+      stopMenuMotion();
+      closing = true;
+      moveMenu(position, 'translateX(-100%)', 320,
+        'cubic-bezier(0.4, 0, 0.7, 1)', closeMenu);
+    };
     menuToggle.addEventListener(
       'click',
       () => {
+        if (menu.open) return;
+        stopMenuMotion();
+        closing = false;
         menu.scrollTop = 0;
         menu.showModal();
         menuToggle.setAttribute('aria-expanded', 'true');
+        if (!reduced.matches && typeof menu.animate === 'function') {
+          moveMenu('translateX(-100%)', 'translateX(0)', 560,
+            'cubic-bezier(0.32, 0, 0.2, 1)');
+        }
       },
       { signal },
     );
     menu
       .querySelector('[data-close-menu]')
-      ?.addEventListener('click', () => menu.close(), { signal });
+      ?.addEventListener('click', requestMenuClose, { signal });
+    menu.addEventListener('cancel', (event) => {
+      if (!event.cancelable) return;
+      event.preventDefault();
+      requestMenuClose();
+    }, { signal });
     menu.addEventListener(
       'close',
-      () => menuToggle.setAttribute('aria-expanded', 'false'),
+      () => {
+        // A queued close event must not affect a menu already reopened.
+        if (menu.open) return;
+        stopMenuMotion();
+        closing = false;
+        menuToggle.setAttribute('aria-expanded', 'false');
+      },
       { signal },
     );
     menu
       .querySelectorAll('a')
       .forEach((a) =>
-        a.addEventListener('click', () => menu.close(), { signal }),
+        a.addEventListener('click', closeMenu, { signal }),
       );
     const desktopMenu = window.matchMedia('(min-width: 960px)');
     desktopMenu.addEventListener('change', () => {
-      if (desktopMenu.matches && menu.open) menu.close();
+      if (desktopMenu.matches) closeMenu();
     }, { signal });
-    cleanups.push(() => {
-      if (menu.open) menu.close();
-    });
+    reduced.addEventListener('change', () => {
+      if (!reduced.matches) return;
+      if (closing) closeMenu();
+      else stopMenuMotion();
+    }, { signal });
+    cleanups.push(closeMenu);
   }
 
   const hero = document.querySelector<HTMLElement>('[data-hero]');

@@ -1,4 +1,4 @@
-# Siray Signature — système visuel V15
+# Siray Signature — système visuel V16
 
 Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/data/site.ts`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
@@ -116,3 +116,9 @@ Les deux parcours de l’accueil deviennent des commandes de même largeur, à s
 ## Galerie et raccord d’accueil — V15
 
 La marge extérieure du bandeau pratique est supprimée : la surface de Maison commence immédiatement après sa bordure, avec son espacement intérieur conservé. Les huit filtres de galerie restent sur une rangée horizontale défilante, sans barre visible. Les boutons natifs conservent leur état pressé, leurs cibles de 44 px et une bordure discrète ; le rail garde 8 px de dégagement pour le focus clavier. Aucun geste tactile n’est intercepté. La V14 et cette correction V15 sont autorisées à la publication par le client.
+
+## Mouvement du menu mobile — V16
+
+Le dialogue natif conserve son contenu, son focus et ses couleurs. Son entrée depuis la gauche dure 560 ms, avec une accélération puis une décélération progressives (`cubic-bezier(0.32, 0, 0.2, 1)`) ; la courbe V14, qui consommait presque tout le trajet immédiatement, est retirée. La fermeture volontaire revient vers la gauche en 320 ms. La Web Animations API permet de repartir de la position courante lorsque Fermer ou Échap interrompt l’ouverture. Aucun délai de navigation ni effet séparé sur chaque lien n’est ajouté.
+
+Le lien choisi, un passage au format bureau ou le remplacement de page Astro ferme immédiatement le dialogue et annule le mouvement en cours. Le dialogue reste modal jusqu’à la fin de sa fermeture volontaire ; son événement natif `close` remet l’état du bouton Menu à zéro, sauf s’il concerne une fermeture antérieure à une réouverture. Chaque ouverture réinitialise aussi l’état de fermeture. La préférence de mouvement réduit et l’absence de Web Animations gardent une ouverture et une fermeture immédiates. Un changement de cette préférence interrompt le mouvement actif. Les mesures et limites de vérification V16 sont consignées dans `docs/qa/v16-menu-motion.md`.
