@@ -1,0 +1,26 @@
+{
+  "output_dir": "releases/v13",
+  "files": 141,
+  "html_pages": 13,
+  "archives": [
+    {
+      "file": "siray-signature-v13-netlify.zip",
+      "target": "netlify",
+      "bytes": 8770658,
+      "sha256": "6380e068561d3354056867b81cff8338b5e283592c20b25c2e3000d26822cea5"
+    },
+    {
+      "file": "siray-signature-v13-cloudflare-pages.zip",
+      "target": "cloudflare-pages",
+      "bytes": 8770658,
+      "sha256": "6380e068561d3354056867b81cff8338b5e283592c20b25c2e3000d26822cea5"
+    }
+  ],
+  "manifest": "siray-signature-v13-manifest.json",
+  "guide": "siray-signature-v13-deployment.md",
+  "checksums": "siray-signature-v13-SHA256SUMS.txt",
+  "warnings": [
+    "URL de production non vérifiée : le site reste portable. Après attribution du nom, recompiler avec SITE_URL puis recréer les archives pour les métadonnées de partage et de référencement.",
+    "13 image(s) de partage utilisent un chemin relatif ; une origine finale est nécessaire pour garantir leur interprétation par les réseaux sociaux."
+  ]
+}

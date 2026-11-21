@@ -1,0 +1,2605 @@
+{
+  "scope": "In-app browser viewport rendering; no physical-device or synthesized-touch claim",
+  "cases": [
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/buffets/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/plateaux/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/galerie/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/la-maison/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/contact/",
+      "width": 320
+    },
+    {
+      "bodyWidth": 320,
+      "brokenLoaded": [],
+      "documentWidth": 320,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        },
+        {
+          "height": 44,
+          "width": 136
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/404.html",
+      "width": 320
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/buffets/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/plateaux/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/galerie/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/la-maison/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/contact/",
+      "width": 390
+    },
+    {
+      "bodyWidth": 390,
+      "brokenLoaded": [],
+      "documentWidth": 390,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        },
+        {
+          "height": 44,
+          "width": 167
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/404.html",
+      "width": 390
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/buffets/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/plateaux/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/galerie/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/la-maison/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/contact/",
+      "width": 768
+    },
+    {
+      "bodyWidth": 768,
+      "brokenLoaded": [],
+      "documentWidth": 768,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/404.html",
+      "width": 768
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/buffets/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/plateaux/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/galerie/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/la-maison/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/contact/",
+      "width": 960
+    },
+    {
+      "bodyWidth": 960,
+      "brokenLoaded": [],
+      "documentWidth": 960,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/404.html",
+      "width": 960
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/buffets/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/plateaux/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/galerie/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/la-maison/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/contact/",
+      "width": 1440
+    },
+    {
+      "bodyWidth": 1440,
+      "brokenLoaded": [],
+      "documentWidth": 1440,
+      "footerLinks": [
+        {
+          "height": 44,
+          "width": 75.453125
+        },
+        {
+          "height": 44,
+          "width": 79.09375
+        },
+        {
+          "height": 44,
+          "width": 78.7734375
+        },
+        {
+          "height": 44,
+          "width": 64.4375
+        },
+        {
+          "height": 44,
+          "width": 72.890625
+        },
+        {
+          "height": 44,
+          "width": 47.0390625
+        },
+        {
+          "height": 44,
+          "width": 56.34375
+        }
+      ],
+      "h1": 1,
+      "missingAlt": 0,
+      "overflow": false,
+      "route": "/404.html",
+      "width": 1440
+    }
+  ]
+}
