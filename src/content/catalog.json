@@ -113,7 +113,7 @@
     {
       "slug": "cupcakes",
       "name": "Cupcakes",
-      "short": "Des saveurs à réunir, un décor à choisir",
+      "short": "De petites douceurs, délicatement personnalisées.",
       "intro": "Onze saveurs, un décor à votre image.",
       "text": "Choisissez la quantité, les saveurs et le décor.",
       "possibilities": [
@@ -159,7 +159,7 @@
       ],
       "orderFields": [
         "La quantité souhaitée",
-        "Les saveurs sélectionnées",
+        "Les saveurs sélectionnées. Les cupcakes sont proposés par lot de 6, avec une même saveur par lot. Le panachage est possible à partir de 6 cupcakes par saveur. Toute saveur supplémentaire entraîne un supplément.",
         "Votre personnalisation ou une photo d’inspiration",
         "La date souhaitée"
       ],
