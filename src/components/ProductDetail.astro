@@ -65,8 +65,8 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
     <div class="v5-product-studio">
       <aside class="v5-product-media" aria-label="Inspirations photographiques">
         <div class="v5-photo-composition">
-          <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} position={item.position} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
-          <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} position={detailPhoto.position} sizes="(min-width: 960px) 18vw, 35vw" /></div>
+          <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} position={item.position} zoom={item.zoom} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
+          <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} position={detailPhoto.position} zoom={detailPhoto.zoom} sizes="(min-width: 960px) 18vw, 35vw" /></div>
         </div>
       </aside>
 
@@ -171,7 +171,7 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
       <div class="v5-related-heading"><h2>À découvrir aussi</h2><a href="/creations/">Toutes les prestations</a></div>
       <div class="v5-related-grid">{related.map((other) => {
         const relatedPhoto = collectionPhotography[other.slug].request;
-        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position={relatedPhoto.position} /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
+        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position={relatedPhoto.position} zoom={relatedPhoto.zoom} /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
       })}</div>
     </nav>
   </article>

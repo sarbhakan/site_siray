@@ -26,6 +26,7 @@ export interface Collection {
   image: string;
   alt: string;
   position?: string;
+  zoom?: number;
   intro: string;
   text: string;
   possibilities: string[];

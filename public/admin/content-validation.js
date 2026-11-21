@@ -1,4 +1,5 @@
-/* Catalogue checks before a CMS save. The build repeats these checks in src/data/site.ts.
+/* Content checks before a CMS save. The build repeats them in src/data/site.ts
+ * and src/lib/photo-crop.ts.
  * No content is changed here; rejecting a preSave hook stops Sveltia before the commit.
  */
 (() => {
@@ -6,6 +7,30 @@
 
   const registered = new WeakSet();
   const object = (entry) => entry !== null && typeof entry === 'object' && !Array.isArray(entry);
+
+  function validatePhotoZoom(value) {
+    if (value === undefined) return 1;
+    if (typeof value !== 'number' || !Number.isFinite(value) || value < 1 || value > 2) {
+      throw new Error('Le rapprochement d’une photographie doit être un nombre entre 1 et 2.');
+    }
+    return value;
+  }
+
+  function validatePhotography(data) {
+    if (!object(data) || !Array.isArray(data.homeSlides) || !object(data.homePhotos)
+      || !Array.isArray(data.collections) || !Array.isArray(data.gallery)) {
+      throw new Error('Les photographies n’ont pas pu être vérifiées. Gardez cette page ouverte et prévenez Hakan.');
+    }
+    const photos = [...data.homeSlides, ...Object.values(data.homePhotos), ...data.gallery];
+    for (const collection of data.collections) {
+      if (!object(collection)) throw new Error('Vérifiez les photographies de chaque prestation avant d’enregistrer.');
+      photos.push(collection.cover, collection.detail, collection.request, collection.home);
+    }
+    for (const photo of photos) {
+      if (!object(photo)) throw new Error('Vérifiez chaque photographie avant d’enregistrer.');
+      validatePhotoZoom(photo.zoom);
+    }
+  }
 
   function validateExtraSections(value, collectionName = 'prestation') {
     const invalid = (field) => {
@@ -79,14 +104,18 @@
       name: 'preSave',
       handler: ({ entry } = {}) => {
         const path = entryValue(entry, 'path');
-        if (entryValue(entry, 'collection') !== 'catalogue' && path !== 'src/content/catalog.json' && path !== '/src/content/catalog.json') return;
+        const collection = entryValue(entry, 'collection');
+        const isPhotos = collection === 'photos' || path === 'src/content/photography.json' || path === '/src/content/photography.json';
+        if (!isPhotos && collection !== 'catalogue' && path !== 'src/content/catalog.json' && path !== '/src/content/catalog.json') return;
         const data = entryValue(entry, 'data');
-        validateCatalogue(typeof data?.toJS === 'function' ? data.toJS() : data);
+        const plain = typeof data?.toJS === 'function' ? data.toJS() : data;
+        if (isPhotos) validatePhotography(plain);
+        else validateCatalogue(plain);
         // Return nothing: valid content is saved exactly as entered, with no reformatting here.
       },
     });
     registered.add(CMS);
   }
 
-  window.SirayContentValidation = Object.freeze({ init, validateCatalogue, validateExtraSections });
+  window.SirayContentValidation = Object.freeze({ init, validateCatalogue, validateExtraSections, validatePhotography, validatePhotoZoom });
 })();

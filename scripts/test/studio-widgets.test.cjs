@@ -8,7 +8,7 @@ const repo = path.resolve(__dirname, '../..');
 const widgets = {};
 const React = {
   createElement: (type, props, ...children) => ({ type, props: props || {}, children: children.flat(Infinity) }),
-  useState: initial => [initial, () => {}], useEffect: () => {},
+  useState: initial => [initial, () => {}], useEffect: () => {}, useRef: initial => ({current:initial}),
   useImperativeHandle: (ref, get) => { if (ref) ref.current = get(); }, forwardRef: component => component,
 };
 const sandbox = { globalThis: {}, Intl, Object, Array, Number, String, Error };
@@ -73,7 +73,7 @@ for (const photo of photos) test('Native photo preview renders the existing obje
   });
   await nodes(control).find(n => n.props.id === 'photo').props.onClick();
   test('Upload preserves metadata and raw blob', () => {
-    assert.equal(next.file, 'blob:https://site.test/new'); assert.equal(next.alt, value.alt); assert.equal(next.position, value.position); assert.equal(next.retained, 'preserved');
+    assert.equal(next.file, 'blob:https://site.test/new'); assert.equal(next.alt, value.alt); assert.equal(next.position, '23% 65.789%'); assert.equal(next.retained, 'preserved');
   });
   test('Picker keeps the official single-image pipeline and refuses arbitrary URL entry', () => {
     assert.equal(pickerOptions.kind, 'image'); assert.equal(pickerOptions.multiple, false); assert.equal(pickerOptions.allowURL, false);
@@ -85,6 +85,50 @@ for (const photo of photos) test('Native photo preview renders the existing obje
       assert.equal(input.props.min, 0); assert.equal(input.props.max, 100);
       assert.equal(input.props.step, 1); assert.ok(input.props['aria-valuetext'].includes('pour cent'));
     }
+  });
+  test('Every range reacts to input before release, even before the CMS sends new props', () => {
+    nodes(control).find(n => n.props.id === 'photo-y').props.onInput({ currentTarget: { value: '73' } });
+    assert.equal(next.position, '23% 73%');
+    nodes(control).find(n => n.props.id === 'photo-zoom').props.onInput({ currentTarget: { value: '1.4' } });
+    assert.equal(next.zoom, 1.4); assert.equal(next.position, '23% 73%');
+    assert.equal(next.retained, 'preserved');
+  });
+  test('Reset removes zoom and restores both axes together', () => {
+    nodes(control).find(n => n.type === 'button' && strings(n) === 'Réinitialiser le cadrage').props.onClick();
+    assert.equal(next.position, '50% 50%'); assert.equal(next.zoom, 1);
+    assert.equal(next.retained, 'preserved');
+  });
+  test('Preview renders the same optional magnification as the public site', () => {
+    const preview = render(widgets['siray-photo'].previewComponent({ value: {...value,zoom:1.4}, field, getAsset }));
+    const image = nodes(preview).find(n => n.type === 'img');
+    // React 18 appends px to an unknown numeric CSS property; scale must be a string.
+    assert.equal(image.props.style.scale, '1.4');
+    assert.equal(image.props.style.transformOrigin, value.position);
+  });
+  test('An exact-ratio original has no movable axis until zoomed', () => {
+    const full = h.cropWindow(1200,1600,3/4);
+    assert.equal(full.width, 100); assert.equal(full.height, 100);
+    assert.equal(full.horizontal, false); assert.equal(full.vertical, false);
+    const close = h.cropWindow(1200,1600,3/4,'50% 50%',1.5);
+    assert.ok(close.horizontal && close.vertical);
+    assert.ok(Math.abs(close.width - 100/1.5) < .000001);
+    assert.ok(Math.abs(close.left - (100-close.width)/2) < .000001);
+  });
+  test('Crop rectangle reaches both edges and never leaves the original', () => {
+    for (const [w,hh] of [[1200,1600],[1320,2346],[2400,1000]]) for (const ratio of [3/4,4/5,4/3,1,16/9]) {
+      for (const zoom of [1,1.5,2]) for (const position of ['0% 0%','50% 50%','100% 100%']) {
+        const rect=h.cropWindow(w,hh,ratio,position,zoom);
+        assert.ok(rect.left >= 0 && rect.top >= 0);
+        assert.ok(rect.left + rect.width <= 100.00001 && rect.top + rect.height <= 100.00001);
+        assert.ok(Math.abs((w*rect.width)/(hh*rect.height)-ratio) < .000001);
+        if(position==='100% 100%') {
+          assert.ok(Math.abs(rect.left+rect.width-100) < .000001);
+          assert.ok(Math.abs(rect.top+rect.height-100) < .000001);
+        }
+      }
+    }
+    assert.equal(h.cropWindow(0,100,1), null);
+    assert.equal(h.cropWindow(10,100,Infinity), null);
   });
   for (const value of [{ file: '/images/photo.webp', alt: '' }, { file: '', alt: 'Photo' }]) test('Missing photo/alt rejected', () => {
     const ref = {}; widgets['siray-photo'].controlComponent({ value, field, forID: 'invalid', getAsset, onChange: () => {} }, ref); assert.notEqual(ref.current.isValid(), true);

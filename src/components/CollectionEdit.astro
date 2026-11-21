@@ -32,7 +32,7 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
             <Photo
               name={homeCollectionPhotography[item.slug]?.image || item.image}
               alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
-              position={homeCollectionPhotography[item.slug]?.position}
+              position={homeCollectionPhotography[item.slug]?.position} zoom={homeCollectionPhotography[item.slug]?.zoom}
               native
               sourceOriginal
               sizes={item.slug === 'layer-cakes'
@@ -66,7 +66,7 @@ const gatherings = ['buffets', 'mignardises', 'brunch-box', 'plateaux']
             <Photo
               name={homeCollectionPhotography[item.slug]?.image || item.image}
               alt={homeCollectionPhotography[item.slug]?.alt || item.alt}
-              position={homeCollectionPhotography[item.slug]?.position}
+              position={homeCollectionPhotography[item.slug]?.position} zoom={homeCollectionPhotography[item.slug]?.zoom}
               native
               sourceOriginal
               sizes="(min-width: 960px) 23vw, calc(50vw - 28px)"

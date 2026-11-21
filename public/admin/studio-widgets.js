@@ -1,5 +1,5 @@
 /* Siray Signature editor extensions. Sveltia CMS 0.270.0 public API only.
- * Photo values keep the existing { file, alt, position } content shape.
+ * Existing photo values remain valid; optional zoom is also rendered by the site.
  * pickFile applies the CMS upload naming, validation and image transformations.
  */
 (function installSirayStudio(global) {
@@ -12,12 +12,12 @@
   ];
   const CATEGORY_NAMES = Object.fromEntries(CATEGORY_OPTIONS);
   const CONTEXTS = {
-    hero: [['Accueil', 3 / 4]],
+    hero: [['Diaporama · mobile et ordinateur', 3 / 4]],
     cover: [['Page de la prestation', 4 / 5], ['Liste des prestations', 4 / 3]],
-    detail: [['Petit détail', 1]],
+    detail: [['Détail · mobile', 96 / 100], ['Détail · ordinateur', 1]],
     request: [['À découvrir', 4 / 5]],
     home: [['Accueil', 4 / 5]],
-    'home-wide': [['Accueil · tables et brunchs', 16 / 9]],
+    'home-wide': [['Tables · mobile', 16 / 9], ['Tables · ordinateur', 4 / 5]],
     gallery: [['Galerie', 4 / 5]],
   };
   const plain = (value) => value && typeof value.toJS === 'function' ? value.toJS() : value;
@@ -31,6 +31,22 @@
 
   function positionString(x, y) {
     return `${Number(clamp(Number(x) || 0).toFixed(3))}% ${Number(clamp(Number(y) || 0).toFixed(3))}%`;
+  }
+
+  function photoZoom(value) {
+    return typeof value === 'number' && Number.isFinite(value) ? clamp(value, 1, 2) : 1;
+  }
+
+  // The visible source rectangle for object-fit: cover, including the real site
+  // zoom. Percentages let the original-image diagram work at any screen size.
+  function cropWindow(width, height, ratio, position = '50% 50%', zoom = 1) {
+    if (!(width > 0 && height > 0 && ratio > 0) || ![width, height, ratio].every(Number.isFinite)) return null;
+    const [x, y] = parsePosition(position);
+    const scale = Math.max(ratio / width, 1 / height) * photoZoom(zoom);
+    const w = Math.min(width, ratio / scale), h = Math.min(height, 1 / scale);
+    return { left: (width - w) * x / width, top: (height - h) * y / height,
+      width: 100 * w / width, height: 100 * h / height,
+      horizontal: width - w > width * .001, vertical: height - h > height * .001 };
   }
 
   function safeImageURL(path, getAsset) {
@@ -56,16 +72,18 @@
     if (init.registered) return;
     const React = CMS.React;
     const h = React.createElement;
-    const { useState, useEffect, useImperativeHandle, forwardRef } = React;
+    const { useState, useEffect, useRef, useImperativeHandle, forwardRef } = React;
 
-    function ImageFrame({ photo, getAsset, ratio = 4 / 5, whole = false, className = '', ...props }) {
+    function ImageFrame({ photo, getAsset, ratio = 4 / 5, whole = false, onDimensions, className = '', ...props }) {
       const src = safeImageURL(photo?.file, getAsset);
       const [failed, setFailed] = useState(false);
       useEffect(() => setFailed(false), [src]);
       return h('div', { className: `siray-image-frame ${className}`, style: { aspectRatio: String(ratio) }, ...props },
         src && !failed ? h('img', {
           src, alt: photo.alt || '', decoding: 'async', loading: 'lazy',
-          style: { objectFit: whole ? 'contain' : 'cover', objectPosition: photo.position || '50% 50%' },
+          style: { objectFit: whole ? 'contain' : 'cover', objectPosition: whole ? '50% 50%' : photo.position || '50% 50%',
+            scale: whole ? '1' : String(photoZoom(photo.zoom)), transformOrigin: photo.position || '50% 50%' },
+          onLoad: event => onDimensions?.({ width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight }),
           onError: () => setFailed(true),
         }) : h('p', { className: 'siray-image-empty' }, failed ? 'La photo ne s’affiche pas. Choisissez-la à nouveau.' : 'Choisissez une photographie.'),
       );
@@ -73,19 +91,36 @@
 
     const PhotoControl = forwardRef(function PhotoControl(props, ref) {
       const { value, field, forID, onChange, pickFile, getAsset } = props;
-      const current = photoValue(value);
+      const incoming = photoValue(value);
+      // Respond to every input locally, without waiting for the CMS data bridge.
+      // The ref also preserves a preceding input if two events occur in one frame.
+      const [current, setCurrent] = useState(incoming);
+      const currentRef = useRef(incoming);
+      useEffect(() => { currentRef.current = incoming; setCurrent(incoming); }, [value]);
       const [busy, setBusy] = useState(false);
       const [error, setError] = useState('');
       const [notice, setNotice] = useState('');
       const [view, setView] = useState(0);
       const [whole, setWhole] = useState(false);
+      const [dimensions, setDimensions] = useState(null);
+      useEffect(() => setDimensions(null), [current.file]);
       const context = option(field, 'photo_context', 'cover');
       const frames = CONTEXTS[context] || CONTEXTS.cover;
       const gallery = option(field, 'show_gallery_fields', false);
       const [x, y] = parsePosition(current.position);
+      const zoom = photoZoom(current.zoom);
+      const ratio = frames[view]?.[1] || frames[0][1];
+      const zone = dimensions && cropWindow(dimensions.width, dimensions.height, ratio, current.position, zoom);
       const hintID = `${forID}-crop-help`;
       const errorID = `${forID}-photo-error`;
-      const change = (key, next) => onChange({ ...current, [key]: next });
+      const update = (patch) => {
+        const next = { ...currentRef.current, ...patch };
+        if (Object.entries(patch).every(([key, item]) => currentRef.current[key] === item)) return;
+        currentRef.current = next;
+        setCurrent(next);
+        onChange(next);
+      };
+      const change = (key, next) => update({ [key]: next });
 
       useImperativeHandle(ref, () => ({
         isValid: () => {
@@ -105,7 +140,7 @@
           const selected = await pickFile({ kind: 'image', accept: 'image/jpeg,image/png,image/webp,image/avif,image/heic,image/heif', multiple: false, allowURL: false });
           if (!selected || Array.isArray(selected)) return;
           // Do not rewrite the temporary blob URL: Sveltia replaces it at save time.
-          onChange({ ...current, file: selected.value, position: current.position || '50% 50%' });
+          update({ file: selected.value, position: currentRef.current.position || '50% 50%' });
           setWhole(false);
           setNotice('Photo choisie. Vérifiez le cadrage et la description, puis enregistrez.');
         } catch {
@@ -115,7 +150,8 @@
 
       const crop = (axis, next) => {
         setWhole(false);
-        change('position', positionString(axis === 'x' ? next : x, axis === 'y' ? next : y));
+        const [liveX, liveY] = parsePosition(currentRef.current.position);
+        change('position', positionString(axis === 'x' ? next : liveX, axis === 'y' ? next : liveY));
       };
 
       return h('div', { className: 'siray-photo-editor', 'aria-busy': busy },
@@ -134,23 +170,45 @@
                 onClick: () => { setView(index); setWhole(false); } }, label)),
               h('button', { type: 'button', 'aria-pressed': whole, onClick: () => setWhole(true) }, 'Image entière'),
             ),
-            h(ImageFrame, { photo: current, getAsset, ratio: frames[view]?.[1] || frames[0][1], whole,
+            h('p', { className: 'siray-crop-caption' }, whole ? 'Photo originale, sans recadrage' : 'Résultat sur le site'),
+            h(ImageFrame, { photo: current, getAsset, ratio, whole, onDimensions: setDimensions,
               className: 'siray-crop-frame', 'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site' }),
-            h('p', { className: 'siray-studio-help' }, whole ? 'La photo entière permet de repérer les détails à conserver.' : 'Le cadrage change immédiatement dans cet aperçu. Il s’adapte ensuite à la taille de l’écran.'),
+            zone && h('div', { className: 'siray-source-preview' },
+              h('p', { className: 'siray-crop-caption' }, 'Zone conservée dans l’original'),
+              h('div', { className: 'siray-source-sheet', style: { aspectRatio: String(dimensions.width / dimensions.height), maxWidth: `${156 * dimensions.width / dimensions.height}px` },
+                role: 'img', 'aria-label': 'Le rectangle clair délimite la partie visible dans le format choisi.' },
+                h('img', { src: safeImageURL(current.file, getAsset), alt: '', decoding: 'async' }),
+                h('span', { className: 'siray-source-window', style: { left: `${zone.left}%`, top: `${zone.top}%`, width: `${zone.width}%`, height: `${zone.height}%` } }),
+              ),
+            ),
           ),
           h('div', { className: 'siray-photo-settings' },
             h('fieldset', { className: 'siray-crop-controls', 'aria-describedby': hintID },
               h('legend', null, 'Ajuster le cadrage'),
-              h('p', { id: hintID, className: 'siray-studio-help' }, 'Déplacez les curseurs jusqu’à bien voir votre création. La photo d’origine reste entière.'),
+              h('p', { id: hintID, className: 'siray-studio-help' }, 'L’aperçu bouge pendant le réglage. Rien n’est publié avant « Enregistrer ».') ,
+              h('label', { className: 'siray-range-label', htmlFor: `${forID}-zoom` },
+                h('span', null, 'Resserrer le cadre'), h('output', { htmlFor: `${forID}-zoom` }, `× ${zoom.toFixed(2)}`),
+                h('input', { id: `${forID}-zoom`, type: 'range', min: 1, max: 2, step: .01, value: zoom,
+                  'aria-valuetext': `Zoom ${zoom.toFixed(2)} fois`,
+                  onInput: event => { setWhole(false); change('zoom', photoZoom(Number(event.currentTarget.value))); },
+                  onChange: event => { setWhole(false); change('zoom', photoZoom(Number(event.target.value))); } }),
+              ),
               ...[['x', 'Gauche — droite', x], ['y', 'Haut — bas', y]].map(([axis, label, number]) =>
                 h('label', { className: 'siray-range-label', key: axis, htmlFor: `${forID}-${axis}` },
                   h('span', null, label), h('output', { htmlFor: `${forID}-${axis}` }, `${Math.round(number)} %`),
                   h('input', { id: `${forID}-${axis}`, type: 'range', min: 0, max: 100, step: 1, value: number,
-                    'aria-valuetext': `${Math.round(number)} pour cent`, onChange: (event) => crop(axis, event.target.value) }),
+                    'aria-valuetext': `${Math.round(number)} pour cent`,
+                    onInput: event => crop(axis, event.currentTarget.value), onChange: event => crop(axis, event.target.value) }),
                 )),
+              zone && h('p', { className: 'siray-crop-explanation' },
+                !zone.horizontal && !zone.vertical ? 'La photo tient entièrement dans ce cadre. Augmentez le zoom pour pouvoir la déplacer.' :
+                !zone.horizontal ? 'Dans ce format, seul le déplacement haut–bas est visible. Augmentez le zoom pour agir aussi de gauche à droite.' :
+                !zone.vertical ? 'Dans ce format, seul le déplacement gauche–droite est visible. Augmentez le zoom pour agir aussi de haut en bas.' :
+                'Le rectangle sur l’original montre ce qui restera visible. Vérifiez chaque format proposé.'),
               h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary',
-                onClick: () => { setWhole(false); change('position', '50% 50%'); } }, 'Recentrer la photo'),
+                onClick: () => { setWhole(false); update({ position: '50% 50%', zoom: 1 }); } }, 'Réinitialiser le cadrage'),
             ),
+            h('p', { className: 'siray-crop-impact' }, 'Ce réglage s’applique aux formats proposés pour cet emplacement. Les autres photos ne changent pas. L’aperçu est immédiat ; le site public attend votre enregistrement.'),
             h('label', { className: 'siray-studio-field', htmlFor: `${forID}-alt` },
               h('span', null, 'Description pour l’accessibilité'),
               h('textarea', { id: `${forID}-alt`, value: current.alt || '', rows: 3, maxLength: 500,
@@ -182,7 +240,8 @@
       const photo = photoValue(value);
       const src = safeImageURL(photo.file, getAsset);
       return h('span', { className: 'siray-photo-summary' },
-        src && h('img', { src, alt: '', width: 56, height: 56, loading: 'lazy', style: { objectPosition: photo.position || '50% 50%' } }),
+        src && h('span', { className: 'siray-summary-frame' }, h('img', { src, alt: '', width: 56, height: 56, loading: 'lazy',
+          style: { objectPosition: photo.position || '50% 50%', scale: String(photoZoom(photo.zoom)), transformOrigin: photo.position || '50% 50%' } })),
         h('span', null, photo.label || photo.alt || 'Nouvelle photographie'),
       );
     }
@@ -202,5 +261,5 @@
     init.registered = true;
   }
 
-  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, safeImageURL, photoValue } };
+  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, safeImageURL, photoValue } };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -576,7 +576,18 @@ body:has(dialog[open]) {
 .carnet-images a:last-child img {
   aspect-ratio: 16/9;
 }
-.carnet-images span {
+.carnet-images a .siray-photo-crop--zoomed {
+  height: auto;
+  aspect-ratio: 4/5;
+}
+.carnet-images a:last-child .siray-photo-crop--zoomed {
+  aspect-ratio: 16/9;
+}
+.carnet-images a .siray-photo-crop--zoomed img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+.carnet-images a > span:not(.siray-photo-crop) {
   display: flex;
   align-items: center;
   min-height: 44px;
@@ -994,6 +1005,9 @@ rather than a page of introduction. */
     grid-column: auto;
   }
   .carnet-images a:last-child img {
+    aspect-ratio: 4/5;
+  }
+  .carnet-images a:last-child .siray-photo-crop--zoomed {
     aspect-ratio: 4/5;
   }
   .buffet-types,

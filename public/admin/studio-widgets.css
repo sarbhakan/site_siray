@@ -38,8 +38,15 @@
 .siray-preview-switch button { flex: 1 1 120px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--siray-line); border-radius: 6px; background: var(--siray-white); color: var(--siray-ink); font: 500 14px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: pointer; touch-action: manipulation; }
 .siray-preview-switch button[aria-pressed='true'] { background: var(--siray-olive); border-color: var(--siray-olive); color: var(--siray-paper); }
 .siray-image-frame { position: relative; overflow: hidden; width: 100%; min-width: 0; background: var(--siray-surface); }
-.siray-image-frame img { display: block; width: 100%; height: 100%; max-width: 100%; }
+.siray-image-frame img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; }
 .siray-crop-frame { max-width: 360px; margin-inline: auto; }
+.siray-crop-caption { margin: 0 0 7px !important; font-size: 13px; font-weight: 650; }
+.siray-source-preview { margin-top: 18px; }
+.siray-source-sheet { position: relative; width: 100%; margin-inline: auto; overflow: hidden; background: var(--siray-surface); }
+.siray-source-sheet img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; }
+.siray-source-window { position: absolute; display: block; border: 2px solid var(--siray-white); box-shadow: 0 0 0 1px var(--siray-olive), 0 0 0 500px rgb(20 26 13 / 45%); pointer-events: none; }
+.siray-crop-explanation { margin-top: 12px !important; color: var(--siray-olive); font-size: 13px; line-height: 1.45; }
+.siray-crop-impact { grid-column: 1 / -1; padding-top: 14px; border-top: 1px solid var(--siray-line); color: var(--siray-muted); font-size: 14px; line-height: 1.55; }
 .siray-photo-preview > .siray-studio-help { margin-top: 12px; }
 .siray-image-empty { display: flex; align-items: center; justify-content: center; height: 100%; min-height: 120px; padding: 20px; text-align: center; color: var(--siray-muted); font-size: 14px; }
 .siray-photo-settings { display: grid; gap: 24px; min-width: 0; align-content: start; }
@@ -56,6 +63,7 @@
 .siray-gallery-fields { display: grid; gap: 16px; }
 .siray-photo-summary { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 6px; border-radius: 6px; background: var(--siray-paper); }
 .siray-photo-summary img { flex: none; object-fit: cover; border-radius: 4px; }
+.siray-summary-frame { display: block; flex: none; width: 56px; height: 56px; overflow: hidden; border-radius: 4px; }
 .siray-photo-summary span { min-width: 0; font-size: 14px; }
 .siray-preview-photo { margin: 0; min-width: 0; max-width: 420px; padding: 12px; border-radius: 8px; background: var(--siray-paper); }
 .siray-preview-photo figcaption { display: grid; gap: 4px; padding-top: 10px; color: var(--siray-ink); font-size: 14px; line-height: 1.5; }
@@ -69,7 +77,7 @@
   .siray-photo-settings { display: contents; }
   .siray-crop-controls { grid-column: 2; grid-row: 1; }
   .siray-photo-settings > :is(.siray-studio-field, .siray-gallery-fields) { grid-column: 1 / -1; }
-  .siray-crop-controls > .siray-studio-help, .siray-photo-preview > .siray-studio-help { display: none; }
+  .siray-crop-controls > .siray-studio-help { font-size: 12px; line-height: 1.45; }
   .siray-preview-switch { gap: 6px; }
   .siray-preview-switch button { flex-basis: 100%; padding-inline: 6px; }
   .siray-range-label { font-size: 14px; gap: 0 6px; }

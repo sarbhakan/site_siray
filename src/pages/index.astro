@@ -52,7 +52,7 @@ const page = pages.home;
             <Photo
               name={slide.image}
               alt={slide.alt}
-              position={slide.position}
+              position={slide.position} zoom={slide.zoom}
               native
               sourceOriginal
               eager={index === 0}
@@ -86,7 +86,7 @@ const page = pages.home;
       <Photo
         name={homePhotos.maison.image}
         alt={homePhotos.maison.alt}
-        position={homePhotos.maison.position}
+        position={homePhotos.maison.position} zoom={homePhotos.maison.zoom}
       />
     </figure>
   </section>
@@ -103,7 +103,7 @@ const page = pages.home;
         <Photo
           name={homePhotos.cakes.image}
           alt={homePhotos.cakes.alt}
-          position={homePhotos.cakes.position}
+          position={homePhotos.cakes.position} zoom={homePhotos.cakes.zoom}
         />
         <span>{page.cakesLabel}</span>
       </a>
@@ -111,7 +111,7 @@ const page = pages.home;
         <Photo
           name={homePhotos.petitesDouceurs.image}
           alt={homePhotos.petitesDouceurs.alt}
-          position={homePhotos.petitesDouceurs.position}
+          position={homePhotos.petitesDouceurs.position} zoom={homePhotos.petitesDouceurs.zoom}
         />
         <span>{page.sweetsLabel}</span>
       </a>
@@ -119,7 +119,7 @@ const page = pages.home;
         <Photo
           name={homePhotos.tables.image}
           alt={homePhotos.tables.alt}
-          position={homePhotos.tables.position}
+          position={homePhotos.tables.position} zoom={homePhotos.tables.zoom}
         />
         <span>{page.tablesLabel}</span>
       </a>

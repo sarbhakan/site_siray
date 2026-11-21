@@ -26,7 +26,7 @@ const page = pages.maison;
 
   <section class="maison-editorial section-pad" aria-labelledby="maison-world-title">
     <figure class="maison-portrait">
-      <Photo name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position={cakePhoto.position} />
+      <Photo name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position={cakePhoto.position} zoom={cakePhoto.zoom} />
     </figure>
     <div class="maison-copy">
       <h2 id="maison-world-title">{page.worldTitle}</h2>
@@ -65,7 +65,7 @@ const page = pages.maison;
       </p>
     </div>
     <figure class="maison-portrait maison-portrait--table">
-      <Photo name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position={tablePhoto.position} />
+      <Photo name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position={tablePhoto.position} zoom={tablePhoto.zoom} />
     </figure>
   </section>
 </Layout>

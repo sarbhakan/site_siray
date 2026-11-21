@@ -1,12 +1,14 @@
 import credits from '../../docs/image-credits.json';
 import photography from '../content/photography.json';
+import { validatePhotoZoom } from '../lib/photo-crop';
 
-export interface PhotoRef { image: string; alt: string; position?: string }
-interface EditablePhoto { file: string; alt: string; position?: string }
+export interface PhotoRef { image: string; alt: string; position?: string; zoom?: number }
+interface EditablePhoto { file: string; alt: string; position?: string; zoom?: number }
 
 function editablePhoto(value: EditablePhoto): PhotoRef {
   if (!value.file || !value.alt.trim()) throw new Error('Chaque photographie doit avoir un fichier et une description.');
-  return { image: value.file, alt: value.alt, position: value.position };
+  const zoom = validatePhotoZoom(value.zoom);
+  return { image: value.file, alt: value.alt, position: value.position, zoom };
 }
 
 // Fixed ingredient illustrations still use their licensed registry entries.

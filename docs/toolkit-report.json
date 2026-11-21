@@ -1465,5 +1465,55 @@
     },
     "auth_permissions_changed": false,
     "fees_added": false
+  },
+  "v20": {
+    "task": "Cadrage visuel réactif, zone conservée et zoom réel facultatif",
+    "lead": "Impeccable polish, système olive/ivoire existant",
+    "modules": [
+      {
+        "name": "impeccable",
+        "commit": "d41d9860b0094dcb68030657da63461212835aaa",
+        "references": [
+          "SKILL.md",
+          "reference/polish.md",
+          "reference/craft-floor.md"
+        ],
+        "decisions": [
+          "retour immédiat avant sauvegarde",
+          "états et aide axes inactifs",
+          "contrôle mobile à côté du résultat"
+        ]
+      },
+      {
+        "name": "taste-skill",
+        "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+        "references": [
+          "skills/taste-skill/SKILL.md",
+          "references/photos.md"
+        ],
+        "decisions": [
+          "photos réelles conservées",
+          "cadres conformes aux emplacements"
+        ]
+      },
+      {
+        "name": "hallmark",
+        "commit": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92",
+        "references": [
+          "skills/hallmark/SKILL.md",
+          "references/patterns.md"
+        ],
+        "decisions": [
+          "contrôles natifs et focus",
+          "pas de refonte ni nouveau thème"
+        ]
+      }
+    ],
+    "checks": {
+      "node_tests": 233,
+      "widget_checks": 159,
+      "rendered": "banc React et vrais composants Astro, mobile390×844, données de test locales seulement"
+    },
+    "runtime": "neuf sources réutilisées, pins conservés ; référence directe pour moteur Impeccable indisponible dans cette session ; outils navigateur hôte, aucun hook global"
   }
 }

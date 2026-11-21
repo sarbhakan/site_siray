@@ -1,5 +1,6 @@
 ---
 import { resolveMedia } from '../lib/media';
+import { photoCropStyle, validatePhotoZoom } from '../lib/photo-crop';
 interface Props {
   name: string;
   alt: string;
@@ -8,6 +9,7 @@ interface Props {
   defer?: boolean;
   sizes?: string;
   position?: string;
+  zoom?: number;
   native?: boolean;
   sourceOriginal?: boolean;
 }
@@ -19,15 +21,18 @@ const {
   defer = false,
   sizes = '(max-width: 700px) 100vw, 50vw',
   position,
+  zoom,
   native = false,
   sourceOriginal = false,
 } = Astro.props;
 const media = await resolveMedia(name, { native, sourceOriginal });
 const { src, srcset } = media;
+const magnification = validatePhotoZoom(zoom);
 const transparentPixel =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 ---
 
+<span class:list={['siray-photo-crop', { 'siray-photo-crop--zoomed': magnification > 1 }]}>
 <img
   src={defer ? transparentPixel : src}
   srcset={defer ? undefined : srcset}
@@ -43,5 +48,12 @@ const transparentPixel =
   decoding="async"
   fetchpriority={eager ? 'high' : 'auto'}
   sizes={sizes}
-  style={`object-position:${position || media.position}`}
+  style={photoCropStyle(position || media.position, magnification)}
 />
+</span>
+
+<style>
+  /* At 1× the wrapper has no layout box, retaining the original public layout. */
+  .siray-photo-crop { display: contents; }
+  .siray-photo-crop--zoomed { display: block; width: 100%; height: 100%; overflow: hidden; }
+</style>

@@ -43,7 +43,7 @@ test('rejects an incomplete or unsafe button before a CMS save', () => {
 test('validates a catalogue identified by its path and leaves other files alone', () => {
   const { save } = capture();
   assert.throws(() => save({ entry: entry({ collections: [{ extraSections: [section({ text: '' })] }] }, 'other', '/src/content/catalog.json') }), /texte/u);
-  assert.equal(save({ entry: entry({ unrelated: true }, 'photos', 'src/content/photography.json') }), undefined);
+  assert.equal(save({ entry: entry({ unrelated: true }, 'pages', 'src/content/pages.json') }), undefined);
 });
 
 test('handles plain entry objects and optional empty arrays or objects', () => {
