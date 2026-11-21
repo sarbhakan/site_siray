@@ -393,6 +393,49 @@
       "file": "/images/siray-layer-fleurs-7ef2db14.webp",
       "label": "Wedding cake orné de fleurs fraîches",
       "position": "50% 65%"
+    },
+    {
+      "alt": "Bento cake personnalisé pour enfant",
+      "file": "/src/assets/uploads/20261121-e1667fedeab4.webp",
+      "label": "Un bento cake sur le thème de GTA VI",
+      "position": "50% 50%",
+      "category": "bento-cakes"
+    },
+    {
+      "alt": "Layer cake pour enfant personnalisé sur le thème des sirènes et des océans.",
+      "file": "/src/assets/uploads/20261121-42aa1ee8beab.webp",
+      "label": "Layer cake sur le thème des sirènes",
+      "position": "50% 100%",
+      "zoom": 1,
+      "category": "layer-cakes"
+    },
+    {
+      "alt": "Bento cake orné de framboises",
+      "category": "bento-cakes",
+      "file": "/src/assets/uploads/20261121-3e400340d999.webp",
+      "label": "Bento cake vintage",
+      "position": "50% 50%"
+    },
+    {
+      "alt": "Layer cake sur le thème du monde de Némo",
+      "file": "/src/assets/uploads/20261121-57739b75aded.webp",
+      "label": "Layer cake pour enfant sur le thème du monde de Némo",
+      "position": "50% 80%",
+      "category": "layer-cakes"
+    },
+    {
+      "alt": "Wrap pouletv",
+      "category": "mignardises",
+      "file": "/src/assets/uploads/20261121-124dc964ffe3.webp",
+      "label": "Wrap poulet",
+      "position": "50% 50%"
+    },
+    {
+      "alt": "Verrine crevettes",
+      "file": "/src/assets/uploads/20261121-2af946d5cbb0.webp",
+      "label": "Verrine crevette & avocat",
+      "position": "50% 50%",
+      "category": "mignardises"
     }
   ]
 }
