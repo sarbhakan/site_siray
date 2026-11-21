@@ -105,7 +105,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         aria-controls="mobile-menu"
       >
         <span>Menu</span>
-        <span class="menu-lines">
+        <span class="menu-lines" aria-hidden="true">
           <i></i>
           <i></i>
         </span>
@@ -116,13 +116,14 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         <a href="/" class="brand" aria-label="Siray Signature, accueil">
           <BrandMark placement="menu" />
         </a>
-        <button class="icon-button" data-close-menu aria-label="Fermer le menu">
+        <button class="menu-close" type="button" data-close-menu autofocus>
+          <span>Fermer</span>
           <Icon name="close" />
         </button>
       </div>
       <nav aria-label="Navigation mobile">
-        <a href="/">Accueil</a>
-        <a href="/creations/">Nos prestations</a>
+        <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Accueil</a>
+        <a href="/creations/" aria-current={pathname === '/creations/' ? 'page' : undefined}>Nos prestations</a>
         <div class="mobile-catalog">
           {collections.map((item) => (
             <a
@@ -141,8 +142,9 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
             {link.label}
           </a>
         ))}
-        <a href="/contact/">Votre projet</a>
+        <a href="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>Votre projet</a>
       </nav>
+      <div class="mobile-menu-bottom">
       <a
         class="menu-instagram"
         href={instagram}
@@ -152,6 +154,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
         @siraysignature
       </a>
       <p>Bordeaux & Gironde</p>
+      </div>
     </dialog>
     <noscript>
       <nav class="no-script-nav" aria-label="Navigation sans JavaScript">

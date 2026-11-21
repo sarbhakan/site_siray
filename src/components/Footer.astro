@@ -67,12 +67,13 @@ const siteLinks = [
   .signature-footer-contact {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
+    text-align: center;
   }
 
   .signature-footer-contact h2 {
-    font-size: 28px;
+    font-size: 26px;
     line-height: 1.25;
     letter-spacing: -0.02em;
   }
@@ -93,10 +94,11 @@ const siteLinks = [
   }
 
   .signature-footer-nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0 16px;
-    margin-block: 12px;
+    margin-block: 12px 8px;
   }
 
   .signature-footer-nav a,
@@ -106,7 +108,7 @@ const siteLinks = [
     min-height: 44px;
     align-items: center;
     padding-block: 8px;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     white-space: nowrap;
     text-decoration: underline;
@@ -133,7 +135,7 @@ const siteLinks = [
   }
 
   .signature-footer-brand :global(.brandmark) {
-    width: 88px;
+    width: 72px;
   }
 
   .signature-footer-meta {
@@ -156,10 +158,11 @@ const siteLinks = [
   }
 
   .signature-footer-site {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     flex-basis: 100%;
-    column-gap: 16px;
+    column-gap: 8px;
   }
 
   .signature-footer-site a {
@@ -184,6 +187,7 @@ const siteLinks = [
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      text-align: left;
     }
 
     .signature-footer-contact h2 {
@@ -199,6 +203,7 @@ const siteLinks = [
       flex-wrap: wrap;
       align-items: center;
       column-gap: 24px;
+      justify-content: flex-start;
       margin-block: 12px;
     }
 
@@ -221,6 +226,7 @@ const siteLinks = [
       display: flex;
       flex-wrap: wrap;
       column-gap: 20px;
+      justify-content: flex-start;
     }
   }
 
@@ -234,11 +240,15 @@ const siteLinks = [
 
   @media (max-width: 359px) {
     .signature-footer-contact h2 {
-      font-size: 26px;
+      font-size: 24px;
     }
 
     .signature-footer-nav {
-      column-gap: 16px;
+      column-gap: 12px;
+    }
+
+    .signature-footer-site a {
+      font-size: 12px;
     }
   }
 

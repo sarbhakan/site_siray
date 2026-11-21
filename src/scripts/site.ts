@@ -49,6 +49,7 @@ function initialize() {
     menuToggle.addEventListener(
       'click',
       () => {
+        menu.scrollTop = 0;
         menu.showModal();
         menuToggle.setAttribute('aria-expanded', 'true');
       },
@@ -67,6 +68,10 @@ function initialize() {
       .forEach((a) =>
         a.addEventListener('click', () => menu.close(), { signal }),
       );
+    const desktopMenu = window.matchMedia('(min-width: 960px)');
+    desktopMenu.addEventListener('change', () => {
+      if (desktopMenu.matches && menu.open) menu.close();
+    }, { signal });
     cleanups.push(() => {
       if (menu.open) menu.close();
     });
