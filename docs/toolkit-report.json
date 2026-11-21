@@ -1538,5 +1538,24 @@
       "Moteur Impeccable indisponible dans la session ; références directes déjà documentées"
     ],
     "report": "docs/qa/v21-cadrage-au-doigt.md"
+  },
+  "v22": {
+    "task": "Zoom direct à deux doigts dans le CMS",
+    "lead": "Impeccable polish/craft-floor, identité existante conservée",
+    "pins": "Neuf pins identiques à V21 réutilisés",
+    "decisions": [
+      "Zoom1–2 avec ancrage sous le milieu des doigts",
+      "Reprise1→2→1, annulation/capture, inversion immédiate aux limites",
+      "Curseurs conservés, Enregistrer explicite, pas de migration"
+    ],
+    "checks": {
+      "widget_checks": 182,
+      "other_node_cases": 232,
+      "static_pages": 16,
+      "build": "passed",
+      "review": "indépendante passée",
+      "browser": "React réel320×740 et390×844, gestes multipoints synthétiques ; pas de téléphone physique"
+    },
+    "report": "docs/qa/v22-zoom-deux-doigts.md"
   }
 }

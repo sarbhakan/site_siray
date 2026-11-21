@@ -158,6 +158,45 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     }
     assert.equal(h.dragPosition(1200,1600,150,200,'30% 60%',1.5,NaN,10), '30% 60%');
   });
+  test('Pinch keeps the point under the fingers while scaling, and follows their midpoint', () => {
+    const frame={width:1200,height:1600,frameWidth:150,frameHeight:200,zoom:1,position:'50% 50%'};
+    const fixed=h.pinchCrop(frame,{x:37.5,y:50,distance:50},{x:37.5,y:50,distance:100});
+    assert.equal(fixed.zoom,2);assert.equal(fixed.position,'25% 25%');
+    const center=h.pinchCrop(frame,{x:75,y:100,distance:50},{x:75,y:100,distance:100});
+    assert.equal(center.position,'50% 50%');
+    const translated=h.pinchCrop({...frame,zoom:1.5},{x:75,y:100,distance:50},{x:90,y:80,distance:50});
+    assert.equal(translated.zoom,1.5);assert.equal(translated.position,'30% 70%');
+    for (const [width,height] of [[1200,1600],[2400,1000],[1320,2346]]) for (const [fw,fh] of [[150,200],[300,170],[190,190]]) {
+      const f={width,height,frameWidth:fw,frameHeight:fh,zoom:1.3,position:'50% 50%'};
+      const from={x:fw*.48,y:fh*.48,distance:60},to={x:fw*.53,y:fh*.52,distance:75};
+      const crop=h.pinchCrop(f,from,to),percent=h.parsePosition(crop.position);
+      const fit=Math.max(fw/width,fh/height),before=[width*fit*f.zoom,height*fit*f.zoom],after=[width*fit*crop.zoom,height*fit*crop.zoom];
+      for(let axis=0;axis<2;axis++) {
+        const extent=[fw,fh][axis],start=[from.x,from.y][axis],end=[to.x,to.y][axis];
+        const originalPoint=(start-(extent-before[axis])*.5)/before[axis];
+        const renderedPoint=(end-(extent-after[axis])*percent[axis]/100)/after[axis];
+        assert.ok(Math.abs(originalPoint-renderedPoint)<.00001);
+      }
+    }
+  });
+  test('Pinch zoom and crop stay bounded and reject unusable geometry without writing NaN', () => {
+    const f={width:1200,height:1600,frameWidth:150,frameHeight:200,zoom:1.5,position:'30% 60%'};
+    const at={x:75,y:100,distance:50};
+    assert.equal(h.pinchCrop(f,at,{...at,distance:500}).zoom,2);
+    assert.equal(h.pinchCrop(f,at,{...at,distance:1}).zoom,1);
+    const edge=h.pinchCrop(f,at,{x:10000,y:-10000,distance:60});
+    assert.equal(edge.position,'0% 100%');
+    for(const [frame,from,to] of [
+      [{...f,width:0},at,at],[{...f,height:NaN},at,at],[{...f,frameWidth:Infinity},at,at],
+      [f,{...at,distance:0},at],[f,at,{...at,distance:-1}],[f,at,{...at,x:NaN}],
+      [f,{...at,y:Infinity},at],[f,at,{...at,distance:Infinity}],
+    ]) {
+      const result=h.pinchCrop(frame,from,to);
+      assert.equal(result.zoom,1.5);assert.equal(result.position,'30% 60%');
+    }
+    const min=h.pinchCrop({...f,zoom:1,position:'23% 71%'},at,{...at,distance:25});
+    assert.equal(min.zoom,1);assert.equal(min.position,'23% 71%');
+  });
   function dragRig(overrides = {}, geometry = {}) {
     const value = {file:'/images/drag.webp',alt:'Un layer cake',position:'50% 50%',zoom:1.5,
       label:'Une légende',category:'layer-cakes',retained:'preserved',...overrides};
@@ -165,7 +204,7 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     let prevented=0;
     const target = {
       querySelector: () => ({naturalWidth:1200,naturalHeight:1600,...geometry.image}),
-      getBoundingClientRect: () => ({width:150,height:200,...geometry.frame}),
+      getBoundingClientRect: () => ({left:0,top:0,width:150,height:200,...geometry.frame}),
       setPointerCapture: id => captured.add(id),
       hasPointerCapture: id => captured.has(id),
       releasePointerCapture: id => {captured.delete(id);releases.push(id);},
@@ -202,17 +241,115 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     assert.equal(rig.changes.at(-1).position,'10% 50%');
     rig.frame.props.onPointerUp(rig.event());
   });
-  test('A second pointer cannot replace, move or terminate the captured finger', () => {
+  test('Only a second touch joins; unknown pointers and extra fingers cannot alter the gesture', () => {
     const rig=dragRig();
     rig.frame.props.onPointerDown(rig.event());
-    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false,clientX:500}));
-    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:1000}));
+    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false,clientX:120}));
+    assert.equal(rig.captured.size,2);
+    const count=rig.changes.length;
+    rig.frame.props.onPointerDown(rig.event({pointerId:11,isPrimary:false,clientX:500}));
+    rig.frame.props.onPointerMove(rig.event({pointerId:11,clientX:1000}));
+    rig.frame.props.onPointerUp(rig.event({pointerId:11}));
+    assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,2);
     rig.frame.props.onPointerUp(rig.event({pointerId:9}));
-    assert.equal(rig.changes.length,0);assert.ok(rig.captured.has(7));
+    assert.ok(rig.captured.has(7));
     rig.frame.props.onPointerMove(rig.event({clientX:95,clientY:70}));
     assert.equal(rig.changes.at(-1).position,'30% 70%');
     rig.frame.props.onPointerUp(rig.event());
-    assert.deepEqual(rig.releases,[7]);
+    assert.deepEqual(rig.releases,[9,7]);
+  });
+  function startPinch(rig,first={x:50,y:100},second={x:100,y:100}) {
+    rig.frame.props.onPointerDown(rig.event({clientX:first.x,clientY:first.y}));
+    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false,clientX:second.x,clientY:second.y}));
+  }
+  test('One to two to one fingers rebase smoothly and update zoom and position atomically', () => {
+    const rig=dragRig({zoom:1}),before=JSON.stringify(rig.value);
+    startPinch(rig);
+    assert.equal(rig.changes.length,0);assert.equal(rig.captured.size,2);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:125,clientY:100}));
+    const pinched=rig.changes.at(-1);
+    assert.equal(pinched.zoom,1.5);assert.equal(pinched.position,'33.333% 50%');
+    for(const key of ['file','alt','label','category','retained']) assert.equal(pinched[key],rig.value[key]);
+    assert.equal(JSON.stringify(rig.value),before);assert.equal(rig.changes.length,1);
+    rig.frame.props.onPointerUp(rig.event({pointerId:9}));
+    const count=rig.changes.length;
+    rig.frame.props.onPointerMove(rig.event({clientX:50,clientY:100}));
+    assert.equal(rig.changes.length,count);
+    rig.frame.props.onPointerMove(rig.event({clientX:57.5,clientY:110}));
+    assert.equal(rig.changes.at(-1).zoom,1.5);assert.equal(rig.changes.at(-1).position,'23.333% 40%');
+    rig.frame.props.onPointerUp(rig.event());assert.equal(rig.captured.size,0);
+  });
+  test('Pinch midpoint uses coordinates local to the photograph', () => {
+    const rig=dragRig({zoom:1},{frame:{left:100,top:200}});
+    startPinch(rig,{x:125,y:250},{x:150,y:250});
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:175,clientY:250}));
+    assert.equal(rig.changes.at(-1).zoom,2);
+    assert.equal(rig.changes.at(-1).position,'16.667% 25%');
+    rig.frame.props.onPointerUp(rig.event({pointerId:9}));rig.frame.props.onPointerUp(rig.event());
+  });
+  test('Lifting the original primary finger leaves the other able to pan and accept a new pinch', () => {
+    const rig=dragRig();startPinch(rig);
+    rig.frame.props.onPointerUp(rig.event());assert.ok(rig.captured.has(9));
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,isPrimary:false,clientX:107.5,clientY:110}));
+    assert.equal(rig.changes.at(-1).position,'40% 40%');
+    rig.frame.props.onPointerDown(rig.event({pointerId:11,isPrimary:false,clientX:130,clientY:110}));
+    assert.equal(rig.captured.size,2);
+    rig.frame.props.onPointerMove(rig.event({pointerId:11,isPrimary:false,clientX:135,clientY:110}));
+    assert.ok(rig.changes.at(-1).zoom>1.5);
+    rig.frame.props.onPointerCancel(rig.event({pointerId:9}));assert.equal(rig.captured.size,0);
+  });
+  test('Reversing from either zoom limit responds on the very next movement', () => {
+    const rig=dragRig({zoom:1});startPinch(rig);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:200,clientY:100}));
+    assert.equal(rig.changes.at(-1).zoom,2);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:190,clientY:100}));
+    assert.ok(rig.changes.at(-1).zoom<2);
+    assert.ok(Math.abs(rig.changes.at(-1).zoom-2*140/150)<.0001);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:70,clientY:100}));
+    assert.equal(rig.changes.at(-1).zoom,1);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:75,clientY:100}));
+    assert.equal(rig.changes.at(-1).zoom,1.25);
+    rig.frame.props.onPointerUp(rig.event({pointerId:9}));rig.frame.props.onPointerUp(rig.event());
+  });
+  test('Coincident fingers wait for a usable distance without NaN or a sudden scale jump', () => {
+    const rig=dragRig({zoom:1});startPinch(rig,{x:75,y:100},{x:75,y:100});
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:76,clientY:100}));assert.equal(rig.changes.length,0);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:85,clientY:100}));assert.equal(rig.changes.length,0);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:90,clientY:100}));
+    assert.equal(rig.changes.at(-1).zoom,1.5);
+    rig.frame.props.onPointerCancel(rig.event());assert.equal(rig.captured.size,0);
+  });
+  test('Mouse and pen cannot join a pinch, and a touch cannot join an active mouse drag', () => {
+    for(const type of ['mouse','pen']) {
+      const rig=dragRig();rig.frame.props.onPointerDown(rig.event());
+      rig.frame.props.onPointerDown(rig.event({pointerType:type,pointerId:9,isPrimary:true}));
+      assert.equal(rig.captured.size,1);rig.frame.props.onPointerUp(rig.event());
+    }
+    const rig=dragRig();rig.frame.props.onPointerDown(rig.event({pointerType:'mouse'}));
+    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false}));assert.equal(rig.captured.size,1);
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:500}));assert.equal(rig.changes.length,0);
+    rig.frame.props.onPointerUp(rig.event());
+  });
+  test('Cancel or lost capture of either finger terminates the entire pinch safely', () => {
+    for(const finish of ['onPointerCancel','onLostPointerCapture']) for(const pointerId of [7,9]) {
+      const rig=dragRig();startPinch(rig);
+      rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:110,clientY:100}));
+      const count=rig.changes.length;
+      if(finish==='onLostPointerCapture') rig.captured.delete(pointerId);
+      rig.frame.props[finish](rig.event({pointerId}));assert.equal(rig.captured.size,0);
+      rig.frame.props.onPointerMove(rig.event({clientX:0}));rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:200}));
+      assert.equal(rig.changes.length,count);
+    }
+  });
+  test('Sliders, reset, image mode and format choices cancel both captured fingers', () => {
+    for(const action of ['zoom','x','y','reset','whole','format']) {
+      const rig=dragRig();startPinch(rig);
+      if(['zoom','x','y'].includes(action)) nodes(rig.control).find(n=>n.props.id==='drag-'+action).props.onInput({currentTarget:{value:action==='zoom'?'1.7':'40'}});
+      else nodes(rig.control).find(n=>n.type==='button'&&strings(n)===({reset:'Réinitialiser le cadrage',whole:'Image entière',format:'Liste des prestations'})[action]).props.onClick();
+      assert.equal(rig.captured.size,0);
+      const count=rig.changes.length;
+      rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:200}));assert.equal(rig.changes.length,count);
+    }
   });
   test('Nonprimary touch and secondary mouse presses leave page gestures untouched', () => {
     for (const patch of [{isPrimary:false},{pointerType:'mouse',button:2}]) {
@@ -236,9 +373,15 @@ for (const photo of photos) test('Native photo preview renders the existing obje
       assert.deepEqual(rig.releases,finish==='onPointerCancel'?[7]:[]);
     }
   });
-  test('Uncropped or unloaded photos do not capture a finger or block page scrolling', () => {
-    for (const rig of [dragRig({zoom:1}),dragRig({}, {image:{naturalWidth:0}}),dragRig({}, {frame:{width:0}})]) {
-      rig.frame.props.onPointerDown(rig.event());
+  test('A fully fitted photo captures touch for pinch, while unloaded photos and fitted mouse keep native scrolling', () => {
+    const fitted=dragRig({zoom:1});
+    fitted.frame.props.onPointerDown(fitted.event());
+    assert.ok(fitted.captured.has(7));assert.equal(fitted.prevented,1);
+    fitted.frame.props.onPointerMove(fitted.event({clientX:100}));
+    assert.equal(fitted.changes.length,0);
+    fitted.frame.props.onPointerUp(fitted.event());
+    for (const [rig,patch] of [[dragRig({zoom:1}),{pointerType:'mouse'}],[dragRig({}, {image:{naturalWidth:0}}),{}],[dragRig({}, {frame:{width:0}}),{}]]) {
+      rig.frame.props.onPointerDown(rig.event(patch));
       rig.frame.props.onPointerMove(rig.event({clientX:100}));
       assert.equal(rig.captured.size,0);assert.equal(rig.prevented,0);assert.equal(rig.changes.length,0);
     }
@@ -261,6 +404,22 @@ for (const photo of photos) test('Native photo preview renders the existing obje
       assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,0);
     }
   });
+  test('Failed capture of the second finger leaves the original gesture usable', () => {
+    const rig=dragRig();rig.frame.props.onPointerDown(rig.event());
+    rig.target.setPointerCapture=()=>{throw Error('not active');};
+    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false,clientX:120}));
+    assert.equal(rig.captured.size,1);
+    rig.frame.props.onPointerMove(rig.event({clientX:95,clientY:70}));
+    assert.equal(rig.changes.at(-1).position,'30% 70%');
+    rig.frame.props.onPointerUp(rig.event());assert.equal(rig.captured.size,0);
+  });
+  const replacedDuringPinch=dragRig();startPinch(replacedDuringPinch);
+  await nodes(replacedDuringPinch.control).find(n=>n.props.id==='drag').props.onClick();
+  test('Replacing a source cancels both fingers before accepting the new image', () => {
+    const rig=replacedDuringPinch,count=rig.changes.length;
+    assert.equal(rig.captured.size,0);assert.equal(rig.changes.at(-1).file,'blob:https://site.test/replacement');
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:200}));assert.equal(rig.changes.length,count);
+  });
   const replacedDuringDrag=dragRig();
   replacedDuringDrag.frame.props.onPointerDown(replacedDuringDrag.event());
   await nodes(replacedDuringDrag.control).find(n=>n.props.id==='drag').props.onClick();
@@ -275,7 +434,7 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     rig.frame.props.onDragStart(rig.event());assert.equal(rig.prevented,1);
     const image=nodes(render(rig.frame)).find(n=>n.type==='img');
     assert.equal(image.props.draggable,false);
-    assert.ok(strings(rig.control).includes('Les curseurs restent disponibles.'));
+    assert.ok(strings(rig.control).includes('Deux doigts pour zoomer ou dézoomer.'));
     assert.ok(nodes(rig.control).filter(n=>n.type==='input'&&n.props.type==='range').length===3);
   });
   for (const value of [{ file: '/images/photo.webp', alt: '' }, { file: '', alt: 'Photo' }]) test('Missing photo/alt rejected', () => {

@@ -61,6 +61,27 @@
       overflowY > height * scale * .001 ? y - dy / overflowY * 100 : y);
   }
 
+  // Keep the source point beneath the fingers' midpoint in place while scaling.
+  // The gesture rebases after each move, so reversing at a zoom limit responds
+  // immediately instead of requiring the fingers to cross an old threshold.
+  function pinchCrop(frame, from, to) {
+    const { width, height, frameWidth, frameHeight } = frame;
+    const zoom = photoZoom(frame.zoom), position = positionString(...parsePosition(frame.position));
+    if (![width, height, frameWidth, frameHeight, from.distance, to.distance].every(n => Number.isFinite(n) && n > 0) ||
+        ![from.x, from.y, to.x, to.y].every(Number.isFinite)) return { zoom, position };
+    const nextZoom = Number(photoZoom(zoom * to.distance / from.distance).toFixed(4));
+    const fit = Math.max(frameWidth / width, frameHeight / height);
+    const point = parsePosition(position).map((p, axis) => {
+      const extent = [frameWidth, frameHeight][axis], source = [width, height][axis];
+      const before = source * fit * zoom, after = source * fit * nextZoom;
+      const oldOffset = (extent - before) * p / 100;
+      const anchor = ([from.x, from.y][axis] - oldOffset) / before;
+      const overflow = after - extent;
+      return overflow > after * .001 ? (anchor * after - [to.x, to.y][axis]) / overflow * 100 : p;
+    });
+    return { zoom: nextZoom, position: positionString(...point) };
+  }
+
   function safeImageURL(path, getAsset) {
     if (typeof path !== 'string' || !path) return '';
     let url = '';
@@ -138,42 +159,96 @@
       };
       const change = (key, next) => update({ [key]: next });
 
-      const endDrag = (event) => {
+      const endDrag = () => {
         const drag = dragRef.current;
-        if (!drag || (event && event.pointerId !== drag.id)) return;
+        if (!drag) return;
         dragRef.current = null;
         setDragging(false);
-        if (drag.node.hasPointerCapture?.(drag.id)) drag.node.releasePointerCapture(drag.id);
+        for (const id of drag.points.keys()) if (drag.node.hasPointerCapture?.(id)) drag.node.releasePointerCapture(id);
       };
-      useEffect(() => { endDrag(); }, [current.file, view, whole, zoom]);
-      useEffect(() => () => {
-        const drag = dragRef.current;
-        dragRef.current = null;
-        if (drag?.node.hasPointerCapture?.(drag.id)) drag.node.releasePointerCapture(drag.id);
+      useEffect(() => { endDrag(); }, [current.file, view, whole]);
+      useEffect(() => {
+        const cancel = () => endDrag();
+        global.addEventListener?.('resize', cancel);
+        global.addEventListener?.('blur', cancel);
+        return () => {
+          global.removeEventListener?.('resize', cancel);
+          global.removeEventListener?.('blur', cancel);
+          const drag = dragRef.current;
+          dragRef.current = null;
+          if (drag) for (const id of drag.points.keys()) if (drag.node.hasPointerCapture?.(id)) drag.node.releasePointerCapture(id);
+        };
       }, []);
 
+      const metrics = drag => {
+        const [a, b] = [...drag.points.values()];
+        return b ? { x: (a.x + b.x) / 2 - drag.left, y: (a.y + b.y) / 2 - drag.top,
+          distance: Math.hypot(b.x - a.x, b.y - a.y) } : { x: a.x, y: a.y };
+      };
+      const rebase = drag => {
+        const live = currentRef.current;
+        drag.expectedZoom = photoZoom(live.zoom);
+        drag.expectedPosition = live.position;
+        drag.phase = { width: drag.width, height: drag.height, frameWidth: drag.frameWidth, frameHeight: drag.frameHeight,
+          position: live.position, zoom: live.zoom, metrics: metrics(drag) };
+      };
+
       const startDrag = (event) => {
-        if (event.isPrimary === false || event.button !== 0 || whole || dragRef.current) return;
+        if (event.button !== 0 || whole) return;
+        const existing = dragRef.current;
+        if (existing) {
+          // Only a second finger can join; ignore extra fingers, mouse and pen.
+          if (event.pointerType !== 'touch' || existing.type !== 'touch' || existing.points.size !== 1 || existing.points.has(event.pointerId)) return;
+          try { existing.node.setPointerCapture(event.pointerId); } catch { return; }
+          existing.points.set(event.pointerId, { x: event.clientX, y: event.clientY });
+          rebase(existing);
+          event.preventDefault();
+          return;
+        }
+        if (event.isPrimary === false) return;
         const node = event.currentTarget, image = node.querySelector('img');
         const rect = node.getBoundingClientRect();
         const width = image?.naturalWidth, height = image?.naturalHeight;
         const live = currentRef.current;
         const window = cropWindow(width, height, rect.width / rect.height, live.position, live.zoom);
-        if (!rect.width || !rect.height || !window || (!window.horizontal && !window.vertical)) return;
+        // Touch must start even at zoom 1, when the first finger cannot yet pan.
+        if (!rect.width || !rect.height || !window || (event.pointerType !== 'touch' && !window.horizontal && !window.vertical)) return;
         try { node.setPointerCapture(event.pointerId); } catch { return; }
-        dragRef.current = { id: event.pointerId, node, width, height, frameWidth: rect.width, frameHeight: rect.height,
-          x: event.clientX, y: event.clientY, position: live.position, zoom: live.zoom, file: live.file };
+        const drag = { node, width, height, frameWidth: rect.width, frameHeight: rect.height,
+          left: rect.left, top: rect.top, type: event.pointerType, file: live.file,
+          points: new Map([[event.pointerId, { x: event.clientX, y: event.clientY }]]) };
+        dragRef.current = drag;
+        rebase(drag);
         setDragging(true);
         event.preventDefault();
       };
       const moveDrag = (event) => {
         const drag = dragRef.current;
-        if (!drag || drag.id !== event.pointerId) return;
-        if (currentRef.current.file !== drag.file || currentRef.current.zoom !== drag.zoom) { endDrag(event); return; }
-        const position = dragPosition(drag.width, drag.height, drag.frameWidth, drag.frameHeight,
-          drag.position, drag.zoom, event.clientX - drag.x, event.clientY - drag.y);
-        change('position', position);
+        if (!drag || !drag.points.has(event.pointerId)) return;
+        const live = currentRef.current;
+        if (live.file !== drag.file || photoZoom(live.zoom) !== drag.expectedZoom || live.position !== drag.expectedPosition) { endDrag(); return; }
+        drag.points.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        const next = metrics(drag), phase = drag.phase;
+        if (drag.points.size === 2) {
+          // Coincident fingers have no usable distance. Wait, then rebase.
+          if (phase.metrics.distance >= 2 && next.distance >= 2) update(pinchCrop(phase, phase.metrics, next));
+        } else {
+          change('position', dragPosition(drag.width, drag.height, drag.frameWidth, drag.frameHeight,
+            phase.position, phase.zoom, next.x - phase.metrics.x, next.y - phase.metrics.y));
+        }
+        rebase(drag);
         event.preventDefault();
+      };
+      const releasePointer = event => {
+        const drag = dragRef.current;
+        if (!drag || !drag.points.has(event.pointerId)) return;
+        drag.points.delete(event.pointerId);
+        if (!drag.points.size) { dragRef.current = null; setDragging(false); }
+        else rebase(drag);
+        if (drag.node.hasPointerCapture?.(event.pointerId)) drag.node.releasePointerCapture(event.pointerId);
+      };
+      const cancelPointer = event => {
+        if (dragRef.current?.points.has(event.pointerId)) endDrag();
       };
 
       useImperativeHandle(ref, () => ({
@@ -187,6 +262,7 @@
       }), [current.file, current.alt, current.label, current.category, gallery]);
 
       const choosePhoto = async () => {
+        endDrag();
         setBusy(true);
         setError('');
         setNotice('');
@@ -203,6 +279,7 @@
       };
 
       const crop = (axis, next) => {
+        endDrag();
         setWhole(false);
         const [liveX, liveY] = parsePosition(currentRef.current.position);
         change('position', positionString(axis === 'x' ? next : liveX, axis === 'y' ? next : liveY));
@@ -221,19 +298,19 @@
           h('div', { className: 'siray-photo-preview' },
             h('div', { className: 'siray-preview-switch', role: 'group', 'aria-label': 'Vérifier le cadrage' },
               ...frames.map(([label], index) => h('button', { key: label, type: 'button', 'aria-pressed': !whole && index === view,
-                onClick: () => { setView(index); setWhole(false); } }, label)),
-              h('button', { type: 'button', 'aria-pressed': whole, onClick: () => setWhole(true) }, 'Image entière'),
+                onClick: () => { endDrag(); setView(index); setWhole(false); } }, label)),
+              h('button', { type: 'button', 'aria-pressed': whole, onClick: () => { endDrag(); setWhole(true); } }, 'Image entière'),
             ),
             h('p', { className: 'siray-crop-caption' }, whole ? 'Photo originale, sans recadrage' : 'Résultat sur le site'),
             h(ImageFrame, { photo: current, getAsset, ratio, whole, onDimensions: setDimensions,
-              className: `siray-crop-frame${!whole && (zone?.horizontal || zone?.vertical) ? ' siray-crop-movable' : ''}${dragging ? ' siray-crop-dragging' : ''}`,
+              className: `siray-crop-frame${!whole && zone ? ' siray-crop-interactive' : ''}${!whole && (zone?.horizontal || zone?.vertical) ? ' siray-crop-movable' : ''}${dragging ? ' siray-crop-dragging' : ''}`,
               'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site',
               'aria-describedby': whole ? undefined : dragHintID,
-              onPointerDown: startDrag, onPointerMove: moveDrag, onPointerUp: endDrag,
-              onPointerCancel: endDrag, onLostPointerCapture: endDrag,
+              onPointerDown: startDrag, onPointerMove: moveDrag, onPointerUp: releasePointer,
+              onPointerCancel: cancelPointer, onLostPointerCapture: cancelPointer,
               onDragStart: event => event.preventDefault() }),
             !whole && h('p', { id: dragHintID, className: 'siray-drag-help' },
-              'Glissez la photo avec un doigt pour la cadrer. Pour faire défiler la page, glissez à côté. Les curseurs restent disponibles.'),
+              'Un doigt pour déplacer. Deux doigts pour zoomer ou dézoomer. Pour défiler, glissez à côté.'),
             zone && h('div', { className: 'siray-source-preview' },
               h('p', { className: 'siray-crop-caption' }, 'Zone conservée dans l’original'),
               h('div', { className: 'siray-source-sheet', style: { aspectRatio: String(dimensions.width / dimensions.height), maxWidth: `${156 * dimensions.width / dimensions.height}px` },
@@ -251,8 +328,8 @@
                 h('span', null, 'Resserrer le cadre'), h('output', { htmlFor: `${forID}-zoom` }, `× ${zoom.toFixed(2)}`),
                 h('input', { id: `${forID}-zoom`, type: 'range', min: 1, max: 2, step: .01, value: zoom,
                   'aria-valuetext': `Zoom ${zoom.toFixed(2)} fois`,
-                  onInput: event => { setWhole(false); change('zoom', photoZoom(Number(event.currentTarget.value))); },
-                  onChange: event => { setWhole(false); change('zoom', photoZoom(Number(event.target.value))); } }),
+                  onInput: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.currentTarget.value))); },
+                  onChange: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.target.value))); } }),
               ),
               ...[['x', 'Gauche — droite', x], ['y', 'Haut — bas', y]].map(([axis, label, number]) =>
                 h('label', { className: 'siray-range-label', key: axis, htmlFor: `${forID}-${axis}` },
@@ -267,7 +344,7 @@
                 !zone.vertical ? 'Dans ce format, seul le déplacement gauche–droite est visible. Augmentez le zoom pour agir aussi de haut en bas.' :
                 'Le rectangle sur l’original montre ce qui restera visible. Vérifiez chaque format proposé.'),
               h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary',
-                onClick: () => { setWhole(false); update({ position: '50% 50%', zoom: 1 }); } }, 'Réinitialiser le cadrage'),
+                onClick: () => { endDrag(); setWhole(false); update({ position: '50% 50%', zoom: 1 }); } }, 'Réinitialiser le cadrage'),
             ),
             h('p', { className: 'siray-crop-impact' }, 'Ce réglage s’applique aux formats proposés pour cet emplacement. Les autres photos ne changent pas. L’aperçu est immédiat ; le site public attend votre enregistrement.'),
             h('label', { className: 'siray-studio-field', htmlFor: `${forID}-alt` },
@@ -322,5 +399,5 @@
     init.registered = true;
   }
 
-  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, dragPosition, safeImageURL, photoValue } };
+  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, dragPosition, pinchCrop, safeImageURL, photoValue } };
 })(typeof window !== 'undefined' ? window : globalThis);

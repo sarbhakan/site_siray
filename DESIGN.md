@@ -143,3 +143,5 @@ Sur téléphone, le cadre de la photographie et les curseurs se placent côte à
 Le cadrage V20 ajoute un zoom facultatif réel (1à2), le résultat au format choisi et un rectangle de zone visible sur l’original. Le retour visuel est immédiat pendant le réglage ; la publication exige toujours Enregistrer. Les formats proposés suivent les proportions du site, et une aide explique les directions sans débordement au zoom1.
 
 Le cadrage V21 se règle aussi en faisant glisser directement la photo dans son aperçu. Le déplacement suit le doigt sans animation différée ; seule cette surface déplaçable intercepte le geste. Le défilement reste natif autour, et les curseurs offrent une alternative au glissement.
+
+Le cadrage V22 permet aussi de pincer à deux doigts pour zoomer et dézoomer de1à2, autour de leur milieu. Pour reconnaître le pincement dès le zoom1, le cadre résultat chargé intercepte désormais les gestes même sans débordement ; on défile à côté. Le retrait d’un doigt reprend le déplacement et les curseurs restent utilisables.
