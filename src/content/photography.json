@@ -43,12 +43,12 @@
     {
       "slug": "bento-cakes",
       "cover": {
-        "file": "/images/siray-bento-coffrets-78db3bdc.webp",
+        "file": "/src/assets/uploads/20261121-841bae70bea9.webp",
         "alt": "Petits gâteaux présentés dans des coffrets transparents avec des rubans",
         "position": "50% 62%"
       },
       "detail": {
-        "file": "/images/siray-bento-vert-e1768ae9.webp",
+        "file": "/src/assets/uploads/20261121-6ae2f54c3e49.webp",
         "alt": "Bento cake vert décoré de petites roses et d’un message",
         "position": "50% 50%"
       },
@@ -58,15 +58,15 @@
         "position": "50% 58%"
       },
       "home": {
-        "file": "/images/siray-bento-fleurs-18f0073c.webp",
-        "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
+        "file": "/src/assets/uploads/20261121-772b3680ac7e.webp",
+        "alt": "Bento cake vert orné de fleurs roses",
         "position": "50% 100%"
       }
     },
     {
       "slug": "mignardises",
       "cover": {
-        "file": "/images/siray-mignardises-hotdog-12452ace.webp",
+        "file": "/src/assets/uploads/20261121-abd66ab43e32.webp",
         "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
         "position": "50% 50%"
       },
