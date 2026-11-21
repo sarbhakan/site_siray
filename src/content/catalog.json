@@ -22,13 +22,14 @@
         "La saveur classique ou l’association Signature",
         "Les couleurs, le thème, l’inscription et le décor",
         "La date de votre événement"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "bento-cakes",
       "name": "Bento cakes",
       "short": "Un écrin de douceur à personnaliser",
-      "intro": "Un petit gâteau, vos couleurs et votre message.",
+      "intro": "Saveurs, couleurs, décor et message se personnalisent selon vos envies, pour une attention aussi gourmande qu'unique",
       "text": "Une saveur classique, un message et un décor à choisir.",
       "possibilities": [
         "Format standard",
@@ -45,7 +46,8 @@
         "Le modèle ou une photo d’inspiration",
         "L’inscription, les couleurs, le thème et le décor",
         "La date souhaitée"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "mignardises",
@@ -105,7 +107,8 @@
         "Les variétés sucrées et/ou salées",
         "La répartition entre les différentes variétés",
         "La date de votre événement"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "cupcakes",
@@ -159,7 +162,8 @@
         "Les saveurs sélectionnées",
         "Votre personnalisation ou une photo d’inspiration",
         "La date souhaitée"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "brunch-box",
@@ -181,7 +185,8 @@
         "La date souhaitée",
         "L’heure de retrait",
         "Vos demandes particulières éventuelles"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "buffets",
@@ -206,7 +211,8 @@
         "Le nombre de mignardises par personne",
         "Le thème, les couleurs et vos inspirations",
         "La composition souhaitée : sucrée, salée ou mixte"
-      ]
+      ],
+      "extraSections": []
     },
     {
       "slug": "plateaux",
@@ -261,7 +267,8 @@
         "Le nombre de convives",
         "La date souhaitée",
         "Vos éventuelles restrictions alimentaires"
-      ]
+      ],
+      "extraSections": []
     }
   ],
   "classicFlavorGroups": [
