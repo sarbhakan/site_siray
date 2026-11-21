@@ -1,4 +1,21 @@
 {
+  "homeSlides": [
+    {
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "position": "50% 50%"
+    },
+    {
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+      "position": "50% 100%"
+    },
+    {
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "alt": "Layer cake rouge sur un présentoir argenté",
+      "position": "50% 50%"
+    }
+  ],
   "collections": [
     {
       "slug": "layer-cakes",
@@ -72,7 +89,7 @@
     {
       "slug": "cupcakes",
       "cover": {
-        "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+        "file": "/src/assets/uploads/20261121-8577311b95b4.webp",
         "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
         "position": "50% 68%"
       },
@@ -160,23 +177,6 @@
         "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
         "position": "50% 100%"
       }
-    }
-  ],
-  "homeSlides": [
-    {
-      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
-      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
-      "position": "50% 50%"
-    },
-    {
-      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
-      "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
-      "position": "50% 100%"
-    },
-    {
-      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
-      "alt": "Layer cake rouge sur un présentoir argenté",
-      "position": "50% 50%"
     }
   ],
   "homePhotos": {
