@@ -1,0 +1,32 @@
+---
+import type { ExtraSection } from '../data/site';
+
+interface Props { sections: ExtraSection[] }
+const { sections } = Astro.props;
+---
+
+{sections.map((section, index) => (
+  <section id={`extra-${index}`} class="v5-product-panel extra-section" data-v5-panel aria-labelledby={`extra-heading-${index}`}>
+    <h2 id={`extra-heading-${index}`}>{section.title}</h2>
+    <p class="extra-section-text">{section.text}</p>
+    {section.items && section.items.length > 0 && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}
+    {section.button && <a class="round-link" href={section.button.href}>{section.button.label}</a>}
+  </section>
+))}
+
+<style>
+  .extra-section { min-width: 0; padding-block: 8px 28px; border-top: 1px solid var(--line); padding-top: 32px; scroll-margin-top: var(--header-offset, 128px); overflow-wrap: anywhere; }
+  .extra-section h2 { font-size: 26px; line-height: 1.25; }
+  .extra-section-text { max-width: none; margin-top: 12px; color: var(--muted); font-size: 16px; line-height: 1.625; white-space: pre-line; }
+  .extra-section ul { list-style: none; margin-top: 24px; }
+  .extra-section li { padding-block: 12px; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.625; }
+  .extra-section .round-link { margin-top: 24px; max-width: 100%; text-align: center; white-space: normal; }
+  :global(.v5-product-explorer.is-ready) .extra-section { padding-top: 0; border-top: 0; }
+  :global(.v5-product-explorer.is-ready) .extra-section:not([hidden]) { animation: extra-section-reveal 180ms var(--ease); }
+  .extra-section[hidden] { display: none !important; }
+  @keyframes extra-section-reveal { from { opacity: .35; } to { opacity: 1; } }
+  @media (min-width: 960px) { .extra-section h2 { font-size: 28px; } }
+  @media (max-width: 359px) { .extra-section h2 { font-size: 24px; } }
+  @media (prefers-reduced-motion: reduce) { :global(.v5-product-explorer.is-ready) .extra-section:not([hidden]) { animation: none; } }
+  @media print { .extra-section[hidden] { display: block !important; } }
+</style>

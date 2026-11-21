@@ -8,10 +8,6 @@ if (authUrl.protocol !== 'https:' || authUrl.username || authUrl.password || aut
   throw new Error('CMS_AUTH_URL doit être une URL HTTPS publique sans identifiants ni paramètres.');
 }
 
-const families = [
-  ['layer-cakes', 'Layer cakes'], ['bento-cakes', 'Bento cakes'], ['mignardises', 'Mignardises'],
-  ['cupcakes', 'Cupcakes'], ['brunch-box', 'Brunch box'], ['buffets', 'Buffets'], ['plateaux', 'Plateaux'],
-];
 const field = (name, label, widget = 'string', options = {}) => ({ name, label, widget, ...options });
 const text = (name, label, options = {}) => field(name, label, 'text', options);
 const hidden = (name) => field(name, name, 'hidden');
@@ -24,17 +20,25 @@ const strings = (name, label, options = {}) => field(name, label, 'list', {
 });
 const fixed = { allow_add: false, allow_remove: false, allow_duplicate: false, allow_reorder: false };
 const price = field('price', 'Prix en euros', 'number', { value_type: 'float', min: 0, step: 0.01 });
-const photoFields = [
-  field('file', 'Photographie', 'image', {
-    hint: 'Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés.',
-  }),
-  field('alt', 'Description de la photographie', 'string', {
-    hint: 'Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image.',
-  }),
-  field('position', 'Cadrage', 'string', {
-    default: '50% 50%', hint: 'Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement.',
-  }),
-];
+const photo = (name, label, context = 'cover', options = {}) => field(name, label, 'siray-photo', {
+  photo_context: context, photo_label: label, ...options,
+});
+const extraSections = list('extraSections', 'Rubriques supplémentaires dans cette fiche', [
+  field('title', 'Titre du bouton de la rubrique', 'string', { maxlength: 120 }),
+  text('text', 'Texte de la rubrique', { maxlength: 4000 }),
+  strings('items', 'Éléments de liste (facultatif)', { required: false, max: 12, field: { name: 'item', label: 'Élément', widget: 'string', maxlength: 300 } }),
+  object('button', 'Bouton de lien (facultatif)', [
+    field('label', 'Texte du bouton', 'string', { required: false, maxlength: 80 }),
+    field('href', 'Destination du bouton', 'string', {
+      required: false, maxlength: 2048,
+      hint: 'Une page du site, par exemple /contact/, ou une adresse complète commençant par https://. Renseignez le texte et la destination ensemble.',
+      pattern: ['^(?:|/(?!/)[^\\\\]*|https://[^\\\\]+)$', 'Utilisez une page /contact/ ou un lien https:// complet.'],
+    }),
+  ], { required: false }),
+], {
+  required: false, min: 0, max: 12, summary: '{{fields.title}}',
+  hint: 'Ajoute un volet à cette prestation, après ses rubriques habituelles. Vous pouvez y mettre du texte, une liste et un lien. Ne crée pas de nouvelle page.',
+});
 
 const catalogueFields = [
   list('collections', 'Les sept prestations', [
@@ -60,6 +64,7 @@ const catalogueFields = [
       hint: 'Cupcakes, mignardises et plateaux : modifiez les prix ici. Pour les brunchs, utilisez « Les brunch box » plus bas. Laissez les autres listes vides.',
     }),
     strings('orderFields', 'Informations à demander au client'),
+    extraSections,
   ], { ...fixed, summary: '{{fields.name}}', min: 7, max: 7 }),
   list('classicFlavorGroups', 'Saveurs classiques des layer cakes et bento cakes', [
     field('name', 'Famille', 'string', { readonly: true }),
@@ -99,26 +104,25 @@ const photoLabels = {
 };
 const photoContent = JSON.parse(await readFile(projectFile('src/content/photography.json'), 'utf8'));
 const photographyFields = [
-  list('homeSlides', 'Diaporama de l’accueil', photoFields, {
-    summary: '{{fields.alt}}', thumbnail: 'file', min: 1, max: 5,
-    hint: 'Une à cinq photographies. L’ordre de cette liste est celui du défilement sur l’accueil.',
+  field('homeSlides', 'Diaporama de l’accueil', 'list', {
+    field: photo('photo', 'Photo du diaporama', 'hero'), collapsed: true,
+    summary: '{{fields.alt}}', min: 1, max: 5,
+    hint: 'Ces images défilent en haut de l’accueil. Une à cinq photos, dans l’ordre de cette liste. Les photos des fiches et de la galerie se règlent séparément.',
   }),
-  list('collections', 'Photographies de chaque prestation', [
+  list('collections', 'Photos des sept prestations', [
     hidden('slug'),
-    object('cover', 'Photo principale de la page', photoFields),
-    object('detail', 'Seconde photographie', photoFields),
-    object('request', 'Photo de découverte sur les autres pages', photoFields),
-    object('home', 'Carte de l’accueil', photoFields),
+    photo('cover', 'Grande photo de la fiche prestation', 'cover'),
+    photo('detail', 'Petite photo de la fiche prestation', 'detail'),
+    photo('request', 'Carte « À découvrir aussi » sur les autres fiches', 'request'),
+    photo('home', 'Carte de cette prestation sur l’accueil', 'home'),
   ], { ...fixed, summary: '{{fields.slug}}', min: 7, max: 7 }),
-  object('homePhotos', 'Autres photographies de l’accueil et de la maison',
-    Object.keys(photoContent.homePhotos).map((key) => object(key, photoLabels[key] || key, photoFields))),
-  list('gallery', 'Galerie', [
-    ...photoFields,
-    field('label', 'Titre affiché'),
-    field('category', 'Prestation', 'select', {
-      options: families.map(([value, label]) => ({ value, label })),
-    }),
-  ], { summary: '{{fields.label}}', thumbnail: 'file', min: 1, hint: 'Chaque photo doit être rangée dans sa prestation pour que le filtre de la galerie fonctionne.' }),
+  object('homePhotos', 'Autres photos de l’accueil et de la maison',
+    Object.keys(photoContent.homePhotos).map((key) => photo(key, photoLabels[key] || key, key === 'tables' ? 'home-wide' : 'home'))),
+  field('gallery', 'Galerie — photos et légendes visibles', 'list', {
+    field: photo('photo', 'Photo de la galerie', 'gallery', { show_gallery_fields: true }),
+    collapsed: true, summary: '{{fields.label}}', min: 1,
+    hint: 'Pour ajouter une réalisation, touchez « Ajouter ». La légende est le texte visible sous la photo. La description pour l’accessibilité est distincte. Choisissez sa catégorie.',
+  }),
 ];
 
 const pageLabels = {
@@ -162,8 +166,8 @@ const pageFields = [
 ];
 
 const collection = (name, label, file, fields, description) => ({
-  name, label, description, format: 'json', editor: { preview: false },
-  files: [{ name, label, file, fields }],
+  name, label, description, format: 'json', editor: { preview: true },
+  files: [{ name, label, file, fields, preview_path: ({photos: 'galerie/', catalogue: 'creations/', pages: ''})[name] }],
 });
 const config = {
   $schema: 'https://unpkg.com/@sveltia/cms@0.270.0/schema/sveltia-cms.json',

@@ -54,6 +54,9 @@ Le contenu éditable est séparé du code : `src/content/catalog.json` contient 
 
 ## Modifier les contenus depuis un téléphone
 
+La V19 ajoute l’atelier à https://siraysignature.fr/admin/, le guide pour Selin à https://siraysignature.fr/admin/guide/, le cadrage visuel, les aperçus et le suivi de publication. Les nouvelles rubriques des fiches sont facultatives et validées avant enregistrement. Voir `docs/qa/v19-atelier-mobile.md` pour les vérifications et leurs limites.
+
+
 Le [guide d’édition mobile](docs/EDITION-MOBILE.md) décrit les trois rubriques de `/admin/`, l’enregistrement dans GitHub et la reconstruction Cloudflare. L’interface utilise Sveltia CMS épinglé en version 0.270.0. Sa configuration publique est générée par `npm run cms:config`, également exécuté avant chaque `npm run build`. Elle ne contient aucun secret. L’authentification repose sur la GitHub App du site et le Worker dédié. L’application est installée uniquement sur `site_siray` et la première publication de contenu a été vérifiée.
 
 Les photographies importées vont dans `src/assets/uploads/`. `src/lib/media.ts` prépare au build des variantes WebP adaptées, sans agrandissement ; les sources importées ne sont pas livrées dans la sortie publique. Les photos actuelles gardent leur registre et leurs fichiers approuvés, y compris les JPEG V10 servis sans recompression. Les nouvelles versions hachées évitent de remplacer une photo sous la même URL de cache. Les liens, les pages et la mise en page restent gérés dans le code.

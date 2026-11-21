@@ -46,7 +46,7 @@
       "description": "Changez les photos, leur cadrage, leur description et leur ordre. Pensez à enregistrer, puis à attendre la publication du site.",
       "format": "json",
       "editor": {
-        "preview": false
+        "preview": true
       },
       "files": [
         {
@@ -58,37 +58,22 @@
               "name": "homeSlides",
               "label": "Diaporama de l’accueil",
               "widget": "list",
+              "field": {
+                "name": "photo",
+                "label": "Photo du diaporama",
+                "widget": "siray-photo",
+                "photo_context": "hero",
+                "photo_label": "Photo du diaporama"
+              },
               "collapsed": true,
-              "fields": [
-                {
-                  "name": "file",
-                  "label": "Photographie",
-                  "widget": "image",
-                  "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                },
-                {
-                  "name": "alt",
-                  "label": "Description de la photographie",
-                  "widget": "string",
-                  "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                },
-                {
-                  "name": "position",
-                  "label": "Cadrage",
-                  "widget": "string",
-                  "default": "50% 50%",
-                  "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                }
-              ],
               "summary": "{{fields.alt}}",
-              "thumbnail": "file",
               "min": 1,
               "max": 5,
-              "hint": "Une à cinq photographies. L’ordre de cette liste est celui du défilement sur l’accueil."
+              "hint": "Ces images défilent en haut de l’accueil. Une à cinq photos, dans l’ordre de cette liste. Les photos des fiches et de la galerie se règlent séparément."
             },
             {
               "name": "collections",
-              "label": "Photographies de chaque prestation",
+              "label": "Photos des sept prestations",
               "widget": "list",
               "collapsed": true,
               "fields": [
@@ -99,111 +84,31 @@
                 },
                 {
                   "name": "cover",
-                  "label": "Photo principale de la page",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "label": "Grande photo de la fiche prestation",
+                  "widget": "siray-photo",
+                  "photo_context": "cover",
+                  "photo_label": "Grande photo de la fiche prestation"
                 },
                 {
                   "name": "detail",
-                  "label": "Seconde photographie",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "label": "Petite photo de la fiche prestation",
+                  "widget": "siray-photo",
+                  "photo_context": "detail",
+                  "photo_label": "Petite photo de la fiche prestation"
                 },
                 {
                   "name": "request",
-                  "label": "Photo de découverte sur les autres pages",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "label": "Carte « À découvrir aussi » sur les autres fiches",
+                  "widget": "siray-photo",
+                  "photo_context": "request",
+                  "photo_label": "Carte « À découvrir aussi » sur les autres fiches"
                 },
                 {
                   "name": "home",
-                  "label": "Carte de l’accueil",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "label": "Carte de cette prestation sur l’accueil",
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "Carte de cette prestation sur l’accueil"
                 }
               ],
               "allow_add": false,
@@ -216,246 +121,73 @@
             },
             {
               "name": "homePhotos",
-              "label": "Autres photographies de l’accueil et de la maison",
+              "label": "Autres photos de l’accueil et de la maison",
               "widget": "object",
               "collapsed": true,
               "fields": [
                 {
                   "name": "maison",
                   "label": "Accueil — L’art de sublimer vos instants gourmands",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "Accueil — L’art de sublimer vos instants gourmands"
                 },
                 {
                   "name": "cakes",
                   "label": "Accueil — les gâteaux",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "Accueil — les gâteaux"
                 },
                 {
                   "name": "tables",
                   "label": "Accueil — les tables à partager",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home-wide",
+                  "photo_label": "Accueil — les tables à partager"
                 },
                 {
                   "name": "petitesDouceurs",
                   "label": "Accueil — les petites douceurs",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "Accueil — les petites douceurs"
                 },
                 {
                   "name": "maisonCake",
                   "label": "La maison — photographie de gâteau",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "La maison — photographie de gâteau"
                 },
                 {
                   "name": "maisonTable",
                   "label": "La maison — photographie de table",
-                  "widget": "object",
-                  "collapsed": true,
-                  "fields": [
-                    {
-                      "name": "file",
-                      "label": "Photographie",
-                      "widget": "image",
-                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                    },
-                    {
-                      "name": "alt",
-                      "label": "Description de la photographie",
-                      "widget": "string",
-                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                    },
-                    {
-                      "name": "position",
-                      "label": "Cadrage",
-                      "widget": "string",
-                      "default": "50% 50%",
-                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                    }
-                  ]
+                  "widget": "siray-photo",
+                  "photo_context": "home",
+                  "photo_label": "La maison — photographie de table"
                 }
               ]
             },
             {
               "name": "gallery",
-              "label": "Galerie",
+              "label": "Galerie — photos et légendes visibles",
               "widget": "list",
+              "field": {
+                "name": "photo",
+                "label": "Photo de la galerie",
+                "widget": "siray-photo",
+                "photo_context": "gallery",
+                "photo_label": "Photo de la galerie",
+                "show_gallery_fields": true
+              },
               "collapsed": true,
-              "fields": [
-                {
-                  "name": "file",
-                  "label": "Photographie",
-                  "widget": "image",
-                  "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
-                },
-                {
-                  "name": "alt",
-                  "label": "Description de la photographie",
-                  "widget": "string",
-                  "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
-                },
-                {
-                  "name": "position",
-                  "label": "Cadrage",
-                  "widget": "string",
-                  "default": "50% 50%",
-                  "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
-                },
-                {
-                  "name": "label",
-                  "label": "Titre affiché",
-                  "widget": "string"
-                },
-                {
-                  "name": "category",
-                  "label": "Prestation",
-                  "widget": "select",
-                  "options": [
-                    {
-                      "value": "layer-cakes",
-                      "label": "Layer cakes"
-                    },
-                    {
-                      "value": "bento-cakes",
-                      "label": "Bento cakes"
-                    },
-                    {
-                      "value": "mignardises",
-                      "label": "Mignardises"
-                    },
-                    {
-                      "value": "cupcakes",
-                      "label": "Cupcakes"
-                    },
-                    {
-                      "value": "brunch-box",
-                      "label": "Brunch box"
-                    },
-                    {
-                      "value": "buffets",
-                      "label": "Buffets"
-                    },
-                    {
-                      "value": "plateaux",
-                      "label": "Plateaux"
-                    }
-                  ]
-                }
-              ],
               "summary": "{{fields.label}}",
-              "thumbnail": "file",
               "min": 1,
-              "hint": "Chaque photo doit être rangée dans sa prestation pour que le filtre de la galerie fonctionne."
+              "hint": "Pour ajouter une réalisation, touchez « Ajouter ». La légende est le texte visible sous la photo. La description pour l’accessibilité est distincte. Choisissez sa catégorie."
             }
-          ]
+          ],
+          "preview_path": "galerie/"
         }
       ]
     },
@@ -465,7 +197,7 @@
       "description": "Les sept prestations, les tarifs, les saveurs et les compositions des brunchs. Les prix se modifient à un seul endroit et se mettent à jour partout.",
       "format": "json",
       "editor": {
-        "preview": false
+        "preview": true
       },
       "files": [
         {
@@ -585,6 +317,73 @@
                     "label": "Texte",
                     "widget": "string"
                   }
+                },
+                {
+                  "name": "extraSections",
+                  "label": "Rubriques supplémentaires dans cette fiche",
+                  "widget": "list",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "title",
+                      "label": "Titre du bouton de la rubrique",
+                      "widget": "string",
+                      "maxlength": 120
+                    },
+                    {
+                      "name": "text",
+                      "label": "Texte de la rubrique",
+                      "widget": "text",
+                      "maxlength": 4000
+                    },
+                    {
+                      "name": "items",
+                      "label": "Éléments de liste (facultatif)",
+                      "widget": "list",
+                      "collapsed": true,
+                      "field": {
+                        "name": "item",
+                        "label": "Élément",
+                        "widget": "string",
+                        "maxlength": 300
+                      },
+                      "required": false,
+                      "max": 12
+                    },
+                    {
+                      "name": "button",
+                      "label": "Bouton de lien (facultatif)",
+                      "widget": "object",
+                      "collapsed": true,
+                      "fields": [
+                        {
+                          "name": "label",
+                          "label": "Texte du bouton",
+                          "widget": "string",
+                          "required": false,
+                          "maxlength": 80
+                        },
+                        {
+                          "name": "href",
+                          "label": "Destination du bouton",
+                          "widget": "string",
+                          "required": false,
+                          "maxlength": 2048,
+                          "hint": "Une page du site, par exemple /contact/, ou une adresse complète commençant par https://. Renseignez le texte et la destination ensemble.",
+                          "pattern": [
+                            "^(?:|/(?!/)[^\\\\]*|https://[^\\\\]+)$",
+                            "Utilisez une page /contact/ ou un lien https:// complet."
+                          ]
+                        }
+                      ],
+                      "required": false
+                    }
+                  ],
+                  "required": false,
+                  "min": 0,
+                  "max": 12,
+                  "summary": "{{fields.title}}",
+                  "hint": "Ajoute un volet à cette prestation, après ses rubriques habituelles. Vous pouvez y mettre du texte, une liste et un lien. Ne crée pas de nouvelle page."
                 }
               ],
               "allow_add": false,
@@ -806,7 +605,8 @@
               "min": 4,
               "max": 4
             }
-          ]
+          ],
+          "preview_path": "creations/"
         }
       ]
     },
@@ -816,7 +616,7 @@
       "description": "Les textes de l’accueil, de la maison et de votre projet. La mise en page et les adresses des pages restent conservées.",
       "format": "json",
       "editor": {
-        "preview": false
+        "preview": true
       },
       "files": [
         {
@@ -1218,7 +1018,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "preview_path": ""
         }
       ]
     }

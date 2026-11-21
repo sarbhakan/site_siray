@@ -5,6 +5,7 @@ import { collectionPhotography } from '../data/photography';
 import PlatterChoices from './PlatterChoices.astro';
 import BuffetService from './BuffetService.astro';
 import MignardiseMenu from './MignardiseMenu.astro';
+import ExtraSections from './ExtraSections.astro';
 import {
   collections, instagram, classicFlavorGroups, signatureFlavors,
   cupcakeFlavorGroups, brunchBoxes, brunchPriceGroups, countInFrench, capitalize, type Collection,
@@ -26,11 +27,13 @@ const euro = (value: number) => new Intl.NumberFormat('fr-FR', {
 const formatLabel = brunch ? 'Les compositions' : classic ? 'Format & décor'
   : buffet ? 'La prestation' : 'Formats & tarifs';
 const firstPanel = brunch ? 'compositions' : 'formats';
+const extraSections = item.extraSections ?? [];
 const tabs = [
   { id: firstPanel, label: formatLabel },
   ...(classic || cupcakes ? [{ id: 'saveurs', label: classic ? 'Saveurs classiques' : 'Les saveurs' }] : []),
   ...(layer ? [{ id: 'signatures', label: 'Associations Signature' }] : []),
   ...(mignardises ? [{ id: 'les-bouchees', label: 'Les bouchées' }] : []),
+  ...extraSections.map((section, index) => ({ id: `extra-${index}`, label: section.title })),
   { id: 'votre-demande', label: buffet ? 'Demander un devis' : 'Préparer ma demande' },
 ];
 const detailPhoto = collectionPhotography[item.slug].detail;
@@ -148,6 +151,8 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
             </section>
           )}
 
+          <ExtraSections sections={extraSections} />
+
           <section id="votre-demande" class="v5-product-panel" data-v5-panel>
             <div class="v5-panel-heading"><h2>{buffet ? 'Votre demande de devis' : 'Les détails à nous partager'}</h2><p>{buffet ? 'Partagez ces informations sur Instagram pour établir votre devis.' : 'Partagez ces détails sur Instagram.'}</p></div>
             <div class="v5-request-plan"><ul>{item.orderFields.map((field) => <li>{field}</li>)}</ul></div>
@@ -191,7 +196,7 @@ const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.
   .v5-detail-photo { position: absolute; right: 0; bottom: 0; width: 112px; height: 116px; border: 8px solid var(--paper); background: var(--surface); }
   .v5-product-explorer { min-width: 0; }
   .v5-product-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-block: 8px; margin-bottom: 24px; background: var(--paper); }
-  .v5-product-tabs button { min-height: 52px; padding: 12px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); text-align: left; font: 600 13px/1.45 'Manrope', sans-serif; cursor: pointer; transition: background-color 160ms var(--ease), color 160ms var(--ease); }
+  .v5-product-tabs button { min-width: 0; min-height: 52px; padding: 12px; border: 1px solid var(--olive-line); border-radius: 4px; background: transparent; color: var(--ink); text-align: left; font: 600 13px/1.45 'Manrope', sans-serif; overflow-wrap: anywhere; cursor: pointer; transition: background-color 160ms var(--ease), color 160ms var(--ease); }
   .v5-product-tabs button[aria-selected='true'] { background: var(--olive); color: var(--on-olive); border-color: var(--olive); }
   .v5-product-tabs button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
   .v5-product-panel { padding-block: 8px 28px; scroll-margin-top: var(--header-offset, 128px); min-width: 0; }

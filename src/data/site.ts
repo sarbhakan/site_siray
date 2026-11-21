@@ -11,6 +11,13 @@ export interface Tariff {
   description?: string;
 }
 
+export interface ExtraSection {
+  title: string;
+  text: string;
+  items?: string[];
+  button?: { label: string; href: string };
+}
+
 export interface Collection {
   slug: string;
   href: string;
@@ -28,6 +35,59 @@ export interface Collection {
   panelNote: string;
   tariffs: Tariff[];
   orderFields: string[];
+  extraSections?: ExtraSection[];
+}
+
+/** Plain text only: Astro escapes these values when rendering a custom section. */
+export function validateExtraSections(value: unknown, collectionName = 'prestation'): ExtraSection[] {
+  const invalid = (field: string): never => {
+    throw new Error(`Rubrique personnalisée invalide (${collectionName}) : ${field}.`);
+  };
+  const object = (entry: unknown): entry is Record<string, unknown> =>
+    entry !== null && typeof entry === 'object' && !Array.isArray(entry);
+  const text = (entry: unknown, field: string, maximum: number): string => {
+    if (typeof entry !== 'string' || !entry.trim() || entry.length > maximum) invalid(field);
+    return (entry as string).trim();
+  };
+  const safeHref = (entry: unknown): string => {
+    if (typeof entry === 'string' && /[\u0000-\u001f\u007f-\u009f]/u.test(entry)) invalid('lien du bouton');
+    const href = text(entry, 'lien du bouton', 2048);
+    // Reject controls before URL parsing, which would silently strip some of them.
+    if (/[\u0000-\u0020\u007f-\u009f\\]/u.test(href)) invalid('lien du bouton');
+    let decoded: string;
+    try { decoded = decodeURIComponent(href); } catch { return invalid('lien du bouton'); }
+    if (/[\u0000-\u001f\u007f-\u009f\\]/u.test(decoded)) invalid('lien du bouton');
+    const internal = href.startsWith('/') && !href.startsWith('//');
+    if (!internal && !/^https:\/\//iu.test(href)) invalid('lien du bouton');
+    let url: URL;
+    try { url = new URL(href, 'https://siraysignature.fr'); } catch { return invalid('lien du bouton'); }
+    if (url.protocol !== 'https:' || url.username || url.password) invalid('lien du bouton');
+    if (internal && url.origin !== 'https://siraysignature.fr') invalid('lien du bouton');
+    return internal ? href : url.href;
+  };
+  if (value === undefined || value === null) return [];
+  if (!Array.isArray(value) || value.length > 12) invalid('12 rubriques au maximum');
+  return (value as unknown[]).map((entry, index) => {
+    if (!object(entry)) return invalid(`rubrique ${index + 1}`);
+    const section: ExtraSection = {
+      title: text(entry.title, `titre de la rubrique ${index + 1}`, 120),
+      text: text(entry.text, `texte de la rubrique ${index + 1}`, 4000),
+    };
+    if (entry.items !== undefined && entry.items !== null) {
+      if (!Array.isArray(entry.items) || entry.items.length > 12) invalid(`liste de la rubrique ${index + 1}`);
+      section.items = (entry.items as unknown[]).map((item) => text(item, `élément de la rubrique ${index + 1}`, 300));
+    }
+    if (entry.button !== undefined && entry.button !== null) {
+      if (!object(entry.button)) return invalid(`bouton de la rubrique ${index + 1}`);
+      const { label, href } = entry.button;
+      if (typeof href === 'string' && /[\u0000-\u001f\u007f-\u009f]/u.test(href)) invalid('lien du bouton');
+      const blank = (part: unknown) => part === undefined || part === null || (typeof part === 'string' && !part.trim());
+      if (!blank(label) || !blank(href)) {
+        section.button = { label: text(label, 'libellé du bouton', 80), href: safeHref(href) };
+      }
+    }
+    return section;
+  });
 }
 
 // Routes belong to the application. Editing a label in the CMS never changes its URL.
@@ -118,6 +178,7 @@ export const collections: Collection[] = catalog.collections.map((content) => {
   const tariffs: Tariff[] = content.slug === 'brunch-box' ? brunchTariffs : content.tariffs ?? [];
   for (const tariff of tariffs) validatePrice(tariff.price, `${content.name} / ${tariff.label}`);
   const priceNote = content.slug === 'brunch-box' ? brunchPriceNote : content.priceNote ?? '';
+  const extraSections = validateExtraSections((content as { extraSections?: unknown }).extraSections, content.name);
   let priceSummary = content.priceSummary ?? '';
   if (content.slug === 'mignardises' || content.slug === 'cupcakes') {
     if (!tariffs.length) throw new Error(`Au moins un tarif est nécessaire pour ${content.name}.`);
@@ -137,6 +198,7 @@ export const collections: Collection[] = catalog.collections.map((content) => {
     ...collectionPhotography[content.slug].cover,
     href,
     tariffs,
+    extraSections,
     priceSummary,
     priceNote,
     panelNote: content.panelNote || priceNote,

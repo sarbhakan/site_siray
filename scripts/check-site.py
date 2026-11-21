@@ -123,6 +123,12 @@ def check(dist, base_url=None):
                 if not path.is_file():
                     fail(page, "Missing local destination: " + raw, n["line"])
                 elif fragment and path in pages:
+                    # Exact Sveltia file-entry routes use hash navigation, not HTML anchor IDs.
+                    cms_route = path == dist / "admin/editeur/index.html" and fragment in {
+                        "/collections/photos/entries/photos", "/collections/catalogue/entries/catalogue", "/collections/pages/entries/pages"
+                    }
+                    if cms_route:
+                        continue
                     targets = {node["attrs"].get("id") for node in pages[path].nodes}
                     # Category deep links are a documented gallery interaction.
                     targets |= {node["attrs"].get("data-filter") for node in pages[path].nodes}

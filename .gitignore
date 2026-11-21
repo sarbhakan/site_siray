@@ -9,3 +9,6 @@ dist/
 !.env.example
 .DS_Store
 test-results/
+
+# Generated deployment receipt (created with the actual Pages commit at build time)
+/public/publication.json

@@ -1431,5 +1431,37 @@
       "No real order or message sent",
       "No production hosting deployment"
     ]
+  },
+  "v19": {
+    "task": "V19 atelier mobile : previews, cadrage, suivi publication, rubriques et guide",
+    "sources": {
+      "ponytail": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "i-have-adhd": "1ecea1993b7fce257ffbd686c070948b5e07eda6",
+      "browser-use": "e682e0dc02d77a307a5b2aedf17142c2cd69af5b",
+      "ui-ux-pro-max-skill": "f76d1653d7467fc11fb9d9d79295a421c92ab958",
+      "humanizer": "a32f24407364c74c812b43c15926d638bee1e072",
+      "rea": "bbadf6ebf4172daef81158749829fc08747ba322",
+      "taste-skill": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "impeccable": "d41d9860b0094dcb68030657da63461212835aaa",
+      "hallmark": "04977e15f3dfd6ee4b74c887dac3eb52665d6c92"
+    },
+    "design_runtime": "context essayé, moteur0.1.25 indisponible (exit127) ; fallback références explicite",
+    "modules_applied": [
+      "impeccable references",
+      "taste references",
+      "hallmark app guardrails"
+    ],
+    "independent_review": true,
+    "checks": {
+      "build": "pass,0 erreurs/0 avertissements/1 hint test",
+      "static": "16 HTML,0 issues/0 warnings",
+      "auth_tests": 94,
+      "extra_sections_tests": 45,
+      "presave_tests": 57,
+      "publication_tests": 16,
+      "widget_assertions": 93
+    },
+    "auth_permissions_changed": false,
+    "fees_added": false
   }
 }

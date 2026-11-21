@@ -1,20 +1,25 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Interface privée de modification des photographies, des textes et des tarifs de Siray Signature.">
-    <meta name="color-scheme" content="light dark">
-    <title>Modifier le site — Siray Signature</title>
-    <link href="/admin/config.json" type="application/json" rel="cms-config-url">
-  </head>
-  <body>
-    <main id="admin-loading">
-      <h1>Modifier Siray Signature</h1>
-      <p>Ouverture de votre interface de modification…</p>
-      <noscript>Activez JavaScript pour vous connecter et modifier le site.</noscript>
-    </main>
-    <script src="https://unpkg.com/@sveltia/cms@0.270.0/dist/sveltia-cms.js" data-cfasync="false" onload="document.getElementById('admin-loading')?.remove()"></script>
-  </body>
-</html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<title>Votre atelier — Siray Signature</title>
+<meta name="description" content="Modifier les photos, les tarifs et les textes de Siray Signature, puis suivre leur publication.">
+<link rel="stylesheet" href="/admin/studio.css">
+<script>if(location.hash.startsWith('#/'))location.replace('/admin/editeur/'+location.hash);</script>
+</head>
+<body>
+<header class="sitebar"><a class="brand" href="/admin/">Siray Signature</a><a href="/" target="_blank" rel="noopener">Voir le site</a></header>
+<main class="workshop">
+<div class="intro"><h1>Votre atelier</h1><p>Choisissez ce que vous souhaitez modifier. Enregistrez dans l’éditeur, puis attendez la confirmation de mise en ligne.</p></div>
+<section class="publication" id="publication-status" aria-label="Publication du site"><p>Vérification de la publication…</p></section>
+<nav class="tasks" aria-label="Modifier les contenus">
+<a class="task" href="/admin/editeur/#/collections/photos/entries/photos"><div><h2>Les photographies</h2><p>Changer une photo, voir son cadrage et ajouter une réalisation à la galerie.</p></div><span class="action">Modifier</span></a>
+<a class="task" href="/admin/editeur/#/collections/catalogue/entries/catalogue"><div><h2>Le catalogue et les tarifs</h2><p>Mettre à jour les prix, les saveurs et les compositions. Ajouter une rubrique à une prestation.</p></div><span class="action">Modifier</span></a>
+<a class="task" href="/admin/editeur/#/collections/pages/entries/pages"><div><h2>Les textes des pages</h2><p>L’accueil, la maison et les informations pour préparer une commande.</p></div><span class="action">Modifier</span></a>
+</nav>
+<div class="help-row"><div><h2>Un premier changement ?</h2><p>Le guide montre où trouver chaque contenu, comment cadrer une image et comment vérifier le résultat depuis votre téléphone.</p></div><a href="/admin/guide/">Ouvrir le guide</a></div>
+<p class="note">L’éditeur demande votre compte GitHub personnel. Seuls les comptes autorisés de Hakan et Selin peuvent enregistrer les contenus du site. Ne partagez pas votre mot de passe.</p>
+<noscript><p>Activez JavaScript dans votre navigateur pour ouvrir l’éditeur et suivre la publication.</p></noscript>
+</main>
+<script src="/admin/publication-status.js"></script><script>window.SirayPublication?.init();</script>
+</body></html>

@@ -1,0 +1,112 @@
+/* Namespaced controls and preview styles: no dependency on the CMS's private DOM. */
+@font-face { font-family: 'Gloock'; src: url('/admin/fonts/gloock-latin.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+.siray-photo-editor,
+.siray-content-preview,
+.siray-photo-summary,
+.siray-preview-photo {
+  --siray-paper: #f5f1e8;
+  --siray-surface: #e9e4d7;
+  --siray-white: #fffcf6;
+  --siray-ink: #303528;
+  --siray-muted: #626452;
+  --siray-olive: #4e533d;
+  --siray-line: #c4c6b5;
+  --siray-focus: #535c2e;
+  box-sizing: border-box;
+  color: var(--siray-ink);
+  font: 400 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color-scheme: light;
+  overflow-wrap: anywhere;
+}
+.siray-photo-editor *,
+.siray-content-preview * { box-sizing: border-box; }
+.siray-photo-editor { width: 100%; min-width: 0; padding: 16px; background: var(--siray-paper); border-radius: 12px; }
+.siray-photo-destination { margin-bottom: 12px !important; font-weight: 600; }
+.siray-photo-toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+.siray-studio-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 20px; border: 1px solid var(--siray-olive); border-radius: 6px; background: var(--siray-olive); color: var(--siray-paper); font: 600 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: pointer; touch-action: manipulation; transition: background-color 160ms, transform 160ms; }
+.siray-studio-button-secondary { background: transparent; color: var(--siray-ink); }
+.siray-studio-button:disabled { cursor: wait; opacity: .7; }
+.siray-photo-editor :focus-visible,
+.siray-content-preview :focus-visible { outline: 3px solid var(--siray-focus); outline-offset: 3px; }
+.siray-photo-editor ::selection,
+.siray-content-preview ::selection { background: var(--siray-olive); color: var(--siray-paper); }
+.siray-photo-editor p,
+.siray-content-preview p { margin: 0; }
+.siray-studio-help,
+.siray-studio-field small { color: var(--siray-muted); font-size: 14px; line-height: 1.6; }
+.siray-studio-notice { margin-block: 12px 0 !important; color: var(--siray-olive); font-size: 14px; }
+.siray-studio-notice:empty { display: none; }
+.siray-studio-error { margin-top: 12px !important; padding: 12px; border: 1px solid #9a493c; border-radius: 6px; background: #fff4ef; color: #803b30; font-size: 16px; }
+.siray-photo-workspace { display: grid; gap: 24px; margin-top: 20px; }
+.siray-photo-preview { min-width: 0; }
+.siray-preview-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.siray-preview-switch button { flex: 1 1 120px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--siray-line); border-radius: 6px; background: var(--siray-white); color: var(--siray-ink); font: 500 14px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: pointer; touch-action: manipulation; }
+.siray-preview-switch button[aria-pressed='true'] { background: var(--siray-olive); border-color: var(--siray-olive); color: var(--siray-paper); }
+.siray-image-frame { position: relative; overflow: hidden; width: 100%; min-width: 0; background: var(--siray-surface); }
+.siray-image-frame img { display: block; width: 100%; height: 100%; max-width: 100%; }
+.siray-crop-frame { max-width: 360px; margin-inline: auto; }
+.siray-photo-preview > .siray-studio-help { margin-top: 12px; }
+.siray-image-empty { display: flex; align-items: center; justify-content: center; height: 100%; min-height: 120px; padding: 20px; text-align: center; color: var(--siray-muted); font-size: 14px; }
+.siray-photo-settings { display: grid; gap: 24px; min-width: 0; align-content: start; }
+.siray-crop-controls { min-width: 0; padding: 0; margin: 0; border: 0; }
+.siray-crop-controls legend { margin-bottom: 8px; padding: 0; font-weight: 600; font-size: 16px; }
+.siray-crop-controls > .siray-studio-button { width: 100%; margin-top: 12px; }
+.siray-range-label { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 12px; margin-top: 16px; font-size: 16px; font-weight: 500; }
+.siray-range-label output { color: var(--siray-muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.siray-range-label input[type='range'] { grid-column: 1/-1; width: 100%; height: 44px; margin: 0; accent-color: var(--siray-olive); cursor: ew-resize; touch-action: pan-y; }
+.siray-studio-field { display: grid; gap: 8px; min-width: 0; color: var(--siray-ink); }
+.siray-studio-field > span { font-size: 16px; font-weight: 600; }
+.siray-studio-field :is(input, textarea, select) { width: 100%; min-width: 0; min-height: 48px; padding: 12px; border: 1px solid var(--siray-line); border-radius: 6px; background: var(--siray-white); color: var(--siray-ink); font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; caret-color: var(--siray-olive); }
+.siray-studio-field textarea { resize: vertical; }
+.siray-gallery-fields { display: grid; gap: 16px; }
+.siray-photo-summary { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.siray-photo-summary img { flex: none; object-fit: cover; border-radius: 4px; }
+.siray-photo-summary span { min-width: 0; font-size: 14px; }
+.siray-content-preview { min-width: 0; max-width: 900px; margin: 0 auto; padding: 24px 20px 48px; background: var(--siray-paper); }
+.siray-content-preview-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--siray-line); }
+.siray-content-preview-header > p:first-child { font-size: 16px; font-weight: 600; }
+.siray-content-preview-header > p:last-child { color: var(--siray-muted); font-size: 14px; }
+.siray-content-preview h1,
+.siray-content-preview h2,
+.siray-content-preview h3,
+.siray-content-preview h4 { color: var(--siray-ink); text-wrap: balance; line-height: 1.25; font-weight: 400; letter-spacing: -.02em; }
+.siray-content-preview h1 { margin: 12px 0; font: 400 30px/1.25 'Gloock', Georgia, serif; }
+.siray-content-preview h2 { margin: 0 0 16px; font: 400 26px/1.3 'Gloock', Georgia, serif; }
+.siray-content-preview h3 { margin: 24px 0 12px; font: 400 22px/1.3 'Gloock', Georgia, serif; }
+.siray-content-preview h4 { margin: 20px 0 8px; font: 600 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.siray-content-preview p { max-width: 68ch; white-space: pre-line; }
+.siray-content-preview p + p { margin-top: 12px; }
+.siray-content-preview > section { margin-top: 40px; }
+.siray-preview-family + .siray-preview-family { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--siray-line); }
+.siray-preview-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+.siray-preview-photo { margin: 0; min-width: 0; }
+.siray-preview-photo figcaption { display: grid; gap: 4px; padding-top: 10px; color: var(--siray-ink); font-size: 14px; line-height: 1.5; }
+.siray-preview-photo figcaption span { color: var(--siray-muted); }
+.siray-preview-lead { font-size: 18px; }
+.siray-preview-price { margin-top: 16px !important; color: var(--siray-olive); font-weight: 600; }
+.siray-preview-list { margin: 16px 0; padding-left: 20px; }
+.siray-preview-list li { padding-block: 4px; }
+.siray-preview-prices { margin-block: 20px; }
+.siray-preview-prices > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; padding-block: 14px; border-bottom: 1px solid var(--siray-line); }
+.siray-preview-prices > div > strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.siray-preview-prices p { margin-top: 4px; color: var(--siray-muted); }
+.siray-preview-block { margin-top: 24px; }
+.siray-preview-block h3 { margin-top: 0; }
+.siray-preview-button-label { display: inline-flex; min-height: 44px; align-items: center; margin-top: 16px; padding: 10px 16px; border-radius: 6px; background: var(--siray-olive); color: var(--siray-paper); font-weight: 500; }
+.siray-content-preview [data-key-path] { scroll-margin-block: 24px; cursor: pointer; }
+@media (min-width: 720px) {
+  .siray-photo-toolbar { flex-direction: row; align-items: center; gap: 20px; }
+  .siray-photo-toolbar .siray-studio-button { flex: none; }
+  .siray-photo-workspace { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+  .siray-content-preview { padding: 32px; }
+  .siray-preview-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .siray-studio-button:not(:disabled):hover { background: #424733; transform: translateY(-1px); }
+  .siray-studio-button-secondary:hover { background: var(--siray-surface) !important; }
+  .siray-studio-button:active { transform: translateY(0); }
+  .siray-content-preview [data-key-path]:hover { outline: 1px solid var(--siray-line); outline-offset: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .siray-photo-editor * { transition: none !important; }
+}
