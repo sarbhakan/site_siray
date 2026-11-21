@@ -40,6 +40,10 @@
 .siray-image-frame { position: relative; overflow: hidden; width: 100%; min-width: 0; background: var(--siray-surface); }
 .siray-image-frame img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; }
 .siray-crop-frame { max-width: 360px; margin-inline: auto; }
+.siray-crop-movable { touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
+.siray-crop-movable img { pointer-events: none; -webkit-touch-callout: none; }
+.siray-crop-dragging { cursor: grabbing; }
+.siray-drag-help { margin-top: 10px !important; color: var(--siray-muted); font-size: 13px; line-height: 1.45; }
 .siray-crop-caption { margin: 0 0 7px !important; font-size: 13px; font-weight: 650; }
 .siray-source-preview { margin-top: 18px; }
 .siray-source-sheet { position: relative; width: 100%; margin-inline: auto; overflow: hidden; background: var(--siray-surface); }

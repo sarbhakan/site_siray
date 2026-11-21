@@ -1515,5 +1515,28 @@
       "rendered": "banc React et vrais composants Astro, mobile390×844, données de test locales seulement"
     },
     "runtime": "neuf sources réutilisées, pins conservés ; référence directe pour moteur Impeccable indisponible dans cette session ; outils navigateur hôte, aucun hook global"
+  },
+  "v21": {
+    "task": "Cadrage direct au doigt dans le CMS",
+    "lead": "impeccable polish",
+    "pins": "Identiques à V20 ; neuf sources réutilisées",
+    "decisions": [
+      "Pointer Events natifs, déplacement proportionnel au débordement réel",
+      "touch-action limité au résultat déplaçable",
+      "Curseurs conservés, fichier et métadonnées inchangés, enregistrement explicite"
+    ],
+    "checks": {
+      "widget_checks": 170,
+      "other_node_cases": 232,
+      "static_pages": 16,
+      "build": "passed",
+      "browser": "React réel390×844 et1280×900, glissement et changement de format, aucune erreur console observée",
+      "independent_review": "passed"
+    },
+    "limitations": [
+      "Pas de téléphone physique dans cette passe",
+      "Moteur Impeccable indisponible dans la session ; références directes déjà documentées"
+    ],
+    "report": "docs/qa/v21-cadrage-au-doigt.md"
   }
 }

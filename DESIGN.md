@@ -141,3 +141,5 @@ L’administration prolonge l’olive et l’ivoire du site dans une interface d
 Sur téléphone, le cadre de la photographie et les curseurs se placent côte à côte ; les descriptions et légendes gardent toute la largeur. Cela permet de voir le cadrage pendant le réglage.
 
 Le cadrage V20 ajoute un zoom facultatif réel (1à2), le résultat au format choisi et un rectangle de zone visible sur l’original. Le retour visuel est immédiat pendant le réglage ; la publication exige toujours Enregistrer. Les formats proposés suivent les proportions du site, et une aide explique les directions sans débordement au zoom1.
+
+Le cadrage V21 se règle aussi en faisant glisser directement la photo dans son aperçu. Le déplacement suit le doigt sans animation différée ; seule cette surface déplaçable intercepte le geste. Le défilement reste natif autour, et les curseurs offrent une alternative au glissement.

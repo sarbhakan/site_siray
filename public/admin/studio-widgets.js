@@ -49,6 +49,18 @@
       horizontal: width - w > width * .001, vertical: height - h > height * .001 };
   }
 
+  // Percent position controls the overflow, not the frame width. Using the
+  // rendered overflow makes the photograph follow the finger pixel for pixel.
+  function dragPosition(width, height, frameWidth, frameHeight, position, zoom, dx, dy) {
+    const [x, y] = parsePosition(position);
+    if (![width, height, frameWidth, frameHeight].every(n => Number.isFinite(n) && n > 0) ||
+        ![dx, dy].every(Number.isFinite)) return positionString(x, y);
+    const scale = Math.max(frameWidth / width, frameHeight / height) * photoZoom(zoom);
+    const overflowX = width * scale - frameWidth, overflowY = height * scale - frameHeight;
+    return positionString(overflowX > width * scale * .001 ? x - dx / overflowX * 100 : x,
+      overflowY > height * scale * .001 ? y - dy / overflowY * 100 : y);
+  }
+
   function safeImageURL(path, getAsset) {
     if (typeof path !== 'string' || !path) return '';
     let url = '';
@@ -81,6 +93,7 @@
       return h('div', { className: `siray-image-frame ${className}`, style: { aspectRatio: String(ratio) }, ...props },
         src && !failed ? h('img', {
           src, alt: photo.alt || '', decoding: 'async', loading: 'lazy',
+          draggable: false,
           style: { objectFit: whole ? 'contain' : 'cover', objectPosition: whole ? '50% 50%' : photo.position || '50% 50%',
             scale: whole ? '1' : String(photoZoom(photo.zoom)), transformOrigin: photo.position || '50% 50%' },
           onLoad: event => onDimensions?.({ width: event.currentTarget.naturalWidth, height: event.currentTarget.naturalHeight }),
@@ -103,6 +116,8 @@
       const [view, setView] = useState(0);
       const [whole, setWhole] = useState(false);
       const [dimensions, setDimensions] = useState(null);
+      const dragRef = useRef(null);
+      const [dragging, setDragging] = useState(false);
       useEffect(() => setDimensions(null), [current.file]);
       const context = option(field, 'photo_context', 'cover');
       const frames = CONTEXTS[context] || CONTEXTS.cover;
@@ -112,6 +127,7 @@
       const ratio = frames[view]?.[1] || frames[0][1];
       const zone = dimensions && cropWindow(dimensions.width, dimensions.height, ratio, current.position, zoom);
       const hintID = `${forID}-crop-help`;
+      const dragHintID = `${forID}-drag-help`;
       const errorID = `${forID}-photo-error`;
       const update = (patch) => {
         const next = { ...currentRef.current, ...patch };
@@ -121,6 +137,44 @@
         onChange(next);
       };
       const change = (key, next) => update({ [key]: next });
+
+      const endDrag = (event) => {
+        const drag = dragRef.current;
+        if (!drag || (event && event.pointerId !== drag.id)) return;
+        dragRef.current = null;
+        setDragging(false);
+        if (drag.node.hasPointerCapture?.(drag.id)) drag.node.releasePointerCapture(drag.id);
+      };
+      useEffect(() => { endDrag(); }, [current.file, view, whole, zoom]);
+      useEffect(() => () => {
+        const drag = dragRef.current;
+        dragRef.current = null;
+        if (drag?.node.hasPointerCapture?.(drag.id)) drag.node.releasePointerCapture(drag.id);
+      }, []);
+
+      const startDrag = (event) => {
+        if (event.isPrimary === false || event.button !== 0 || whole || dragRef.current) return;
+        const node = event.currentTarget, image = node.querySelector('img');
+        const rect = node.getBoundingClientRect();
+        const width = image?.naturalWidth, height = image?.naturalHeight;
+        const live = currentRef.current;
+        const window = cropWindow(width, height, rect.width / rect.height, live.position, live.zoom);
+        if (!rect.width || !rect.height || !window || (!window.horizontal && !window.vertical)) return;
+        try { node.setPointerCapture(event.pointerId); } catch { return; }
+        dragRef.current = { id: event.pointerId, node, width, height, frameWidth: rect.width, frameHeight: rect.height,
+          x: event.clientX, y: event.clientY, position: live.position, zoom: live.zoom, file: live.file };
+        setDragging(true);
+        event.preventDefault();
+      };
+      const moveDrag = (event) => {
+        const drag = dragRef.current;
+        if (!drag || drag.id !== event.pointerId) return;
+        if (currentRef.current.file !== drag.file || currentRef.current.zoom !== drag.zoom) { endDrag(event); return; }
+        const position = dragPosition(drag.width, drag.height, drag.frameWidth, drag.frameHeight,
+          drag.position, drag.zoom, event.clientX - drag.x, event.clientY - drag.y);
+        change('position', position);
+        event.preventDefault();
+      };
 
       useImperativeHandle(ref, () => ({
         isValid: () => {
@@ -172,7 +226,14 @@
             ),
             h('p', { className: 'siray-crop-caption' }, whole ? 'Photo originale, sans recadrage' : 'Résultat sur le site'),
             h(ImageFrame, { photo: current, getAsset, ratio, whole, onDimensions: setDimensions,
-              className: 'siray-crop-frame', 'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site' }),
+              className: `siray-crop-frame${!whole && (zone?.horizontal || zone?.vertical) ? ' siray-crop-movable' : ''}${dragging ? ' siray-crop-dragging' : ''}`,
+              'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site',
+              'aria-describedby': whole ? undefined : dragHintID,
+              onPointerDown: startDrag, onPointerMove: moveDrag, onPointerUp: endDrag,
+              onPointerCancel: endDrag, onLostPointerCapture: endDrag,
+              onDragStart: event => event.preventDefault() }),
+            !whole && h('p', { id: dragHintID, className: 'siray-drag-help' },
+              'Glissez la photo avec un doigt pour la cadrer. Pour faire défiler la page, glissez à côté. Les curseurs restent disponibles.'),
             zone && h('div', { className: 'siray-source-preview' },
               h('p', { className: 'siray-crop-caption' }, 'Zone conservée dans l’original'),
               h('div', { className: 'siray-source-sheet', style: { aspectRatio: String(dimensions.width / dimensions.height), maxWidth: `${156 * dimensions.width / dimensions.height}px` },
@@ -261,5 +322,5 @@
     init.registered = true;
   }
 
-  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, safeImageURL, photoValue } };
+  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, dragPosition, safeImageURL, photoValue } };
 })(typeof window !== 'undefined' ? window : globalThis);

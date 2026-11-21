@@ -130,6 +130,154 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     assert.equal(h.cropWindow(0,100,1), null);
     assert.equal(h.cropWindow(10,100,Infinity), null);
   });
+  test('Finger displacement maps to actual rendered pixels, including zoom and transform origin', () => {
+    assert.equal(h.dragPosition(1200,1600,150,200,'50% 50%',1.5,15,-20), '30% 70%');
+    // Independently reconstruct the CSS content offset after object-fit and
+    // scale about the same percentage origin. Avoid merely restating the helper.
+    for (const [sourceW,sourceH] of [[1200,1600],[2400,1000],[1320,2346]]) {
+      for (const [frameW,frameH] of [[150,200],[300,170],[190,190]]) for (const zoom of [1,1.3,2]) {
+        const fit = Math.max(frameW/sourceW,frameH/sourceH);
+        const overflow = [sourceW*fit*zoom-frameW,sourceH*fit*zoom-frameH];
+        const deltas = overflow.map(n => n*.1);
+        const result = h.parsePosition(h.dragPosition(sourceW,sourceH,frameW,frameH,'45% 60%',zoom,...deltas));
+        for (let axis=0;axis<2;axis++) {
+          const start = [45,60][axis], amount = overflow[axis];
+          if (amount < .001) assert.equal(result[axis], start);
+          else assert.ok(Math.abs((start-result[axis])*amount/100-deltas[axis]) < .00001);
+        }
+      }
+    }
+  });
+  test('Dragging clamps both edges and leaves fitted axes unchanged', () => {
+    assert.equal(h.dragPosition(1200,1600,150,200,'50% 50%',1.5,1000,-1000), '0% 100%');
+    assert.equal(h.dragPosition(1200,1600,150,200,'23% 71%',1,40,-40), '23% 71%');
+    assert.equal(h.dragPosition(1200,1600,160,200,'50% 50%',1,30,10/3), '50% 25%');
+    assert.equal(h.dragPosition(2400,1000,200,200,'50% 50%',1,28,100), '40% 50%');
+    for (const dims of [[0,1600,150,200],[1200,NaN,150,200],[1200,1600,0,200],[1200,1600,150,Infinity]]) {
+      assert.equal(h.dragPosition(...dims,'30% 60%',1.5,10,10), '30% 60%');
+    }
+    assert.equal(h.dragPosition(1200,1600,150,200,'30% 60%',1.5,NaN,10), '30% 60%');
+  });
+  function dragRig(overrides = {}, geometry = {}) {
+    const value = {file:'/images/drag.webp',alt:'Un layer cake',position:'50% 50%',zoom:1.5,
+      label:'Une légende',category:'layer-cakes',retained:'preserved',...overrides};
+    const changes=[],captured=new Set(),releases=[];
+    let prevented=0;
+    const target = {
+      querySelector: () => ({naturalWidth:1200,naturalHeight:1600,...geometry.image}),
+      getBoundingClientRect: () => ({width:150,height:200,...geometry.frame}),
+      setPointerCapture: id => captured.add(id),
+      hasPointerCapture: id => captured.has(id),
+      releasePointerCapture: id => {captured.delete(id);releases.push(id);},
+    };
+    const control = widgets['siray-photo'].controlComponent({value,field,forID:'drag',getAsset,
+      pickFile:async()=>({value:'blob:https://site.test/replacement'}),
+      onChange: next => changes.push(next)},{});
+    const frame=nodes(control).find(n => n.props.onPointerDown);
+    const event = patch => ({currentTarget:target,pointerId:7,isPrimary:true,pointerType:'touch',button:0,
+      clientX:80,clientY:90,preventDefault:()=>prevented++,...patch});
+    return {value,changes,captured,releases,target,control,frame,event,get prevented(){return prevented;}};
+  }
+  test('Dragging updates immediately before CMS props, without accumulating deltas or changing metadata', () => {
+    const rig=dragRig(),before=JSON.stringify(rig.value);
+    rig.frame.props.onPointerDown(rig.event());
+    assert.ok(rig.captured.has(7));
+    rig.frame.props.onPointerMove(rig.event({clientX:95,clientY:70}));
+    assert.equal(rig.changes.at(-1).position,'30% 70%');
+    rig.frame.props.onPointerMove(rig.event({clientX:102.5,clientY:80}));
+    assert.equal(rig.changes.at(-1).position,'20% 60%');
+    for (const key of ['file','alt','zoom','label','category','retained']) {
+      assert.equal(rig.changes.at(-1)[key],rig.value[key]);
+    }
+    assert.equal(JSON.stringify(rig.value),before);
+    assert.equal(rig.prevented,3);
+    rig.frame.props.onPointerUp(rig.event());
+    assert.deepEqual(rig.releases,[7]);
+    const count=rig.changes.length;
+    rig.frame.props.onPointerMove(rig.event({clientX:0}));
+    assert.equal(rig.changes.length,count);
+    // A new drag starts from the most recent local crop, even without new props.
+    rig.frame.props.onPointerDown(rig.event());
+    rig.frame.props.onPointerMove(rig.event({clientX:87.5,clientY:100}));
+    assert.equal(rig.changes.at(-1).position,'10% 50%');
+    rig.frame.props.onPointerUp(rig.event());
+  });
+  test('A second pointer cannot replace, move or terminate the captured finger', () => {
+    const rig=dragRig();
+    rig.frame.props.onPointerDown(rig.event());
+    rig.frame.props.onPointerDown(rig.event({pointerId:9,isPrimary:false,clientX:500}));
+    rig.frame.props.onPointerMove(rig.event({pointerId:9,clientX:1000}));
+    rig.frame.props.onPointerUp(rig.event({pointerId:9}));
+    assert.equal(rig.changes.length,0);assert.ok(rig.captured.has(7));
+    rig.frame.props.onPointerMove(rig.event({clientX:95,clientY:70}));
+    assert.equal(rig.changes.at(-1).position,'30% 70%');
+    rig.frame.props.onPointerUp(rig.event());
+    assert.deepEqual(rig.releases,[7]);
+  });
+  test('Nonprimary touch and secondary mouse presses leave page gestures untouched', () => {
+    for (const patch of [{isPrimary:false},{pointerType:'mouse',button:2}]) {
+      const rig=dragRig();
+      rig.frame.props.onPointerDown(rig.event(patch));
+      rig.frame.props.onPointerMove(rig.event({clientX:100}));
+      assert.equal(rig.changes.length,0);assert.equal(rig.captured.size,0);assert.equal(rig.prevented,0);
+    }
+  });
+  test('Pointer cancellation and capture loss stop changes and release safely', () => {
+    for (const finish of ['onPointerCancel','onLostPointerCapture']) {
+      const rig=dragRig();rig.frame.props.onPointerDown(rig.event());
+      rig.frame.props.onPointerMove(rig.event({clientX:95,clientY:70}));
+      if (finish==='onLostPointerCapture') rig.captured.delete(7);
+      rig.frame.props[finish](rig.event());
+      const count=rig.changes.length;
+      rig.frame.props.onPointerMove(rig.event({clientX:110,clientY:50}));
+      rig.frame.props.onPointerUp(rig.event());
+      assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,0);
+      assert.equal(rig.changes.at(-1).position,'30% 70%');
+      assert.deepEqual(rig.releases,finish==='onPointerCancel'?[7]:[]);
+    }
+  });
+  test('Uncropped or unloaded photos do not capture a finger or block page scrolling', () => {
+    for (const rig of [dragRig({zoom:1}),dragRig({}, {image:{naturalWidth:0}}),dragRig({}, {frame:{width:0}})]) {
+      rig.frame.props.onPointerDown(rig.event());
+      rig.frame.props.onPointerMove(rig.event({clientX:100}));
+      assert.equal(rig.captured.size,0);assert.equal(rig.prevented,0);assert.equal(rig.changes.length,0);
+    }
+  });
+  test('Unavailable pointer capture does not leave a stuck gesture', () => {
+    const rig=dragRig();rig.target.setPointerCapture=()=>{throw Error('not active');};
+    rig.frame.props.onPointerDown(rig.event());
+    rig.frame.props.onPointerMove(rig.event({clientX:100}));
+    assert.equal(rig.changes.length,0);assert.equal(rig.prevented,0);
+  });
+  test('Changing zoom or resetting stops a gesture before it can write stale coordinates', () => {
+    for (const action of ['zoom','reset']) {
+      const rig=dragRig();rig.frame.props.onPointerDown(rig.event());
+      if (action==='zoom') nodes(rig.control).find(n=>n.props.id==='drag-zoom').props.onInput({currentTarget:{value:'1.8'}});
+      else {
+        nodes(rig.control).find(n=>n.type==='button'&&strings(n)==='Réinitialiser le cadrage').props.onClick();
+      }
+      const count=rig.changes.length;
+      rig.frame.props.onPointerMove(rig.event({clientX:100}));
+      assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,0);
+    }
+  });
+  const replacedDuringDrag=dragRig();
+  replacedDuringDrag.frame.props.onPointerDown(replacedDuringDrag.event());
+  await nodes(replacedDuringDrag.control).find(n=>n.props.id==='drag').props.onClick();
+  test('Replacing a source during a drag cannot overwrite its crop from stale dimensions', () => {
+    const rig=replacedDuringDrag,count=rig.changes.length;
+    assert.equal(rig.changes.at(-1).file,'blob:https://site.test/replacement');
+    rig.frame.props.onPointerMove(rig.event({clientX:100}));
+    assert.equal(rig.changes.length,count);assert.equal(rig.captured.size,0);
+  });
+  test('Preview disables native image dragging while keeping crop controls as an alternative', () => {
+    const rig=dragRig();
+    rig.frame.props.onDragStart(rig.event());assert.equal(rig.prevented,1);
+    const image=nodes(render(rig.frame)).find(n=>n.type==='img');
+    assert.equal(image.props.draggable,false);
+    assert.ok(strings(rig.control).includes('Les curseurs restent disponibles.'));
+    assert.ok(nodes(rig.control).filter(n=>n.type==='input'&&n.props.type==='range').length===3);
+  });
   for (const value of [{ file: '/images/photo.webp', alt: '' }, { file: '', alt: 'Photo' }]) test('Missing photo/alt rejected', () => {
     const ref = {}; widgets['siray-photo'].controlComponent({ value, field, forID: 'invalid', getAsset, onChange: () => {} }, ref); assert.notEqual(ref.current.isValid(), true);
   });
