@@ -58,6 +58,51 @@ test('fails closed if catalogue data is unavailable', () => {
   assert.throws(() => save({ entry: entry({ collections: [null] }) }), /prestation/u);
 });
 
+const galleryPhoto = (overrides = {}) => ({
+  file: '/src/assets/uploads/gateau.webp', alt: 'Layer cake vintage ivoire',
+  label: 'Layer cake vintage', category: 'layer-cakes', position: '50% 50%', ...overrides,
+});
+const galleryData = (photo) => ({homeSlides: [], homePhotos: {}, collections: [], gallery: [galleryPhoto(), photo]});
+
+test('whole-document photo checks preserve every current photo and gallery entry', async () => {
+  const data = JSON.parse(await readFile(new URL('../../src/content/photography.json', import.meta.url), 'utf8'));
+  const before = JSON.stringify(data), { save } = capture();
+  assert.equal(save({ entry: entry(data, 'photos', 'src/content/photography.json') }), undefined);
+  assert.equal(JSON.stringify(data), before);
+});
+
+for (const [field, value, message] of [
+  ['category', undefined, /catégorie de prestation/u], ['category', '', /catégorie de prestation/u],
+  ['category', 'unknown', /catégorie de prestation/u], ['category', 'all', /catégorie de prestation/u],
+  ['category', '__proto__', /catégorie de prestation/u],
+  ['label', undefined, /légende visible/u], ['label', '  ', /légende visible/u],
+  ['alt', undefined, /description pour l’accessibilité/u], ['alt', '\n ', /description pour l’accessibilité/u],
+  ['file', undefined, /choisissez une photographie/u], ['file', '', /choisissez une photographie/u],
+]) test(`preSave rejects an incomplete collapsed gallery item: ${field}=${String(value)}`, () => {
+  const { save } = capture(), data = galleryData(galleryPhoto({ [field]: value })), before = JSON.stringify(data);
+  assert.throws(() => save({ entry: entry(data, 'photos', 'src/content/photography.json') }), (error) => {
+    assert.match(error.message, /Galerie.*photo 2/u);
+    assert.match(error.message, message);
+    assert.match(error.message, /avant d’enregistrer/u);
+    return true;
+  });
+  assert.equal(JSON.stringify(data), before);
+});
+
+test('gallery preSave checks work by file path with plain entry data and no mounted controls', () => {
+  const { save } = capture();
+  assert.throws(() => save({ entry: {path:'/src/content/photography.json', data:galleryData(galleryPhoto({category:undefined}))} }), /photo 2.*catégorie/u);
+});
+
+test('gallery preSave accepts all seven categories and preserves temporary upload URLs', () => {
+  const { save } = capture();
+  for (const category of ['layer-cakes', 'bento-cakes', 'mignardises', 'cupcakes', 'brunch-box', 'buffets', 'plateaux']) {
+    const data = galleryData(galleryPhoto({category,file:'blob:https://siraysignature.fr/upload-id'})), before = JSON.stringify(data);
+    assert.equal(save({ entry: entry(data, 'photos', 'src/content/photography.json') }), undefined);
+    assert.equal(JSON.stringify(data), before);
+  }
+});
+
 const cases = [
   undefined, null, [], {}, [null], [section()], [section({ items: [] })], [section({ button: {} })],
   [section({ title: '' })], [section({ title: 'a'.repeat(120), text: 'a'.repeat(4000) })],

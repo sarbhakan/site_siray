@@ -6,9 +6,12 @@ const assert = require('node:assert/strict');
 const path = require('node:path');
 const repo = path.resolve(__dirname, '../..');
 const widgets = {};
+let activeHooks = null;
 const React = {
   createElement: (type, props, ...children) => ({ type, props: props || {}, children: children.flat(Infinity) }),
-  useState: initial => [initial, () => {}], useEffect: () => {}, useRef: initial => ({current:initial}),
+  useState: initial => activeHooks ? activeHooks.useState(initial) : [initial, () => {}],
+  useEffect: (effect,deps) => activeHooks?.useEffect(effect,deps),
+  useRef: initial => activeHooks ? activeHooks.useRef(initial) : ({current:initial}),
   useImperativeHandle: (ref, get) => { if (ref) ref.current = get(); }, forwardRef: component => component,
 };
 const sandbox = { globalThis: {}, Intl, Object, Array, Number, String, Error };
@@ -43,6 +46,52 @@ function render(node) {
   return { ...node, children: node.children.map(render).flat(Infinity) };
 }
 function strings(node) { if (Array.isArray(node)) return node.map(strings).join(' '); if (typeof node === 'string') return node; return !node || typeof node !== 'object' ? '' : (node.children || []).map(strings).join(' '); }
+// Small hook runner for the crop transaction. It exercises actual component
+// handlers across rerenders; native dialog focus containment is a browser check.
+function hookRunner(component, initialProps, attachRef = () => null) {
+  const slots = [];
+  let props = initialProps, tree, dirty = false;
+  const render = nextProps => {
+    if (nextProps) props = nextProps;
+    const original = activeHooks;
+    let passes = 0;
+    try {
+      do {
+        if (++passes > 12) throw Error('Hook runner did not settle');
+        dirty = false;
+        let index = 0;
+        const pending = [];
+        const useState = initial => {
+          const i = index++;
+          if (!slots[i]) slots[i] = {value:typeof initial==='function'?initial():initial};
+          return [slots[i].value, next => {
+            const value = typeof next==='function'?next(slots[i].value):next;
+            if (!Object.is(value,slots[i].value)) {slots[i].value=value;dirty=true;}
+          }];
+        };
+        const useRef = initial => {
+          const i = index++;
+          if (!slots[i]) slots[i] = {value:{current:initial}};
+          return slots[i].value;
+        };
+        const useEffect = (effect,deps) => {
+          const i = index++, old = slots[i];
+          if (!old || !deps || !old.deps || deps.some((value,j)=>!Object.is(value,old.deps[j]))) {
+            pending.push(()=>{old?.cleanup?.();slots[i]={deps,cleanup:effect()};});
+          }
+        };
+        activeHooks = {useState,useRef,useEffect};
+        tree = component(props,{});
+        for (const node of nodes(tree)) if (typeof node.type==='string' && node.props.ref) {
+          node.props.ref.current = attachRef(node);
+        }
+        for (const effect of pending) effect();
+      } while(dirty);
+    } finally {activeHooks=original;}
+    return tree;
+  };
+  return {render,get tree(){return tree;},unmount(){for(const slot of slots)slot?.cleanup?.();}};
+}
 const getAsset = path => ({ url: path });
 for (const photo of photos) test('Existing photo shape untouched', () => {
   const before = JSON.stringify(photo), ref = {};
@@ -463,5 +512,164 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     pickFile: async () => null, onChange: () => cancellationChanged = true }, {});
   await nodes(cancelledControl).find(n => n.props.id === 'cancel').props.onClick();
   test('Cancelling the picker leaves the saved photo untouched', () => assert.equal(cancellationChanged, false));
+
+  const button = (tree,label) => nodes(tree).find(n=>n.type==='button'&&strings(n)===label);
+  const clone = value => JSON.parse(JSON.stringify(value));
+  function modalRig(overrides = {}) {
+    const value = {file:'/images/fullscreen.webp',alt:'Gâteau fleuri',retained:'preserved',...overrides};
+    const changes=[], focus=[], lifecycle={show:0,close:0};
+    const previousDocument=sandbox.globalThis.document;
+    const doc={body:{style:{overflow:'auto'}},documentElement:{style:{overflow:'clip'}}};
+    sandbox.globalThis.document=doc;
+    const trigger={isConnected:true,focus:options=>focus.push({target:'trigger',options})};
+    const dialog={open:false,
+      showModal(){this.open=true;lifecycle.show++;},
+      close(){this.open=false;lifecycle.close++;},
+      querySelector:selector=>{assert.equal(selector,'h2');return {focus:options=>focus.push({target:'heading',options})};},
+      getBoundingClientRect:()=>({left:20,top:20,right:300,bottom:700})};
+    const props={value,field,forID:'fullscreen-photo',getAsset,onChange:next=>changes.push(next)};
+    const parent=hookRunner(widgets['siray-photo'].controlComponent,props);
+    parent.render();
+    button(parent.tree,'Cadrer en plein écran').props.onClick({currentTarget:trigger});
+    parent.render();
+    const modalNode=nodes(parent.tree).find(n=>n.type?.name==='FullScreenCrop');
+    assert.ok(modalNode,'Fullscreen opens a separate crop component');
+    const modal=hookRunner(modalNode.type,modalNode.props,n=>n.type==='dialog'?dialog:null);
+    modal.render();
+    const cropNode=()=>nodes(modal.tree).find(n=>n.props.cropOnly===true);
+    return {value,changes,focus,lifecycle,doc,trigger,dialog,props,parent,modal,cropNode,
+      draft:patch=>cropNode().props.onChange({...cropNode().props.value,...patch}),
+      confirm:()=>button(modal.tree,'Valider le cadrage').props.onClick(),
+      dismiss:()=>button(modal.tree,'Annuler').props.onClick(),
+      unmount(){modal.unmount();parent.unmount();sandbox.globalThis.document=previousDocument;}};
+  }
+  const remainsOpen = rig => nodes(rig.parent.render()).some(n=>n.type?.name==='FullScreenCrop');
+
+  test('Crop patch ignores absent defaults, formatting-only changes and non-crop metadata', () => {
+    assert.deepEqual(clone(h.cropPatch({}, {position:'50% 50%',zoom:1,alt:'changed',file:'/other.webp'})),{});
+    assert.deepEqual(clone(h.cropPatch({position:'50.000% 65.789%',zoom:1.5}, {position:'50% 65.789%',zoom:1.5})),{});
+    assert.deepEqual(clone(h.cropPatch({position:'invalid',zoom:0},{position:'50% 50%',zoom:1})),{});
+  });
+  test('Crop patch emits both changes together and clamps invalid draft values', () => {
+    assert.deepEqual(clone(h.cropPatch({}, {position:'23% 65.789%',zoom:1.52})),{position:'23% 65.789%',zoom:1.52});
+    assert.deepEqual(clone(h.cropPatch({position:'30% 20%',zoom:1.5},{position:'999% 0%',zoom:9})),{position:'100% 0%',zoom:2});
+  });
+  test('Opening the modal labels the native dialog, locks scrolling and focuses its heading once', () => {
+    const rig=modalRig(),before=JSON.stringify(rig.value),tree=rig.modal.tree;
+    assert.equal(tree.type,'dialog');assert.equal(rig.dialog.open,true);assert.equal(rig.lifecycle.show,1);
+    assert.equal(rig.doc.body.style.overflow,'hidden');assert.equal(rig.doc.documentElement.style.overflow,'hidden');
+    for(const attr of ['aria-labelledby','aria-describedby']) assert.ok(nodes(tree).some(n=>n.props.id===tree.props[attr]));
+    assert.equal(rig.focus.length,1);assert.equal(rig.focus[0].target,'heading');assert.equal(rig.focus[0].options.preventScroll,true);
+    rig.modal.render();assert.equal(rig.lifecycle.show,1);assert.equal(rig.changes.length,0);assert.equal(JSON.stringify(rig.value),before);
+    assert.ok(strings(tree).includes('puis « Enregistrer » dans l’éditeur pour publier.'));
+    rig.unmount();
+  });
+  test('Fullscreen draft updates its preview while leaving the editor value untouched', () => {
+    const rig=modalRig({position:'50% 40%',zoom:1.2}),before=JSON.stringify(rig.value);
+    rig.draft({position:'23% 65.789%',zoom:1.6});rig.modal.render();
+    assert.equal(rig.cropNode().props.value.position,'23% 65.789%');assert.equal(rig.cropNode().props.value.zoom,1.6);
+    assert.equal(rig.changes.length,0);assert.equal(JSON.stringify(rig.value),before);
+    const inline=nodes(rig.parent.tree).find(n=>n.props.onPointerDown);
+    assert.equal(inline.props.photo.position,'50% 40%');assert.equal(inline.props.photo.zoom,1.2);
+    rig.unmount();
+  });
+  test('Validation applies position and zoom in one editor change without changing metadata', () => {
+    const rig=modalRig({position:'50% 50%',zoom:1,label:'Légende',category:'bento-cakes'});
+    rig.draft({position:'23% 65.789%',zoom:1.7,alt:'must not replace',label:'must not replace',file:'/other.webp'});
+    rig.confirm();assert.equal(rig.changes.length,1);
+    assert.deepEqual(clone(rig.changes[0]),{...rig.value,position:'23% 65.789%',zoom:1.7});
+    assert.equal(remainsOpen(rig),false);rig.unmount();
+  });
+  test('Validating an unchanged photo adds no optional defaults and makes no editor change', () => {
+    const rig=modalRig();rig.confirm();assert.equal(rig.changes.length,0);assert.equal(remainsOpen(rig),false);
+    assert.equal(Object.hasOwn(rig.value,'position'),false);assert.equal(Object.hasOwn(rig.value,'zoom'),false);rig.unmount();
+  });
+  test('Latest metadata for the same source survives fullscreen validation', () => {
+    const rig=modalRig({position:'50% 50%',zoom:1,label:'Avant'});
+    rig.draft({position:'30% 70%',zoom:1.4});
+    const latest={...rig.value,alt:'Description récente',label:'Après',retained:'new metadata'};
+    rig.parent.render({...rig.props,value:latest});assert.equal(remainsOpen(rig),true);
+    rig.confirm();assert.equal(rig.changes.length,1);
+    assert.deepEqual(clone(rig.changes[0]),{...latest,position:'30% 70%',zoom:1.4});rig.unmount();
+  });
+  test('A replaced source closes the crop dialog and refuses a stale confirmation', () => {
+    const rig=modalRig();rig.draft({position:'30% 70%',zoom:1.4});
+    const latest={...rig.value,file:'/images/replaced.webp'};
+    rig.parent.render({...rig.props,value:latest});assert.equal(remainsOpen(rig),false);
+    rig.confirm();assert.equal(rig.changes.length,0);
+    assert.equal(nodes(rig.parent.render()).find(n=>n.props.onPointerDown).props.photo.file,latest.file);rig.unmount();
+  });
+  test('Changing only the checked format keeps it selected after validation without editing content', () => {
+    const rig=modalRig();rig.cropNode().props.onCropViewChange(1);rig.confirm();
+    assert.equal(rig.changes.length,0);rig.parent.render();
+    assert.equal(nodes(rig.parent.tree).find(n=>n.props.onPointerDown).props.ratio,4/3);rig.unmount();
+  });
+  for(const mode of ['button','cancel','Escape','backdrop']) test(`Closing by ${mode} discards the crop draft`,()=>{
+    const rig=modalRig({position:'50% 50%',zoom:1}),calls={prevent:0,stop:0};
+    rig.draft({position:'20% 70%',zoom:1.9});
+    const event={preventDefault:()=>calls.prevent++,stopPropagation:()=>calls.stop++};
+    if(mode==='button')rig.dismiss();
+    if(mode==='cancel')rig.modal.tree.props.onCancel(event);
+    if(mode==='Escape')rig.modal.tree.props.onKeyDown({...event,key:'Escape'});
+    if(mode==='backdrop')rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:rig.dialog,clientX:10,clientY:100});
+    assert.equal(rig.changes.length,0);assert.equal(remainsOpen(rig),false);
+    if(mode==='cancel'||mode==='Escape'){assert.equal(calls.prevent,1);assert.equal(calls.stop,1);}
+    rig.unmount();
+  });
+  test('Clicks within the dialog content or its bounds never dismiss the draft',()=>{
+    const rig=modalRig();
+    rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:{},clientX:10,clientY:100});assert.equal(remainsOpen(rig),true);
+    rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:rig.dialog,clientX:50,clientY:100});assert.equal(remainsOpen(rig),true);
+    rig.unmount();
+  });
+  test('Native Tab remains usable while editor save shortcuts are blocked inside the modal',()=>{
+    const rig=modalRig();
+    for(const keys of [{key:'Tab'},{key:'s',ctrlKey:true},{key:'S',metaKey:true}]){
+      let prevented=0,stopped=0;
+      rig.modal.tree.props.onKeyDown({...keys,preventDefault:()=>prevented++,stopPropagation:()=>stopped++});
+      assert.equal(stopped,1);assert.equal(prevented,keys.key==='Tab'?0:1);assert.equal(remainsOpen(rig),true);
+    }
+    assert.equal(rig.changes.length,0);rig.unmount();
+  });
+  test('Closing restores original scroll values, closes the dialog and returns focus without scrolling',()=>{
+    const rig=modalRig();rig.dismiss();rig.unmount();
+    assert.equal(rig.doc.body.style.overflow,'auto');assert.equal(rig.doc.documentElement.style.overflow,'clip');
+    assert.equal(rig.dialog.open,false);assert.equal(rig.lifecycle.close,1);
+    assert.equal(rig.focus.length,2);assert.equal(rig.focus[1].target,'trigger');assert.equal(rig.focus[1].options.preventScroll,true);
+  });
+  test('Unmounting an externally closed dialog never focuses a removed trigger or closes it twice',()=>{
+    const rig=modalRig();rig.trigger.isConnected=false;rig.dialog.open=false;rig.unmount();
+    assert.equal(rig.lifecycle.close,0);assert.equal(rig.focus.length,1);
+    assert.equal(rig.doc.body.style.overflow,'auto');assert.equal(rig.doc.documentElement.style.overflow,'clip');
+  });
+  test('Fullscreen crop uses the chosen site ratio and excludes photo replacement and metadata controls',()=>{
+    const rig=modalRig();
+    const crop=hookRunner(rig.cropNode().type,{...rig.cropNode().props,initialView:1});crop.render();
+    assert.equal(nodes(crop.tree).find(n=>n.props.onPointerDown).props.ratio,4/3);
+    assert.equal(nodes(crop.tree).filter(n=>n.type==='input'&&n.props.type==='range').length,3);
+    assert.equal(nodes(crop.tree).filter(n=>n.type==='textarea'||n.type==='select').length,0);
+    assert.equal(button(crop.tree,'Cadrer en plein écran'),undefined);
+    assert.equal(button(crop.tree,'Remplacer la photo'),undefined);
+    assert.ok(nodes(crop.tree).some(n=>n.type==='details'));crop.unmount();rig.unmount();
+  });
+  test('Actual fullscreen pointer gestures update only the live draft and release both fingers on unmount',()=>{
+    const rig=modalRig({position:'50% 50%',zoom:1}),captures=new Set(),releases=[];
+    const target={querySelector:()=>({naturalWidth:1200,naturalHeight:1600}),
+      getBoundingClientRect:()=>({left:0,top:0,width:150,height:200}),
+      setPointerCapture:id=>captures.add(id),hasPointerCapture:id=>captures.has(id),
+      releasePointerCapture:id=>{captures.delete(id);releases.push(id);}};
+    const crop=hookRunner(rig.cropNode().type,rig.cropNode().props);crop.render();
+    const event=patch=>({currentTarget:target,pointerId:1,isPrimary:true,pointerType:'touch',button:0,
+      clientX:50,clientY:100,preventDefault:()=>{},...patch});
+    const frame=nodes(crop.tree).find(n=>n.props.onPointerDown);
+    frame.props.onPointerDown(event());frame.props.onPointerDown(event({pointerId:2,isPrimary:false,clientX:100}));
+    frame.props.onPointerMove(event({pointerId:2,isPrimary:false,clientX:125}));crop.render();rig.modal.render();
+    assert.equal(captures.size,2);assert.equal(rig.changes.length,0);
+    assert.equal(nodes(crop.tree).find(n=>n.props.onPointerDown).props.photo.zoom,1.5);
+    assert.equal(rig.cropNode().props.value.zoom,1.5);
+    crop.unmount();assert.equal(captures.size,0);assert.deepEqual(releases.sort(),[1,2]);
+    frame.props.onPointerMove(event({clientX:90}));rig.modal.render();assert.equal(rig.changes.length,0);
+    rig.confirm();assert.equal(rig.changes.length,1);assert.equal(rig.changes[0].zoom,1.5);rig.unmount();
+  });
   console.log(`${checks} assertions passed; ${photos.length} existing photo controls and native previews render without data mutation.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });

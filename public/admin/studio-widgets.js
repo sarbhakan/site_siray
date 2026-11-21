@@ -98,6 +98,16 @@
     return current && typeof current === 'object' && !Array.isArray(current) ? current : {};
   }
 
+  // A full-screen crop is a local transaction. Do not emit default values when
+  // nothing changed, or overwrite captions edited elsewhere in the meantime.
+  function cropPatch(before, after) {
+    const patch = {};
+    const position = positionString(...parsePosition(after.position));
+    if (position !== positionString(...parsePosition(before.position))) patch.position = position;
+    if (photoZoom(before.zoom) !== photoZoom(after.zoom)) patch.zoom = photoZoom(after.zoom);
+    return patch;
+  }
+
   function init(CMS) {
     if (!CMS?.React || !CMS.registerFieldType) {
       throw new Error('Les outils photo nécessitent Sveltia CMS 0.270.0.');
@@ -125,6 +135,7 @@
 
     const PhotoControl = forwardRef(function PhotoControl(props, ref) {
       const { value, field, forID, onChange, pickFile, getAsset } = props;
+      const cropOnly = props.cropOnly === true;
       const incoming = photoValue(value);
       // Respond to every input locally, without waiting for the CMS data bridge.
       // The ref also preserves a preceding input if two events occur in one frame.
@@ -134,12 +145,24 @@
       const [busy, setBusy] = useState(false);
       const [error, setError] = useState('');
       const [notice, setNotice] = useState('');
-      const [view, setView] = useState(0);
+      const [view, setView] = useState(props.initialView || 0);
       const [whole, setWhole] = useState(false);
       const [dimensions, setDimensions] = useState(null);
+      const [fullScreen, setFullScreen] = useState(null);
+      const stageRef = useRef(null);
+      const [stageSize, setStageSize] = useState(null);
       const dragRef = useRef(null);
       const [dragging, setDragging] = useState(false);
-      useEffect(() => setDimensions(null), [current.file]);
+      useEffect(() => { setDimensions(null); setFullScreen(null); }, [current.file]);
+      useEffect(() => {
+        if (!cropOnly || !stageRef.current || !global.ResizeObserver) return;
+        const observer = new global.ResizeObserver(([entry]) => {
+          const { width, height } = entry.contentRect;
+          setStageSize({ width, height });
+        });
+        observer.observe(stageRef.current);
+        return () => observer.disconnect();
+      }, [cropOnly]);
       const context = option(field, 'photo_context', 'cover');
       const frames = CONTEXTS[context] || CONTEXTS.cover;
       const gallery = option(field, 'show_gallery_fields', false);
@@ -285,6 +308,45 @@
         change('position', positionString(axis === 'x' ? next : liveX, axis === 'y' ? next : liveY));
       };
 
+      const selectView = index => {
+        endDrag(); setView(index); setWhole(false); props.onCropViewChange?.(index);
+      };
+      const resetCrop = () => { endDrag(); setWhole(false); update({ position: '50% 50%', zoom: 1 }); };
+      const renderFrame = extra => h(ImageFrame, { photo: current, getAsset, ratio, whole, onDimensions: setDimensions,
+        className: `siray-crop-frame${!whole && zone ? ' siray-crop-interactive' : ''}${!whole && (zone?.horizontal || zone?.vertical) ? ' siray-crop-movable' : ''}${dragging ? ' siray-crop-dragging' : ''}`,
+        'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site',
+        'aria-describedby': cropOnly ? `${forID}-instructions` : whole ? undefined : dragHintID,
+        onPointerDown: startDrag, onPointerMove: moveDrag, onPointerUp: releasePointer,
+        onPointerCancel: cancelPointer, onLostPointerCapture: cancelPointer,
+        onDragStart: event => event.preventDefault(), ...extra });
+      const renderZoom = () => h('label', { className: 'siray-range-label', htmlFor: `${forID}-zoom` },
+        h('span', null, 'Resserrer le cadre'), h('output', { htmlFor: `${forID}-zoom` }, `× ${zoom.toFixed(2)}`),
+        h('input', { id: `${forID}-zoom`, type: 'range', min: 1, max: 2, step: .01, value: zoom,
+          'aria-valuetext': `Zoom ${zoom.toFixed(2)} fois`,
+          onInput: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.currentTarget.value))); },
+          onChange: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.target.value))); } }));
+      const renderAxes = () => [['x', 'Gauche — droite', x], ['y', 'Haut — bas', y]].map(([axis, label, number]) =>
+        h('label', { className: 'siray-range-label', key: axis, htmlFor: `${forID}-${axis}` },
+          h('span', null, label), h('output', { htmlFor: `${forID}-${axis}` }, `${Math.round(number)} %`),
+          h('input', { id: `${forID}-${axis}`, type: 'range', min: 0, max: 100, step: 1, value: number,
+            'aria-valuetext': `${Math.round(number)} pour cent`,
+            onInput: event => crop(axis, event.currentTarget.value), onChange: event => crop(axis, event.target.value) })));
+
+      if (cropOnly) {
+        const width = stageSize ? Math.max(1, Math.min(stageSize.width, stageSize.height * ratio)) : 1;
+        return h('div', { className: 'siray-full-crop-editor' },
+          frames.length > 1 ? h('div', { className: 'siray-preview-switch', role: 'group', 'aria-label': 'Format à vérifier' },
+            ...frames.map(([label], index) => h('button', { key: label, type: 'button', 'aria-pressed': index === view,
+              onClick: () => selectView(index) }, label))) : h('p', { className: 'siray-dialog-format' }, frames[0][0]),
+          h('div', { className: 'siray-dialog-stage', ref: stageRef }, renderFrame({
+            style: { aspectRatio: String(ratio), width: `${width}px` } })),
+          h('div', { className: 'siray-dialog-adjustments' }, renderZoom(),
+            h('details', { onToggle: () => endDrag() },
+              h('summary', null, 'Réglages précis'), renderAxes(),
+              h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary', onClick: resetCrop }, 'Réinitialiser le cadrage'))),
+        );
+      }
+
       return h('div', { className: 'siray-photo-editor', 'aria-busy': busy },
         option(field, 'photo_label', '') && h('p', { className: 'siray-photo-destination' }, option(field, 'photo_label', '')),
         h('div', { className: 'siray-photo-toolbar' },
@@ -298,17 +360,13 @@
           h('div', { className: 'siray-photo-preview' },
             h('div', { className: 'siray-preview-switch', role: 'group', 'aria-label': 'Vérifier le cadrage' },
               ...frames.map(([label], index) => h('button', { key: label, type: 'button', 'aria-pressed': !whole && index === view,
-                onClick: () => { endDrag(); setView(index); setWhole(false); } }, label)),
+                onClick: () => selectView(index) }, label)),
               h('button', { type: 'button', 'aria-pressed': whole, onClick: () => { endDrag(); setWhole(true); } }, 'Image entière'),
             ),
             h('p', { className: 'siray-crop-caption' }, whole ? 'Photo originale, sans recadrage' : 'Résultat sur le site'),
-            h(ImageFrame, { photo: current, getAsset, ratio, whole, onDimensions: setDimensions,
-              className: `siray-crop-frame${!whole && zone ? ' siray-crop-interactive' : ''}${!whole && (zone?.horizontal || zone?.vertical) ? ' siray-crop-movable' : ''}${dragging ? ' siray-crop-dragging' : ''}`,
-              'aria-label': whole ? 'La photographie entière' : 'Aperçu du cadrage sur le site',
-              'aria-describedby': whole ? undefined : dragHintID,
-              onPointerDown: startDrag, onPointerMove: moveDrag, onPointerUp: releasePointer,
-              onPointerCancel: cancelPointer, onLostPointerCapture: cancelPointer,
-              onDragStart: event => event.preventDefault() }),
+            renderFrame(),
+            h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary siray-open-crop',
+              onClick: event => { endDrag(); setFullScreen({ photo: { ...currentRef.current }, trigger: event.currentTarget, view }); } }, 'Cadrer en plein écran'),
             !whole && h('p', { id: dragHintID, className: 'siray-drag-help' },
               'Un doigt pour déplacer. Deux doigts pour zoomer ou dézoomer. Pour défiler, glissez à côté.'),
             zone && h('div', { className: 'siray-source-preview' },
@@ -324,27 +382,14 @@
             h('fieldset', { className: 'siray-crop-controls', 'aria-describedby': hintID },
               h('legend', null, 'Ajuster le cadrage'),
               h('p', { id: hintID, className: 'siray-studio-help' }, 'L’aperçu bouge pendant le réglage. Rien n’est publié avant « Enregistrer ».') ,
-              h('label', { className: 'siray-range-label', htmlFor: `${forID}-zoom` },
-                h('span', null, 'Resserrer le cadre'), h('output', { htmlFor: `${forID}-zoom` }, `× ${zoom.toFixed(2)}`),
-                h('input', { id: `${forID}-zoom`, type: 'range', min: 1, max: 2, step: .01, value: zoom,
-                  'aria-valuetext': `Zoom ${zoom.toFixed(2)} fois`,
-                  onInput: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.currentTarget.value))); },
-                  onChange: event => { endDrag(); setWhole(false); change('zoom', photoZoom(Number(event.target.value))); } }),
-              ),
-              ...[['x', 'Gauche — droite', x], ['y', 'Haut — bas', y]].map(([axis, label, number]) =>
-                h('label', { className: 'siray-range-label', key: axis, htmlFor: `${forID}-${axis}` },
-                  h('span', null, label), h('output', { htmlFor: `${forID}-${axis}` }, `${Math.round(number)} %`),
-                  h('input', { id: `${forID}-${axis}`, type: 'range', min: 0, max: 100, step: 1, value: number,
-                    'aria-valuetext': `${Math.round(number)} pour cent`,
-                    onInput: event => crop(axis, event.currentTarget.value), onChange: event => crop(axis, event.target.value) }),
-                )),
+              renderZoom(), renderAxes(),
               zone && h('p', { className: 'siray-crop-explanation' },
                 !zone.horizontal && !zone.vertical ? 'La photo tient entièrement dans ce cadre. Augmentez le zoom pour pouvoir la déplacer.' :
                 !zone.horizontal ? 'Dans ce format, seul le déplacement haut–bas est visible. Augmentez le zoom pour agir aussi de gauche à droite.' :
                 !zone.vertical ? 'Dans ce format, seul le déplacement gauche–droite est visible. Augmentez le zoom pour agir aussi de haut en bas.' :
                 'Le rectangle sur l’original montre ce qui restera visible. Vérifiez chaque format proposé.'),
               h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary',
-                onClick: () => { endDrag(); setWhole(false); update({ position: '50% 50%', zoom: 1 }); } }, 'Réinitialiser le cadrage'),
+                onClick: resetCrop }, 'Réinitialiser le cadrage'),
             ),
             h('p', { className: 'siray-crop-impact' }, 'Ce réglage s’applique aux formats proposés pour cet emplacement. Les autres photos ne changent pas. L’aperçu est immédiat ; le site public attend votre enregistrement.'),
             h('label', { className: 'siray-studio-field', htmlFor: `${forID}-alt` },
@@ -363,8 +408,55 @@
             ),
           ),
         ),
+        fullScreen && h(FullScreenCrop, { photo: fullScreen.photo, field, forID: `${forID}-fullscreen`, getAsset,
+          initialView: fullScreen.view, trigger: fullScreen.trigger, onClose: () => setFullScreen(null),
+          onConfirm: (patch, selectedView) => {
+            if (currentRef.current.file === fullScreen.photo.file) { update(patch); setView(selectedView); setWhole(false); }
+            setFullScreen(null);
+          } }),
       );
     });
+
+    function FullScreenCrop({ photo, field, forID, getAsset, initialView, trigger, onClose, onConfirm }) {
+      const [draft, setDraft] = useState({ ...photo });
+      const draftRef = useRef({ ...photo }), viewRef = useRef(initialView), dialogRef = useRef(null);
+      useEffect(() => {
+        const dialog = dialogRef.current, doc = global.document;
+        const previous = [doc.body.style.overflow, doc.documentElement.style.overflow];
+        dialog.showModal();
+        doc.body.style.overflow = 'hidden'; doc.documentElement.style.overflow = 'hidden';
+        dialog.querySelector('h2').focus({ preventScroll: true });
+        return () => {
+          doc.body.style.overflow = previous[0]; doc.documentElement.style.overflow = previous[1];
+          if (dialog.open) dialog.close();
+          if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+        };
+      }, []);
+      return h('dialog', { ref: dialogRef, className: 'siray-crop-dialog', 'aria-labelledby': `${forID}-title`,
+        'aria-describedby': `${forID}-instructions`,
+        onCancel: event => { event.preventDefault(); event.stopPropagation(); onClose(); },
+        onKeyDown: event => {
+          event.stopPropagation();
+          if (event.key === 'Escape') { event.preventDefault(); onClose(); }
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') event.preventDefault();
+        },
+        onClick: event => {
+          if (event.target !== event.currentTarget) return;
+          const r = event.currentTarget.getBoundingClientRect();
+          if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) onClose();
+        } },
+        h('header', { className: 'siray-dialog-header' }, h('h2', { id: `${forID}-title`, tabIndex: -1 }, 'Cadrer la photo'),
+          h('p', { id: `${forID}-instructions` }, 'Un doigt pour déplacer, deux doigts pour zoomer.')),
+        h('div', { className: 'siray-dialog-body' }, h(PhotoControl, { value: draft, field, forID, getAsset,
+          cropOnly: true, initialView, onCropViewChange: index => { viewRef.current = index; },
+          onChange: next => { draftRef.current = next; setDraft(next); } })),
+        h('footer', { className: 'siray-dialog-footer' },
+          h('p', null, 'Validez ici, puis « Enregistrer » dans l’éditeur pour publier.'),
+          h('div', { className: 'siray-dialog-actions' },
+            h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary', onClick: onClose }, 'Annuler'),
+            h('button', { type: 'button', className: 'siray-studio-button', onClick: () => onConfirm(cropPatch(photo, draftRef.current), viewRef.current) }, 'Valider le cadrage'))),
+      );
+    }
 
     function PhotoPreview({ value, getAsset, field }) {
       const photo = photoValue(value);
@@ -399,5 +491,5 @@
     init.registered = true;
   }
 
-  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, dragPosition, pinchCrop, safeImageURL, photoValue } };
+  global.SirayStudioWidgets = { init, helpers: { parsePosition, positionString, photoZoom, cropWindow, dragPosition, pinchCrop, cropPatch, safeImageURL, photoValue } };
 })(typeof window !== 'undefined' ? window : globalThis);

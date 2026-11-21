@@ -1557,5 +1557,33 @@
       "browser": "React réel320×740 et390×844, gestes multipoints synthétiques ; pas de téléphone physique"
     },
     "report": "docs/qa/v22-zoom-deux-doigts.md"
+  },
+  "v23": {
+    "task": "Cadrage photo plein écran sur téléphone",
+    "lead": "Impeccable polish/craft-floor ; identité olive et ivoire conservée",
+    "pins": "Neuf sources propres réutilisées aux mêmes pins que V22",
+    "decisions": [
+      "Dialogue natif modal, proportions du site, plein viewport téléphone et fenêtre centrée sur grand écran",
+      "Moteur glissement et pincement existant réutilisé dans une transaction locale",
+      "Valider applique seulement position/zoom ; Annuler ou Échap ne change pas le formulaire",
+      "Actions persistantes, zones de sécurité, réglages fins repliables, focus/défilement restaurés",
+      "Contenus de Selin intégrés depuis main573490a ; accès et dépendances inchangés",
+      "Catégorie layer-cakes rétablie pour le nouvel élément Layer cake vintage qui bloquait le build ; fichier et textes conservés",
+      "Validation globale de galerie avant sauvegarde, même pour les champs repliés ; scripts admin versionnés"
+    ],
+    "checks": {
+      "other_node_cases": 246,
+      "static_pages": 16,
+      "browser": "React réel320×568,390×844,844×390 et1280×900 : ouverture, annulation, validation, glissement, format, focus et défilement ; pincements synthétiques avec rerendus React",
+      "review": "Indépendante passée,20 nouveaux cas transactionnels",
+      "widget_checks": 223,
+      "existing_photos": 74,
+      "build": "passed"
+    },
+    "limitations": [
+      "Les gestes multipoints sont simulés dans un banc local uniquement ; pas de téléphone physique dans cette passe.",
+      "Fallback moteur Impeccable déjà documenté en V19 ; références directes relues."
+    ],
+    "report": "docs/qa/v23-cadrage-plein-ecran.md"
   }
 }

@@ -1,5 +1,5 @@
-/* Content checks before a CMS save. The build repeats them in src/data/site.ts
- * and src/lib/photo-crop.ts.
+/* Content checks before a CMS save. The build repeats them in src/data/site.ts,
+ * src/data/photography.ts and src/lib/photo-crop.ts.
  * No content is changed here; rejecting a preSave hook stops Sveltia before the commit.
  */
 (() => {
@@ -29,6 +29,16 @@
     for (const photo of photos) {
       if (!object(photo)) throw new Error('Vérifiez chaque photographie avant d’enregistrer.');
       validatePhotoZoom(photo.zoom);
+    }
+    // Collapsing a CMS list item unmounts its custom control and its isValid
+    // handle. Check the complete gallery here, even when no item is open.
+    const categories = ['layer-cakes', 'bento-cakes', 'mignardises', 'cupcakes', 'brunch-box', 'buffets', 'plateaux'];
+    for (const [index, photo] of data.gallery.entries()) {
+      const invalid = (action) => { throw new Error(`Dans « Galerie », photo ${index + 1} : ${action} avant d’enregistrer.`); };
+      if (typeof photo.file !== 'string' || !photo.file.trim()) invalid('choisissez une photographie');
+      if (typeof photo.alt !== 'string' || !photo.alt.trim()) invalid('renseignez la description pour l’accessibilité');
+      if (typeof photo.label !== 'string' || !photo.label.trim()) invalid('renseignez la légende visible');
+      if (!categories.includes(photo.category)) invalid('choisissez une catégorie de prestation');
     }
   }
 
