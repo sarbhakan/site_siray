@@ -7,7 +7,7 @@
       "intro": "Saveurs et décor à votre image.",
       "text": "Choisissez vos saveurs, vos couleurs et votre décor.",
       "possibilities": [
-        "10 parts minimum",
+        "Disponibles uniquement à partir 10 parts minimum",
         "Couleurs, thème, inscription et décoration personnalisables",
         "Saveurs classiques ou associations Signature"
       ],
@@ -27,7 +27,7 @@
     {
       "slug": "bento-cakes",
       "name": "Bento cakes",
-      "short": "Un petit format, un message personnel",
+      "short": "Un écrin de douceur à personnaliser",
       "intro": "Un petit gâteau, vos couleurs et votre message.",
       "text": "Une saveur classique, un message et un décor à choisir.",
       "possibilities": [
