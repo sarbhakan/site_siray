@@ -2,6 +2,8 @@
 
 Ouvrez [siraysignature.fr/admin/](https://siraysignature.fr/admin/) dans Safari ou Chrome et connectez-vous avec votre compte GitHub autorisé. Vous pouvez ajouter cette page à l’écran d’accueil du téléphone. Le site public garde son adresse habituelle.
 
+Pour la première connexion de Selin : acceptez l’invitation GitHub à `site_siray` avec le compte **selinberrin12**, ouvrez l’éditeur, choisissez **Se connecter avec GitHub**, puis autorisez **Siray Signature CMS**. GitHub sert seulement à vous identifier ; vos modifications se font ensuite dans l’éditeur. Ne demandez pas le compte de Hakan. L’accès à l’éditeur est réservé aux comptes autorisés de Hakan et Selin ; l’invitation est gratuite et ne nécessite aucun compte Cloudflare ou OVHcloud.
+
 Trois rubriques sont disponibles :
 
 - **Photographies** : diaporama de l’accueil, photos des sept prestations, photos de la maison et galerie. Choisissez une photo existante ou importez-la depuis le téléphone. Dans « Photos actuelles du site », choisissez le grand fichier sans suffixe `-360` ou `-720` ; cette bibliothèque est protégée contre la suppression. Ajoutez une description courte de ce que montre la photo. Le cadrage par défaut `50% 50%` centre l’image ; conservez-le si le résultat vous convient.

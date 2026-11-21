@@ -3,6 +3,47 @@
  * and expects it in the messages posted by the authorization popup.
  */
 const PROVIDER = 'github';
+
+// GitHub account IDs survive username changes and cannot be claimed by another account.
+const ALLOWED_GITHUB_ACCOUNT_IDS = new Set([
+  88969314, // sarbhakan
+  359602650, // selinberrin12
+]);
+
+/**
+ * Check GitHub's authenticated identity before returning any newly issued token.
+ * Identity supplied by the browser is never used for this decision.
+ * @param {string} token - Newly issued GitHub user access token.
+ * @returns {Promise<'USER_NOT_ALLOWED' | 'USER_VERIFICATION_FAILED' | undefined>}
+ */
+const verifyGitHubAccount = async (token) => {
+  try {
+    const response = await fetch('https://api.github.com/user', {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'Siray-Signature-CMS',
+        'X-GitHub-Api-Version': '2026-03-10',
+      },
+      redirect: 'manual',
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!response.ok) {
+      return 'USER_VERIFICATION_FAILED';
+    }
+
+    const profile = await response.json();
+
+    if (!Number.isSafeInteger(profile?.id) || profile.id <= 0) {
+      return 'USER_VERIFICATION_FAILED';
+    }
+
+    return ALLOWED_GITHUB_ACCOUNT_IDS.has(profile.id) ? undefined : 'USER_NOT_ALLOWED';
+  } catch {
+    return 'USER_VERIFICATION_FAILED';
+  }
+};
 /**
  * Pattern of the cookie that holds the CSRF token during the authorization flow.
  */
@@ -197,6 +238,8 @@ const errorMessages = {
   CSRF_DETECTED: 'Potential CSRF attack detected. Authentication flow aborted.',
   TOKEN_REQUEST_FAILED: 'Failed to request an access token. Please try again later.',
   MALFORMED_RESPONSE: 'Server responded with malformed data. Please try again later.',
+  USER_NOT_ALLOWED: 'Cet accès est réservé aux deux comptes autorisés de Siray Signature.',
+  USER_VERIFICATION_FAILED: 'La vérification du compte GitHub a échoué. Réessayez la connexion.',
 };
 
 /**
@@ -281,7 +324,7 @@ const handleAuth = async (request, env) => {
   }
 
   // Generate a random string for CSRF protection
-  const csrfToken = globalThis.crypto.randomUUID().replaceAll('-', '');
+  const csrfToken = crypto.randomUUID().replaceAll('-', '');
 
   const params = new URLSearchParams({
     client_id: GITHUB_CLIENT_ID,
@@ -331,7 +374,7 @@ const handleCallback = async (request, env) => {
 
   const response = await requestToken({ code }, env);
 
-  if (!response) {
+  if (!response?.ok) {
     return outputError('TOKEN_REQUEST_FAILED', env);
   }
 
@@ -346,11 +389,21 @@ const handleCallback = async (request, env) => {
 
   const { access_token: token, refresh_token: refreshToken, error } = result ?? {};
 
-  if (!token && !error) {
+  if (typeof error === 'string' && error) {
+    return outputHTML({ env, error });
+  }
+
+  if (typeof token !== 'string' || !token) {
     return outputError('MALFORMED_RESPONSE', env);
   }
 
-  return outputHTML({ env, token, refreshToken, error });
+  const accessError = await verifyGitHubAccount(token);
+
+  if (accessError) {
+    return outputError(accessError, env);
+  }
+
+  return outputHTML({ env, token, refreshToken });
 };
 
 /**
@@ -460,12 +513,31 @@ const handleRefresh = async (request, env) => {
     //
   }
 
-  if (!response || !result) {
+  if (!response?.ok || !result) {
     return outputJSON({ error: 'token_request_failed' }, { status: 502, headers: corsHeaders });
   }
 
-  // GitHub reports an invalid or expired refresh token with `200 OK` and an `error` property, which
-  // the CMS handles, so the result is passed through as is
+  // An error response must never accidentally forward token fields alongside the error.
+  if (typeof result.error === 'string' && result.error) {
+    return outputJSON({ error: result.error }, { status: response.status, headers: corsHeaders });
+  }
+
+  if (typeof result.access_token !== 'string' || !result.access_token) {
+    return outputJSON({ error: 'malformed_response' }, { status: 502, headers: corsHeaders });
+  }
+
+  const accessError = await verifyGitHubAccount(result.access_token);
+
+  if (accessError) {
+    return outputJSON(
+      {
+        error: accessError === 'USER_NOT_ALLOWED' ? 'access_denied' : 'user_verification_failed',
+        error_description: errorMessages[accessError],
+      },
+      { status: accessError === 'USER_NOT_ALLOWED' ? 403 : 502, headers: corsHeaders },
+    );
+  }
+
   return outputJSON(result, { status: response.status, headers: corsHeaders });
 };
 

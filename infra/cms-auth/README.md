@@ -2,7 +2,7 @@
 
 Le Worker ne sert qu’à la connexion GitHub de l’interface `/admin/`. Le site public reste sur Cloudflare Pages. Aucun abonnement payant n’est nécessaire pour cet usage.
 
-Le fichier `src/index.js` et sa licence sont copiés sans modification depuis [sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth), commit `26b168a4cf5fad6a66a38f3b0977d722017296ce`, récupéré le 21 novembre 2026. Licence MIT. Le déploiement et les mises à jour sont manuels : cette copie n’importe pas automatiquement les changements de l’amont.
+Le fichier `src/index.js` est dérivé de [sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth), commit `26b168a4cf5fad6a66a38f3b0977d722017296ce`, récupéré le 21 novembre 2026. Licence MIT conservée. Une restriction locale vérifie les deux identités autorisées avant la délivrance ou le renouvellement des jetons. Le déploiement et les mises à jour sont manuels : cette copie n’importe pas automatiquement les changements de l’amont.
 
 ## Réglages publics
 
@@ -18,6 +18,28 @@ Worker : `https://siray-cms-auth.mr-hakan336.workers.dev`. Domaine autorisé : `
 6. Ouvrir `/admin/` sur le site et autoriser cette application GitHub. L’utilisateur connecté doit avoir le droit d’écriture sur le dépôt.
 
 Les consignes complètes, notamment le renouvellement des jetons, sont dans le [README officiel](https://github.com/sveltia/sveltia-cms-auth#how-to-use-it). Le secret GitHub reste exclusivement chez Cloudflare ; le CMS reçoit un jeton utilisateur après connexion. `ALLOWED_DOMAINS` limite la délivrance de ce jeton au site autorisé.
+
+## Deux comptes autorisés
+
+La liste serveur est fixée dans `src/index.js` aux identifiants permanents GitHub **88969314** (`sarbhakan`) et **359602650** (`selinberrin12`). Un autre compte reprenant un pseudonyme ne récupère pas cet identifiant. Ces IDs publics ne sont pas des secrets. Aucun identifiant fourni par le navigateur ne décide de l’accès.
+
+Après chaque échange de code OAuth et chaque renouvellement, le Worker appelle `GET https://api.github.com/user` avec le nouveau jeton. Seuls ces deux IDs sont acceptés. Un compte inconnu, une erreur GitHub, une réponse invalide ou un délai dépassé empêche le retour des jetons à l’éditeur. Cette vérification utilise les permissions existantes de l’application, sans permission de profil supplémentaire. Elle ne révoque pas un ancien jeton déjà délivré ; retirer aussi l’accès au dépôt si un compte ne doit plus publier.
+
+L’appel d’identité utilise `redirect: 'manual'` et refuse toute réponse 3xx : aucun jeton n’est envoyé à une destination de redirection. Le mode `error` n’est pas pris en charge par le runtime Workers ; les tests reproduisent cette différence avec Node. Voir la [documentation Cloudflare Request](https://developers.cloudflare.com/workers/runtime-apis/request/#options).
+
+Pour permettre l’autorisation depuis un second compte personnel, l’enregistrement de la GitHub App doit être public. Le mode privé produit actuellement une erreur 404 GitHub pour la collaboratrice. Le changement de visibilité doit être confirmé par le propriétaire. Une App publique est visible et installable sur d’autres comptes GitHub : cela ne leur donne ni accès à l’éditeur, ni droit d’écriture sur ce site. L’installation du propriétaire reste **Only select repositories → site_siray**, avec Contents en lecture/écriture et Metadata en lecture seule. Les droits GitHub du dépôt constituent également une protection : seul le propriétaire et la collaboratrice doivent conserver l’écriture.
+
+Ne pas remplacer cette GitHub App par une OAuth App classique demandant l’accès global aux dépôts. Ne pas désactiver la vérification d’identité pour contourner une erreur GitHub.
+
+## Tests de la restriction
+
+Depuis la racine du projet, avec Node 24 :
+
+```sh
+node --test infra/cms-auth/test/access.test.mjs
+```
+
+Les tests remplacent les réponses GitHub par des données fictives : aucun secret et aucune connexion réelle ne sont nécessaires. La connexion puis la publication avec les vrais comptes restent un contrôle distinct après le déploiement.
 
 ## Vérification après installation
 
