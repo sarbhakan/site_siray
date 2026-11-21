@@ -2,13 +2,13 @@
   "home": {
     "pageTitle": "Accueil",
     "title": "Vos instants gourmands",
-    "summary": "Pâtisserie & tables sur mesure.",
-    "description": "Gâteaux personnalisés, brunchs et buffets : choisissez vos saveurs, vos couleurs et votre décor.",
+    "summary": "Des créations gourmandes imaginées pour sublimer chaque occasion.",
+    "description": "Gâteaux personnalisés, brunchs, plateaux gourmands et buffets sur mesure  : choisissez vos saveurs, vos couleurs et votre décor.",
     "discoverLabel": "Découvrir nos prestations",
-    "celebrateTitle": "Pour célébrer",
+    "celebrateTitle": "Les instants à célébrer",
     "celebrateDetail": "Layer cakes, bento cakes & cupcakes",
-    "gatherTitle": "Pour se retrouver",
-    "gatherDetail": "Mignardises, brunch box, buffets & plateaux",
+    "gatherTitle": "Les plaisirs à partager",
+    "gatherDetail": "Mignardises, brunch box, buffets & plateaux gourmands",
     "location": "Bordeaux & Gironde",
     "locationOrderNote": "Créations sur commande",
     "orderNote": "Sur commande",
@@ -30,29 +30,29 @@
     "worldTitle": "L’art de sublimer vos instants gourmands",
     "worldText": "Un gâteau imaginé pour une occasion, un brunch à partager, une table dressée pour recevoir : Siray Signature accompagne vos moments gourmands avec des créations à composer selon vos envies.",
     "pastryTitle": "La pâtisserie, à votre image",
-    "pastryText": "Layer cakes, bento cakes et cupcakes se déclinent en saveurs, couleurs et décors. D’une petite attention au gâteau de célébration, le format et la présentation donnent le ton de votre occasion.",
+    "pastryText": "Les layer cakes, bento cakes et cupcakes se personnalisent selon vos envies, à travers un choix de saveurs, de couleurs et de décors. De la délicate attention au gâteau de célébration, chaque création est imaginée pour s’accorder à votre occasion.",
     "sharingTitle": "Le plaisir de partager",
-    "sharingText": "Mignardises sucrées ou salées, brunch box et plateaux se retrouvent autour de la table. Pour une réception, le buffet associe les bouchées à une mise en scène personnalisée : supports, couleurs et décoration s’accordent à votre thème.",
+    "sharingText": "Les mignardises sucrées et salées, brunch boxes et plateaux gourmands invitent au partage et à la convivialité. Pour vos réceptions, les buffets se déclinent selon votre thème, avec une présentation soigneusement pensée : supports, couleurs et décoration s’harmonisent pour créer un ensemble élégant et gourmand.",
     "bespokeTitle": "Le sur-mesure, ensemble",
-    "bespokeText": "Votre thème, les couleurs de votre table ou une photo d’inspiration peuvent servir de point de départ. Nous échangeons sur votre idée pour préciser le format, les saveurs, le décor et la présentation.",
+    "bespokeText": "Votre thème, les couleurs de votre événement ou une inspiration peuvent guider la création. Nous échangeons ensemble afin de définir chaque détail : format, saveurs, décor et présentation, pour une création à votre image.",
     "exploreBefore": "Explorez",
     "exploreLink": "nos prestations",
     "exploreAfter": "pour découvrir les sept familles, leurs compositions et leurs tarifs. Les options et les informations à transmettre sont réunies dans chaque fiche.",
     "orderingText": "Les demandes et les commandes se préparent sur Instagram. Indiquez votre date, le nombre de personnes et vos inspirations pour que nous puissions échanger sur votre projet à Bordeaux ou en Gironde.",
-    "practicalText": "Toutes nos viandes sont halal. Signalez vos allergies et intolérances lors de votre demande, avant la confirmation de la commande."
+    "practicalText": "Toutes nos viandes sont halal. \nSignalez vos allergies et intolérances lors de votre demande, avant la confirmation de la commande."
   },
   "project": {
     "pageTitle": "Votre projet",
     "metaDescription": "Préparez votre commande Siray Signature sur Instagram : personnalisation, anticipation, retrait sur place et livraison possible à Bordeaux et en Gironde.",
     "title": "Votre projet gourmand",
-    "lead": "Une date, une envie : imaginons votre création ensemble.",
+    "lead": "Chaque occasion est unique et mérite une création qui lui ressemble. Partagez-nous vos envies, votre thème ou vos inspirations : nous imaginons ensemble une création gourmande, pensée dans les moindres détails, pour donner vie à votre projet.",
     "instagramLabel": "Écrire sur Instagram",
     "instagramHandle": "@siraysignature",
     "channel": "Toutes les commandes se préparent et se confirment sur Instagram.",
     "timingTitle": "Prévoyez à l’avance",
     "timingLead": "Contactez-nous dès que votre date est connue,",
     "timingEmphasis": "même pour un bento cake.",
-    "timingText": "Les demandes pour le jour même ou le lendemain sont difficiles à réaliser. La disponibilité et le délai nécessaire sont confirmés par message.",
+    "timingText": "Les demandes pour le jour même ou le lendemain sont difficiles à réaliser. \nLa disponibilité et le délai nécessaire sont confirmés par message.",
     "processTitle": "De l’idée à la commande",
     "steps": [
       {
@@ -104,6 +104,6 @@
     "foodTitle": "Des créations halal",
     "foodText": "Nos viandes et les ingrédients utilisés sont halal.",
     "allergiesTitle": "Allergies & intolérances",
-    "allergiesText": "Signalez-les dès votre premier message. Les ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation."
+    "allergiesText": "Signalez-les dès votre premier message. \nLes ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation."
   }
 }
