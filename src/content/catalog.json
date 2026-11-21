@@ -3,7 +3,7 @@
     {
       "slug": "layer-cakes",
       "name": "Layer cakes",
-      "short": "Un gâteau à votre image",
+      "short": "Un gâteau à votre image.",
       "intro": "Saveurs et décor à votre image.",
       "text": "Choisissez vos saveurs, vos couleurs et votre décor.",
       "possibilities": [
@@ -28,7 +28,7 @@
     {
       "slug": "bento-cakes",
       "name": "Bento cakes",
-      "short": "Un écrin de douceur à personnaliser",
+      "short": "Un écrin de douceur à personnaliser.",
       "intro": "Saveurs, couleurs, décor et message se personnalisent selon vos envies, pour une attention aussi gourmande qu'unique",
       "text": "Une saveur classique, un message et un décor à choisir.",
       "possibilities": [
