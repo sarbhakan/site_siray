@@ -1,4 +1,5 @@
 {
+  "_pagePreview": "",
   "homeSlides": [
     {
       "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
@@ -316,11 +317,12 @@
       "category": "plateaux"
     },
     {
-      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
       "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
-      "position": "50% 68%",
+      "category": "cupcakes",
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
       "label": "Fleurs & petites douceurs",
-      "category": "cupcakes"
+      "position": "65.269% 24.004%",
+      "zoom": 1.1012
     },
     {
       "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
@@ -390,7 +392,8 @@
       "category": "mignardises",
       "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
       "label": "Mousse au chocolat façon liégeois",
-      "position": "50% 58%"
+      "position": "100% 82.027%",
+      "zoom": 1
     },
     {
       "alt": "Layer cake ivoire décoré de coquillages et de fleurs roses",
