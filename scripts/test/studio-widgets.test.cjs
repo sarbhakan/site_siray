@@ -1,11 +1,11 @@
-// Verify value preservation, custom control behavior and preview content without
-// a browser or credentials. Sveltia's own upload pipeline is an integration check.
+// Verify value preservation, photo controls and the native field-preview bridge
+// without a browser or credentials. Real Sveltia upload/save is an integration check.
 const fs = require('node:fs');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const repo = path.resolve(__dirname, '../..');
-const widgets = {}, previews = {};
+const widgets = {};
 const React = {
   createElement: (type, props, ...children) => ({ type, props: props || {}, children: children.flat(Infinity) }),
   useState: initial => [initial, () => {}], useEffect: () => {},
@@ -14,8 +14,9 @@ const React = {
 const sandbox = { globalThis: {}, Intl, Object, Array, Number, String, Error };
 vm.runInNewContext(fs.readFileSync(`${repo}/public/admin/studio-widgets.js`, 'utf8'), sandbox);
 const api = sandbox.globalThis.SirayStudioWidgets;
-api.init({ React, registerFieldType: def => widgets[def.name] = def,
-  registerPreviewTemplate: (key, comp) => previews[key] = comp, registerPreviewStyle: () => {} });
+// Sveltia renders field previews directly when no collection template or custom
+// preview stylesheet is registered. This must also work without either API.
+api.init({ React, registerFieldType: def => widgets[def.name] = def });
 let checks = 0;
 const test = (message, fn) => { try { fn(); checks++; } catch (error) { error.message = `${message}: ${error.message}`; throw error; } };
 const h = api.helpers;
@@ -49,10 +50,23 @@ for (const photo of photos) test('Existing photo shape untouched', () => {
     pickFile: () => null, onChange: () => { throw Error('render changed data'); } }, ref);
   assert.equal(JSON.stringify(photo), before); assert.equal(ref.current.isValid(), true);
 });
+for (const photo of photos) test('Native photo preview renders the existing object', () => {
+  const before = JSON.stringify(photo);
+  const output = render(widgets['siray-photo'].previewComponent({ value: photo, field, getAsset }));
+  const images = nodes(output).filter(node => node.type === 'img');
+  assert.equal(images.length, 1);
+  assert.equal(images[0].props.src, photo.file);
+  assert.equal(images[0].props.alt, photo.alt);
+  assert.equal(images[0].props.style.objectPosition, photo.position || '50% 50%');
+  assert.equal(nodes(output).filter(node => node.type === 'iframe').length, 0);
+  if (photo.label) assert.ok(strings(output).includes(photo.label));
+  assert.equal(JSON.stringify(photo), before);
+});
 (async () => {
   const value = { file: '/images/original.webp', alt: 'Gâteau ivoire', position: '50% 65.789%', retained: 'preserved' }; let next;
+  let pickerOptions;
   const control = widgets['siray-photo'].controlComponent({ value, field, forID: 'photo', getAsset,
-    pickFile: async () => ({ value: 'blob:https://site.test/new', file: {} }), onChange: updated => next = updated }, {});
+    pickFile: async options => { pickerOptions = options; return { value: 'blob:https://site.test/new', file: {} }; }, onChange: updated => next = updated }, {});
   test('Horizontal crop preserves vertical precision', () => {
     nodes(control).find(n => n.props.id === 'photo-x').props.onChange({ target: { value: '23' } });
     assert.equal(next.position, '23% 65.789%'); assert.equal(next.file, value.file); assert.equal(next.retained, 'preserved');
@@ -61,19 +75,42 @@ for (const photo of photos) test('Existing photo shape untouched', () => {
   test('Upload preserves metadata and raw blob', () => {
     assert.equal(next.file, 'blob:https://site.test/new'); assert.equal(next.alt, value.alt); assert.equal(next.position, value.position); assert.equal(next.retained, 'preserved');
   });
+  test('Picker keeps the official single-image pipeline and refuses arbitrary URL entry', () => {
+    assert.equal(pickerOptions.kind, 'image'); assert.equal(pickerOptions.multiple, false); assert.equal(pickerOptions.allowURL, false);
+  });
+  test('Crop controls expose keyboard-compatible ranges', () => {
+    for (const axis of ['x', 'y']) {
+      const input = nodes(control).find(n => n.props.id === `photo-${axis}`);
+      assert.equal(input.type, 'input'); assert.equal(input.props.type, 'range');
+      assert.equal(input.props.min, 0); assert.equal(input.props.max, 100);
+      assert.equal(input.props.step, 1); assert.ok(input.props['aria-valuetext'].includes('pour cent'));
+    }
+  });
   for (const value of [{ file: '/images/photo.webp', alt: '' }, { file: '', alt: 'Photo' }]) test('Missing photo/alt rejected', () => {
     const ref = {}; widgets['siray-photo'].controlComponent({ value, field, forID: 'invalid', getAsset, onChange: () => {} }, ref); assert.notEqual(ref.current.isValid(), true);
   });
-  const cat = content('catalog'); cat.collections[0].extraSections = [{ title: 'Nouvelle rubrique', text: 'Texte ajouté', items: ['Premier détail'], button: { label: 'Écrire à Siray', href: '/contact/' } }];
-  const entry = data => ({ get: key => key === 'data' ? { toJS: () => data } : undefined });
-  const catalogueText = strings(render(previews.catalogue({ entry: entry(cat) })));
-  for (const expected of ['Mini-burgers', 'Viande, poulet ou poisson.', 'Nouvelle rubrique', 'Écrire à Siray', 'par personne', 'Elegancia']) test(`Preview real text ${expected}`, () => assert.ok(catalogueText.includes(expected)));
-  test('Photo preview renders all existing images', () => {
-    const output = render(previews.photos({ entry: entry(data), getAsset })); assert.equal(nodes(output).filter(n => n.type === 'img').length, photos.length);
+  const galleryField = { get: key => ({ photo_context: 'gallery', show_gallery_fields: true })[key] };
+  for (const value of [
+    { file: '/images/photo.webp', alt: 'Photo', label: '', category: 'layer-cakes' },
+    { file: '/images/photo.webp', alt: 'Photo', label: 'Gâteau', category: 'unknown' },
+  ]) test('Gallery requires visible caption and valid category', () => {
+    const ref = {}; widgets['siray-photo'].controlComponent({ value, field: galleryField, forID: 'gallery', getAsset, onChange: () => {} }, ref);
+    assert.notEqual(ref.current.isValid(), true);
   });
-  const pages = content('pages'); pages.home.extraSections = [{ title: 'Rubrique unique', text: 'Contenu unique', button: { label: 'Bouton unique', href: '/contact/' } }];
-  const pageText = strings(render(previews.pages({ entry: entry(pages) })));
-  test('Extra section shown once', () => assert.equal(pageText.split('Rubrique unique').length - 1, 1));
-  test('Page extra button previewed', () => assert.ok(pageText.includes('Bouton unique')));
-  console.log(`${checks} assertions passed; ${photos.length} existing photo objects render without data mutation.`);
+  test('Collapsed summary includes a photo and visible label', () => {
+    const output = render(widgets['siray-photo'].summaryComponent({ value: { ...value, label: 'Un gâteau fleuri' }, getAsset }));
+    assert.equal(nodes(output).filter(n => n.type === 'img').length, 1);
+    assert.ok(strings(output).includes('Un gâteau fleuri'));
+  });
+  test('Empty preview provides an understandable placeholder', () => {
+    const output = render(widgets['siray-photo'].previewComponent({ value: {}, field, getAsset }));
+    assert.equal(nodes(output).filter(n => n.type === 'img').length, 0);
+    assert.ok(strings(output).includes('Choisissez une photographie.'));
+  });
+  let cancellationChanged = false;
+  const cancelledControl = widgets['siray-photo'].controlComponent({ value, field, forID: 'cancel', getAsset,
+    pickFile: async () => null, onChange: () => cancellationChanged = true }, {});
+  await nodes(cancelledControl).find(n => n.props.id === 'cancel').props.onClick();
+  test('Cancelling the picker leaves the saved photo untouched', () => assert.equal(cancellationChanged, false));
+  console.log(`${checks} assertions passed; ${photos.length} existing photo controls and native previews render without data mutation.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });

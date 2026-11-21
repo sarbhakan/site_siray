@@ -1459,7 +1459,7 @@
       "extra_sections_tests": 45,
       "presave_tests": 57,
       "publication_tests": 16,
-      "widget_assertions": 93
+      "widget_assertions": 154
     },
     "auth_permissions_changed": false,
     "fees_added": false
