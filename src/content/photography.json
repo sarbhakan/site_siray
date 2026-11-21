@@ -248,11 +248,11 @@
       "category": "cupcakes"
     },
     {
-      "file": "/images/siray-buffet-ensemble-474a9997.webp",
       "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
-      "position": "50% 75%",
-      "label": "La table dressée",
-      "category": "buffets"
+      "category": "buffets",
+      "file": "/images/siray-buffet-ensemble-474a9997.webp",
+      "label": "Un buffet dressé sur mesure",
+      "position": "50% 75%"
     },
     {
       "file": "/images/siray-mignardises-toasts-a69b6a95.webp",
@@ -262,11 +262,11 @@
       "category": "mignardises"
     },
     {
-      "file": "/images/siray-layer-fruits-6a211ed1.webp",
       "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
-      "position": "50% 70%",
-      "label": "Ivoire & fruits rouges",
-      "category": "layer-cakes"
+      "category": "layer-cakes",
+      "file": "/images/siray-layer-fruits-6a211ed1.webp",
+      "label": "Layer cake vintage orné de fruits rouges",
+      "position": "50% 70%"
     },
     {
       "file": "/images/siray-plateau-grazing-5852832b.webp",
@@ -290,18 +290,18 @@
       "category": "brunch-box"
     },
     {
-      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
       "alt": "Layer cake rouge sur un présentoir argenté",
-      "position": "50% 65%",
-      "label": "Velours rouge",
-      "category": "layer-cakes"
+      "category": "layer-cakes",
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "label": "Layer cake rectangulaire tendance",
+      "position": "50% 65%"
     },
     {
-      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
       "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
-      "position": "50% 58%",
-      "label": "Sur son présentoir",
-      "category": "cupcakes"
+      "category": "cupcakes",
+      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "label": "Petite douceur à partager",
+      "position": "50% 58%"
     },
     {
       "file": "/images/siray-buffet-desserts-7f108c7a.webp",
