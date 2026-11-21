@@ -812,16 +812,28 @@ rather than a page of introduction. */
 }
 .gallery-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+  flex-wrap: nowrap;
+  flex: 1 1 100%;
+  min-width: 0;
+  gap: 8px;
   max-width: 100%;
+  padding: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 8px;
+}
+.gallery-filters::-webkit-scrollbar {
+  display: none;
 }
 .gallery-filter {
+  flex: 0 0 auto;
   min-height: 44px;
   padding: 8px 12px;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   border-radius: 6px;
   font-size: 14px;
+  white-space: nowrap;
   transition:
     background-color 160ms var(--ease),
     color 160ms var(--ease);
@@ -1503,7 +1515,7 @@ html:not(.js) .gallery-controls {
   align-items: center;
   gap: 0;
   padding-block: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   border-block: 1px solid var(--line);
   color: var(--muted);
   font-size: 13px;
@@ -1604,9 +1616,6 @@ html:not(.js) .gallery-controls {
   }
   .catalog-entry h2 {
     font-size: 30px;
-  }
-  .service-note {
-    margin-bottom: 64px;
   }
 }
 @media (min-width: 1200px) {

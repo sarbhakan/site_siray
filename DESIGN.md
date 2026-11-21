@@ -1,4 +1,4 @@
-# Siray Signature — système visuel V14
+# Siray Signature — système visuel V15
 
 Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/data/site.ts`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
@@ -112,3 +112,7 @@ La direction visuelle et la qualité des photographies V10/V11 sont conservées.
 Cette proposition reste sur une branche de revue. Le menu natif ouvre une page ivoire depuis la gauche en 340 ms, sous un bandeau olive qui porte le logo et la commande Fermer. Les commandes Menu et Fermer sont sans cadre ; leur focus clavier apparaît comme un trait inférieur ivoire. Le focus initial vise Fermer, puis Échap revient au déclencheur. L’ouverture est immédiate avec la préférence de mouvement réduit ; un passage au format bureau ferme le dialogue. Les marges respectent les zones de sécurité latérales du téléphone.
 
 Les deux parcours de l’accueil deviennent des commandes de même largeur, à surface claire et bordure olive, sans la barre horizontale commune. La localisation est centrée. Le bandeau pratique réunit « Sur commande · Toutes nos viandes sont halal » sur une ligne, puis le lien allergies sur téléphone. Le footer centre le titre et le bouton Instagram, regroupe les sept prestations en lignes flexibles et garde les quatre liens généraux sur une rangée aux largeurs mobiles vérifiées. Les cibles restent au moins de 44 px. Photos, compression et diaporama sont conservés. Voir `docs/qa/v14-mobile-review.md` pour les mesures et limites.
+
+## Galerie et raccord d’accueil — V15
+
+La marge extérieure du bandeau pratique est supprimée : la surface de Maison commence immédiatement après sa bordure, avec son espacement intérieur conservé. Les huit filtres de galerie restent sur une rangée horizontale défilante, sans barre visible. Les boutons natifs conservent leur état pressé, leurs cibles de 44 px et une bordure discrète ; le rail garde 8 px de dégagement pour le focus clavier. Aucun geste tactile n’est intercepté. La V14 et cette correction V15 sont autorisées à la publication par le client.
