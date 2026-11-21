@@ -1,0 +1,109 @@
+{
+  "home": {
+    "pageTitle": "Accueil",
+    "title": "Vos instants gourmands",
+    "summary": "Pâtisserie & tables sur mesure.",
+    "description": "Gâteaux personnalisés, brunchs et buffets : choisissez vos saveurs, vos couleurs et votre décor.",
+    "discoverLabel": "Découvrir nos prestations",
+    "celebrateTitle": "Pour célébrer",
+    "celebrateDetail": "Layer cakes, bento cakes & cupcakes",
+    "gatherTitle": "Pour se retrouver",
+    "gatherDetail": "Mignardises, brunch box, buffets & plateaux",
+    "location": "Bordeaux & Gironde",
+    "orderNote": "Sur commande",
+    "halalNote": "Toutes nos viandes sont halal",
+    "allergiesLabel": "Allergies & intolérances",
+    "maisonTitle": "L’art de sublimer vos instants gourmands",
+    "maisonText": "Vos couleurs, votre décor et votre format donnent le ton de vos cakes et tables sur mesure.",
+    "maisonLink": "L’esprit Siray Signature",
+    "galleryTitle": "Des idées à garder",
+    "galleryLink": "Ouvrir la galerie",
+    "cakesLabel": "Cakes",
+    "sweetsLabel": "Petites douceurs",
+    "tablesLabel": "Tables & brunchs",
+    "locationOrderNote": "Créations sur commande"
+  },
+  "maison": {
+    "title": "La maison Siray",
+    "intro": "Cakes, mignardises et buffets sur mesure, à Bordeaux et en Gironde.",
+    "worldTitle": "L’art de sublimer vos instants gourmands",
+    "worldText": "Un gâteau imaginé pour une occasion, un brunch à partager, une table dressée pour recevoir : Siray Signature accompagne vos moments gourmands avec des créations à composer selon vos envies.",
+    "pastryTitle": "La pâtisserie, à votre image",
+    "pastryText": "Layer cakes, bento cakes et cupcakes se déclinent en saveurs, couleurs et décors. D’une petite attention au gâteau de célébration, le format et la présentation donnent le ton de votre occasion.",
+    "sharingTitle": "Le plaisir de partager",
+    "sharingText": "Mignardises sucrées ou salées, brunch box et plateaux se retrouvent autour de la table. Pour une réception, le buffet associe les bouchées à une mise en scène personnalisée : supports, couleurs et décoration s’accordent à votre thème.",
+    "bespokeTitle": "Le sur-mesure, ensemble",
+    "bespokeText": "Votre thème, les couleurs de votre table ou une photo d’inspiration peuvent servir de point de départ. Nous échangeons sur votre idée pour préciser le format, les saveurs, le décor et la présentation.",
+    "exploreBefore": "Explorez",
+    "exploreLink": "nos prestations",
+    "exploreAfter": "pour découvrir les sept familles, leurs compositions et leurs tarifs. Les options et les informations à transmettre sont réunies dans chaque fiche.",
+    "orderingText": "Les demandes et les commandes se préparent sur Instagram. Indiquez votre date, le nombre de personnes et vos inspirations pour que nous puissions échanger sur votre projet à Bordeaux ou en Gironde.",
+    "practicalText": "Toutes nos viandes sont halal. Signalez vos allergies et intolérances lors de votre demande, avant la confirmation de la commande.",
+    "pageTitle": "La maison"
+  },
+  "project": {
+    "metaDescription": "Préparez votre commande Siray Signature sur Instagram : personnalisation, anticipation, retrait sur place et livraison possible à Bordeaux et en Gironde.",
+    "title": "Votre projet gourmand",
+    "lead": "Une idée, une date, quelques envies : imaginons votre création ensemble.",
+    "instagramLabel": "Écrire sur Instagram",
+    "instagramHandle": "@siraysignature",
+    "channel": "Toutes les commandes se préparent et se confirment sur Instagram.",
+    "timingTitle": "Prévoyez à l’avance",
+    "timingLead": "Contactez-nous dès que votre date est connue,",
+    "timingEmphasis": "même pour un bento cake.",
+    "timingText": "Les demandes pour le jour même ou le lendemain sont difficiles à réaliser. La disponibilité et le délai nécessaire sont confirmés par message.",
+    "processTitle": "De l’idée à la commande",
+    "messageTitle": "Dans votre premier message",
+    "messageIntro": "Ces quelques renseignements nous permettent de vous répondre plus précisément.",
+    "exploreLabel": "Explorer les sept prestations",
+    "arrangementsTitle": "Retrait & livraison",
+    "area": "Bordeaux & Gironde",
+    "pickupTitle": "À récupérer sur place",
+    "pickupText": "Le retrait se fait généralement sur le lieu de création des prestations. Le lieu et l’horaire sont convenus ensemble sur Instagram.",
+    "deliveryTitle": "Une livraison à domicile ?",
+    "deliveryLead": "Elle peut être envisagée à Bordeaux et en Gironde,",
+    "deliveryEmphasis": "avec un supplément",
+    "deliveryText": "précisé lors de l’échange. Sa possibilité est à confirmer selon votre demande.",
+    "foodTitle": "Des créations halal",
+    "foodText": "Nos viandes et les ingrédients utilisés sont halal.",
+    "allergiesTitle": "Allergies & intolérances",
+    "allergiesText": "Signalez-les dès votre premier message. Les ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation.",
+    "pageTitle": "Votre projet",
+    "messageDetails": [
+      {
+        "label": "La date",
+        "text": "Le jour souhaité et votre occasion."
+      },
+      {
+        "label": "La création",
+        "text": "La prestation, le nombre de personnes ou la quantité."
+      },
+      {
+        "label": "Vos envies",
+        "text": "Les saveurs, couleurs, inscriptions et photos d’inspiration."
+      },
+      {
+        "label": "La remise",
+        "text": "Un retrait sur place ou une demande de livraison, avec le lieu souhaité."
+      },
+      {
+        "label": "À signaler",
+        "text": "Toute allergie, intolérance ou restriction alimentaire."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Présentez votre envie",
+        "text": "Envoyez votre date, la prestation souhaitée et le nombre de personnes. Quelques inspirations nous aideront à vous proposer une création adaptée."
+      },
+      {
+        "title": "Personnalisons les détails",
+        "text": "Nous précisons ensemble le format, les saveurs et le décor selon la prestation. Le tarif est établi en fonction de votre demande ; les buffets font l’objet d’un devis personnalisé."
+      },
+      {
+        "title": "Convenons des modalités",
+        "text": "La disponibilité, le tarif et les modalités de retrait ou de livraison sont convenus sur Instagram avant confirmation de la commande."
+      }
+    ]
+  }
+}

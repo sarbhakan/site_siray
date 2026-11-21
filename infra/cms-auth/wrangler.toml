@@ -1,0 +1,9 @@
+name = "siray-cms-auth"
+main = "src/index.js"
+compatibility_date = "2026-11-11"
+
+[vars]
+ALLOWED_DOMAINS = "siraysignature.fr"
+
+# Configure GITHUB_CLIENT_ID and the encrypted GITHUB_CLIENT_SECRET in Cloudflare.
+# Never commit a client secret, token or .dev.vars file.

@@ -1,0 +1,566 @@
+{
+  "collections": [
+    {
+      "slug": "layer-cakes",
+      "name": "Layer cakes",
+      "short": "Un gâteau à votre image",
+      "intro": "Saveurs et décor à votre image.",
+      "text": "Choisissez vos saveurs, vos couleurs et votre décor.",
+      "possibilities": [
+        "10 parts minimum",
+        "Couleurs, thème, inscription et décoration personnalisables",
+        "Saveurs classiques ou associations Signature"
+      ],
+      "occasion": "Anniversaires & réceptions",
+      "priceSummary": "À partir de 10 parts",
+      "priceNote": "Le tarif est communiqué en message privé selon le nombre de parts, les saveurs et le niveau de personnalisation.",
+      "tariffs": [],
+      "orderFields": [
+        "Le nombre de parts souhaité, à partir de 10",
+        "Le modèle et vos photos d’inspiration",
+        "La saveur classique ou l’association Signature",
+        "Les couleurs, le thème, l’inscription et le décor",
+        "La date de votre événement"
+      ],
+      "panelNote": "Tarif personnalisé en message privé."
+    },
+    {
+      "slug": "bento-cakes",
+      "name": "Bento cakes",
+      "short": "Un petit format, un message personnel",
+      "intro": "Un petit gâteau, vos couleurs et votre message.",
+      "text": "Une saveur classique, un message et un décor à choisir.",
+      "possibilities": [
+        "Format standard",
+        "Inscription, couleurs, thème et décoration personnalisables",
+        "Saveurs classiques au choix"
+      ],
+      "occasion": "Cadeaux & petites occasions",
+      "priceSummary": "Un format standard à personnaliser",
+      "priceNote": "Le tarif est communiqué en message privé selon la personnalisation et les éléments décoratifs souhaités.",
+      "tariffs": [],
+      "orderFields": [
+        "La saveur classique souhaitée",
+        "Le modèle ou une photo d’inspiration",
+        "L’inscription, les couleurs, le thème et le décor",
+        "La date souhaitée"
+      ],
+      "panelNote": "Tarif personnalisé en message privé."
+    },
+    {
+      "slug": "mignardises",
+      "name": "Mignardises",
+      "short": "Les petites pièces sucrées & salées",
+      "intro": "Des bouchées sucrées, salées ou les deux.",
+      "text": "Variétés et quantités à composer selon vos convives.",
+      "possibilities": [
+        "Sucré, salé ou les deux",
+        "Plateaux prêts à disposer",
+        "Variétés et répartition à définir ensemble"
+      ],
+      "occasion": "Événements & réceptions",
+      "priceNote": "Les quantités supplémentaires sont proposées sur devis. Les compositions peuvent être ajustées selon vos besoins et le nombre de convives.",
+      "tariffs": [
+        {
+          "label": "35 pièces",
+          "price": 70
+        },
+        {
+          "label": "70 pièces",
+          "price": 135
+        },
+        {
+          "label": "105 pièces",
+          "price": 200
+        },
+        {
+          "label": "140 pièces",
+          "price": 260
+        },
+        {
+          "label": "175 pièces",
+          "price": 320
+        },
+        {
+          "label": "210 pièces",
+          "price": 380
+        }
+      ],
+      "orderFields": [
+        "Le nombre total de pièces",
+        "Les variétés sucrées et/ou salées",
+        "La répartition entre les différentes variétés",
+        "La date de votre événement"
+      ],
+      "panelNote": "Quantités supplémentaires sur devis."
+    },
+    {
+      "slug": "cupcakes",
+      "name": "Cupcakes",
+      "short": "Des saveurs à réunir, un décor à choisir",
+      "intro": "Onze saveurs, un décor à votre image.",
+      "text": "Choisissez la quantité, les saveurs et le décor.",
+      "possibilities": [
+        "Cinq formats, de 6 à 30 pièces",
+        "Onze saveurs au choix",
+        "Personnalisation sur demande"
+      ],
+      "occasion": "Cadeaux & tables sucrées",
+      "priceNote": "Toute personnalisation spécifique fait l’objet d’un supplément tarifaire.",
+      "tariffs": [
+        {
+          "label": "6 pièces",
+          "price": 18
+        },
+        {
+          "label": "12 pièces",
+          "price": 34
+        },
+        {
+          "label": "18 pièces",
+          "price": 50
+        },
+        {
+          "label": "24 pièces",
+          "price": 64
+        },
+        {
+          "label": "30 pièces",
+          "price": 78
+        }
+      ],
+      "orderFields": [
+        "La quantité souhaitée",
+        "Les saveurs sélectionnées",
+        "Votre personnalisation ou une photo d’inspiration",
+        "La date souhaitée"
+      ],
+      "panelNote": "Personnalisation spécifique avec supplément."
+    },
+    {
+      "slug": "brunch-box",
+      "name": "Brunch box",
+      "short": "Dix compositions pour vos matins gourmands",
+      "intro": "Dix brunchs sucrés et salés, sur commande.",
+      "text": "Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.",
+      "possibilities": [
+        "Sucré, salé et jus de fruits"
+      ],
+      "occasion": "Brunchs & cadeaux",
+      "orderFields": [
+        "La composition choisie",
+        "Le nombre de personnes",
+        "La date souhaitée",
+        "L’heure de retrait",
+        "Vos demandes particulières éventuelles"
+      ],
+      "panelNote": "Personnes et heure de retrait à préciser."
+    },
+    {
+      "slug": "buffets",
+      "name": "Buffets",
+      "short": "Une réception, une table sur mesure",
+      "intro": "Un buffet sucré, salé ou mixte, installé pour votre événement.",
+      "text": "Composition, quantités et décor se définissent selon votre événement.",
+      "possibilities": [
+        "Composition sucrée, salée ou mixte",
+        "Sélection et quantités adaptées à vos invités",
+        "Mise en place et dressage selon votre projet"
+      ],
+      "occasion": "Réceptions & événements",
+      "priceSummary": "Une prestation sur devis",
+      "priceNote": "Chaque buffet fait l’objet d’un devis personnalisé selon les quantités, les produits sélectionnés et les besoins de mise en place.",
+      "tariffs": [],
+      "orderFields": [
+        "Le lieu de l’événement",
+        "La date et l’horaire",
+        "Le nombre de convives",
+        "Le nombre de mignardises par personne",
+        "Le thème, les couleurs et vos inspirations",
+        "La composition souhaitée : sucrée, salée ou mixte"
+      ],
+      "panelNote": "Chaque prestation fait l’objet d’un devis personnalisé."
+    },
+    {
+      "slug": "plateaux",
+      "name": "Plateaux",
+      "short": "Des compositions à partager",
+      "intro": "Cinq compositions à partager.",
+      "text": "Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.",
+      "possibilities": [
+        "Cinq plateaux au choix",
+        "À réunir selon votre table et vos convives",
+        "Toutes nos viandes sont halal"
+      ],
+      "occasion": "Tables & moments à partager",
+      "priceNote": "Précisez le nombre de convives et la quantité de chaque plateau lors de votre demande.",
+      "tariffs": [
+        {
+          "label": "Plateau de charcuterie",
+          "price": 70,
+          "description": "Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées."
+        },
+        {
+          "label": "Plateau de fromages",
+          "price": 70,
+          "description": "Une sélection de fromages de qualité, aux arômes et aux affinages variés."
+        },
+        {
+          "label": "Grazing Platter",
+          "price": 60,
+          "description": "Fromages, biscuits, fruits frais et secs, accompagnés de confitures."
+        },
+        {
+          "label": "Plateau de fruits frais",
+          "price": 50,
+          "description": "Un assortiment de fruits frais de saison."
+        },
+        {
+          "label": "Plateau de crudités",
+          "price": 45,
+          "detail": "Houmous, tzatziki et sauce ail et fines herbes",
+          "description": "Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes."
+        }
+      ],
+      "orderFields": [
+        "Les plateaux souhaités",
+        "La quantité de chaque plateau",
+        "Le nombre de convives",
+        "La date souhaitée",
+        "Vos éventuelles restrictions alimentaires"
+      ],
+      "panelNote": "Précisez les quantités et le nombre de convives."
+    }
+  ],
+  "buffetServiceSteps": [
+    {
+      "title": "Installation avant l’événement",
+      "text": "Installation avant l’événement, avec une présentation soignée des mignardises."
+    },
+    {
+      "title": "Présentation & décoration",
+      "text": "Plateaux, présentoirs et supports composent une mise en scène harmonieuse."
+    },
+    {
+      "title": "Personnalisation",
+      "text": "Votre thème, vos couleurs et vos inspirations guident la présentation et la décoration."
+    },
+    {
+      "title": "Retrait du matériel",
+      "text": "Le matériel Siray Signature est récupéré à la fin de votre événement."
+    }
+  ],
+  "classicFlavorGroups": [
+    {
+      "name": "Fruits",
+      "flavors": [
+        "Framboise",
+        "Fraise",
+        "Fruit de la passion",
+        "Mangue",
+        "Myrtille",
+        "Poire",
+        "Pomme"
+      ]
+    },
+    {
+      "name": "Chocolats",
+      "flavors": [
+        "Chocolat au lait",
+        "Chocolat noir",
+        "Chocolat blanc"
+      ]
+    },
+    {
+      "name": "Notes gourmandes",
+      "flavors": [
+        "Pistache",
+        "Vanille",
+        "Spéculoos",
+        "Caramel beurre salé",
+        "Croustillant au chocolat praliné"
+      ]
+    }
+  ],
+  "signatureFlavors": [
+    {
+      "name": "Éclat vert",
+      "composition": "Curd citron vert et basilic, framboises fraîches."
+    },
+    {
+      "name": "Tropical",
+      "composition": "Framboises fraîches et coulis mangue-passion."
+    },
+    {
+      "name": "Noisette royale",
+      "composition": "Praliné noisette et vanille."
+    },
+    {
+      "name": "Douceur acidulée",
+      "composition": "Curd citron, framboises fraîches et vanille."
+    },
+    {
+      "name": "Velours pistache",
+      "composition": "Framboises fraîches, crème de pistache et éclats de pistache."
+    },
+    {
+      "name": "Douceur d’automne",
+      "composition": "Caramel beurre salé, pomme et vanille."
+    },
+    {
+      "name": "Évasion tropicale",
+      "composition": "Mangue fraîche, fruit de la passion frais et vanille."
+    },
+    {
+      "name": "Praliné royal",
+      "composition": "Fraise, vanille et praliné pistache."
+    },
+    {
+      "name": "Rosée verte",
+      "composition": "Curd citron-basilic et fraises fraîches."
+    }
+  ],
+  "cupcakeFlavors": [
+    {
+      "name": "Framboise",
+      "family": "fruits"
+    },
+    {
+      "name": "Fraise",
+      "family": "fruits"
+    },
+    {
+      "name": "Fruit de la passion",
+      "family": "fruits"
+    },
+    {
+      "name": "Mangue & fruit de la passion",
+      "family": "fruits"
+    },
+    {
+      "name": "Crème de pistache",
+      "family": "notes-gourmandes"
+    },
+    {
+      "name": "Fruits rouges",
+      "family": "fruits"
+    },
+    {
+      "name": "Lemon curd",
+      "family": "fruits"
+    },
+    {
+      "name": "Nutella",
+      "family": "chocolats"
+    },
+    {
+      "name": "Crème de spéculoos",
+      "family": "notes-gourmandes"
+    },
+    {
+      "name": "Caramel beurre salé",
+      "family": "notes-gourmandes"
+    },
+    {
+      "name": "Crème de noisette",
+      "family": "notes-gourmandes"
+    }
+  ],
+  "brunchBoxes": [
+    {
+      "name": "Elegancia",
+      "price": 30,
+      "sweet": [
+        "Mini-viennoiserie",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella"
+      ],
+      "savory": [
+        "Avocado & salmon toast : saumon fumé, avocat, émincés d’oignons rouges et fleur de sel",
+        "Tartine tomate & mozzarella au pesto",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Prestige",
+      "price": 30,
+      "sweet": [
+        "Brioche perdue",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Blini saumon fumé & crème citronnée",
+        "Tartine tomate & burrata, mâche et sauce mélasse de grenade",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Le Parisien",
+      "price": 30,
+      "sweet": [
+        "Viennoiserie",
+        "Pain de campagne",
+        "Beurre & confiture"
+      ],
+      "savory": [
+        "Œufs brouillés aux fines herbes",
+        "Tartine tomates séchées & cœur de burrata",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Faisalia",
+      "price": 30,
+      "sweet": [
+        "Baghrir",
+        "Msemen",
+        "Miel & confiture"
+      ],
+      "savory": [
+        "Batbout poulet",
+        "Omelette à la marocaine",
+        "Assortiment d’olives",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Signature",
+      "price": 30,
+      "sweet": [
+        "Crêpe",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Shrimp toast : crevettes, avocat, tomates cerises et fromage frais",
+        "Assortiment de charcuterie",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Brunchetta",
+      "price": 30,
+      "sweet": [
+        "Granola bowl & fruits rouges",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Toast saumon fumé, concombre, crème citronnée et aneth",
+        "Assortiment d’olives",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Dolcezza",
+      "price": 30,
+      "sweet": [
+        "Granola bowl & fruits rouges",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Chicken toast : caviar d’aubergine, ail, poivron, émincé de poulet et parmesan",
+        "Assortiment d’olives",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Amarizia",
+      "price": 30,
+      "sweet": [
+        "Brioche perdue",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Chicken toast : fromage frais, émincés de poulet marinés, avocat et sauce miel-moutarde",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Seralia",
+      "price": 30,
+      "sweet": [
+        "Croissant ou chocolatine",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Egg muffin",
+        "Bagel saumon fumé",
+        "Assortiment de fromages"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    },
+    {
+      "name": "Anatolia",
+      "price": 35,
+      "sweet": [
+        "Croissant ou chocolatine",
+        "Assortiment de fruits de saison",
+        "Confiture ou Nutella au choix"
+      ],
+      "savory": [
+        "Sigara böreği : roulés au fromage turc",
+        "Gözleme : feuilleté turc, épinard, fromage ou pomme de terre",
+        "Menemen : œufs brouillés aux tomates, poivrons et oignons",
+        "Assortiment de charcuterie turque",
+        "Assortiment d’olives",
+        "Assortiment de fromages turcs",
+        "Tomate & concombre"
+      ],
+      "drink": "Jus de fruits : orange ou fraise"
+    }
+  ],
+  "mignardiseMenu": {
+    "savoryTitle": "Le coin gourmand",
+    "savoryIntro": "Un assortiment de bouchées salées, entre classiques revisités et créations gourmandes.",
+    "savory": [
+      {
+        "name": "Mini-burgers",
+        "detail": "Viande, poulet ou poisson."
+      },
+      {
+        "name": "Sandwiches",
+        "detail": "Bagels, wraps, navettes et club sandwiches."
+      },
+      {
+        "name": "Mini-pizzas & hot-dogs",
+        "detail": ""
+      },
+      {
+        "name": "Nems & bouchées chaudes",
+        "detail": ""
+      },
+      {
+        "name": "Verrines salées",
+        "detail": "Salades, crudités et fruits de mer."
+      },
+      {
+        "name": "Toasts",
+        "detail": "Des garnitures variées."
+      },
+      {
+        "name": "Coupelles & compositions grazing",
+        "detail": "Fromages, charcuteries, crudités et fruits frais."
+      },
+      {
+        "name": "Bouchées raffinées",
+        "detail": "Autour du gravlax de truite, des crevettes, de la mozzarella et des tomates."
+      }
+    ],
+    "savoryFinale": "Et d’autres créations selon vos envies.",
+    "sweetTitle": "La touche sucrée",
+    "sweetText": "Pour terminer sur une note de douceur, une sélection de verrines sucrées déclinées en différentes saveurs et textures."
+  }
+}

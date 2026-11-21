@@ -1,53 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pages from '../content/pages.json';
 import Photo from '../components/Photo.astro';
-import { photo } from '../data/photography';
+import { homePhotos } from '../data/photography';
 
-const cakePhoto = photo('layer-fleurs');
-const tablePhoto = photo('plateau-grazing');
+const cakePhoto = homePhotos.maisonCake;
+const tablePhoto = homePhotos.maisonTable;
+const page = pages.maison;
 ---
 
-<Layout title="La maison" image={cakePhoto.image}>
+<Layout title={page.pageTitle} image={cakePhoto.image}>
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
       <span>/</span>
-      <span aria-current="page">La maison</span>
+      <span aria-current="page">{page.pageTitle}</span>
     </nav>
   </div>
   <section class="page-intro section-pad">
-    <h1>La maison Siray</h1>
+    <h1>{page.title}</h1>
     <div class="intro-bottom">
-      <p>Cakes, mignardises et buffets sur mesure, à Bordeaux et en Gironde.</p>
+      <p>{page.intro}</p>
     </div>
   </section>
 
   <section class="maison-editorial section-pad" aria-labelledby="maison-world-title">
     <figure class="maison-portrait">
-      <Photo name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position="50% 50%" />
+      <Photo name={cakePhoto.image} alt={cakePhoto.alt} eager sizes="(min-width: 960px) 42vw, (min-width: 600px) 46vw, 100vw" position={cakePhoto.position} />
     </figure>
     <div class="maison-copy">
-      <h2 id="maison-world-title">L’art de sublimer vos instants gourmands</h2>
+      <h2 id="maison-world-title">{page.worldTitle}</h2>
       <p>
-        Un gâteau imaginé pour une occasion, un brunch à partager, une table
-        dressée pour recevoir : Siray Signature accompagne vos moments gourmands
-        avec des créations à composer selon vos envies.
+        {page.worldText}
       </p>
       <div class="maison-focus">
-        <h3>La pâtisserie, à votre image</h3>
+        <h3>{page.pastryTitle}</h3>
         <p>
-          Layer cakes, bento cakes et cupcakes se déclinent en saveurs, couleurs
-          et décors. D’une petite attention au gâteau de célébration, le format
-          et la présentation donnent le ton de votre occasion.
+          {page.pastryText}
         </p>
       </div>
       <div class="maison-focus">
-        <h3>Le plaisir de partager</h3>
+        <h3>{page.sharingTitle}</h3>
         <p>
-          Mignardises sucrées ou salées, brunch box et plateaux se retrouvent
-          autour de la table. Pour une réception, le buffet associe les bouchées
-          à une mise en scène personnalisée : supports, couleurs et décoration
-          s’accordent à votre thème.
+          {page.sharingText}
         </p>
       </div>
     </div>
@@ -55,28 +50,22 @@ const tablePhoto = photo('plateau-grazing');
 
   <section class="maison-bespoke section-pad" aria-labelledby="maison-bespoke-title">
     <div class="maison-copy">
-      <h2 id="maison-bespoke-title">Le sur-mesure, ensemble</h2>
+      <h2 id="maison-bespoke-title">{page.bespokeTitle}</h2>
       <p>
-        Votre thème, les couleurs de votre table ou une photo d’inspiration
-        peuvent servir de point de départ. Nous échangeons sur votre idée pour
-        préciser le format, les saveurs, le décor et la présentation.
+        {page.bespokeText}
       </p>
       <p>
-        Explorez{' '}<a class="maison-inline-link" href="/creations/">nos prestations</a>{' '}pour découvrir les sept familles, leurs compositions et leurs tarifs.
-        Les options et les informations à transmettre sont réunies dans chaque fiche.
+        {page.exploreBefore}{' '}<a class="maison-inline-link" href="/creations/">{page.exploreLink}</a>{' '}{page.exploreAfter}
       </p>
       <p>
-        Les demandes et les commandes se préparent sur Instagram. Indiquez votre
-        date, le nombre de personnes et vos inspirations pour que nous puissions
-        échanger sur votre projet à Bordeaux ou en Gironde.
+        {page.orderingText}
       </p>
       <p class="maison-practical">
-        Toutes nos viandes sont halal. Signalez vos allergies et intolérances
-        lors de votre demande, avant la confirmation de la commande.
+        {page.practicalText}
       </p>
     </div>
     <figure class="maison-portrait maison-portrait--table">
-      <Photo name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position="50% 50%" />
+      <Photo name={tablePhoto.image} alt={tablePhoto.alt} sizes="(min-width: 960px) 32vw, (min-width: 600px) 36vw, 100vw" position={tablePhoto.position} />
     </figure>
   </section>
 </Layout>

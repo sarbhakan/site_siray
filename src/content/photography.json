@@ -1,0 +1,398 @@
+{
+  "collections": [
+    {
+      "slug": "layer-cakes",
+      "cover": {
+        "file": "/images/siray-layer-fruits-6a211ed1.webp",
+        "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
+        "position": "50% 70%"
+      },
+      "detail": {
+        "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+        "alt": "Layer cake rouge sur un présentoir argenté",
+        "position": "50% 65%"
+      },
+      "request": {
+        "file": "/images/siray-layer-fruits-6a211ed1.webp",
+        "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
+        "position": "50% 70%"
+      },
+      "home": {
+        "file": "/images/siray-layer-journal-94e2c50b.webp",
+        "alt": "Layer cake ivoire et framboises présenté sur des journaux Siray Signature",
+        "position": "50% 65.789%"
+      }
+    },
+    {
+      "slug": "bento-cakes",
+      "cover": {
+        "file": "/images/siray-bento-coffrets-78db3bdc.webp",
+        "alt": "Petits gâteaux présentés dans des coffrets transparents avec des rubans",
+        "position": "50% 62%"
+      },
+      "detail": {
+        "file": "/images/siray-bento-vert-e1768ae9.webp",
+        "alt": "Bento cake vert décoré de petites roses et d’un message",
+        "position": "50% 50%"
+      },
+      "request": {
+        "file": "/images/siray-bento-rubans-1d8a5a95.webp",
+        "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
+        "position": "50% 58%"
+      },
+      "home": {
+        "file": "/images/siray-bento-fleurs-18f0073c.webp",
+        "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
+        "position": "50% 100%"
+      }
+    },
+    {
+      "slug": "mignardises",
+      "cover": {
+        "file": "/images/siray-mignardises-hotdog-12452ace.webp",
+        "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
+        "position": "50% 50%"
+      },
+      "detail": {
+        "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
+        "alt": "Assortiment de mignardises sucrées et salées avec une verrine au premier plan",
+        "position": "50% 58%"
+      },
+      "request": {
+        "file": "/images/siray-mignardises-hotdog-12452ace.webp",
+        "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
+        "position": "50% 50%"
+      },
+      "home": {
+        "file": "/images/siray-mignardises-hotdog-12452ace.webp",
+        "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
+        "position": "50% 50%"
+      }
+    },
+    {
+      "slug": "cupcakes",
+      "cover": {
+        "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+        "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+        "position": "50% 68%"
+      },
+      "detail": {
+        "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+        "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
+        "position": "50% 58%"
+      },
+      "request": {
+        "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+        "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+        "position": "50% 68%"
+      },
+      "home": {
+        "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+        "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+        "position": "50% 100%"
+      }
+    },
+    {
+      "slug": "brunch-box",
+      "cover": {
+        "file": "/images/siray-brunch-toasts-6239a88d.webp",
+        "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+        "position": "50% 72%"
+      },
+      "detail": {
+        "file": "/images/siray-brunch-douceurs-907f487c.webp",
+        "alt": "Brunch box ouverte avec des gaufres, des pâtisseries et des fruits",
+        "position": "50% 70%"
+      },
+      "request": {
+        "file": "/images/siray-brunch-toasts-6239a88d.webp",
+        "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+        "position": "50% 72%"
+      },
+      "home": {
+        "file": "/images/siray-brunch-toasts-6239a88d.webp",
+        "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+        "position": "50% 100%"
+      }
+    },
+    {
+      "slug": "buffets",
+      "cover": {
+        "file": "/images/siray-buffet-ensemble-474a9997.webp",
+        "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+        "position": "50% 75%"
+      },
+      "detail": {
+        "file": "/images/siray-buffet-desserts-7f108c7a.webp",
+        "alt": "Verrines et desserts sur des présentoirs argentés près de fleurs blanches",
+        "position": "50% 60%"
+      },
+      "request": {
+        "file": "/images/siray-buffet-ensemble-474a9997.webp",
+        "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+        "position": "50% 75%"
+      },
+      "home": {
+        "file": "/images/siray-buffet-ensemble-474a9997.webp",
+        "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+        "position": "50% 100%"
+      }
+    },
+    {
+      "slug": "plateaux",
+      "cover": {
+        "file": "/images/siray-plateau-grazing-5852832b.webp",
+        "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+        "position": "50% 72%"
+      },
+      "detail": {
+        "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+        "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+        "position": "50% 50%"
+      },
+      "request": {
+        "file": "/images/siray-plateau-grazing-5852832b.webp",
+        "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+        "position": "50% 72%"
+      },
+      "home": {
+        "file": "/images/siray-plateau-grazing-5852832b.webp",
+        "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+        "position": "50% 100%"
+      }
+    }
+  ],
+  "homeSlides": [
+    {
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "position": "50% 50%"
+    },
+    {
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+      "position": "50% 100%"
+    },
+    {
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "alt": "Layer cake rouge sur un présentoir argenté",
+      "position": "50% 50%"
+    }
+  ],
+  "homePhotos": {
+    "maison": {
+      "file": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "alt": "Gâteau ivoire à deux étages avec des framboises",
+      "position": "50% 65%"
+    },
+    "cakes": {
+      "file": "/images/siray-layer-coquillages-7c0454c7.webp",
+      "alt": "Layer cake ivoire décoré de coquillages et de fleurs roses",
+      "position": "50% 68%"
+    },
+    "tables": {
+      "file": "/images/siray-brunch-douceurs-907f487c.webp",
+      "alt": "Brunch box ouverte avec des gaufres, des pâtisseries et des fruits",
+      "position": "50% 70%"
+    },
+    "petitesDouceurs": {
+      "file": "/images/cupcakes.webp",
+      "alt": "Petits cupcakes à la crème rose et aux fruits rouges",
+      "position": "50% 46%"
+    },
+    "maisonCake": {
+      "file": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "alt": "Gâteau à deux étages orné de roses roses et de fleurs blanches",
+      "position": "50% 65%"
+    },
+    "maisonTable": {
+      "file": "/images/siray-plateau-grazing-5852832b.webp",
+      "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+      "position": "50% 72%"
+    }
+  },
+  "gallery": [
+    {
+      "file": "/images/siray-layer-roses-0dd26d2a.webp",
+      "alt": "Layer cake ivoire orné de roses rouges et orange",
+      "position": "50% 70%",
+      "label": "Décor de roses",
+      "category": "layer-cakes"
+    },
+    {
+      "file": "/images/siray-brunch-toasts-6239a88d.webp",
+      "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+      "position": "50% 72%",
+      "label": "Le brunch salé",
+      "category": "brunch-box"
+    },
+    {
+      "file": "/images/siray-bento-rubans-1d8a5a95.webp",
+      "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
+      "position": "50% 58%",
+      "label": "Rubans & framboises",
+      "category": "bento-cakes"
+    },
+    {
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "position": "50% 50%",
+      "label": "Fruits de saison",
+      "category": "plateaux"
+    },
+    {
+      "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
+      "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
+      "position": "50% 68%",
+      "label": "Fleurs & petites douceurs",
+      "category": "cupcakes"
+    },
+    {
+      "file": "/images/siray-buffet-ensemble-474a9997.webp",
+      "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+      "position": "50% 75%",
+      "label": "La table dressée",
+      "category": "buffets"
+    },
+    {
+      "file": "/images/siray-mignardises-toasts-a69b6a95.webp",
+      "alt": "Assortiment de petits toasts et de bouchées sur un plateau blanc",
+      "position": "50% 75%",
+      "label": "Toasts & bouchées",
+      "category": "mignardises"
+    },
+    {
+      "file": "/images/siray-layer-fruits-6a211ed1.webp",
+      "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
+      "position": "50% 70%",
+      "label": "Ivoire & fruits rouges",
+      "category": "layer-cakes"
+    },
+    {
+      "file": "/images/siray-plateau-grazing-5852832b.webp",
+      "alt": "Plateau à partager avec fromages, charcuteries, fruits et biscuits",
+      "position": "50% 72%",
+      "label": "Grazing Platter",
+      "category": "plateaux"
+    },
+    {
+      "file": "/images/siray-bento-vert-e1768ae9.webp",
+      "alt": "Bento cake vert décoré de petites roses et d’un message",
+      "position": "50% 50%",
+      "label": "Décor personnalisé",
+      "category": "bento-cakes"
+    },
+    {
+      "file": "/images/siray-brunch-douceurs-907f487c.webp",
+      "alt": "Brunch box ouverte avec des gaufres, des pâtisseries et des fruits",
+      "position": "50% 70%",
+      "label": "Le brunch gourmand",
+      "category": "brunch-box"
+    },
+    {
+      "file": "/images/siray-layer-rouge-7dc19bb3.webp",
+      "alt": "Layer cake rouge sur un présentoir argenté",
+      "position": "50% 65%",
+      "label": "Velours rouge",
+      "category": "layer-cakes"
+    },
+    {
+      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
+      "position": "50% 58%",
+      "label": "Sur son présentoir",
+      "category": "cupcakes"
+    },
+    {
+      "file": "/images/siray-buffet-desserts-7f108c7a.webp",
+      "alt": "Verrines et desserts sur des présentoirs argentés près de fleurs blanches",
+      "position": "50% 60%",
+      "label": "Desserts & présentoirs",
+      "category": "buffets"
+    },
+    {
+      "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "alt": "Assortiment de mignardises sucrées et salées avec une verrine au premier plan",
+      "position": "50% 58%",
+      "label": "Sucré & salé",
+      "category": "mignardises"
+    },
+    {
+      "file": "/images/siray-layer-coquillages-7c0454c7.webp",
+      "alt": "Layer cake ivoire décoré de coquillages et de fleurs roses",
+      "position": "50% 68%",
+      "label": "Inspiration marine",
+      "category": "layer-cakes"
+    },
+    {
+      "file": "/images/siray-plateau-charcuterie-7fa905c0.webp",
+      "alt": "Plateau de charcuteries dressées avec des fruits et des cornichons",
+      "position": "50% 72%",
+      "label": "Les charcuteries",
+      "category": "plateaux"
+    },
+    {
+      "file": "/images/siray-bento-coffrets-78db3bdc.webp",
+      "alt": "Petits gâteaux présentés dans des coffrets transparents avec des rubans",
+      "position": "50% 62%",
+      "label": "En coffrets",
+      "category": "bento-cakes"
+    },
+    {
+      "file": "/images/siray-brunch-partage-987b9037.webp",
+      "alt": "Brunch box ouverte avec des tartines, de la charcuterie et des fruits",
+      "position": "50% 70%",
+      "label": "À partager",
+      "category": "brunch-box"
+    },
+    {
+      "file": "/images/siray-cupcakes-coffret-06215b03.webp",
+      "alt": "Boîte de cupcakes aux décors variés",
+      "position": "50% 65%",
+      "label": "Coffret de cupcakes",
+      "category": "cupcakes"
+    },
+    {
+      "file": "/images/siray-buffet-sale-1c688dea.webp",
+      "alt": "Bouchées salées présentées sur des tables drapées de blanc",
+      "position": "50% 80%",
+      "label": "Un buffet sur mesure",
+      "category": "buffets"
+    },
+    {
+      "file": "/images/siray-layer-etages-4dc5ba8b.webp",
+      "alt": "Gâteau ivoire à deux étages avec des framboises",
+      "position": "50% 65%",
+      "label": "Deux étages",
+      "category": "layer-cakes"
+    },
+    {
+      "file": "/images/siray-plateau-fromages-b7acbdb5.webp",
+      "alt": "Plateau de fromages accompagné de fruits et de noix",
+      "position": "50% 72%",
+      "label": "Les fromages",
+      "category": "plateaux"
+    },
+    {
+      "file": "/images/siray-mignardises-burger-47af9152.webp",
+      "alt": "Mini-burger présenté devant un assortiment de bouchées sur plateaux",
+      "position": "50% 58%",
+      "label": "Les petits formats",
+      "category": "mignardises"
+    },
+    {
+      "file": "/images/siray-bento-fleurs-18f0073c.webp",
+      "alt": "Bento cake ivoire entouré de fleurs roses sur un drapé blanc",
+      "position": "50% 70%",
+      "label": "Fleurs délicates",
+      "category": "bento-cakes"
+    },
+    {
+      "file": "/images/siray-layer-fleurs-7ef2db14.webp",
+      "alt": "Gâteau à deux étages orné de roses roses et de fleurs blanches",
+      "position": "50% 65%",
+      "label": "Fleurs & étages",
+      "category": "layer-cakes"
+    }
+  ]
+}

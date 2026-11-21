@@ -1,3 +1,4 @@
+import catalog from '../content/catalog.json';
 import { collectionPhotography, galleryPhotos } from './photography';
 
 export const instagram = 'https://www.instagram.com/siraysignature/';
@@ -17,485 +18,135 @@ export interface Collection {
   short: string;
   image: string;
   alt: string;
+  position?: string;
   intro: string;
   text: string;
   possibilities: string[];
   occasion: string;
   priceSummary: string;
   priceNote: string;
+  panelNote: string;
   tariffs: Tariff[];
   orderFields: string[];
 }
 
-export const collections: Collection[] = [
-  {
-    slug: 'layer-cakes',
-    href: '/creations/layer-cakes/',
-    name: 'Layer cakes',
-    short: 'Un gâteau à votre image',
-    ...collectionPhotography['layer-cakes'].cover,
-    intro:
-      'Saveurs et décor à votre image.',
-    text: 'Choisissez vos saveurs, vos couleurs et votre décor.',
-    possibilities: [
-      '10 parts minimum',
-      'Couleurs, thème, inscription et décoration personnalisables',
-      'Saveurs classiques ou associations Signature',
-    ],
-    occasion: 'Anniversaires & réceptions',
-    priceSummary: 'À partir de 10 parts',
-    priceNote:
-      'Le tarif est communiqué en message privé selon le nombre de parts, les saveurs et le niveau de personnalisation.',
-    tariffs: [],
-    orderFields: [
-      'Le nombre de parts souhaité, à partir de 10',
-      'Le modèle et vos photos d’inspiration',
-      'La saveur classique ou l’association Signature',
-      'Les couleurs, le thème, l’inscription et le décor',
-      'La date de votre événement',
-    ],
-  },
-  {
-    slug: 'bento-cakes',
-    href: '/creations/bento-cakes/',
-    name: 'Bento cakes',
-    short: 'Un petit format, un message personnel',
-    ...collectionPhotography['bento-cakes'].cover,
-    intro:
-      'Un petit gâteau, vos couleurs et votre message.',
-    text: 'Une saveur classique, un message et un décor à choisir.',
-    possibilities: [
-      'Format standard',
-      'Inscription, couleurs, thème et décoration personnalisables',
-      'Saveurs classiques au choix',
-    ],
-    occasion: 'Cadeaux & petites occasions',
-    priceSummary: 'Un format standard à personnaliser',
-    priceNote:
-      'Le tarif est communiqué en message privé selon la personnalisation et les éléments décoratifs souhaités.',
-    tariffs: [],
-    orderFields: [
-      'La saveur classique souhaitée',
-      'Le modèle ou une photo d’inspiration',
-      'L’inscription, les couleurs, le thème et le décor',
-      'La date souhaitée',
-    ],
-  },
-  {
-    slug: 'mignardises',
-    href: '/creations/mignardises/',
-    name: 'Mignardises',
-    short: 'Les petites pièces sucrées & salées',
-    ...collectionPhotography['mignardises'].cover,
-    intro:
-      'Des bouchées sucrées, salées ou les deux.',
-    text: 'Variétés et quantités à composer selon vos convives.',
-    possibilities: [
-      'Sucré, salé ou les deux',
-      'Plateaux prêts à disposer',
-      'Variétés et répartition à définir ensemble',
-    ],
-    occasion: 'Événements & réceptions',
-    priceSummary: '35 pièces · 70 €',
-    priceNote:
-      'Les quantités supplémentaires sont proposées sur devis. Les compositions peuvent être ajustées selon vos besoins et le nombre de convives.',
-    tariffs: [
-      { label: '35 pièces', price: 70 },
-      { label: '70 pièces', price: 135 },
-      { label: '105 pièces', price: 200 },
-      { label: '140 pièces', price: 260 },
-      { label: '175 pièces', price: 320 },
-      { label: '210 pièces', price: 380 },
-    ],
-    orderFields: [
-      'Le nombre total de pièces',
-      'Les variétés sucrées et/ou salées',
-      'La répartition entre les différentes variétés',
-      'La date de votre événement',
-    ],
-  },
-  {
-    slug: 'cupcakes',
-    href: '/creations/cupcakes/',
-    name: 'Cupcakes',
-    short: 'Des saveurs à réunir, un décor à choisir',
-    ...collectionPhotography['cupcakes'].cover,
-    intro:
-      'Onze saveurs, un décor à votre image.',
-    text: 'Choisissez la quantité, les saveurs et le décor.',
-    possibilities: [
-      'Cinq formats, de 6 à 30 pièces',
-      'Onze saveurs au choix',
-      'Personnalisation sur demande',
-    ],
-    occasion: 'Cadeaux & tables sucrées',
-    priceSummary: '6 cupcakes · 18 €',
-    priceNote:
-      'Toute personnalisation spécifique fait l’objet d’un supplément tarifaire.',
-    tariffs: [
-      { label: '6 pièces', price: 18 },
-      { label: '12 pièces', price: 34 },
-      { label: '18 pièces', price: 50 },
-      { label: '24 pièces', price: 64 },
-      { label: '30 pièces', price: 78 },
-    ],
-    orderFields: [
-      'La quantité souhaitée',
-      'Les saveurs sélectionnées',
-      'Votre personnalisation ou une photo d’inspiration',
-      'La date souhaitée',
-    ],
-  },
-  {
-    slug: 'brunch-box',
-    href: '/creations/brunch-box/',
-    name: 'Brunch box',
-    short: 'Dix compositions pour vos matins gourmands',
-    ...collectionPhotography['brunch-box'].cover,
-    intro:
-      'Dix brunchs sucrés et salés, sur commande.',
-    text: 'Des viennoiseries aux recettes turques d’Anatolia, chaque box réunit sa sélection sucrée, salée et un jus de fruits.',
-    possibilities: [
-      'Dix compositions au choix',
-      'Sucré, salé et jus de fruits',
-      'Neuf compositions à 30 € par personne ; Anatolia à 35 € par personne',
-    ],
-    occasion: 'Brunchs & cadeaux',
-    priceSummary: '9 compositions à 30 € / personne. Anatolia à 35 € / personne.',
-    priceNote:
-      'Toutes nos brunch box sont proposées à 30 € par personne, à l’exception d’Anatolia, à 35 € par personne.',
-    tariffs: [
-      {
-        label: 'Brunch box au choix, hors Anatolia',
-        price: 30,
-        detail: 'par personne',
-      },
-      { label: 'Anatolia', price: 35, detail: 'par personne' },
-    ],
-    orderFields: [
-      'La composition choisie',
-      'Le nombre de personnes',
-      'La date souhaitée',
-      'L’heure de retrait',
-      'Vos demandes particulières éventuelles',
-    ],
-  },
-  {
-    slug: 'buffets',
-    href: '/buffets/',
-    name: 'Buffets',
-    short: 'Une réception, une table sur mesure',
-    ...collectionPhotography['buffets'].cover,
-    intro:
-      'Un buffet sucré, salé ou mixte, installé pour votre événement.',
-    text: 'Composition, quantités et décor se définissent selon votre événement.',
-    possibilities: [
-      'Composition sucrée, salée ou mixte',
-      'Sélection et quantités adaptées à vos invités',
-      'Mise en place et dressage selon votre projet',
-    ],
-    occasion: 'Réceptions & événements',
-    priceSummary: 'Une prestation sur devis',
-    priceNote:
-      'Chaque buffet fait l’objet d’un devis personnalisé selon les quantités, les produits sélectionnés et les besoins de mise en place.',
-    tariffs: [],
-    orderFields: [
-      'Le lieu de l’événement',
-      'La date et l’horaire',
-      'Le nombre de convives',
-      'Le nombre de mignardises par personne',
-      'Le thème, les couleurs et vos inspirations',
-      'La composition souhaitée : sucrée, salée ou mixte',
-    ],
-  },
-  {
-    slug: 'plateaux',
-    href: '/plateaux/',
-    name: 'Plateaux',
-    short: 'Des compositions à partager',
-    ...collectionPhotography['plateaux'].cover,
-    intro:
-      'Cinq compositions à partager.',
-    text: 'Choisissez vos plateaux et leurs quantités selon votre réception. Nous échangeons sur le nombre de convives et vos éventuelles restrictions alimentaires.',
-    possibilities: [
-      'Cinq plateaux au choix',
-      'À réunir selon votre table et vos convives',
-      'Toutes nos viandes sont halal',
-    ],
-    occasion: 'Tables & moments à partager',
-    priceSummary: 'Cinq plateaux, de 45 à 70 €',
-    priceNote:
-      'Précisez le nombre de convives et la quantité de chaque plateau lors de votre demande.',
-    tariffs: [
-      {
-        label: 'Plateau de charcuterie',
-        price: 70,
-        description: 'Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées.',
-      },
-      {
-        label: 'Plateau de fromages',
-        price: 70,
-        description: 'Une sélection de fromages de qualité, aux arômes et aux affinages variés.',
-      },
-      {
-        label: 'Grazing Platter',
-        price: 60,
-        description: 'Fromages, biscuits, fruits frais et secs, accompagnés de confitures.',
-      },
-      {
-        label: 'Plateau de fruits frais',
-        price: 50,
-        description: 'Un assortiment de fruits frais de saison.',
-      },
-      {
-        label: 'Plateau de crudités',
-        price: 45,
-        detail: 'Houmous, tzatziki et sauce ail et fines herbes',
-        description: 'Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes.',
-      },
-    ],
-    orderFields: [
-      'Les plateaux souhaités',
-      'La quantité de chaque plateau',
-      'Le nombre de convives',
-      'La date souhaitée',
-      'Vos éventuelles restrictions alimentaires',
-    ],
-  },
-];
+// Routes belong to the application. Editing a label in the CMS never changes its URL.
+const collectionRoutes: Record<string, string> = {
+  'layer-cakes': '/creations/layer-cakes/',
+  'bento-cakes': '/creations/bento-cakes/',
+  mignardises: '/creations/mignardises/',
+  cupcakes: '/creations/cupcakes/',
+  'brunch-box': '/creations/brunch-box/',
+  buffets: '/buffets/',
+  plateaux: '/plateaux/',
+};
 
-export const buffetServiceSteps: { title: string; text: string }[] = [
-  {
-    title: 'Installation avant l’événement',
-    text: 'Installation avant l’événement, avec une présentation soignée des mignardises.',
-  },
-  {
-    title: 'Présentation & décoration',
-    text: 'Plateaux, présentoirs et supports composent une mise en scène harmonieuse.',
-  },
-  {
-    title: 'Personnalisation',
-    text: 'Votre thème, vos couleurs et vos inspirations guident la présentation et la décoration.',
-  },
-  {
-    title: 'Retrait du matériel',
-    text: 'Le matériel Siray Signature est récupéré à la fin de votre événement.',
-  },
-];
+const smallNumbers = ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept',
+  'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize',
+  'dix-sept', 'dix-huit', 'dix-neuf', 'vingt'];
+export const countInFrench = (count: number) => smallNumbers[count] ?? String(count);
+export const capitalize = (text: string) => text.charAt(0).toLocaleUpperCase('fr-FR') + text.slice(1);
+const amount = (value: number) => new Intl.NumberFormat('fr-FR', {
+  minimumFractionDigits: 0, maximumFractionDigits: 2,
+}).format(value).replace(/\u00a0|\u202f/g, ' ');
+const euro = (value: number) => `${amount(value)} €`;
 
-export const classicFlavorGroups = [
-  {
-    name: 'Fruits',
-    flavors: [
-      'Framboise',
-      'Fraise',
-      'Fruit de la passion',
-      'Mangue',
-      'Myrtille',
-      'Poire',
-      'Pomme',
-    ],
-  },
-  {
-    name: 'Chocolats',
-    flavors: ['Chocolat au lait', 'Chocolat noir', 'Chocolat blanc'],
-  },
-  {
-    name: 'Notes gourmandes',
-    flavors: [
-      'Pistache',
-      'Vanille',
-      'Spéculoos',
-      'Caramel beurre salé',
-      'Croustillant au chocolat praliné',
-    ],
-  },
-];
+function validatePrice(value: number, label: string) {
+  if (!Number.isFinite(value) || value < 0) {
+    throw new Error(`Tarif invalide dans le catalogue : ${label}.`);
+  }
+}
 
-export const signatureFlavors = [
-  {
-    name: 'Éclat vert',
-    composition: 'Curd citron vert et basilic, framboises fraîches.',
-  },
-  {
-    name: 'Tropical',
-    composition: 'Framboises fraîches et coulis mangue-passion.',
-  },
-  { name: 'Noisette royale', composition: 'Praliné noisette et vanille.' },
-  {
-    name: 'Douceur acidulée',
-    composition: 'Curd citron, framboises fraîches et vanille.',
-  },
-  {
-    name: 'Velours pistache',
-    composition:
-      'Framboises fraîches, crème de pistache et éclats de pistache.',
-  },
-  {
-    name: 'Douceur d’automne',
-    composition: 'Caramel beurre salé, pomme et vanille.',
-  },
-  {
-    name: 'Évasion tropicale',
-    composition: 'Mangue fraîche, fruit de la passion frais et vanille.',
-  },
-  {
-    name: 'Praliné royal',
-    composition: 'Fraise, vanille et praliné pistache.',
-  },
-  {
-    name: 'Rosée verte',
-    composition: 'Curd citron-basilic et fraises fraîches.',
-  },
+export const buffetServiceSteps = catalog.buffetServiceSteps;
+export const classicFlavorGroups = catalog.classicFlavorGroups;
+export const signatureFlavors = catalog.signatureFlavors;
+export const cupcakeFlavors = catalog.cupcakeFlavors.map((flavor) => flavor.name);
+const flavorFamilies = [
+  { id: 'fruits', name: 'Fruits' },
+  { id: 'chocolats', name: 'Chocolats' },
+  { id: 'notes-gourmandes', name: 'Notes gourmandes' },
 ];
+for (const flavor of catalog.cupcakeFlavors) {
+  if (!flavorFamilies.some((family) => family.id === flavor.family)) {
+    throw new Error(`Famille de saveur de cupcake inconnue : ${flavor.family}.`);
+  }
+}
+export const cupcakeFlavorGroups = flavorFamilies.map((family) => ({
+  name: family.name,
+  flavors: catalog.cupcakeFlavors.filter((flavor) => flavor.family === family.id).map((flavor) => flavor.name),
+}));
+export const brunchBoxes = catalog.brunchBoxes;
+export const mignardiseMenu = catalog.mignardiseMenu;
 
-export const cupcakeFlavors = [
-  'Framboise',
-  'Fraise',
-  'Fruit de la passion',
-  'Mangue & fruit de la passion',
-  'Crème de pistache',
-  'Fruits rouges',
-  'Lemon curd',
-  'Nutella',
-  'Crème de spéculoos',
-  'Caramel beurre salé',
-  'Crème de noisette',
-];
+for (const box of brunchBoxes) validatePrice(box.price, box.name);
+if (!brunchBoxes.length) throw new Error('Le catalogue doit contenir au moins une composition de brunch.');
 
-export const brunchBoxes = [
-  {
-    name: 'Elegancia',
-    price: 30,
-    sweet: [
-      'Mini-viennoiserie',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella',
-    ],
-    savory: [
-      'Avocado & salmon toast : saumon fumé, avocat, émincés d’oignons rouges et fleur de sel',
-      'Tartine tomate & mozzarella au pesto',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Prestige',
-    price: 30,
-    sweet: [
-      'Brioche perdue',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Blini saumon fumé & crème citronnée',
-      'Tartine tomate & burrata, mâche et sauce mélasse de grenade',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Le Parisien',
-    price: 30,
-    sweet: ['Viennoiserie', 'Pain de campagne', 'Beurre & confiture'],
-    savory: [
-      'Œufs brouillés aux fines herbes',
-      'Tartine tomates séchées & cœur de burrata',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Faisalia',
-    price: 30,
-    sweet: ['Baghrir', 'Msemen', 'Miel & confiture'],
-    savory: [
-      'Batbout poulet',
-      'Omelette à la marocaine',
-      'Assortiment d’olives',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Signature',
-    price: 30,
-    sweet: [
-      'Crêpe',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Shrimp toast : crevettes, avocat, tomates cerises et fromage frais',
-      'Assortiment de charcuterie',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Brunchetta',
-    price: 30,
-    sweet: [
-      'Granola bowl & fruits rouges',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Toast saumon fumé, concombre, crème citronnée et aneth',
-      'Assortiment d’olives',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Dolcezza',
-    price: 30,
-    sweet: [
-      'Granola bowl & fruits rouges',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Chicken toast : caviar d’aubergine, ail, poivron, émincé de poulet et parmesan',
-      'Assortiment d’olives',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Amarizia',
-    price: 30,
-    sweet: [
-      'Brioche perdue',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Chicken toast : fromage frais, émincés de poulet marinés, avocat et sauce miel-moutarde',
-      'Assortiment de fromages',
-    ],
-  },
-  {
-    name: 'Seralia',
-    price: 30,
-    sweet: [
-      'Croissant ou chocolatine',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: ['Egg muffin', 'Bagel saumon fumé', 'Assortiment de fromages'],
-  },
-  {
-    name: 'Anatolia',
-    price: 35,
-    sweet: [
-      'Croissant ou chocolatine',
-      'Assortiment de fruits de saison',
-      'Confiture ou Nutella au choix',
-    ],
-    savory: [
-      'Sigara böreği : roulés au fromage turc',
-      'Gözleme : feuilleté turc, épinard, fromage ou pomme de terre',
-      'Menemen : œufs brouillés aux tomates, poivrons et oignons',
-      'Assortiment de charcuterie turque',
-      'Assortiment d’olives',
-      'Assortiment de fromages turcs',
-      'Tomate & concombre',
-    ],
-  },
-].map((box) => ({ ...box, drink: 'Jus de fruits : orange ou fraise' }));
+// A brunch price is entered once, on its composition. Every price summary uses it.
+const groupedBrunches = new Map<number, typeof brunchBoxes>();
+for (const box of brunchBoxes) {
+  const group = groupedBrunches.get(box.price) ?? [];
+  group.push(box);
+  groupedBrunches.set(box.price, group);
+}
+export const brunchPriceGroups = Array.from(groupedBrunches, ([price, boxes]) => ({
+  price,
+  count: boxes.length,
+  names: boxes.map((box) => box.name),
+  label: boxes.length === 1 ? boxes[0].name : `${boxes.length} compositions`,
+})).sort((a, b) => b.count - a.count);
+const brunchSummary = brunchPriceGroups.map((group) => `${group.label} à ${euro(group.price)} / personne`).join('. ') + '.';
+const brunchPossibility = brunchPriceGroups.map((group) => `${group.count === 1 ? group.names[0] : `${capitalize(countInFrench(group.count))} compositions`} à ${euro(group.price)} par personne`).join(' ; ');
+const [mainBrunchPrice, specialBrunchPrice] = brunchPriceGroups;
+const brunchPriceNote = brunchPriceGroups.length === 1
+  ? `Toutes nos brunch box sont proposées à ${euro(mainBrunchPrice.price)} par personne.`
+  : brunchPriceGroups.length === 2 && specialBrunchPrice.count === 1
+    ? `Toutes nos brunch box sont proposées à ${euro(mainBrunchPrice.price)} par personne, à l’exception ${/^[aàâäeéèêëiîïoôöuùûüyh]/i.test(specialBrunchPrice.names[0]) ? 'd’' : 'de '}${specialBrunchPrice.names[0]}, à ${euro(specialBrunchPrice.price)} par personne.`
+    : brunchPriceGroups.map((group) => `${group.label} à ${euro(group.price)} par personne`).join('. ') + '.';
+const brunchTariffs: Tariff[] = brunchPriceGroups.map((group) => ({
+  label: group.count === 1 ? group.names[0] : brunchPriceGroups.length === 1
+    ? 'Brunch box au choix'
+    : `Brunch box au choix, hors ${brunchPriceGroups.filter((other) => other !== group).flatMap((other) => other.names).join(', ')}`,
+  price: group.price,
+  detail: 'par personne',
+}));
+
+const seenSlugs = new Set<string>();
+export const collections: Collection[] = catalog.collections.map((content) => {
+  const href = collectionRoutes[content.slug];
+  if (!href || seenSlugs.has(content.slug)) throw new Error(`Prestation inconnue ou en double : ${content.slug}.`);
+  seenSlugs.add(content.slug);
+  const tariffs: Tariff[] = content.slug === 'brunch-box' ? brunchTariffs : content.tariffs ?? [];
+  for (const tariff of tariffs) validatePrice(tariff.price, `${content.name} / ${tariff.label}`);
+  const priceNote = content.slug === 'brunch-box' ? brunchPriceNote : content.priceNote ?? '';
+  let priceSummary = content.priceSummary ?? '';
+  if (content.slug === 'mignardises' || content.slug === 'cupcakes') {
+    if (!tariffs.length) throw new Error(`Au moins un tarif est nécessaire pour ${content.name}.`);
+    const first = tariffs[0];
+    priceSummary = `${content.slug === 'cupcakes' ? first.label.replace(/pièces?/u, 'cupcakes') : first.label} · ${euro(first.price)}`;
+  } else if (content.slug === 'plateaux') {
+    if (!tariffs.length) throw new Error('Au moins un tarif de plateau est nécessaire.');
+    const prices = tariffs.map((tariff) => tariff.price);
+    const minimum = Math.min(...prices);
+    const maximum = Math.max(...prices);
+    priceSummary = `${capitalize(countInFrench(tariffs.length))} ${tariffs.length === 1 ? 'plateau' : 'plateaux'}, ${minimum === maximum ? `à ${euro(minimum)}` : `de ${amount(minimum)} à ${euro(maximum)}`}`;
+  } else if (content.slug === 'brunch-box') {
+    priceSummary = brunchSummary;
+  }
+  return {
+    ...content,
+    ...collectionPhotography[content.slug].cover,
+    href,
+    tariffs,
+    priceSummary,
+    priceNote,
+    panelNote: content.panelNote || priceNote,
+    possibilities: content.slug === 'brunch-box'
+      ? [`${capitalize(countInFrench(brunchBoxes.length))} compositions au choix`, ...content.possibilities, brunchPossibility]
+      : content.possibilities,
+  };
+});
+if (seenSlugs.size !== Object.keys(collectionRoutes).length) {
+  throw new Error('Les sept prestations doivent rester présentes dans le catalogue.');
+}
 
 export const gallery = galleryPhotos;

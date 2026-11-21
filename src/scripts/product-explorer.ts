@@ -4,6 +4,54 @@ function initializeProductExplorer() {
   disposeProductExplorer();
   const controller = new AbortController();
   const { signal } = controller;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let scrollFrame = 0;
+
+  const cancelScroll = () => {
+    window.cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
+  };
+
+  // Follow a deliberate choice, leaving its controls above the newly visible text.
+  // Native scrolling stays untouched outside this short, interruptible movement.
+  const revealSelection = (controls: HTMLElement) => {
+    cancelScroll();
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      if (!controls.isConnected || !controls.getClientRects().length) return;
+
+      const header = document.querySelector<HTMLElement>('.site-header');
+      const offset = (header?.getBoundingClientRect().height || 0) + 16;
+      const start = window.scrollY;
+      const maximum = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const target = Math.min(maximum, Math.max(0, start + controls.getBoundingClientRect().top - offset));
+      const distance = target - start;
+      if (Math.abs(distance) < 4) return;
+      if (reducedMotion.matches) {
+        window.scrollTo({ top: target, behavior: 'instant' });
+        return;
+      }
+
+      const started = performance.now();
+      const duration = 440;
+      const step = (now: number) => {
+        const progress = Math.min(1, (now - started) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        // "instant" prevents the page's CSS smooth scrolling from stacking
+        // another animation behind each frame of this controlled transition.
+        window.scrollTo({ top: start + distance * eased, behavior: 'instant' });
+        scrollFrame = progress < 1 ? window.requestAnimationFrame(step) : 0;
+      };
+      scrollFrame = window.requestAnimationFrame(step);
+    });
+  };
+
+  window.addEventListener('wheel', cancelScroll, { passive: true, signal });
+  window.addEventListener('touchstart', cancelScroll, { passive: true, signal });
+  window.addEventListener('pointerdown', cancelScroll, { passive: true, signal });
+  window.addEventListener('keydown', cancelScroll, { signal });
+  window.addEventListener('resize', cancelScroll, { signal });
+  reducedMotion.addEventListener('change', cancelScroll, { signal });
 
   const enhanceTabs = (
     root: HTMLElement,
@@ -40,7 +88,10 @@ function initializeProductExplorer() {
     };
 
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activate(tab), { signal });
+      tab.addEventListener('click', () => {
+        activate(tab);
+        revealSelection(list);
+      }, { signal });
       tab.addEventListener('keydown', (event) => {
         let next: number | undefined;
         if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
@@ -89,14 +140,23 @@ function initializeProductExplorer() {
       select.value = String(index);
       if (announce && status) status.textContent = `Composition ${select.options[index].text} affichée.`;
     };
-    buttons.forEach((button, index) => button.addEventListener('click', () => showBox(index, true), { signal }));
-    select.addEventListener('change', () => showBox(select.selectedIndex, true), { signal });
+    buttons.forEach((button, index) => button.addEventListener('click', () => {
+      showBox(index, true);
+      revealSelection(controls);
+    }, { signal }));
+    select.addEventListener('change', () => {
+      showBox(select.selectedIndex, true);
+      revealSelection(controls);
+    }, { signal });
     showBox(select.selectedIndex);
     root.classList.add('is-ready');
     controls.hidden = false;
   });
 
-  disposeProductExplorer = () => controller.abort();
+  disposeProductExplorer = () => {
+    cancelScroll();
+    controller.abort();
+  };
 }
 
 initializeProductExplorer();

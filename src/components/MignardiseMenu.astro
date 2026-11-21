@@ -1,28 +1,19 @@
 ---
-const savory = [
-  { name: 'Mini-burgers', detail: 'Viande, poulet ou poisson.' },
-  { name: 'Sandwiches', detail: 'Bagels, wraps, navettes et club sandwiches.' },
-  { name: 'Mini-pizzas & hot-dogs', detail: '' },
-  { name: 'Nems & bouchées chaudes', detail: '' },
-  { name: 'Verrines salées', detail: 'Salades, crudités et fruits de mer.' },
-  { name: 'Toasts', detail: 'Des garnitures variées.' },
-  { name: 'Coupelles & compositions grazing', detail: 'Fromages, charcuteries, crudités et fruits frais.' },
-  { name: 'Bouchées raffinées', detail: 'Autour du gravlax de truite, des crevettes, de la mozzarella et des tomates.' },
-];
+import { mignardiseMenu as menu } from '../data/site';
 ---
 
 <div class="mignardise-menu">
   <section aria-labelledby="coin-gourmand">
-    <h2 id="coin-gourmand">Le coin gourmand</h2>
-    <p class="mignardise-intro">Un assortiment de bouchées salées, entre classiques revisités et créations gourmandes.</p>
+    <h2 id="coin-gourmand">{menu.savoryTitle}</h2>
+    <p class="mignardise-intro">{menu.savoryIntro}</p>
     <ul class="mignardise-savory">
-      {savory.map((choice) => <li><h3>{choice.name}</h3>{choice.detail && <p>{choice.detail}</p>}</li>)}
+      {menu.savory.map((choice) => <li><h3>{choice.name}</h3>{choice.detail && <p>{choice.detail}</p>}</li>)}
     </ul>
-    <p class="mignardise-finale">Et d’autres créations selon vos envies.</p>
+    <p class="mignardise-finale">{menu.savoryFinale}</p>
   </section>
   <section class="mignardise-sweet" aria-labelledby="touche-sucree">
-    <h2 id="touche-sucree">La touche sucrée</h2>
-    <p>Pour terminer sur une note de douceur, une sélection de verrines sucrées déclinées en différentes saveurs et textures.</p>
+    <h2 id="touche-sucree">{menu.sweetTitle}</h2>
+    <p>{menu.sweetText}</p>
   </section>
 </div>
 

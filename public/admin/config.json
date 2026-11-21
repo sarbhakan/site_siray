@@ -1,0 +1,1226 @@
+{
+  "$schema": "https://unpkg.com/@sveltia/cms@0.270.0/schema/sveltia-cms.json",
+  "app_title": "Siray Signature — modifier le site",
+  "site_url": "https://siraysignature.fr",
+  "display_url": "https://siraysignature.fr",
+  "backend": {
+    "name": "github",
+    "repo": "sarbhakan/site_siray",
+    "branch": "main",
+    "base_url": "https://siray-cms-auth.mr-hakan336.workers.dev",
+    "auth_methods": [
+      "oauth"
+    ]
+  },
+  "publish_mode": "simple",
+  "media_folder": "/src/assets/uploads",
+  "public_folder": "/src/assets/uploads",
+  "media_libraries": {
+    "all": {
+      "max_file_size": 20971520,
+      "slugify_filename": true,
+      "filename_template": "{{year}}{{month}}{{day}}-{{uuid_short}}",
+      "transformations": {
+        "raster_image": {
+          "format": "webp",
+          "quality": 94,
+          "width": 2560,
+          "height": 2560
+        }
+      }
+    }
+  },
+  "asset_collections": [
+    {
+      "name": "photos-actuelles",
+      "label": "Photos actuelles du site",
+      "media_folder": "/public/images",
+      "public_folder": "/images",
+      "readonly": true
+    }
+  ],
+  "collections": [
+    {
+      "name": "photos",
+      "label": "Photographies",
+      "description": "Changez les photos, leur cadrage, leur description et leur ordre. Pensez à enregistrer, puis à attendre la publication du site.",
+      "format": "json",
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "photos",
+          "label": "Photographies",
+          "file": "src/content/photography.json",
+          "fields": [
+            {
+              "name": "homeSlides",
+              "label": "Diaporama de l’accueil",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "file",
+                  "label": "Photographie",
+                  "widget": "image",
+                  "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                },
+                {
+                  "name": "alt",
+                  "label": "Description de la photographie",
+                  "widget": "string",
+                  "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                },
+                {
+                  "name": "position",
+                  "label": "Cadrage",
+                  "widget": "string",
+                  "default": "50% 50%",
+                  "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                }
+              ],
+              "summary": "{{fields.alt}}",
+              "thumbnail": "file",
+              "min": 1,
+              "max": 5,
+              "hint": "Une à cinq photographies. L’ordre de cette liste est celui du défilement sur l’accueil."
+            },
+            {
+              "name": "collections",
+              "label": "Photographies de chaque prestation",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "slug",
+                  "label": "slug",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "cover",
+                  "label": "Photo principale de la page",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "detail",
+                  "label": "Seconde photographie",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "request",
+                  "label": "Photo de découverte sur les autres pages",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "home",
+                  "label": "Carte de l’accueil",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                }
+              ],
+              "allow_add": false,
+              "allow_remove": false,
+              "allow_duplicate": false,
+              "allow_reorder": false,
+              "summary": "{{fields.slug}}",
+              "min": 7,
+              "max": 7
+            },
+            {
+              "name": "homePhotos",
+              "label": "Autres photographies de l’accueil et de la maison",
+              "widget": "object",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "maison",
+                  "label": "Accueil — L’art de sublimer vos instants gourmands",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "cakes",
+                  "label": "Accueil — les gâteaux",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "tables",
+                  "label": "Accueil — les tables à partager",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "petitesDouceurs",
+                  "label": "Accueil — les petites douceurs",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "maisonCake",
+                  "label": "La maison — photographie de gâteau",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                },
+                {
+                  "name": "maisonTable",
+                  "label": "La maison — photographie de table",
+                  "widget": "object",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "file",
+                      "label": "Photographie",
+                      "widget": "image",
+                      "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                    },
+                    {
+                      "name": "alt",
+                      "label": "Description de la photographie",
+                      "widget": "string",
+                      "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                    },
+                    {
+                      "name": "position",
+                      "label": "Cadrage",
+                      "widget": "string",
+                      "default": "50% 50%",
+                      "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "gallery",
+              "label": "Galerie",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "file",
+                  "label": "Photographie",
+                  "widget": "image",
+                  "hint": "Importez une photo depuis votre téléphone, ou choisissez dans « Photos actuelles du site ». Dans cette dernière bibliothèque, prenez le grand fichier sans suffixe -360 ou -720. JPEG, PNG, WebP et HEIC sont acceptés."
+                },
+                {
+                  "name": "alt",
+                  "label": "Description de la photographie",
+                  "widget": "string",
+                  "hint": "Décrivez brièvement ce que montre la photo. Ce texte sert aussi aux personnes qui ne voient pas l’image."
+                },
+                {
+                  "name": "position",
+                  "label": "Cadrage",
+                  "widget": "string",
+                  "default": "50% 50%",
+                  "hint": "Conservez « 50% 50% » pour centrer. Le premier pourcentage déplace le cadrage horizontalement ; le second verticalement."
+                },
+                {
+                  "name": "label",
+                  "label": "Titre affiché",
+                  "widget": "string"
+                },
+                {
+                  "name": "category",
+                  "label": "Prestation",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "value": "layer-cakes",
+                      "label": "Layer cakes"
+                    },
+                    {
+                      "value": "bento-cakes",
+                      "label": "Bento cakes"
+                    },
+                    {
+                      "value": "mignardises",
+                      "label": "Mignardises"
+                    },
+                    {
+                      "value": "cupcakes",
+                      "label": "Cupcakes"
+                    },
+                    {
+                      "value": "brunch-box",
+                      "label": "Brunch box"
+                    },
+                    {
+                      "value": "buffets",
+                      "label": "Buffets"
+                    },
+                    {
+                      "value": "plateaux",
+                      "label": "Plateaux"
+                    }
+                  ]
+                }
+              ],
+              "summary": "{{fields.label}}",
+              "thumbnail": "file",
+              "min": 1,
+              "hint": "Chaque photo doit être rangée dans sa prestation pour que le filtre de la galerie fonctionne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "catalogue",
+      "label": "Catalogue et tarifs",
+      "description": "Les sept prestations, les tarifs, les saveurs et les compositions des brunchs. Les prix se modifient à un seul endroit et se mettent à jour partout.",
+      "format": "json",
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "catalogue",
+          "label": "Catalogue et tarifs",
+          "file": "src/content/catalog.json",
+          "fields": [
+            {
+              "name": "collections",
+              "label": "Les sept prestations",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "slug",
+                  "label": "slug",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "name",
+                  "label": "Nom",
+                  "widget": "string"
+                },
+                {
+                  "name": "short",
+                  "label": "Phrase courte",
+                  "widget": "string"
+                },
+                {
+                  "name": "intro",
+                  "label": "Introduction",
+                  "widget": "string"
+                },
+                {
+                  "name": "text",
+                  "label": "Présentation",
+                  "widget": "text"
+                },
+                {
+                  "name": "possibilities",
+                  "label": "Formats et personnalisation",
+                  "widget": "list",
+                  "collapsed": true,
+                  "field": {
+                    "name": "item",
+                    "label": "Texte",
+                    "widget": "string"
+                  }
+                },
+                {
+                  "name": "occasion",
+                  "label": "Pour quelles occasions ?",
+                  "widget": "string"
+                },
+                {
+                  "name": "priceSummary",
+                  "label": "Présentation du tarif sur demande",
+                  "widget": "string",
+                  "required": false,
+                  "hint": "Pour les layer cakes, les bento cakes et les buffets. Les autres résumés de prix sont calculés à partir des tarifs ci-dessous."
+                },
+                {
+                  "name": "priceNote",
+                  "label": "Précisions sur les tarifs",
+                  "widget": "text",
+                  "required": false
+                },
+                {
+                  "name": "panelNote",
+                  "label": "Précision courte dans le volet",
+                  "widget": "text",
+                  "required": false
+                },
+                {
+                  "name": "tariffs",
+                  "label": "Formats et tarifs",
+                  "widget": "list",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "label",
+                      "label": "Format ou plateau",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "price",
+                      "label": "Prix en euros",
+                      "widget": "number",
+                      "value_type": "float",
+                      "min": 0,
+                      "step": 0.01
+                    },
+                    {
+                      "name": "description",
+                      "label": "Description",
+                      "widget": "text",
+                      "required": false
+                    },
+                    {
+                      "name": "detail",
+                      "label": "Précision complémentaire",
+                      "widget": "string",
+                      "required": false
+                    }
+                  ],
+                  "required": false,
+                  "summary": "{{fields.label}} — {{fields.price}} €",
+                  "hint": "Cupcakes, mignardises et plateaux : modifiez les prix ici. Pour les brunchs, utilisez « Les brunch box » plus bas. Laissez les autres listes vides."
+                },
+                {
+                  "name": "orderFields",
+                  "label": "Informations à demander au client",
+                  "widget": "list",
+                  "collapsed": true,
+                  "field": {
+                    "name": "item",
+                    "label": "Texte",
+                    "widget": "string"
+                  }
+                }
+              ],
+              "allow_add": false,
+              "allow_remove": false,
+              "allow_duplicate": false,
+              "allow_reorder": false,
+              "summary": "{{fields.name}}",
+              "min": 7,
+              "max": 7
+            },
+            {
+              "name": "classicFlavorGroups",
+              "label": "Saveurs classiques des layer cakes et bento cakes",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "name",
+                  "label": "Famille",
+                  "widget": "string",
+                  "readonly": true
+                },
+                {
+                  "name": "flavors",
+                  "label": "Saveurs",
+                  "widget": "list",
+                  "collapsed": true,
+                  "field": {
+                    "name": "item",
+                    "label": "Texte",
+                    "widget": "string"
+                  }
+                }
+              ],
+              "allow_add": false,
+              "allow_remove": false,
+              "allow_duplicate": false,
+              "allow_reorder": false,
+              "summary": "{{fields.name}}",
+              "min": 3,
+              "max": 3
+            },
+            {
+              "name": "signatureFlavors",
+              "label": "Associations Signature — layer cakes uniquement",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "name",
+                  "label": "Nom de l’association",
+                  "widget": "string"
+                },
+                {
+                  "name": "composition",
+                  "label": "Composition",
+                  "widget": "text"
+                }
+              ],
+              "summary": "{{fields.name}}"
+            },
+            {
+              "name": "cupcakeFlavors",
+              "label": "Saveurs des cupcakes",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "name",
+                  "label": "Nom de la saveur",
+                  "widget": "string"
+                },
+                {
+                  "name": "family",
+                  "label": "Famille",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Fruits",
+                      "value": "fruits"
+                    },
+                    {
+                      "label": "Chocolats",
+                      "value": "chocolats"
+                    },
+                    {
+                      "label": "Notes gourmandes",
+                      "value": "notes-gourmandes"
+                    }
+                  ]
+                }
+              ],
+              "summary": "{{fields.name}}"
+            },
+            {
+              "name": "brunchBoxes",
+              "label": "Les brunch box — compositions et prix par personne",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "name",
+                  "label": "Nom de la box",
+                  "widget": "string"
+                },
+                {
+                  "name": "price",
+                  "label": "Prix par personne, en euros",
+                  "widget": "number",
+                  "value_type": "float",
+                  "min": 0,
+                  "step": 0.01
+                },
+                {
+                  "name": "sweet",
+                  "label": "Côté sucré",
+                  "widget": "list",
+                  "collapsed": true,
+                  "field": {
+                    "name": "item",
+                    "label": "Texte",
+                    "widget": "string"
+                  }
+                },
+                {
+                  "name": "savory",
+                  "label": "Côté salé",
+                  "widget": "list",
+                  "collapsed": true,
+                  "field": {
+                    "name": "item",
+                    "label": "Texte",
+                    "widget": "string"
+                  }
+                },
+                {
+                  "name": "drink",
+                  "label": "Boisson",
+                  "widget": "string"
+                }
+              ],
+              "summary": "{{fields.name}} — {{fields.price}} € / personne"
+            },
+            {
+              "name": "mignardiseMenu",
+              "label": "Les bouchées et verrines des mignardises",
+              "widget": "object",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "savoryTitle",
+                  "label": "Titre de la sélection salée",
+                  "widget": "string"
+                },
+                {
+                  "name": "savoryIntro",
+                  "label": "Introduction salée",
+                  "widget": "text"
+                },
+                {
+                  "name": "savory",
+                  "label": "Bouchées salées",
+                  "widget": "list",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "name",
+                      "label": "Nom",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "detail",
+                      "label": "Description",
+                      "widget": "text",
+                      "required": false
+                    }
+                  ],
+                  "summary": "{{fields.name}}"
+                },
+                {
+                  "name": "savoryFinale",
+                  "label": "Phrase finale salée",
+                  "widget": "string"
+                },
+                {
+                  "name": "sweetTitle",
+                  "label": "Titre de la sélection sucrée",
+                  "widget": "string"
+                },
+                {
+                  "name": "sweetText",
+                  "label": "Présentation des verrines sucrées",
+                  "widget": "text"
+                }
+              ]
+            },
+            {
+              "name": "buffetServiceSteps",
+              "label": "Mise en place des buffets",
+              "widget": "list",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "Étape",
+                  "widget": "string"
+                },
+                {
+                  "name": "text",
+                  "label": "Description",
+                  "widget": "text"
+                }
+              ],
+              "allow_add": false,
+              "allow_remove": false,
+              "allow_duplicate": false,
+              "allow_reorder": false,
+              "summary": "{{fields.title}}",
+              "min": 4,
+              "max": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pages",
+      "label": "Textes des pages",
+      "description": "Les textes de l’accueil, de la maison et de votre projet. La mise en page et les adresses des pages restent conservées.",
+      "format": "json",
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "pages",
+          "label": "Textes des pages",
+          "file": "src/content/pages.json",
+          "fields": [
+            {
+              "name": "home",
+              "label": "Accueil",
+              "widget": "object",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "pageTitle",
+                  "label": "Titre de l’onglet du navigateur",
+                  "widget": "string"
+                },
+                {
+                  "name": "title",
+                  "label": "Titre principal",
+                  "widget": "string"
+                },
+                {
+                  "name": "summary",
+                  "label": "Sous-titre",
+                  "widget": "string"
+                },
+                {
+                  "name": "description",
+                  "label": "Présentation",
+                  "widget": "text"
+                },
+                {
+                  "name": "discoverLabel",
+                  "label": "Lien vers les prestations",
+                  "widget": "string"
+                },
+                {
+                  "name": "celebrateTitle",
+                  "label": "Parcours « Pour célébrer »",
+                  "widget": "string"
+                },
+                {
+                  "name": "celebrateDetail",
+                  "label": "Précision du parcours « Pour célébrer »",
+                  "widget": "string"
+                },
+                {
+                  "name": "gatherTitle",
+                  "label": "Parcours « Pour se retrouver »",
+                  "widget": "string"
+                },
+                {
+                  "name": "gatherDetail",
+                  "label": "Précision du parcours « Pour se retrouver »",
+                  "widget": "string"
+                },
+                {
+                  "name": "location",
+                  "label": "Zone géographique",
+                  "widget": "string"
+                },
+                {
+                  "name": "locationOrderNote",
+                  "label": "Mention sur commande sous le titre",
+                  "widget": "string"
+                },
+                {
+                  "name": "orderNote",
+                  "label": "Mention sur commande",
+                  "widget": "string"
+                },
+                {
+                  "name": "halalNote",
+                  "label": "Mention halal",
+                  "widget": "string"
+                },
+                {
+                  "name": "allergiesLabel",
+                  "label": "Lien allergies et intolérances",
+                  "widget": "string"
+                },
+                {
+                  "name": "maisonTitle",
+                  "label": "Titre de la présentation de la maison",
+                  "widget": "string"
+                },
+                {
+                  "name": "maisonText",
+                  "label": "Présentation de la maison",
+                  "widget": "text"
+                },
+                {
+                  "name": "maisonLink",
+                  "label": "Lien vers la maison",
+                  "widget": "string"
+                },
+                {
+                  "name": "galleryTitle",
+                  "label": "Titre de la galerie",
+                  "widget": "string"
+                },
+                {
+                  "name": "galleryLink",
+                  "label": "Lien vers la galerie",
+                  "widget": "string"
+                },
+                {
+                  "name": "cakesLabel",
+                  "label": "Légende des gâteaux",
+                  "widget": "string"
+                },
+                {
+                  "name": "sweetsLabel",
+                  "label": "Légende des petites douceurs",
+                  "widget": "string"
+                },
+                {
+                  "name": "tablesLabel",
+                  "label": "Légende des tables",
+                  "widget": "string"
+                }
+              ]
+            },
+            {
+              "name": "maison",
+              "label": "La maison",
+              "widget": "object",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "pageTitle",
+                  "label": "Titre de l’onglet du navigateur",
+                  "widget": "string"
+                },
+                {
+                  "name": "title",
+                  "label": "Titre principal",
+                  "widget": "string"
+                },
+                {
+                  "name": "intro",
+                  "label": "Introduction",
+                  "widget": "text"
+                },
+                {
+                  "name": "worldTitle",
+                  "label": "Titre de l’univers Siray",
+                  "widget": "string"
+                },
+                {
+                  "name": "worldText",
+                  "label": "L’univers Siray",
+                  "widget": "text"
+                },
+                {
+                  "name": "pastryTitle",
+                  "label": "Titre de la pâtisserie",
+                  "widget": "string"
+                },
+                {
+                  "name": "pastryText",
+                  "label": "La pâtisserie",
+                  "widget": "text"
+                },
+                {
+                  "name": "sharingTitle",
+                  "label": "Titre du partage",
+                  "widget": "string"
+                },
+                {
+                  "name": "sharingText",
+                  "label": "Le partage",
+                  "widget": "text"
+                },
+                {
+                  "name": "bespokeTitle",
+                  "label": "Titre du sur-mesure",
+                  "widget": "string"
+                },
+                {
+                  "name": "bespokeText",
+                  "label": "Le sur-mesure",
+                  "widget": "text"
+                },
+                {
+                  "name": "exploreBefore",
+                  "label": "Texte avant le lien prestations",
+                  "widget": "string"
+                },
+                {
+                  "name": "exploreLink",
+                  "label": "Texte du lien prestations",
+                  "widget": "string"
+                },
+                {
+                  "name": "exploreAfter",
+                  "label": "Texte après le lien prestations",
+                  "widget": "string"
+                },
+                {
+                  "name": "orderingText",
+                  "label": "Comment commander",
+                  "widget": "text"
+                },
+                {
+                  "name": "practicalText",
+                  "label": "Informations pratiques",
+                  "widget": "text"
+                }
+              ]
+            },
+            {
+              "name": "project",
+              "label": "Votre projet",
+              "widget": "object",
+              "collapsed": true,
+              "fields": [
+                {
+                  "name": "pageTitle",
+                  "label": "Titre de l’onglet du navigateur",
+                  "widget": "string"
+                },
+                {
+                  "name": "metaDescription",
+                  "label": "Description pour les moteurs de recherche",
+                  "widget": "text"
+                },
+                {
+                  "name": "title",
+                  "label": "Titre principal",
+                  "widget": "string"
+                },
+                {
+                  "name": "lead",
+                  "label": "Présentation",
+                  "widget": "text"
+                },
+                {
+                  "name": "instagramLabel",
+                  "label": "Bouton Instagram",
+                  "widget": "string"
+                },
+                {
+                  "name": "instagramHandle",
+                  "label": "Compte Instagram affiché",
+                  "widget": "string"
+                },
+                {
+                  "name": "channel",
+                  "label": "Canal de commande",
+                  "widget": "string"
+                },
+                {
+                  "name": "timingTitle",
+                  "label": "Titre de l’anticipation",
+                  "widget": "string"
+                },
+                {
+                  "name": "timingLead",
+                  "label": "Anticipation — début",
+                  "widget": "string"
+                },
+                {
+                  "name": "timingEmphasis",
+                  "label": "Anticipation — texte en gras",
+                  "widget": "string"
+                },
+                {
+                  "name": "timingText",
+                  "label": "Anticipation — suite",
+                  "widget": "text"
+                },
+                {
+                  "name": "processTitle",
+                  "label": "Titre du déroulement",
+                  "widget": "string"
+                },
+                {
+                  "name": "steps",
+                  "label": "Les étapes de commande",
+                  "widget": "list",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "title",
+                      "label": "Titre",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "text",
+                      "label": "Explication",
+                      "widget": "text"
+                    }
+                  ],
+                  "allow_add": false,
+                  "allow_remove": false,
+                  "allow_duplicate": false,
+                  "allow_reorder": false,
+                  "summary": "{{fields.title}}",
+                  "min": 3,
+                  "max": 3
+                },
+                {
+                  "name": "messageTitle",
+                  "label": "Titre du premier message",
+                  "widget": "string"
+                },
+                {
+                  "name": "messageIntro",
+                  "label": "Introduction du premier message",
+                  "widget": "text"
+                },
+                {
+                  "name": "messageDetails",
+                  "label": "Informations pour le premier message",
+                  "widget": "list",
+                  "collapsed": true,
+                  "fields": [
+                    {
+                      "name": "label",
+                      "label": "Information",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "text",
+                      "label": "Précision",
+                      "widget": "text"
+                    }
+                  ],
+                  "summary": "{{fields.label}}",
+                  "min": 1
+                },
+                {
+                  "name": "exploreLabel",
+                  "label": "Lien pour découvrir les prestations",
+                  "widget": "string"
+                },
+                {
+                  "name": "arrangementsTitle",
+                  "label": "Titre des informations pratiques",
+                  "widget": "string"
+                },
+                {
+                  "name": "area",
+                  "label": "Zone d’intervention",
+                  "widget": "string"
+                },
+                {
+                  "name": "pickupTitle",
+                  "label": "Titre du retrait",
+                  "widget": "string"
+                },
+                {
+                  "name": "pickupText",
+                  "label": "Informations de retrait",
+                  "widget": "text"
+                },
+                {
+                  "name": "deliveryTitle",
+                  "label": "Titre de la livraison",
+                  "widget": "string"
+                },
+                {
+                  "name": "deliveryLead",
+                  "label": "Livraison — début",
+                  "widget": "string"
+                },
+                {
+                  "name": "deliveryEmphasis",
+                  "label": "Livraison — texte en gras",
+                  "widget": "string"
+                },
+                {
+                  "name": "deliveryText",
+                  "label": "Livraison — suite",
+                  "widget": "text"
+                },
+                {
+                  "name": "foodTitle",
+                  "label": "Titre des ingrédients",
+                  "widget": "string"
+                },
+                {
+                  "name": "foodText",
+                  "label": "Informations halal",
+                  "widget": "text"
+                },
+                {
+                  "name": "allergiesTitle",
+                  "label": "Titre des allergies",
+                  "widget": "string"
+                },
+                {
+                  "name": "allergiesText",
+                  "label": "Informations allergies et intolérances",
+                  "widget": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

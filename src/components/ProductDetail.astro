@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Photo from './Photo.astro';
-import { collectionPhotography, photo } from '../data/photography';
+import { collectionPhotography } from '../data/photography';
 import PlatterChoices from './PlatterChoices.astro';
 import BuffetService from './BuffetService.astro';
 import MignardiseMenu from './MignardiseMenu.astro';
 import {
   collections, instagram, classicFlavorGroups, signatureFlavors,
-  cupcakeFlavors, brunchBoxes, type Collection,
+  cupcakeFlavorGroups, brunchBoxes, brunchPriceGroups, countInFrench, capitalize, type Collection,
 } from '../data/site';
 
 interface Props { item: Collection }
@@ -20,11 +20,8 @@ const buffet = item.slug === 'buffets';
 const platters = item.slug === 'plateaux';
 const mignardises = item.slug === 'mignardises';
 const related = collections.filter((other) => other.slug !== item.slug).slice(0, 3);
-const relatedPhotos = {
-  'bento-cakes': photo('bento-rubans'),
-};
 const euro = (value: number) => new Intl.NumberFormat('fr-FR', {
-  style: 'currency', currency: 'EUR', maximumFractionDigits: 0,
+  style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 2,
 }).format(value);
 const formatLabel = brunch ? 'Les compositions' : classic ? 'Format & décor'
   : buffet ? 'La prestation' : 'Formats & tarifs';
@@ -42,19 +39,8 @@ const flavorImages = [
   { name: 'chocolat', alt: 'Chocolat noir, blanc et au lait' },
   { name: 'notes-gourmandes', alt: 'Pistaches dans un bol' },
 ];
-const cupcakeGroups = [
-  { name: 'Fruits', flavors: cupcakeFlavors.filter((flavor) => ['Framboise', 'Fraise', 'Fruit de la passion', 'Mangue & fruit de la passion', 'Fruits rouges', 'Lemon curd'].includes(flavor)) },
-  { name: 'Chocolats', flavors: cupcakeFlavors.filter((flavor) => flavor === 'Nutella') },
-  { name: 'Notes gourmandes', flavors: cupcakeFlavors.filter((flavor) => ['Crème de pistache', 'Crème de spéculoos', 'Caramel beurre salé', 'Crème de noisette'].includes(flavor)) },
-];
-const flavorGroups = cupcakes ? cupcakeGroups : classicFlavorGroups;
-const conciseNotes: Record<string, string> = {
-  'layer-cakes': 'Tarif personnalisé en message privé.',
-  'bento-cakes': 'Tarif personnalisé en message privé.',
-  cupcakes: 'Personnalisation spécifique avec supplément.',
-  buffets: 'Chaque prestation fait l’objet d’un devis personnalisé.',
-  plateaux: 'Précisez les quantités et le nombre de convives.',
-};
+const flavorGroups = cupcakes ? cupcakeFlavorGroups : classicFlavorGroups;
+const flavorCount = flavorGroups.reduce((total, group) => total + group.flavors.length, 0);
 ---
 
 <Layout title={item.name} image={item.image} description={`${item.name} sur commande à Bordeaux et en Gironde. ${item.intro}`}>
@@ -68,7 +54,7 @@ const conciseNotes: Record<string, string> = {
       <div>
         <p class="v5-product-intro">{item.intro}</p>
         {brunch ? (
-          <p class="v5-product-price"><span>9 compositions à <strong>30 € / personne</strong></span><span>Anatolia à <strong>35 € / personne</strong></span></p>
+          <p class="v5-product-price">{brunchPriceGroups.map((group) => <span>{group.label} à <strong>{euro(group.price)} / personne</strong></span>)}</p>
         ) : <p class="v5-product-price">{item.priceSummary}</p>}
       </div>
     </header>
@@ -76,8 +62,8 @@ const conciseNotes: Record<string, string> = {
     <div class="v5-product-studio">
       <aside class="v5-product-media" aria-label="Inspirations photographiques">
         <div class="v5-photo-composition">
-          <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
-          <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} sizes="(min-width: 960px) 18vw, 35vw" /></div>
+          <div class="v5-product-photo"><Photo name={item.image} alt={item.alt} position={item.position} eager sizes="(min-width: 960px) 42vw, 100vw" /></div>
+          <div class="v5-detail-photo"><Photo name={detailPhoto.image} alt={detailPhoto.alt} position={detailPhoto.position} sizes="(min-width: 960px) 18vw, 35vw" /></div>
         </div>
       </aside>
 
@@ -91,7 +77,7 @@ const conciseNotes: Record<string, string> = {
             {brunch ? (
               <>
                 <span id="formats"></span>
-                <div class="v5-panel-heading"><h2>Dix brunchs au choix</h2><p>Du sucré, du salé et un jus de fruits dans chaque composition.</p></div>
+                <div class="v5-panel-heading"><h2>{capitalize(countInFrench(brunchBoxes.length))} {brunchBoxes.length === 1 ? 'brunch' : 'brunchs'} au choix</h2><p>Du sucré, du salé et un jus de fruits dans chaque composition.</p></div>
                 <div class="v5-brunch" data-v5-brunch>
                   <div class="v5-brunch-picker" data-v5-brunch-controls hidden>
                     <label for="brunch-composition">Choisissez une composition</label>
@@ -112,7 +98,7 @@ const conciseNotes: Record<string, string> = {
                     ))}
                   </div>
                 </div>
-                <p class="v5-panel-note">Personnes et heure de retrait à préciser.</p>
+                <p class="v5-panel-note">{item.panelNote}</p>
               </>
             ) : (
               <>
@@ -127,14 +113,14 @@ const conciseNotes: Record<string, string> = {
                   </table>
                 )}
                 {!buffet && !platters && <ul class="v5-product-options">{item.possibilities.map((possibility, index) => <li>{index === 0 ? <strong>{possibility}</strong> : possibility}</li>)}</ul>}
-                {item.slug === 'mignardises' ? <p class="v5-panel-note">Quantités supplémentaires sur devis.</p> : <p class="v5-panel-note">{conciseNotes[item.slug] || item.priceNote}</p>}
+                <p class="v5-panel-note">{item.panelNote}</p>
               </>
             )}
           </section>
 
           {(classic || cupcakes) && (
             <section id="saveurs" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>{cupcakes ? 'Onze saveurs à découvrir' : 'Quinze saveurs classiques'}</h2><p>Choisissez une famille pour retrouver ses saveurs.</p></div>
+              <div class="v5-panel-heading"><h2>{capitalize(countInFrench(flavorCount))} {flavorCount === 1 ? 'saveur' : 'saveurs'} {cupcakes ? 'à découvrir' : flavorCount === 1 ? 'classique' : 'classiques'}</h2><p>Choisissez une famille pour retrouver ses saveurs.</p></div>
               <div class="v6-flavor-explorer" data-v6-flavors>
                 <nav class="v6-flavor-tabs" data-v6-flavor-controls hidden aria-label="Familles de saveurs">
                   {flavorGroups.map((group, index) => <button type="button" id={`${item.slug}-famille-${index}`} data-v6-flavor-choice={`${item.slug}-saveur-${index}`}>{group.name}</button>)}
@@ -151,7 +137,7 @@ const conciseNotes: Record<string, string> = {
 
           {layer && (
             <section id="signatures" class="v5-product-panel" data-v5-panel>
-              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>Neuf compositions réservées aux layer cakes.</p></div>
+              <div class="v5-panel-heading"><h2>Les associations Signature</h2><p>{capitalize(countInFrench(signatureFlavors.length))} {signatureFlavors.length === 1 ? 'composition réservée' : 'compositions réservées'} aux layer cakes.</p></div>
               <dl class="v6-signature-menu">{signatureFlavors.map((flavor) => <div><dt>{flavor.name}</dt><dd>{flavor.composition}</dd></div>)}</dl>
             </section>
           )}
@@ -179,8 +165,8 @@ const conciseNotes: Record<string, string> = {
     <nav class="v5-related" aria-label="Poursuivre la découverte">
       <div class="v5-related-heading"><h2>À découvrir aussi</h2><a href="/creations/">Toutes les prestations</a></div>
       <div class="v5-related-grid">{related.map((other) => {
-        const relatedPhoto = other.slug === 'bento-cakes' ? relatedPhotos['bento-cakes'] : other;
-        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position="50% 50%" /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
+        const relatedPhoto = collectionPhotography[other.slug].request;
+        return <a class="v5-related-link" href={other.href}><span class="v5-related-photo"><Photo name={relatedPhoto.image} alt={relatedPhoto.alt} sizes="(min-width: 960px) 30vw, (min-width: 600px) 28vw, 30vw" position={relatedPhoto.position} /></span><span>{other.name}</span><span class="v5-related-action">Découvrir</span></a>;
       })}</div>
     </nav>
   </article>

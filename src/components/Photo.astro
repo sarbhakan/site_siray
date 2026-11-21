@@ -1,5 +1,5 @@
 ---
-import credits from '../../docs/image-credits.json';
+import { resolveMedia } from '../lib/media';
 interface Props {
   name: string;
   alt: string;
@@ -22,15 +22,8 @@ const {
   native = false,
   sourceOriginal = false,
 } = Astro.props;
-const photo = credits.images.find(
-  (item) => item.file === `/images/${name}.webp`,
-);
-const delivery = sourceOriginal && photo && 'sourceDelivery' in photo ? photo.sourceDelivery : undefined;
-const original = delivery || photo?.variants[0];
-const srcset = native || delivery ? undefined : photo?.variants
-  .map((item) => `${item.path} ${item.width}w`)
-  .join(', ');
-const src = delivery?.path || `/images/${name}.webp`;
+const media = await resolveMedia(name, { native, sourceOriginal });
+const { src, srcset } = media;
 const transparentPixel =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 ---
@@ -41,14 +34,14 @@ const transparentPixel =
   data-src={defer ? src : undefined}
   data-srcset={defer ? srcset : undefined}
   alt={alt}
-  data-source={photo?.sourceType || 'stand-in'}
-  data-subject={photo?.category}
+  data-source={media.sourceType}
+  data-subject={media.category}
   class={className}
-  width={original?.width}
-  height={original?.height}
+  width={media.width}
+  height={media.height}
   loading={eager ? 'eager' : 'lazy'}
   decoding="async"
   fetchpriority={eager ? 'high' : 'auto'}
   sizes={sizes}
-  style={photo ? `object-position:${position || photo.focalPoint}` : undefined}
+  style={`object-position:${position || media.position}`}
 />

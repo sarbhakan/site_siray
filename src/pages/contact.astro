@@ -1,60 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pages from '../content/pages.json';
 import { instagram } from '../data/site';
 
-const messageDetails = [
-  { label: 'La date', text: 'Le jour souhaité et votre occasion.' },
-  { label: 'La création', text: 'La prestation, le nombre de personnes ou la quantité.' },
-  { label: 'Vos envies', text: 'Les saveurs, couleurs, inscriptions et photos d’inspiration.' },
-  { label: 'La remise', text: 'Un retrait sur place ou une demande de livraison, avec le lieu souhaité.' },
-  { label: 'À signaler', text: 'Toute allergie, intolérance ou restriction alimentaire.' },
-];
+const messageDetails = pages.project.messageDetails;
+const page = pages.project;
 ---
 
 <Layout
-  title="Votre projet"
-  description="Préparez votre commande Siray Signature sur Instagram : personnalisation, anticipation, retrait sur place et livraison possible à Bordeaux et en Gironde."
+  title={page.pageTitle}
+  description={page.metaDescription}
 >
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
       <span>/</span>
-      <span aria-current="page">Votre projet</span>
+      <span aria-current="page">{page.pageTitle}</span>
     </nav>
   </div>
 
   <section class="project-intro section-pad" aria-labelledby="project-title">
     <div class="project-opening">
-      <h1 id="project-title">Votre projet gourmand</h1>
-      <p class="project-lead">Une idée, une date, quelques envies : imaginons votre création ensemble.</p>
+      <h1 id="project-title">{page.title}</h1>
+      <p class="project-lead">{page.lead}</p>
       <div class="project-action">
         <a class="primary-link" href={instagram} target="_blank" rel="noopener noreferrer">
-          Écrire sur Instagram
+          {page.instagramLabel}
         </a>
-        <span>@siraysignature</span>
+        <span>{page.instagramHandle}</span>
       </div>
-      <p class="project-channel">Toutes les commandes se préparent et se confirment sur Instagram.</p>
+      <p class="project-channel">{page.channel}</p>
       <div class="project-timing">
-        <h2>Prévoyez à l’avance</h2>
-        <p>Contactez-nous dès que votre date est connue, <strong>même pour un bento cake.</strong></p>
-        <p>Les demandes pour le jour même ou le lendemain sont difficiles à réaliser. La disponibilité et le délai nécessaire sont confirmés par message.</p>
+        <h2>{page.timingTitle}</h2>
+        <p>{page.timingLead}{' '}<strong>{page.timingEmphasis}</strong></p>
+        <p>{page.timingText}</p>
       </div>
     </div>
 
     <div class="project-process">
-      <h2>De l’idée à la commande</h2>
+      <h2>{page.processTitle}</h2>
       <ol>
         <li>
-          <h3>Présentez votre envie</h3>
-          <p>Envoyez votre date, la prestation souhaitée et le nombre de personnes. Quelques inspirations nous aideront à vous proposer une création adaptée.</p>
+          <h3>{page.steps[0].title}</h3>
+          <p>{page.steps[0].text}</p>
         </li>
         <li>
-          <h3>Personnalisons les détails</h3>
-          <p>Nous précisons ensemble le format, les saveurs et le décor selon la prestation. Le tarif est établi en fonction de votre demande ; les buffets font l’objet d’un devis personnalisé.</p>
+          <h3>{page.steps[1].title}</h3>
+          <p>{page.steps[1].text}</p>
         </li>
         <li>
-          <h3>Convenons des modalités</h3>
-          <p>La disponibilité, le tarif et les modalités de retrait ou de livraison sont convenus sur Instagram avant confirmation de la commande.</p>
+          <h3>{page.steps[2].title}</h3>
+          <p>{page.steps[2].text}</p>
         </li>
       </ol>
     </div>
@@ -62,8 +58,8 @@ const messageDetails = [
 
   <section class="project-practical section-pad" aria-label="Préparer votre demande">
     <div class="project-message">
-      <h2>Dans votre premier message</h2>
-      <p>Ces quelques renseignements nous permettent de vous répondre plus précisément.</p>
+      <h2>{page.messageTitle}</h2>
+      <p>{page.messageIntro}</p>
       <dl>
         {messageDetails.map((item) => (
           <div>
@@ -72,25 +68,25 @@ const messageDetails = [
           </div>
         ))}
       </dl>
-      <a class="text-link" href="/creations/">Explorer les sept prestations</a>
+      <a class="text-link" href="/creations/">{page.exploreLabel}</a>
     </div>
 
     <div class="project-arrangements">
-      <h2>Retrait & livraison</h2>
-      <p class="project-area">Bordeaux & Gironde</p>
+      <h2>{page.arrangementsTitle}</h2>
+      <p class="project-area">{page.area}</p>
       <div class="project-handover">
-        <h3>À récupérer sur place</h3>
-        <p>Le retrait se fait généralement sur le lieu de création des prestations. Le lieu et l’horaire sont convenus ensemble sur Instagram.</p>
-        <h3>Une livraison à domicile ?</h3>
-        <p>Elle peut être envisagée à Bordeaux et en Gironde, <strong>avec un supplément</strong> précisé lors de l’échange. Sa possibilité est à confirmer selon votre demande.</p>
+        <h3>{page.pickupTitle}</h3>
+        <p>{page.pickupText}</p>
+        <h3>{page.deliveryTitle}</h3>
+        <p>{page.deliveryLead}{' '}<strong>{page.deliveryEmphasis}</strong>{' '}{page.deliveryText}</p>
       </div>
       <div class="project-food">
-        <h3>Des créations halal</h3>
-        <p><strong>Nos viandes et les ingrédients utilisés sont halal.</strong></p>
+        <h3>{page.foodTitle}</h3>
+        <p><strong>{page.foodText}</strong></p>
       </div>
       <details class="project-allergies" id="allergies" open>
-        <summary>Allergies & intolérances</summary>
-        <p>Signalez-les dès votre premier message. Les ingrédients et les possibilités d’adaptation sont vérifiés ensemble avant confirmation.</p>
+        <summary>{page.allergiesTitle}</summary>
+        <p>{page.allergiesText}</p>
       </details>
     </div>
   </section>

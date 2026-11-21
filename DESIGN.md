@@ -1,6 +1,6 @@
-# Siray Signature — système visuel V16
+# Siray Signature — système visuel V17
 
-Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/data/site.ts`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
+Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/content/catalog.json` et adaptés par `src/data/site.ts`. Les photographies et les textes des pages disposent respectivement de `src/content/photography.json` et `src/content/pages.json`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
 ## Direction
 
@@ -76,7 +76,7 @@ Les cinq grandes images du diaporama sont réencodées depuis les originaux à l
 
 La page « La maison » remplace sa grande bande horizontale par deux compositions éditoriales en portrait 4:5, avec le gâteau fleuri et le Grazing Platter fournis. Les textes expliquent la pâtisserie, les compositions à partager et le dialogue autour du sur-mesure. Le lien « nos prestations » hérite du corps de texte et de sa ligne de base. Aucun récit de fondation, atelier, certification ou service non communiqué n’est ajouté.
 
-La livraison prépare deux archives du site statique, Netlify et Cloudflare Pages, avec guide, manifeste et SHA-256 séparés du contenu publié. Aucune publication distante n’est encore attestée. Le guide `docs/deployment.md` décrit les procédures et les limites gratuites. L’origine finale est configurable sans inventer de domaine ; l’export conserve ses chemins depuis la racine du site.
+La livraison V9 préparait deux archives du site statique, Netlify et Cloudflare Pages, avec guide, manifeste et SHA-256 séparés. Le site courant est désormais publié sur `https://siraysignature.fr` via Pages et GitHub `main` ; son export reste portable. Le guide `docs/deployment.md` conserve les procédures et les limites gratuites. Une nouvelle publication doit être vérifiée sur le domaine ; l’export conserve ses chemins depuis la racine du site.
 
 Les informations légales complètes de l’entreprise et de l’hébergeur restent à renseigner avant le lancement commercial. Les demandes et la confirmation des commandes passent par [@siraysignature sur Instagram](https://www.instagram.com/siraysignature/).
 
@@ -122,3 +122,14 @@ La marge extérieure du bandeau pratique est supprimée : la surface de Maison c
 Le dialogue natif conserve son contenu, son focus et ses couleurs. Son entrée depuis la gauche dure 560 ms, avec une accélération puis une décélération progressives (`cubic-bezier(0.32, 0, 0.2, 1)`) ; la courbe V14, qui consommait presque tout le trajet immédiatement, est retirée. La fermeture volontaire revient vers la gauche en 320 ms. La Web Animations API permet de repartir de la position courante lorsque Fermer ou Échap interrompt l’ouverture. Aucun délai de navigation ni effet séparé sur chaque lien n’est ajouté.
 
 Le lien choisi, un passage au format bureau ou le remplacement de page Astro ferme immédiatement le dialogue et annule le mouvement en cours. Le dialogue reste modal jusqu’à la fin de sa fermeture volontaire ; son événement natif `close` remet l’état du bouton Menu à zéro, sauf s’il concerne une fermeture antérieure à une réouverture. Chaque ouverture réinitialise aussi l’état de fermeture. La préférence de mouvement réduit et l’absence de Web Animations gardent une ouverture et une fermeture immédiates. Un changement de cette préférence interrompt le mouvement actif. Les mesures et limites de vérification V16 sont consignées dans `docs/qa/v16-menu-motion.md`.
+
+
+## Édition et choix guidés — V17
+
+L’interface Sveltia CMS est réservée à `/admin/` ; elle ne change pas la direction artistique de la vitrine. Ses trois rubriques séparent les photographies, le catalogue et les textes de l’accueil, de la maison et de votre projet. Les champs éditent des JSON, sans permettre de modifier les adresses des prestations ou les composants de mise en page. Les familles classiques restent dans l’ordre Fruits, Chocolats, Notes gourmandes, lié à leurs illustrations. Les cupcakes se classent par identifiant de famille, sans filtrage fragile selon leur libellé. Les résumés des tarifs et les titres comptant des saveurs sont calculés depuis les données ; les phrases éditoriales contenant un nombre restent modifiables comme texte.
+
+Chaque emplacement photo possède un fichier, un texte alternatif et un point de cadrage. Les cartes « À découvrir aussi » utilisent leur propre champ `request`, initialisé avec les visuels déjà présents. Les nouveaux fichiers vont dans `src/assets/uploads/` et `resolveMedia` produit des variantes WebP 480, 960 et 1 600 px, plus une largeur finale limitée à la source et à 2 400 px. Les tailles trop grandes pour la source sont retirées. Les photos du registre conservent leurs variantes historiques et les livraisons JPEG V10 autorisées. La provenance des quatre illustrations stock reste distincte de celle des créations client.
+
+Le clic sur un volet principal, une famille de saveurs ou un choix de brunch déclenche un déplacement de 440 ms avec décélération progressive. La position cible aligne le groupe de commandes à 16 px sous la hauteur réelle de l’en-tête ; les choix restent visibles avec le contenu qui les suit. Le scroll ne rend pas les onglets sticky. Une molette, un toucher, un pointeur, une touche, un redimensionnement, un changement de préférence de mouvement ou une transition Astro annule le déplacement en cours. Avec `prefers-reduced-motion`, le repositionnement est immédiat. Les flèches clavier changent le choix sans déclencher ce déplacement automatique.
+
+Le contrôle navigateur V17 à 390 × 844 px a observé les commandes principales puis les familles à environ 115,76 px sous un en-tête de 100 px, avec contenu choisi visible et sans débordement horizontal. Les 24 assertions du modèle d’interaction complètent ce contrôle ; elles ne remplacent pas un essai sur iPhone physique ou dans le navigateur Instagram. Le rapport `docs/qa/v17-cms-motion.md` donne les résultats et précise que la connexion et la sauvegarde CMS ne sont pas encore attestées.

@@ -7,7 +7,9 @@
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro check && astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "check": "astro check"
+    "check": "astro check",
+    "cms:config": "node scripts/build-cms-config.mjs",
+    "prebuild": "npm run cms:config"
   },
   "dependencies": {
     "@fontsource/gloock": "^5.3.0",

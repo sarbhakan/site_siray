@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import BrandMark from '../components/BrandMark.astro';
 import { collections, instagram } from '../data/site';
 import { collectionPhotography } from '../data/photography';
+import { resolveMedia } from '../lib/media';
 import '@fontsource/gloock/latin-400.css';
 import '@fontsource/manrope/latin-400.css';
 import '@fontsource/manrope/latin-600.css';
@@ -23,6 +24,7 @@ const {
   image = collectionPhotography['layer-cakes'].cover.image,
   home = false,
 } = Astro.props;
+const socialImage = await resolveMedia(image);
 const pathname = Astro.url.pathname;
 const links = [
   { href: '/galerie/', label: 'Galerie' },
@@ -55,7 +57,7 @@ const canonical = Astro.site ? new URL(pathname, Astro.site).href : undefined;
     <meta
       property="og:image"
       content={
-        Astro.site ? new URL(`/images/${image}.webp`, Astro.site).href : `/images/${image}.webp`
+        Astro.site ? new URL(socialImage.src, Astro.site).href : socialImage.src
       }
     />
     <meta name="twitter:card" content="summary_large_image" />

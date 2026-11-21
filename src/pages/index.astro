@@ -1,36 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pages from '../content/pages.json';
 import Photo from '../components/Photo.astro';
 import CollectionEdit from '../components/CollectionEdit.astro';
 import { homeSlides as slides, homePhotos } from '../data/photography';
+const page = pages.home;
 ---
 
-<Layout title="Accueil" home>
+<Layout title={page.pageTitle} home>
   <section class="hero" data-hero aria-label="L’univers Siray Signature">
     <div class="hero-title">
       <div class="hero-copy">
-        <h1>Vos instants gourmands</h1>
-        <p class="hero-summary">Pâtisserie & tables sur mesure.</p>
+        <h1>{page.title}</h1>
+        <p class="hero-summary">{page.summary}</p>
         <p class="hero-description">
-          Gâteaux personnalisés, brunchs et buffets : choisissez vos saveurs,
-          vos couleurs et votre décor.
+          {page.description}
         </p>
         <a href="/creations/" class="primary-link">
-          Découvrir nos prestations
+          {page.discoverLabel}
         </a>
       </div>
       <div class="hero-guide">
         <nav class="hero-paths" aria-label="Explorer selon votre occasion">
           <a href="#pour-celebrer">
-            <span class="hero-path-title">Pour célébrer</span>
-            <span class="hero-path-detail">Layer cakes, bento cakes & cupcakes</span>
+            <span class="hero-path-title">{page.celebrateTitle}</span>
+            <span class="hero-path-detail">{page.celebrateDetail}</span>
           </a>
           <a href="#pour-se-retrouver">
-            <span class="hero-path-title">Pour se retrouver</span>
-            <span class="hero-path-detail">Mignardises, brunch box, buffets & plateaux</span>
+            <span class="hero-path-title">{page.gatherTitle}</span>
+            <span class="hero-path-detail">{page.gatherDetail}</span>
           </a>
         </nav>
-        <p class="hero-location"><span>Bordeaux & Gironde</span><span>Créations sur commande</span></p>
+        <p class="hero-location"><span>{page.location}</span><span>{page.locationOrderNote}</span></p>
       </div>
     </div>
     <div class="hero-visual">
@@ -67,34 +68,34 @@ import { homeSlides as slides, homePhotos } from '../data/photography';
   <CollectionEdit />
 
   <div class="service-note section-pad">
-    <p class="service-note-summary">Sur commande <span aria-hidden="true">·</span> Toutes nos viandes sont halal</p>
-    <a href="/contact/#allergies">Allergies & intolérances</a>
+    <p class="service-note-summary">{page.orderNote} <span aria-hidden="true">·</span> {page.halalNote}</p>
+    <a href="/contact/#allergies">{page.allergiesLabel}</a>
   </div>
 
   <section class="maison-feature section-pad">
     <div class="maison-feature-copy">
-      <h2>L’art de sublimer vos instants gourmands</h2>
+      <h2>{page.maisonTitle}</h2>
       <p>
-        Vos couleurs, votre décor et votre format donnent le ton de vos cakes
-        et tables sur mesure.
+        {page.maisonText}
       </p>
       <a class="text-link" href="/la-maison/">
-        L’esprit Siray Signature
+        {page.maisonLink}
       </a>
     </div>
     <figure>
       <Photo
         name={homePhotos.maison.image}
         alt={homePhotos.maison.alt}
+        position={homePhotos.maison.position}
       />
     </figure>
   </section>
 
   <section class="carnet-section section-pad">
     <div class="section-heading">
-      <h2>Des idées à garder</h2>
+      <h2>{page.galleryTitle}</h2>
       <a href="/galerie/" class="text-link">
-        Ouvrir la galerie
+        {page.galleryLink}
       </a>
     </div>
     <div class="carnet-images">
@@ -102,22 +103,25 @@ import { homeSlides as slides, homePhotos } from '../data/photography';
         <Photo
           name={homePhotos.cakes.image}
           alt={homePhotos.cakes.alt}
+          position={homePhotos.cakes.position}
         />
-        <span>Cakes</span>
+        <span>{page.cakesLabel}</span>
       </a>
       <a href="/galerie/#cupcakes">
         <Photo
-          name="cupcakes"
-          alt="Cupcakes décorés"
+          name={homePhotos.petitesDouceurs.image}
+          alt={homePhotos.petitesDouceurs.alt}
+          position={homePhotos.petitesDouceurs.position}
         />
-        <span>Petites douceurs</span>
+        <span>{page.sweetsLabel}</span>
       </a>
       <a href="/galerie/#brunch-box">
         <Photo
           name={homePhotos.tables.image}
           alt={homePhotos.tables.alt}
+          position={homePhotos.tables.position}
         />
-        <span>Tables & brunchs</span>
+        <span>{page.tablesLabel}</span>
       </a>
     </div>
   </section>
