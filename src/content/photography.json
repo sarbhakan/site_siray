@@ -311,18 +311,18 @@
       "category": "buffets"
     },
     {
-      "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
       "alt": "Assortiment de mignardises sucrées et salées avec une verrine au premier plan",
-      "position": "50% 58%",
-      "label": "Sucré & salé",
-      "category": "mignardises"
+      "category": "mignardises",
+      "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
+      "label": "Mousse au chocolat façon liégeois",
+      "position": "50% 58%"
     },
     {
-      "file": "/images/siray-layer-coquillages-7c0454c7.webp",
       "alt": "Layer cake ivoire décoré de coquillages et de fleurs roses",
-      "position": "50% 68%",
+      "category": "layer-cakes",
+      "file": "/images/siray-layer-coquillages-7c0454c7.webp",
       "label": "Inspiration marine",
-      "category": "layer-cakes"
+      "position": "50% 68%"
     },
     {
       "file": "/images/siray-plateau-charcuterie-7fa905c0.webp",
