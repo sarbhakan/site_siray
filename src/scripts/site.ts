@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+type AnimationEngine = typeof import('gsap')['gsap'];
 
 let cleanup = () => {};
 
@@ -85,30 +85,57 @@ function initialize() {
     let inView = true;
     let disposed = false;
     let generation = 0;
+    let engine: AnimationEngine | undefined;
+    let enginePromise: Promise<AnimationEngine | undefined> | undefined;
+    let animationUnavailable = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
-    let animation: gsap.core.Timeline | undefined;
+    let animation: ReturnType<AnimationEngine['timeline']> | undefined;
     const canRun = () =>
-      !pausedByUser && !reduced.matches && inView && !document.hidden;
+      !disposed && !animationUnavailable && !pausedByUser &&
+      !reduced.matches && inView && !document.hidden;
+    const loadEngine = () => {
+      // Only the visible, animated hero needs GSAP. Keep one request in flight.
+      enginePromise ??= import('gsap')
+        .then(({ gsap }) => {
+          if (!disposed) engine = gsap;
+          return gsap;
+        })
+        .catch(() => {
+          // A failed optional animation must leave a usable, static photograph.
+          if (!disposed) {
+            animationUnavailable = true;
+            schedule();
+          }
+          return undefined;
+        });
+      return enginePromise;
+    };
     const schedule = () => {
+      if (disposed) return;
       clearTimeout(timer);
       const scheduledGeneration = ++generation;
       hero.dataset.running = String(canRun());
-      surface.disabled = reduced.matches;
+      surface.disabled = reduced.matches || animationUnavailable;
       surface.setAttribute('aria-pressed', String(pausedByUser));
       surface.setAttribute(
         'aria-label',
-        reduced.matches
+        surface.disabled
           ? 'Les créations en images'
           : pausedByUser
             ? 'Reprendre le défilement des photographies'
             : 'Figer le défilement des photographies',
       );
-      if (canRun())
+      if (canRun()) {
+        void loadEngine();
         timer = setTimeout(() => {
           void change(scheduledGeneration);
         }, 6500);
+      }
     };
     const change = async (scheduledGeneration: number) => {
+      if (disposed || scheduledGeneration !== generation || !canRun()) return;
+      const gsap = await loadEngine();
+      if (!gsap || disposed || scheduledGeneration !== generation || !canRun()) return;
       const targetIndex = (current + 1) % slides.length;
       const target = slides[targetIndex];
       const img = target.querySelector('img');
@@ -171,8 +198,8 @@ function initialize() {
       () => {
         if (reduced.matches) {
           animation?.kill();
-          gsap.set(slides, { opacity: 0, visibility: 'hidden' });
-          gsap.set(slides[current], { opacity: 1, visibility: 'visible' });
+          engine?.set(slides, { opacity: 0, visibility: 'hidden' });
+          engine?.set(slides[current], { opacity: 1, visibility: 'visible' });
         }
         schedule();
       },

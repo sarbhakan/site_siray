@@ -1,0 +1,644 @@
+{
+  "scope": "Real in-app-browser controls; viewport emulation only",
+  "menu": {
+    "dialogOpen": false,
+    "expanded": "false",
+    "focus": "Menu"
+  },
+  "keyboard": {
+    "cta": {
+      "bottom": 1811.5078125,
+      "height": 88.5,
+      "left": 32,
+      "right": 736,
+      "top": 1723.0078125,
+      "width": 704,
+      "x": 32,
+      "y": 1723.0078125
+    },
+    "focus": "Préparer ma demande",
+    "selected": "Préparer ma demande",
+    "targetHeight": 44
+  },
+  "panels": [
+    {
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "selected": "Format & décor",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "selected": "Saveurs classiques",
+      "visible": [
+        "saveurs"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "selected": "Associations Signature",
+      "visible": [
+        "signatures"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/layer-cakes/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "selected": "Format & décor",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "selected": "Saveurs classiques",
+      "visible": [
+        "saveurs"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/bento-cakes/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "selected": "Formats & tarifs",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "selected": "Les bouchées",
+      "visible": [
+        "les-bouchees"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/mignardises/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "selected": "Formats & tarifs",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "selected": "Les saveurs",
+      "visible": [
+        "saveurs"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/cupcakes/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "selected": "Les compositions",
+      "visible": [
+        "compositions"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/creations/brunch-box/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/buffets/",
+      "selected": "La prestation",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/buffets/",
+      "selected": "Demander un devis",
+      "visible": [
+        "votre-demande"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/plateaux/",
+      "selected": "Formats & tarifs",
+      "visible": [
+        "formats"
+      ]
+    },
+    {
+      "overflow": false,
+      "route": "/plateaux/",
+      "selected": "Préparer ma demande",
+      "visible": [
+        "votre-demande"
+      ]
+    }
+  ],
+  "flavors": [
+    {
+      "route": "/creations/layer-cakes/",
+      "selected": [
+        "Fruits"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Fraises, myrtilles et oranges",
+          "list": [
+            "Framboise",
+            "Fraise",
+            "Fruit de la passion",
+            "Mangue",
+            "Myrtille",
+            "Poire",
+            "Pomme"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/layer-cakes/",
+      "selected": [
+        "Chocolats"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Chocolat noir, blanc et au lait",
+          "list": [
+            "Chocolat au lait",
+            "Chocolat noir",
+            "Chocolat blanc"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/layer-cakes/",
+      "selected": [
+        "Notes gourmandes"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Pistaches dans un bol",
+          "list": [
+            "Pistache",
+            "Vanille",
+            "Spéculoos",
+            "Caramel beurre salé",
+            "Croustillant au chocolat praliné"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "selected": [
+        "Fruits"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Fraises, myrtilles et oranges",
+          "list": [
+            "Framboise",
+            "Fraise",
+            "Fruit de la passion",
+            "Mangue",
+            "Myrtille",
+            "Poire",
+            "Pomme"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "selected": [
+        "Chocolats"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Chocolat noir, blanc et au lait",
+          "list": [
+            "Chocolat au lait",
+            "Chocolat noir",
+            "Chocolat blanc"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/bento-cakes/",
+      "selected": [
+        "Notes gourmandes"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Pistaches dans un bol",
+          "list": [
+            "Pistache",
+            "Vanille",
+            "Spéculoos",
+            "Caramel beurre salé",
+            "Croustillant au chocolat praliné"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "selected": [
+        "Fruits"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Fraises, myrtilles et oranges",
+          "list": [
+            "Framboise",
+            "Fraise",
+            "Fruit de la passion",
+            "Mangue & fruit de la passion",
+            "Fruits rouges",
+            "Lemon curd"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "selected": [
+        "Chocolats"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Chocolat noir, blanc et au lait",
+          "list": [
+            "Nutella"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    },
+    {
+      "route": "/creations/cupcakes/",
+      "selected": [
+        "Notes gourmandes"
+      ],
+      "visibleGroups": [
+        {
+          "image": "Pistaches dans un bol",
+          "list": [
+            "Crème de pistache",
+            "Crème de spéculoos",
+            "Caramel beurre salé",
+            "Crème de noisette"
+          ]
+        }
+      ],
+      "widths": [
+        111.328125,
+        111.3359375,
+        111.3359375
+      ]
+    }
+  ],
+  "brunch": [
+    {
+      "overflow": false,
+      "selected": "Elegancia — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Elegancia",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Prestige — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Prestige",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Le Parisien — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Le Parisien",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Faisalia — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Faisalia",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Signature — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Signature",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Brunchetta — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Brunchetta",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Dolcezza — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Dolcezza",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Amarizia — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Amarizia",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Seralia — 30 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Seralia",
+          "price": "30 € / personne"
+        }
+      ]
+    },
+    {
+      "overflow": false,
+      "selected": "Anatolia — 35 € / personne",
+      "visible": [
+        {
+          "groups": [
+            "Le sucré",
+            "Le salé",
+            "La boisson"
+          ],
+          "name": "Anatolia",
+          "price": "35 € / personne"
+        }
+      ]
+    }
+  ],
+  "platters": [
+    {
+      "height": 72,
+      "open": false,
+      "text": "Plateau de charcuterie70 €Une sélection de charcuteries premium, accompagnée de cornichons, de noix et de touches fruitées."
+    },
+    {
+      "height": 72,
+      "open": false,
+      "text": "Plateau de fromages70 €Une sélection de fromages de qualité, aux arômes et aux affinages variés."
+    },
+    {
+      "height": 72,
+      "open": false,
+      "text": "Grazing Platter60 €Fromages, biscuits, fruits frais et secs, accompagnés de confitures."
+    },
+    {
+      "height": 72,
+      "open": false,
+      "text": "Plateau de fruits frais50 €Un assortiment de fruits frais de saison."
+    },
+    {
+      "height": 72,
+      "open": true,
+      "text": "Plateau de crudités45 €Des légumes croquants, servis avec du houmous, du tzatziki et une sauce ail et fines herbes."
+    }
+  ],
+  "gallery": [
+    {
+      "hash": "",
+      "selected": [
+        "Tout voir"
+      ],
+      "status": "26 photographies",
+      "visible": 26
+    },
+    {
+      "hash": "#layer-cakes",
+      "selected": [
+        "Layer cakes"
+      ],
+      "status": "6 photographies",
+      "visible": 6
+    },
+    {
+      "hash": "#bento-cakes",
+      "selected": [
+        "Bento cakes"
+      ],
+      "status": "4 photographies",
+      "visible": 4
+    },
+    {
+      "hash": "#mignardises",
+      "selected": [
+        "Mignardises"
+      ],
+      "status": "3 photographies",
+      "visible": 3
+    },
+    {
+      "hash": "#cupcakes",
+      "selected": [
+        "Cupcakes"
+      ],
+      "status": "3 photographies",
+      "visible": 3
+    },
+    {
+      "hash": "#brunch-box",
+      "selected": [
+        "Brunch box"
+      ],
+      "status": "3 photographies",
+      "visible": 3
+    },
+    {
+      "hash": "#buffets",
+      "selected": [
+        "Buffets"
+      ],
+      "status": "3 photographies",
+      "visible": 3
+    },
+    {
+      "hash": "#plateaux",
+      "selected": [
+        "Plateaux"
+      ],
+      "status": "4 photographies",
+      "visible": 4
+    }
+  ],
+  "slideshow": {
+    "before": {
+      "active": [
+        "Deux plateaux de fruits frais disposés en compositions colorées"
+      ],
+      "running": "true"
+    },
+    "after": {
+      "active": [
+        "Layer cake rouge sur un présentoir argenté"
+      ],
+      "running": "true"
+    },
+    "pauseResumeChecked": true,
+    "offscreenRunning": false,
+    "consoleWarningsErrors": []
+  }
+}

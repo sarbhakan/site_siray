@@ -1,4 +1,4 @@
-# Siray Signature — système visuel V12
+# Siray Signature — système visuel V13
 
 Ce document décrit la façade présente dans le code. Les faits métier proviennent du texte et des visuels transmis par l’utilisateur ; ils sont structurés dans `src/data/site.ts`. Les sources initiales sont confrontées dans `docs/qa/v4-content-source.md` et la mise à jour des plateaux et de la prestation buffet dans `docs/qa/v7-content-source.md`. Les comptes rendus de vérification se trouvent dans `docs/qa/`.
 
@@ -102,3 +102,7 @@ Les cartes de la carte Siray restent en 4:5 ; les mignardises appartiennent à �
 ## Votre projet — V12
 
 La page /contact/ porte le même libellé « Votre projet » que la navigation. Elle associe une introduction et un bouton Instagram à une procédure ordonnée en trois étapes sur ordinateur ; ces éléments se succèdent sur téléphone. L’anticipation, y compris pour un bento cake, est visible dans l’introduction. Une seconde surface ivoire présente les renseignements du premier message, le retrait habituel sur le lieu de création, la possibilité conditionnelle de livraison à domicile avec supplément à convenir à Bordeaux et en Gironde et la mention halal élargie aux ingrédients. Seul le complément allergies utilise un details natif, ouvert par défaut, avec l’ancre #allergies conservée. Aucune information pratique essentielle n’est masquée derrière une FAQ. Les corps restent à 16 px, les notes et le compte Instagram à 14 px. La page réutilise Gloock, Manrope, les règles fines et les boutons existants ; aucun nouveau script ni visuel n’est nécessaire.
+
+## Vérification V13
+
+La direction visuelle et la qualité des photographies V10/V11 sont conservées. Le lien Allergies & intolérances garde désormais une cible de 44 px à toutes les largeurs, y compris sur tablette et ordinateur, avec un alignement centré près du bouton Instagram. GSAP quitte le script commun et se charge seulement pour le diaporama animé de l’accueil ; les états de mouvement réduit et d’échec de chargement gardent une photo statique. Le rapport `docs/qa/v13-verification.md` distingue la validation du code, les contrôles navigateur et les limites non testées.

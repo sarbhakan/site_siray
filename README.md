@@ -1,5 +1,7 @@
 # Siray Signature
 
+La **V13** complète la vérification mobile et allège les scripts des pages sans diaporama de 34 056 à 8 026 octets gzip. Les photographies approuvées sont conservées. Le [rapport V13](docs/qa/v13-verification.md) précise les contrôles et leurs limites ; le [guide de publication](docs/deployment.md), vérifié le 21 novembre 2026, propose Cloudflare Pages avec GitHub, le dépôt ZIP Cloudflare et Netlify Drop. Les archives V13 sont livrées séparément du dépôt de sources.
+
 Vitrine française multipage de pâtisserie et de buffets à Bordeaux et en Gironde. Les demandes et commandes passent par [@siraysignature sur Instagram](https://www.instagram.com/siraysignature/).
 
 ## Démarrer
@@ -64,12 +66,12 @@ Les prix, quantités, saveurs et compositions fournis sont intégrés. Les tarif
 
 ## Préparer le déploiement
 
-Deux archives sont préparées pour **Netlify** et **Cloudflare Pages** ; aucun site public n’est encore publié dans le cadre de cette livraison. Le [guide de déploiement](docs/deployment.md) détaille les étapes, les offres gratuites et leurs limites vérifiées le 19 novembre 2026. Netlify attend le dossier extrait du ZIP ; Cloudflare Direct Upload accepte directement le ZIP. Les deux contiennent `index.html` à la racine et les en-têtes de `public/_headers`. Le guide, le manifeste et les sommes SHA-256 restent séparés des fichiers publiés.
+Deux archives sont préparées pour **Netlify** et **Cloudflare Pages** ; aucun site public n’est encore publié dans le cadre de cette livraison. Le [guide de déploiement](docs/deployment.md) détaille les étapes, les offres gratuites et leurs limites vérifiées le 21 novembre 2026. Netlify attend le dossier extrait du ZIP ; Cloudflare Direct Upload accepte directement le ZIP. Les deux contiennent `index.html` à la racine et les en-têtes de `public/_headers`. Le guide, le manifeste et les sommes SHA-256 restent séparés des fichiers publiés.
 
 Après compilation et contrôle de `dist/`, recréer la livraison avec :
 
 ```sh
-python3 scripts/package-release.py --dist dist --output-dir releases --version v9
+python3 scripts/package-release.py --dist dist --output-dir releases/v13 --version v13
 ```
 
 Le script n’exécute pas de build et ne déploie rien. Il vérifie la structure, les limites du dépôt manuel Cloudflare et l’absence d’URL localhost dans le HTML. Une fois l’adresse publique attribuée, définir `SITE_URL` à la compilation puis passer la même origine à `--site-url` pour la vérifier. La priorité est `SITE_URL`, puis `URL` fourni par Netlify, puis `CF_PAGES_URL` fourni par Cloudflare. Aucun domaine n’est supposé disponible. Un domaine personnel peut être raccordé plus tard ; son achat et son renouvellement ne sont pas inclus dans l’hébergement gratuit.
