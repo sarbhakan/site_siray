@@ -8,7 +8,7 @@
     {
       "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
       "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
-      "position": "50% 100%"
+      "position": "50% 50%"
     },
     {
       "file": "/images/siray-layer-rouge-7dc19bb3.webp",
@@ -20,18 +20,18 @@
     {
       "slug": "layer-cakes",
       "cover": {
+        "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs aux nuances de rose et de blanc. Une composition florale romantique et raffinée, où douceur et élégance se rencontrent pour sublimer votre célébration",
         "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
-        "alt": "Layer cake ivoire décoré de fleurs",
         "position": "50% 70%"
       },
       "detail": {
+        "alt": "Une création audacieuse, moderne et gourmande, au charme résolument tendance.",
         "file": "/images/siray-layer-rouge-7dc19bb3.webp",
-        "alt": "Layer cake rouge sur un présentoir argenté",
         "position": "50% 65%"
       },
       "request": {
+        "alt": "Layer cake ivoire décoré de fruits rouges et de moulures",
         "file": "/images/siray-layer-fruits-6a211ed1.webp",
-        "alt": "Layer cake ivoire décoré de fruits rouges et de motifs de crème",
         "position": "50% 70%"
       },
       "home": {
@@ -48,8 +48,8 @@
         "position": "50% 62%"
       },
       "detail": {
+        "alt": "Bento cake jaune orné de perles",
         "file": "/src/assets/uploads/20261121-6ae2f54c3e49.webp",
-        "alt": "Bento cake vert décoré de petites roses et d’un message",
         "position": "50% 50%"
       },
       "request": {
@@ -66,8 +66,8 @@
     {
       "slug": "mignardises",
       "cover": {
+        "alt": "Mini burger",
         "file": "/src/assets/uploads/20261121-abd66ab43e32.webp",
-        "alt": "Mini hot-dog tenu par une main gantée devant un assortiment de mignardises",
         "position": "50% 50%"
       },
       "detail": {
@@ -196,8 +196,8 @@
       "position": "50% 70%"
     },
     "petitesDouceurs": {
-      "file": "/images/cupcakes.webp",
       "alt": "Petits cupcakes à la crème rose et aux fruits rouges",
+      "file": "/src/assets/uploads/20261121-20468d733845.webp",
       "position": "50% 46%"
     },
     "maisonCake": {
