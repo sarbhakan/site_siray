@@ -22,3 +22,5 @@ Les consignes complètes, notamment le renouvellement des jetons, sont dans le [
 ## Vérification après installation
 
 Tester une connexion, une modification réversible de texte et une photographie depuis un téléphone. Vérifier le commit GitHub, la réussite du build Pages et l’affichage sur le domaine final, puis retirer la modification d’essai. Une simple page de connexion visible ne prouve pas que la sauvegarde fonctionne.
+
+La première installation est terminée et vérifiée le 21 novembre 2026 : connexion, sauvegarde de texte et import JPEG ont été publiés par GitHub → Cloudflare Pages sur le domaine final. L’application personnelle est `siray-signature-cms`, installée uniquement sur `site_siray`. Les essais ont été réalisés dans un navigateur de bureau, dont un rendu à dimension mobile ; un essai physique iPhone/HEIC reste distinct.

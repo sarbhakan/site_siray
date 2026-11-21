@@ -1,6 +1,6 @@
 # V17 — édition des contenus et défilement des choix
 
-Contrôle du 21 novembre 2026. Ce rapport distingue les vérifications locales exécutées de l’activation distante de l’éditeur, encore incomplète au moment de sa rédaction. Le site public existant est `https://siraysignature.fr`, hébergé par Cloudflare Pages avec GitHub `main`. Ce document ne constitue pas une preuve de publication de la V17.
+Contrôle du 21 novembre 2026. La V17 est publiée sur `https://siraysignature.fr`, hébergé par Cloudflare Pages avec GitHub `main`. L’authentification, une sauvegarde de texte et un import photographique ont été vérifiés de bout en bout. Les limites des essais sur téléphone restent précisées ci-dessous.
 
 ## Périmètre
 
@@ -26,7 +26,7 @@ Les choix de volets principaux, de familles de saveurs et de brunch déclenchent
 
 Le contrôle de parité compare les valeurs exportées avant et après migration. Le seul nouveau champ de prestation, `panelNote`, contient les notes courtes déjà présentes dans les composants. Les routes et les résumés de prix calculés gardent leurs valeurs initiales. Les prix de brunch sont saisis uniquement sur les compositions ; les autres catégories tarifées utilisent leurs tableaux numériques. Les résumés ne nécessitent pas de seconde saisie dans les composants.
 
-Le registre photographique conserve quatre illustrations identifiées séparément : le cupcake d’accueil et les trois visuels d’ingrédients. La galerie ne les attribue pas aux réalisations client. Le contrôle d’import démontre le chemin de compilation d’un JPEG ; il ne démontre pas encore une importation depuis le téléphone à travers le CMS connecté.
+Le registre photographique conserve quatre illustrations identifiées séparément : le cupcake d’accueil et les trois visuels d’ingrédients. La galerie ne les attribue pas aux réalisations client. Le premier contrôle d’import démontre le chemin de compilation local ; un second essai, décrit ci-dessous, valide l’import dans le CMS connecté et la publication réelle.
 
 ## Observation navigateur mobile
 
@@ -36,10 +36,14 @@ Ce contrôle porte sur un navigateur de bureau à une dimension mobile. Il ne co
 
 ## Authentification et publication : état constaté
 
-Le Worker d’authentification a été créé dans le compte Cloudflare avec l’offre gratuite. La GitHub App a été créée et installée, après confirmation explicite du client, sur le seul dépôt `sarbhakan/site_siray` : Contents en lecture/écriture et Metadata en lecture. Au moment de ce rapport, le client configure le secret chiffré du Worker ; la connexion et la première sauvegarde restent à vérifier.
+Le Worker d’authentification fonctionne dans le compte Cloudflare avec l’offre gratuite. La GitHub App a été créée, installée et autorisée après confirmations explicites du client, sur le seul dépôt `sarbhakan/site_siray` : Contents en lecture/écriture et Metadata en lecture. Les trois paramètres du Worker sont présents, dont `GITHUB_CLIENT_SECRET` chiffré. Une requête d’authentification pour un domaine extérieur renvoie `UNSUPPORTED_DOMAIN`.
 
-La configuration publique de l’éditeur ne contient aucun secret. Les identifiants confidentiels doivent rester exclusivement dans les secrets chiffrés du Worker. Le site public reste statique ; le Worker ne sert qu’à la connexion de l’éditeur. Sa préparation ne démontre pas qu’un jeton a été délivré, qu’une modification a été enregistrée dans GitHub ou qu’une sauvegarde CMS a été déployée.
+La configuration publique de l’éditeur ne contient aucun secret. Les identifiants confidentiels restent exclusivement dans les secrets chiffrés du Worker. Le site public reste statique ; le Worker sert à l’authentification de l’éditeur. `/admin/` répond en HTTPS avec `Cache-Control: no-store` et `X-Robots-Tag: noindex, nofollow`.
 
-Il reste à vérifier une connexion, une modification réversible de texte et un import photo depuis le téléphone, puis le commit GitHub, la réussite du déploiement Pages et le rendu sur `siraysignature.fr`. La publication de la V17 doit également être vérifiée après son intégration à `main`. En cas d’échec d’une reconstruction Pages, la dernière version réussie reste en ligne.
+La version `615a4b33e1c4157e26a4453c6792687b80b56bda` a été publiée avec succès : déploiement Cloudflare `d96b5a26-c165-4cd2-9c54-1ec02235ac47`, durée observée de 38 secondes. Une sauvegarde réelle du CMS a créé le commit `ba14361dcb004f85417245cc75eb74d9d27294b1`. Une seule valeur a changé : l’introduction du premier message devient « Ces renseignements nous permettent de vous répondre plus précisément. » L’ordre de certaines propriétés JSON a aussi été réorganisé automatiquement. La nouvelle phrase a été retrouvée sur la page publique `/contact/` après reconstruction.
+
+Un JPEG de cupcakes déjà utilisé par le site a ensuite été importé dans le CMS : conversion en WebP de 210 272 octets, enregistrée dans `src/assets/uploads/20261121-8577311b95b4.webp`. La sauvegarde a créé le commit `e2a4117fd3ed1c5cf2144e4a2db2683dea6e65a1`. Le seul changement sémantique du fichier photographique est la source de la couverture cupcakes ; description et cadrage sont conservés. Les variantes publiques générées sont d’environ 37, 116 et 183 ko. La page publique cupcakes utilise ces fichiers sous `/_astro/`, y compris dans ses métadonnées de partage.
+
+Le contrôle navigateur public à 390 × 844 px confirme les commandes Saveurs à 115,76 px sous le haut de la fenêtre, avec un en-tête de 100 px, sans débordement horizontal. L’éditeur connecté a aussi été ouvert à cette dimension, avec une navigation mobile dédiée et sans débordement horizontal. Captures conservées dans `releases/v17-cms/` du dossier de travail. Il ne s’agit pas d’un essai sur iPhone physique ni dans Instagram. Le JPEG est testé ; le HEIC reste à tester sur un appareil réel. En cas d’échec d’une reconstruction Pages, la dernière version réussie reste en ligne.
 
 Le guide utilisateur est dans [EDITION-MOBILE.md](../EDITION-MOBILE.md) et la procédure technique dans [infra/cms-auth/README.md](../../infra/cms-auth/README.md). Les rapports V1 à V16 conservent leurs résultats historiques et ne servent pas de preuve pour les nouvelles étapes de cette passe.
