@@ -118,10 +118,9 @@ const photographyFields = [
   ], { ...fixed, summary: '{{fields.slug}}', min: 7, max: 7 }),
   object('homePhotos', 'Autres photos de l’accueil et de la maison',
     Object.keys(photoContent.homePhotos).map((key) => photo(key, photoLabels[key] || key, key === 'tables' ? 'home-wide' : 'home'))),
-  field('gallery', 'Galerie — photos et légendes visibles', 'list', {
-    field: photo('photo', 'Photo de la galerie', 'gallery', { show_gallery_fields: true }),
-    collapsed: true, summary: '{{fields.label}}', min: 1,
-    hint: 'Pour ajouter une réalisation, touchez « Ajouter ». La légende est le texte visible sous la photo. La description pour l’accessibilité est distincte. Choisissez sa catégorie.',
+  field('gallery', 'Galerie et corbeille', 'siray-gallery', {
+    required: false, photo_context: 'gallery', show_gallery_fields: true,
+    hint: 'Ajoutez, classez ou mettez une photo à la corbeille sans supprimer son fichier. Une photo utilisée sur une autre page y reste visible. Touchez Enregistrer pour publier vos changements.',
   }),
 ];
 

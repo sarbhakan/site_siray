@@ -2,7 +2,8 @@
 @font-face { font-family: 'Gloock'; src: url('/admin/fonts/gloock-latin.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 .siray-photo-editor,
 .siray-photo-summary,
-.siray-preview-photo {
+.siray-preview-photo,
+.siray-gallery-manager {
   --siray-paper: #f5f1e8;
   --siray-surface: #e9e4d7;
   --siray-white: #fffcf6;
@@ -129,4 +130,54 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .siray-photo-editor * { transition: none !important; }
+}
+
+/* The gallery and its reversible bin share one value. Thumbnails stay lazy;
+   only the selected photograph mounts the full crop and metadata controls. */
+.siray-gallery-manager { width: 100%; min-width: 0; padding: 16px; background: var(--siray-paper); border-radius: 12px; }
+.siray-gallery-manager * { box-sizing: border-box; }
+.siray-gallery-manager :focus-visible { outline: 3px solid var(--siray-focus); outline-offset: 3px; }
+.siray-gallery-manager ::selection { background: var(--siray-olive); color: var(--siray-paper); }
+.siray-gallery-manager p { margin: 0; }
+.siray-gallery-tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-bottom: 12px; }
+.siray-gallery-tabs .siray-studio-button { padding-inline: 8px; font-size: 14px; }
+.siray-gallery-tabs .siray-studio-button[aria-pressed='false'] { background: transparent; color: var(--siray-ink); }
+.siray-gallery-tabs .siray-studio-button[aria-pressed='false']:hover { background: var(--siray-surface); }
+.siray-gallery-notice { margin-top: 12px !important; padding: 12px; color: var(--siray-ink); background: var(--siray-surface); font-size: 14px; line-height: 1.5; }
+.siray-gallery-notice:empty { display: none; }
+.siray-gallery-filters { display: grid; gap: 12px; margin-top: 20px; }
+.siray-gallery-filters .siray-studio-field > span { font-size: 14px; }
+.siray-gallery-filters :is(input, select) { min-height: 44px; padding: 9px; }
+.siray-gallery-add { width: 100%; margin-top: 16px; }
+.siray-gallery-count { margin-top: 18px !important; color: var(--siray-muted); font-size: 14px; }
+.siray-gallery-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.siray-gallery-row { min-width: 0; padding: 16px 0; border-bottom: 1px solid var(--siray-line); }
+.siray-gallery-row-summary { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 12px; }
+.siray-gallery-thumbnail { width: 64px; border-radius: 4px; }
+.siray-gallery-thumbnail .siray-image-empty { min-height: 64px; padding: 4px; font-size: 11px; }
+.siray-gallery-row-copy { min-width: 0; }
+.siray-gallery-row-copy h3 { margin: 0 0 3px; font: 600 16px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; overflow-wrap: anywhere; }
+.siray-gallery-row-copy p { color: var(--siray-muted); font-size: 13px; line-height: 1.5; }
+.siray-gallery-row-copy .siray-gallery-usage { margin-top: 4px; color: var(--siray-ink); }
+.siray-gallery-row-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; margin-top: 10px; }
+.siray-gallery-row-actions .siray-studio-button { min-height: 44px; padding: 9px; font-size: 14px; }
+.siray-gallery-order { display: flex; justify-content: flex-end; gap: 8px; margin-top: 3px; }
+.siray-gallery-order-button { min-width: 64px; min-height: 44px; padding: 8px; border: 0; border-radius: 4px; background: transparent; color: var(--siray-olive); text-decoration: underline; text-underline-offset: 3px; font: 500 13px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; cursor: pointer; touch-action: manipulation; }
+.siray-gallery-order-button:disabled { opacity: .45; cursor: default; text-decoration: none; }
+.siray-gallery-editor { min-width: 0; margin-top: 14px; }
+.siray-gallery-editor > h3 { margin: 0 0 8px; font-size: 18px; }
+.siray-gallery-editor > .siray-studio-button { width: 100%; margin-top: 10px; }
+.siray-gallery-editor .siray-photo-editor { padding: 0; }
+.siray-gallery-more { width: 100%; margin-block: 16px; }
+.siray-gallery-empty { padding-block: 24px; color: var(--siray-muted); font-size: 15px; }
+.siray-gallery-list + .siray-studio-help { margin-top: 16px; }
+.siray-gallery-preview-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-top: 12px; }
+.siray-gallery-preview-grid .siray-preview-photo { padding: 0; }
+@media (min-width: 720px) {
+  .siray-gallery-filters { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: end; }
+  .siray-gallery-row-summary { grid-template-columns: 80px minmax(0, 1fr); }
+  .siray-gallery-thumbnail { width: 80px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .siray-gallery-manager * { transition: none !important; }
 }

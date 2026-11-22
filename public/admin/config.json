@@ -187,20 +187,12 @@
             },
             {
               "name": "gallery",
-              "label": "Galerie — photos et légendes visibles",
-              "widget": "list",
-              "field": {
-                "name": "photo",
-                "label": "Photo de la galerie",
-                "widget": "siray-photo",
-                "photo_context": "gallery",
-                "photo_label": "Photo de la galerie",
-                "show_gallery_fields": true
-              },
-              "collapsed": true,
-              "summary": "{{fields.label}}",
-              "min": 1,
-              "hint": "Pour ajouter une réalisation, touchez « Ajouter ». La légende est le texte visible sous la photo. La description pour l’accessibilité est distincte. Choisissez sa catégorie."
+              "label": "Galerie et corbeille",
+              "widget": "siray-gallery",
+              "required": false,
+              "photo_context": "gallery",
+              "show_gallery_fields": true,
+              "hint": "Ajoutez, classez ou mettez une photo à la corbeille sans supprimer son fichier. Une photo utilisée sur une autre page y reste visible. Touchez Enregistrer pour publier vos changements."
             }
           ],
           "preview_path": "galerie/"

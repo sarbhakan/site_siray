@@ -286,6 +286,7 @@
       }), [current.file, current.alt, current.label, current.category, gallery]);
 
       const choosePhoto = async event => {
+        if (props.allowReplacement === false) return;
         const trigger = event?.currentTarget;
         endDrag();
         setBusy(true);
@@ -357,9 +358,11 @@
       return h('div', { className: 'siray-photo-editor', 'aria-busy': busy },
         option(field, 'photo_label', '') && h('p', { className: 'siray-photo-destination' }, option(field, 'photo_label', '')),
         h('div', { className: 'siray-photo-toolbar' },
-          h('button', { id: forID, type: 'button', className: 'siray-studio-button', disabled: busy,
+          props.allowReplacement !== false && h('button', { id: forID, type: 'button', className: 'siray-studio-button', disabled: busy,
             onClick: choosePhoto, 'aria-describedby': error ? errorID : undefined }, busy ? 'Préparation de la photo…' : current.file ? 'Remplacer la photo' : 'Choisir une photo'),
-          h('p', { className: 'siray-studio-help' }, 'Depuis le téléphone ou la bibliothèque du site. Les nouvelles photos sont optimisées automatiquement.'),
+          h('p', { className: 'siray-studio-help', ...(props.allowReplacement === false ? {id:forID,tabIndex:-1} : {}) }, props.allowReplacement === false
+            ? 'Restaurez cette photo dans la galerie pour pouvoir la remplacer. Son texte et son cadrage restent modifiables ici.'
+            : 'Depuis le téléphone ou la bibliothèque du site. Les nouvelles photos sont optimisées automatiquement.'),
         ),
         error && h('p', { id: errorID, className: 'siray-studio-error', role: 'alert' }, error),
         h('p', { className: 'siray-studio-notice', role: 'status', 'aria-live': 'polite' }, notice),
@@ -543,6 +546,167 @@
       );
     }
 
+    // One supported custom field owns the complete gallery array. Moving a row
+    // to the bin only changes its visibility flag; it never deletes an asset.
+    const GalleryControl = forwardRef(function GalleryControl(props, ref) {
+      const { value, forID, onChange, getAsset, pickFile, entry } = props;
+      const raw = plain(value);
+      const incoming = Array.isArray(raw) ? raw : [];
+      const [current, setCurrent] = useState(incoming);
+      const currentRef = useRef(incoming);
+      useEffect(() => { currentRef.current = incoming; setCurrent(incoming); }, [value]);
+      const [mode, setMode] = useState('visible');
+      const [search, setSearch] = useState('');
+      const [category, setCategory] = useState('all');
+      const [limit, setLimit] = useState(12);
+      const [editing, setEditing] = useState(null);
+      const [newPhoto, setNewPhoto] = useState(null);
+      const newPhotoRef = useRef(null);
+      const [notice, setNotice] = useState('');
+      const visibleCount = current.filter(photo => photo?.trashed !== true).length;
+      const trashCount = current.length - visibleCount;
+      const data = plain(typeof entry?.get === 'function' ? entry.get('data') : entry?.data) || {};
+      const liveData = { ...data, gallery: current };
+      const liveEntry = { get: key => key === 'data' ? liveData : typeof entry?.get === 'function' ? entry.get(key) : entry?.[key] };
+      const photoField = { photo_context: 'gallery', photo_label: 'Photo de la galerie', show_gallery_fields: true };
+      const update = transform => {
+        const next = transform(currentRef.current);
+        currentRef.current = next;
+        setCurrent(next);
+        onChange(next);
+      };
+      const invalid = () => {
+        if (newPhotoRef.current !== null) return 'Terminez l’ajout de la nouvelle photo, ou annulez cet ajout avant d’enregistrer.';
+        const index = currentRef.current.findIndex(photo => !global.SirayPhotoGallery?.valid(photo)
+          || (photo.trashed !== undefined && typeof photo.trashed !== 'boolean'));
+        return index < 0 ? '' : `Vérifiez le nom, la catégorie et la description de la photo ${index + 1} avant d’enregistrer.`;
+      };
+      useImperativeHandle(ref, () => ({ isValid: () => {
+        const message = invalid(); return message ? { error: { message } } : true;
+      } }), [current, newPhoto]);
+      const switchMode = next => { setMode(next); setSearch(''); setCategory('all'); setLimit(12); setEditing(null); };
+      const usages = file => global.SirayPhotoGallery?.usages(liveData, file) || [];
+      const toggleTrash = (photo, restore) => {
+        update(list => global.SirayPhotoGallery[restore ? 'restore' : 'trash'](list, photo.file));
+        setEditing(null);
+        const places = usages(photo.file);
+        setNotice(restore ? 'Photo restaurée dans la galerie. Touchez « Enregistrer » pour publier.'
+          : `Photo placée dans la corbeille. Touchez « Enregistrer » pour la retirer de la galerie.${places.length ? ` Elle reste utilisée sur : ${places.join(' ; ')}.` : ' Son fichier est conservé.'}`);
+      };
+      const replace = (index, next) => {
+        const previous = currentRef.current[index];
+        if (previous?.trashed === true && next?.file !== previous.file) {
+          setEditing(null);
+          setNotice('Restaurez cette photo dans la galerie avant de la remplacer. Le fichier conservé dans la corbeille n’a pas changé.');
+          return;
+        }
+        update(list => list.map((photo, i) => i === index ? { ...next,
+          ...(photo.trashed === true ? { trashed: true } : {}) } : photo));
+      };
+      const move = (index, direction) => {
+        update(list => {
+          const indices = list.flatMap((photo, i) => photo?.trashed !== true ? [i] : []);
+          const target = indices[indices.indexOf(index) + direction];
+          if (target === undefined) return list;
+          const next = list.slice(); [next[index], next[target]] = [next[target], next[index]]; return next;
+        });
+        setEditing(null);
+      };
+      const add = () => { const next = {}; newPhotoRef.current = next; setNewPhoto(next); setEditing(null); setNotice(''); switchMode('visible'); };
+      const cancelAdd = () => { newPhotoRef.current = null; setNewPhoto(null); };
+      const changeNew = next => {
+        if (global.SirayPhotoGallery?.valid(next)) {
+          const existingIndex = currentRef.current.findIndex(photo => photo?.file === next.file);
+          if (existingIndex >= 0) {
+            setNotice(currentRef.current[existingIndex].trashed === true
+              ? 'Cette photo est déjà dans la corbeille. Ouvrez Corbeille puis touchez « Restaurer ».'
+              : 'Cette photo est déjà dans la galerie. Ouvrez « Modifier » sur sa ligne pour ajuster son texte ou son cadrage.');
+          } else {
+            const index = currentRef.current.length;
+            update(list => [...list, next]); setEditing(index);
+            setNotice('Photo ajoutée à la galerie. Touchez « Enregistrer » pour publier.');
+          }
+          cancelAdd();
+        } else { newPhotoRef.current = next; setNewPhoto(next); }
+      };
+      const query = search.trim().toLocaleLowerCase('fr');
+      const rows = current.flatMap((photo, index) => {
+        if ((photo?.trashed === true) !== (mode === 'trash')) return [];
+        if (category !== 'all' && photo?.category !== category) return [];
+        if (query && ![photo?.label, photo?.alt, CATEGORY_NAMES[photo?.category]].some(text => String(text || '').toLocaleLowerCase('fr').includes(query))) return [];
+        return [{ photo, index }];
+      });
+      // Keep a just-added photograph beside its open editor without eagerly
+      // loading every preceding thumbnail in a long gallery.
+      const shownRows = rows.slice(0, limit);
+      const editedRow = rows.find(row => row.index === editing);
+      const pinnedEditor = editedRow && !shownRows.some(row => row.index === editing);
+      if (pinnedEditor) shownRows.unshift(editedRow);
+      const visibleIndices = current.flatMap((photo, index) => photo?.trashed !== true ? [index] : []);
+      const id = `${forID}-gallery`;
+      return h('section', { id:forID, tabIndex:-1, className: 'siray-gallery-manager', 'aria-label': 'Galerie et corbeille' },
+        h('div', { className: 'siray-gallery-tabs', role: 'group', 'aria-label': 'Afficher les photos' },
+          h('button', { type: 'button', className: 'siray-studio-button', 'aria-pressed': mode === 'visible', onClick: () => switchMode('visible') }, `Photos visibles (${visibleCount})`),
+          h('button', { type: 'button', className: 'siray-studio-button', 'aria-pressed': mode === 'trash', onClick: () => switchMode('trash') }, `Corbeille (${trashCount})`)),
+        h('p', { className: 'siray-studio-help' }, mode === 'trash'
+          ? 'Les photos de la corbeille sont retirées de la galerie après publication. Elles peuvent rester utilisées sur d’autres pages. Vous pouvez les restaurer, leur fichier reste conservé.'
+          : 'Modifiez, classez ou retirez une photo de la galerie. La corbeille conserve son fichier, son nom et son cadrage. Les photos de l’accueil et des fiches se règlent séparément.'),
+        h('p', { className: 'siray-gallery-notice', role: 'status', 'aria-live': 'polite' }, notice),
+        h('div', { className: 'siray-gallery-filters' },
+          h('label', { className: 'siray-studio-field', htmlFor: `${id}-search` }, h('span', null, 'Rechercher une photo'),
+            h('input', { id: `${id}-search`, type: 'search', value: search, onChange: event => { setSearch(event.target.value); setLimit(12); setEditing(null); } })),
+          h('label', { className: 'siray-studio-field', htmlFor: `${id}-category` }, h('span', null, 'Catégorie'),
+            h('select', { id: `${id}-category`, value: category, onChange: event => { setCategory(event.target.value); setLimit(12); setEditing(null); } },
+              h('option', { value: 'all' }, 'Toutes les catégories'), CATEGORY_OPTIONS.map(([key, label]) => h('option', { key, value: key }, label))))),
+        mode === 'visible' && h('button', { type: 'button', className: 'siray-studio-button siray-gallery-add', disabled: newPhoto !== null, onClick: add }, 'Ajouter une photo'),
+        newPhoto !== null && h('div', { className: 'siray-gallery-editor' },
+          h('h3', null, 'Nouvelle photo'),
+          h('p', { className: 'siray-studio-help' }, 'Choisissez une photo, puis donnez-lui un nom, une catégorie et une description. Rien n’est publié avant Enregistrer.'),
+          h(PhotoControl, { value: newPhoto, field: photoField, forID: `${id}-new`, getAsset, pickFile, entry: liveEntry, onChange: changeNew }),
+          h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary', onClick: cancelAdd }, 'Annuler cet ajout')),
+        h('p', { className: 'siray-gallery-count' }, `${rows.length} photo${rows.length > 1 ? 's' : ''}${query || category !== 'all' ? ' trouvée' + (rows.length > 1 ? 's' : '') : mode === 'trash' ? ' dans la corbeille' : ' dans la galerie'}`),
+        pinnedEditor && h('p', { className: 'siray-studio-help' }, 'La photo en cours de réglage est affichée en premier. L’ordre de la galerie reste inchangé.'),
+        rows.length === 0 && h('p', { className: 'siray-gallery-empty' }, query || category !== 'all' ? 'Aucune photo ne correspond à ces filtres.' : mode === 'trash' ? 'La corbeille est vide.' : 'Aucune photo dans la galerie. Vous pouvez en ajouter ou en restaurer depuis la corbeille.'),
+        h('ul', { className: 'siray-gallery-list' }, shownRows.map(({ photo, index }) => {
+          const label = photo?.label || photo?.alt || 'Photo à compléter';
+          const places = usages(photo?.file);
+          const rank = visibleIndices.indexOf(index);
+          const open = editing === index;
+          return h('li', { key: `${photo?.file || 'empty'}-${index}`, className: 'siray-gallery-row' },
+            h('div', { className: 'siray-gallery-row-summary' },
+              h(ImageFrame, { photo: photoValue(photo), getAsset, ratio: 1, className: 'siray-gallery-thumbnail' }),
+              h('div', { className: 'siray-gallery-row-copy' }, h('h3', null, label),
+                h('p', null, CATEGORY_NAMES[photo?.category] || 'Catégorie à compléter'),
+                mode === 'trash' && places.length > 0 && h('p', { className: 'siray-gallery-usage' }, `Encore utilisée sur : ${places.join(' ; ')}.`))),
+            h('div', { className: 'siray-gallery-row-actions' },
+              h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary', 'aria-expanded': open,
+                'aria-controls': `${id}-edit-${index}`, onClick: () => setEditing(open ? null : index), 'aria-label': `${open ? 'Fermer les réglages de' : 'Modifier'} « ${label} »` }, open ? 'Fermer les réglages' : 'Modifier'),
+              h('button', { type: 'button', className: 'siray-studio-button', onClick: () => toggleTrash(photo, mode === 'trash'),
+                'aria-label': `${mode === 'trash' ? 'Restaurer' : 'Mettre à la corbeille'} « ${label} »` }, mode === 'trash' ? 'Restaurer' : 'Mettre à la corbeille')),
+            mode === 'visible' && h('div', { className: 'siray-gallery-order', role: 'group', 'aria-label': `Ordre de « ${label} »` },
+              h('button', { type: 'button', className: 'siray-gallery-order-button', disabled: rank <= 0, onClick: () => move(index, -1), 'aria-label': `Monter « ${label} »` }, 'Monter'),
+              h('button', { type: 'button', className: 'siray-gallery-order-button', disabled: rank === visibleIndices.length - 1, onClick: () => move(index, 1), 'aria-label': `Descendre « ${label} »` }, 'Descendre')),
+            open && h('div', { id: `${id}-edit-${index}`, className: 'siray-gallery-editor' },
+              h(PhotoControl, { value: photo, field: photoField, forID: `${id}-photo-${index}`, getAsset, pickFile, entry: liveEntry,
+                allowReplacement: photo?.trashed !== true,
+                onChange: next => replace(index, next) })),
+          );
+        })),
+        rows.length > limit && h('button', { type: 'button', className: 'siray-studio-button siray-studio-button-secondary siray-gallery-more', onClick: () => setLimit(previous => previous + 12) }, `Afficher ${Math.min(12, rows.length - limit)} photos de plus`),
+        h('p', { className: 'siray-studio-help' }, 'Après vos changements, touchez Enregistrer en haut de l’éditeur, puis attendez la confirmation de mise en ligne.'),
+      );
+    });
+
+    function GalleryPreview({ value, getAsset }) {
+      const photos = plain(value);
+      const visible = Array.isArray(photos) ? photos.filter(photo => photo?.trashed !== true) : [];
+      return h('div', { className: 'siray-gallery-manager' },
+        h('p', null, `${visible.length} photo${visible.length > 1 ? 's' : ''} dans la galerie après publication.`),
+        h('div', { className: 'siray-gallery-preview-grid' }, visible.slice(0, 6).map((photo, index) =>
+          h(PhotoPreview, { key: `${photo?.file}-${index}`, value: photo, getAsset, field: { photo_context: 'gallery' } }))),
+        visible.length > 6 && h('p', { className: 'siray-studio-help' }, 'Ouvrez « Prévisualiser les pages » pour voir la galerie entière.'));
+    }
+
     function PhotoPreview({ value, getAsset, field }) {
       const photo = photoValue(value);
       return h('figure', { className: 'siray-preview-photo' },
@@ -568,6 +732,8 @@
     } };
     CMS.registerFieldType({ name: 'siray-photo', controlComponent: PhotoControl,
       previewComponent: PhotoPreview, summaryComponent: PhotoSummary, schema: photoSchema });
+    CMS.registerFieldType({ name: 'siray-gallery', controlComponent: GalleryControl,
+      previewComponent: GalleryPreview, schema: { properties: {} } });
 
     // Keep Sveltia's native, directly rendered field previews. Registering a
     // collection preview template or preview stylesheet forces a blob iframe,

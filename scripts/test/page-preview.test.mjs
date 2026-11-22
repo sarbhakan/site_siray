@@ -3,8 +3,11 @@ import test from 'node:test';
 import { createServer } from 'vite';
 
 const server = await createServer({ configFile: false, server: { middlewareMode: true, watch: null, hmr: false, ws: false }, appType: 'custom', logLevel: 'silent' });
-let preview;
-try { preview = await server.ssrLoadModule('/src/lib/page-preview-model.ts'); }
+let preview, photography;
+try {
+  preview = await server.ssrLoadModule('/src/lib/page-preview-model.ts');
+  photography = await server.ssrLoadModule('/src/data/photography.ts');
+}
 finally { await server.close(); }
 const draft = () => structuredClone(preview.baselineDrafts);
 
@@ -82,4 +85,53 @@ test('actual nested postMessage payload requires the matching parent, origin and
     { ...message, data: { type: 'siray-preview-draft', nonce, ...payload } },
     { ...message, data: { ...message.data, payload: { ...payload, kind: 'secrets' } } },
   ]) assert.equal(preview.readPreviewMessage(forged, trustedParent, origin, nonce), undefined);
+});
+
+
+test('public gallery filtering hides trash without changing order, source metadata or active page placements', () => {
+  const input = [
+    { file: '/a.webp', alt: 'A', label: 'Première', category: 'layer-cakes', trashed: true },
+    { file: '/b.webp', alt: 'B', label: 'Deuxième', category: 'bento-cakes' },
+    { file: '/c.webp', alt: 'C', label: 'Troisième', category: 'cupcakes', trashed: false },
+  ];
+  const before = structuredClone(input);
+  assert.deepEqual(photography.visibleGalleryItems(input).map(photo => photo.file), ['/b.webp', '/c.webp']);
+  assert.deepEqual(input, before);
+  assert.deepEqual(photography.visibleGalleryItems(input.map(photo => ({ ...photo, trashed: true }))), []);
+  for (const trashed of ['true', 1, null]) {
+    assert.throws(() => photography.visibleGalleryItems([{ ...input[0], trashed }]), /statut de corbeille/u);
+  }
+});
+
+test('the complete page preview removes trashed gallery photos and restores them while keeping other uses intact', () => {
+  const data = draft();
+  const originalGalleryLength = data.photos.gallery.length;
+  const baseline = JSON.stringify(preview.baselineDrafts);
+  data.photos.gallery[0] = { ...data.photos.gallery[0], file: data.photos.homeSlides[0].file,
+    label: 'Réalisation masquée', trashed: true };
+  const homeSlides = structuredClone(data.photos.homeSlides);
+  const collections = structuredClone(data.photos.collections);
+  const hiddenModel = preview.previewModel(data);
+  assert.equal(hiddenModel.photography.gallery.length, originalGalleryLength - 1);
+  assert.equal(hiddenModel.photography.galleryEmpty, false);
+  assert.equal(hiddenModel.photography.gallery.some(photo => photo.label === 'Réalisation masquée'), false);
+  assert.deepEqual(hiddenModel.photography.homeSlides, homeSlides);
+  assert.deepEqual(hiddenModel.photography.collections, collections);
+  assert.equal(data.photos.gallery[0].trashed, true);
+  data.photos.gallery[0].trashed = false;
+  const restoredModel = preview.previewModel(data);
+  assert.equal(restoredModel.photography.gallery.length, originalGalleryLength);
+  assert.equal(restoredModel.photography.gallery[0].label, 'Réalisation masquée');
+  assert.equal(restoredModel.photography.gallery[0].file, homeSlides[0].file);
+  assert.equal(JSON.stringify(preview.baselineDrafts), baseline);
+});
+
+test('the preview exposes an empty-gallery state when every photograph is in the trash', () => {
+  const data = draft();
+  data.photos.gallery = data.photos.gallery.map(photo => ({ ...photo, trashed: true }));
+  const model = preview.previewModel(data);
+  assert.deepEqual(model.photography.gallery, []);
+  assert.equal(model.photography.galleryEmpty, true);
+  data.photos.gallery[0].trashed = false;
+  assert.equal(preview.previewModel(data).photography.galleryEmpty, false);
 });

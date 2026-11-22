@@ -756,5 +756,153 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     frame.props.onPointerMove(event({clientX:90}));rig.modal.render();assert.equal(rig.changes.length,0);
     rig.confirm();assert.equal(rig.changes.length,1);assert.equal(rig.changes[0].zoom,1.5);rig.unmount();
   });
+  // The gallery widget owns an array rather than one field per row. Exercise
+  // its real handlers, including a cancellable unsaved addition, without any
+  // file deletion, CMS DOM assumptions or network credentials.
+  const galleryWidget = widgets['siray-gallery'];
+  const galleryPhotoValue = (index, extra = {}) => ({file:`/images/gallery-${index}.webp`,alt:`Photo ${index}`,
+    label:`Création ${index}`,category:index % 2 ? 'cupcakes' : 'bento-cakes',position:'25% 65%',zoom:1.3,
+    retained:{order:index},...extra});
+  const galleryRows = tree => nodes(tree).filter(n=>n.type==='li' && n.props.className==='siray-gallery-row');
+  const photoEditors = tree => nodes(tree).filter(n=>n.type===widgets['siray-photo'].controlComponent);
+  const accessibleButton = (tree,label) => nodes(tree).find(n=>n.type==='button' && n.props['aria-label']===label);
+  function galleryRig(value, more = {}) {
+    const changes=[], ref={};
+    const source={gallery:value,homeSlides:[value[0]],homePhotos:{},collections:[]};
+    const props={value,forID:'photography-gallery',getAsset,pickFile:async()=>null,
+      entry:{get:key=>key==='data'?{toJS:()=>source}:key==='slug'?'photography':undefined},
+      onChange:next=>changes.push(next),...more};
+    const runner=hookRunner(props=>galleryWidget.controlComponent(props,ref),props);runner.render();
+    return {runner,ref,changes,source,props,click(label){button(runner.tree,label).props.onClick();runner.render();},
+      clickAccessible(label){accessibleButton(runner.tree,label).props.onClick();runner.render();}};
+  }
+  test('Gallery field registers alongside the unchanged individual photo editor',()=>{
+    assert.equal(typeof galleryWidget.controlComponent,'function');assert.equal(typeof galleryWidget.previewComponent,'function');
+    assert.notEqual(galleryWidget.controlComponent,widgets['siray-photo'].controlComponent);
+  });
+  test('Gallery renders lazy compact rows, counts and filters without mutating its value',()=>{
+    const value=Array.from({length:25},(_,i)=>galleryPhotoValue(i,i===7?{trashed:true}:{})),before=JSON.stringify(value);
+    const rig=galleryRig(value);assert.equal(rig.changes.length,0);assert.equal(rig.ref.current.isValid(),true);
+    assert.equal(galleryRows(rig.runner.tree).length,12);assert.equal(photoEditors(rig.runner.tree).length,0);
+    assert.ok(button(rig.runner.tree,'Photos visibles (24)'));assert.ok(button(rig.runner.tree,'Corbeille (1)'));
+    assert.ok(button(rig.runner.tree,'Afficher 12 photos de plus'));
+    const thumbnails=nodes(render(rig.runner.tree)).filter(n=>n.type==='img');
+    assert.equal(thumbnails.length,12);assert.ok(thumbnails.every(n=>n.props.loading==='lazy'));
+    assert.equal(JSON.stringify(value),before);rig.runner.unmount();
+  });
+  test('Moving a photograph to the bin only flags the file and reports its remaining page usage',()=>{
+    const value=[galleryPhotoValue(0),galleryPhotoValue(1),galleryPhotoValue(2,{trashed:true})];
+    const before=JSON.stringify(value),rig=galleryRig(value),sourceBefore=JSON.stringify(rig.source);
+    rig.clickAccessible('Mettre à la corbeille « Création 0 »');assert.equal(rig.changes.length,1);
+    assert.deepEqual(clone(rig.changes[0]),value.map((p,i)=>i===0?{...p,trashed:true}:p));
+    assert.equal(JSON.stringify(value),before);assert.equal(JSON.stringify(rig.source),sourceBefore);
+    assert.ok(strings(rig.runner.tree).includes('Elle reste utilisée sur : Diaporama de l’accueil'));
+    assert.ok(button(rig.runner.tree,'Photos visibles (1)'));assert.ok(button(rig.runner.tree,'Corbeille (2)'));
+    rig.click('Corbeille (2)');assert.equal(galleryRows(rig.runner.tree).length,2);
+    assert.ok(strings(rig.runner.tree).includes('Encore utilisée sur : Diaporama de l’accueil'));
+    assert.equal(button(rig.runner.tree,'Ajouter une photo'),undefined);
+    assert.ok(!nodes(rig.runner.tree).some(n=>n.type==='button' && /supprimer|vider/i.test(strings(n))));
+    rig.clickAccessible('Restaurer « Création 0 »');assert.equal(rig.changes.length,2);
+    assert.deepEqual(clone(rig.changes.at(-1)),value);assert.equal('trashed' in rig.changes.at(-1)[0],false);
+    rig.runner.unmount();
+  });
+  test('Each file is trashed together even if a legacy gallery contains duplicates',()=>{
+    const p=galleryPhotoValue(0),rig=galleryRig([p,{...p,label:'Ancienne copie'},galleryPhotoValue(1)]);
+    rig.clickAccessible('Mettre à la corbeille « Création 0 »');
+    assert.equal(rig.changes[0].filter(p=>p.trashed===true).length,2);assert.equal(rig.changes[0][2].trashed,undefined);
+    rig.runner.unmount();
+  });
+  test('Search and category filters change only what is displayed',()=>{
+    const rig=galleryRig([galleryPhotoValue(0),galleryPhotoValue(1),galleryPhotoValue(2,{trashed:true})]);
+    const search=nodes(rig.runner.tree).find(n=>n.type==='input'&&n.props.type==='search');
+    search.props.onChange({target:{value:'CRÉATION 1'}});rig.runner.render();
+    assert.equal(galleryRows(rig.runner.tree).length,1);assert.ok(strings(galleryRows(rig.runner.tree)).includes('Création 1'));
+    const select=nodes(rig.runner.tree).find(n=>n.type==='select');select.props.onChange({target:{value:'bento-cakes'}});rig.runner.render();
+    assert.equal(galleryRows(rig.runner.tree).length,0);assert.ok(strings(rig.runner.tree).includes('Aucune photo ne correspond'));
+    assert.equal(rig.changes.length,0);rig.click('Corbeille (1)');assert.equal(galleryRows(rig.runner.tree).length,1);
+    assert.equal(nodes(rig.runner.tree).find(n=>n.type==='input'&&n.props.type==='search').props.value,'');rig.runner.unmount();
+  });
+  test('Visible reordering skips the bin and a restore preserves the retained location and metadata',()=>{
+    const value=[galleryPhotoValue(0),galleryPhotoValue(1,{trashed:true}),galleryPhotoValue(2)];
+    const rig=galleryRig(value);assert.equal(accessibleButton(rig.runner.tree,'Monter « Création 0 »').props.disabled,true);
+    assert.equal(accessibleButton(rig.runner.tree,'Descendre « Création 2 »').props.disabled,true);
+    rig.clickAccessible('Monter « Création 2 »');assert.deepEqual(clone(rig.changes.at(-1)),[value[2],value[1],value[0]]);
+    rig.click('Corbeille (1)');rig.clickAccessible('Restaurer « Création 1 »');
+    assert.deepEqual(clone(rig.changes.at(-1)),[value[2],galleryPhotoValue(1),value[0]]);rig.runner.unmount();
+  });
+  test('Only one existing photo editor is open and it retains supported CMS upload and entry props',()=>{
+    const picker=async()=>({value:'/images/new.webp'}),rig=galleryRig([galleryPhotoValue(0),galleryPhotoValue(1)],{pickFile:picker});
+    rig.clickAccessible('Modifier « Création 0 »');let editors=photoEditors(rig.runner.tree);assert.equal(editors.length,1);
+    const firstID=editors[0].props.forID;assert.equal(editors[0].props.pickFile,picker);assert.equal(editors[0].props.getAsset,getAsset);
+    assert.equal(editors[0].props.entry.get('slug'),'photography');assert.deepEqual(clone(editors[0].props.entry.get('data').gallery),rig.props.value);
+    assert.equal(editors[0].props.field.photo_context,'gallery');assert.equal(editors[0].props.field.show_gallery_fields,true);
+    editors[0].props.onChange({...editors[0].props.value,alt:'Description actualisée',position:'70% 20%'});rig.runner.render();
+    assert.equal(rig.changes.at(-1)[0].retained.order,0);assert.equal(rig.changes.at(-1)[0].position,'70% 20%');
+    rig.clickAccessible('Modifier « Création 1 »');editors=photoEditors(rig.runner.tree);assert.equal(editors.length,1);
+    assert.notEqual(editors[0].props.forID,firstID);assert.equal(editors[0].props.value.file,rig.props.value[1].file);
+    rig.clickAccessible('Fermer les réglages de « Création 1 »');assert.equal(photoEditors(rig.runner.tree).length,0);rig.runner.unmount();
+  });
+  test('Editing metadata in the bin cannot accidentally restore a photograph',()=>{
+    const rig=galleryRig([galleryPhotoValue(0,{trashed:true})]);rig.click('Corbeille (1)');rig.clickAccessible('Modifier « Création 0 »');
+    const editor=photoEditors(rig.runner.tree)[0];editor.props.onChange({...editor.props.value,label:'Nom modifié',trashed:false});rig.runner.render();
+    assert.equal(rig.changes.at(-1)[0].trashed,true);assert.equal(rig.changes.at(-1)[0].label,'Nom modifié');rig.runner.unmount();
+  });
+  test('Replacing a binned file requires restoration and a stale picker result cannot reactivate its old archive',()=>{
+    const rig=galleryRig([galleryPhotoValue(0,{trashed:true})]);rig.click('Corbeille (1)');rig.clickAccessible('Modifier « Création 0 »');
+    const editor=photoEditors(rig.runner.tree)[0];assert.equal(editor.props.allowReplacement,false);
+    const child=hookRunner(editor.type,editor.props);child.render();assert.equal(button(child.tree,'Remplacer la photo'),undefined);
+    assert.ok(strings(child.tree).includes('Restaurez cette photo dans la galerie pour pouvoir la remplacer'));
+    assert.ok(button(child.tree,'Cadrer en plein écran'));assert.ok(nodes(child.tree).some(n=>n.props.id?.endsWith('-label')));
+    editor.props.onChange({...editor.props.value,file:'/images/other.webp',_galleryArchive:[galleryPhotoValue(0)]});rig.runner.render();
+    assert.equal(rig.changes.length,0);assert.equal(photoEditors(rig.runner.tree).length,0);
+    assert.ok(strings(rig.runner.tree).includes('Le fichier conservé dans la corbeille n’a pas changé'));
+    child.unmount();rig.runner.unmount();
+  });
+  test('Adding a photo begins a cancellable local draft and blocks publishing an unfinished addition',()=>{
+    const rig=galleryRig([]);assert.equal(rig.ref.current.isValid(),true);rig.click('Ajouter une photo');
+    assert.equal(rig.changes.length,0);assert.equal(photoEditors(rig.runner.tree).length,1);
+    assert.ok(rig.ref.current.isValid().error.message.includes('Terminez l’ajout'));
+    const draft=photoEditors(rig.runner.tree)[0];draft.props.onChange({file:'blob:https://site.test/pending',label:'À classer'});rig.runner.render();
+    assert.equal(rig.changes.length,0);assert.notEqual(rig.ref.current.isValid(),true);
+    rig.click('Annuler cet ajout');assert.equal(rig.ref.current.isValid(),true);assert.equal(rig.changes.length,0);
+    assert.equal(photoEditors(rig.runner.tree).length,0);assert.ok(strings(rig.runner.tree).includes('Aucune photo dans la galerie'));rig.runner.unmount();
+  });
+  test('A complete classified upload appends once and keeps the new editor visible in a long gallery',()=>{
+    const value=Array.from({length:25},(_,i)=>galleryPhotoValue(i)),rig=galleryRig(value);
+    rig.click('Ajouter une photo');const draft=photoEditors(rig.runner.tree)[0];
+    const addition=galleryPhotoValue(99,{file:'blob:https://site.test/new-upload'});draft.props.onChange(addition);rig.runner.render();
+    assert.equal(rig.changes.length,1);assert.equal(rig.changes[0].length,26);assert.equal(rig.changes[0][25].file,addition.file);
+    assert.equal(rig.ref.current.isValid(),true);assert.equal(photoEditors(rig.runner.tree).length,1);
+    assert.equal(photoEditors(rig.runner.tree)[0].props.value.file,addition.file);assert.equal(galleryRows(rig.runner.tree).length,13);
+    assert.ok(strings(galleryRows(rig.runner.tree)[0]).includes('Création 99'));assert.ok(strings(rig.runner.tree).includes('L’ordre de la galerie reste inchangé'));
+    assert.deepEqual(clone(rig.changes[0].slice(0,25)),value);rig.runner.unmount();
+  });
+  test('Picking an existing or binned file through Add never creates a duplicate or restores it silently',()=>{
+    const value=[galleryPhotoValue(0),galleryPhotoValue(1,{trashed:true})],rig=galleryRig(value);
+    for(const photo of value){rig.click('Ajouter une photo');photoEditors(rig.runner.tree)[0].props.onChange(photo);rig.runner.render();
+      assert.equal(rig.changes.length,0);assert.equal(photoEditors(rig.runner.tree).length,0);assert.equal(rig.ref.current.isValid(),true);}
+    assert.ok(strings(rig.runner.tree).includes('Ouvrez Corbeille puis touchez « Restaurer »'));rig.runner.unmount();
+  });
+  test('The gallery rejects malformed records and bin flags while accepting a completely empty gallery',()=>{
+    for(const value of [[],[galleryPhotoValue(1)],[galleryPhotoValue(1,{trashed:true})],[galleryPhotoValue(1,{trashed:false})]]) {
+      const rig=galleryRig(value);assert.equal(rig.ref.current.isValid(),true);rig.runner.unmount();}
+    for(const value of [[{}],[null],[galleryPhotoValue(1,{label:''})],[galleryPhotoValue(1,{trashed:'yes'})]]){
+      const rig=galleryRig(value);assert.ok(rig.ref.current.isValid().error.message.includes('Vérifiez le nom'));rig.runner.unmount();}
+  });
+  test('Gallery and bin thumbnails resolve through getAsset and never render unsafe URLs',()=>{
+    const rig=galleryRig([galleryPhotoValue(0),galleryPhotoValue(1,{trashed:true})],{getAsset:()=>({url:'blob:https://site.test/resolved'})});
+    let output=render(rig.runner.tree);assert.equal(nodes(output).find(n=>n.type==='img').props.src,'blob:https://site.test/resolved');
+    rig.click('Corbeille (1)');output=render(rig.runner.tree);assert.equal(nodes(output).find(n=>n.type==='img').props.src,'blob:https://site.test/resolved');rig.runner.unmount();
+    const unsafe=galleryRig([galleryPhotoValue(0,{file:'javascript:alert(1)'})]);
+    assert.equal(nodes(render(unsafe.runner.tree)).filter(n=>n.type==='img').length,0);unsafe.runner.unmount();
+  });
+  test('Native gallery preview hides the bin and limits eagerly constructed photo previews',()=>{
+    const value=Array.from({length:10},(_,i)=>galleryPhotoValue(i,i===2?{trashed:true}:{})),before=JSON.stringify(value);
+    const output=render(galleryWidget.previewComponent({value,getAsset})),images=nodes(output).filter(n=>n.type==='img');
+    assert.equal(images.length,6);assert.ok(images.every(n=>n.props.src!==value[2].file));
+    assert.ok(strings(output).includes('9 photos dans la galerie après publication.'));assert.equal(JSON.stringify(value),before);
+    const empty=render(galleryWidget.previewComponent({value:[galleryPhotoValue(0,{trashed:true})],getAsset}));
+    assert.equal(nodes(empty).filter(n=>n.type==='img').length,0);assert.ok(strings(empty).includes('0 photo dans la galerie'));
+  });
   console.log(`${checks} assertions passed; ${photos.length} existing photo controls and native previews render without data mutation.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });

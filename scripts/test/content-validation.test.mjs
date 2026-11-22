@@ -118,6 +118,43 @@ test('gallery preSave accepts all seven categories and preserves temporary uploa
   }
 });
 
+test('recycle-bin items keep their complete metadata and current page placements before save', () => {
+  const hidden = galleryPhoto({ trashed: true, zoom: 1.4 });
+  const data = { homeSlides: [galleryPhoto()], homePhotos: {}, collections: [], gallery: [hidden] };
+  const before = JSON.stringify(data), { save } = capture();
+  assert.equal(save({ entry: entry(data, 'photos', 'src/content/photography.json') }), undefined);
+  assert.equal(JSON.stringify(data), before);
+  assert.equal(client.validatePhotography(data), undefined);
+});
+
+test('an empty or entirely recycled gallery remains valid for publication', () => {
+  const { save } = capture();
+  for (const gallery of [[], [galleryPhoto({ trashed: true })]]) {
+    const data = { homeSlides: [], homePhotos: {}, collections: [], gallery };
+    assert.equal(save({ entry: entry(data, 'photos', 'src/content/photography.json') }), undefined);
+  }
+});
+
+test('collapsed recycled photos must still have captions, categories, descriptions and valid zooms', () => {
+  const { save } = capture();
+  for (const [field, value, message] of [
+    ['label', '', /légende visible/u], ['category', 'unknown', /catégorie/u],
+    ['alt', '', /accessibilité/u], ['file', '', /photographie/u], ['zoom', 3, /rapprochement/u],
+  ]) {
+    const data = { homeSlides: [], homePhotos: {}, collections: [], gallery: [galleryPhoto({ trashed: true, [field]: value })] };
+    assert.throws(() => save({ entry: entry(data, 'photos', 'src/content/photography.json') }), message);
+  }
+});
+
+test('recycle-bin flags reject strings and other non-boolean values even when controls are collapsed', () => {
+  const { save } = capture();
+  for (const trashed of ['true', 'false', 0, 1, null, {}, []]) {
+    const data = { homeSlides: [], homePhotos: {}, collections: [], gallery: [galleryPhoto({ trashed })] };
+    assert.throws(() => save({ entry: entry(data, 'photos', 'src/content/photography.json') }), /corbeille/u);
+    assert.throws(() => client.validatePhotography(data), /corbeille/u);
+  }
+});
+
 const cases = [
   undefined, null, [], {}, [null], [section()], [section({ items: [] })], [section({ button: {} })],
   [section({ title: '' })], [section({ title: 'a'.repeat(120), text: 'a'.repeat(4000) })],

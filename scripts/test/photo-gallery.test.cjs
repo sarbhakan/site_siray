@@ -131,4 +131,101 @@ test('Preparation is idempotent and never adds optional crop defaults', () => {
 test('Non-photography documents pass through unchanged', () => {
   const data = { title: 'Catalogue' }; assert.equal(api.prepare(data), data);
 });
+test('Sending a photo to the recycle bin preserves its file, metadata, order and other placements', () => {
+  const a = photo('/a.webp', { zoom: 1.4, futureMetadata: 'à conserver' }), b = photo('/b.webp');
+  const original = document({ gallery: [a, b], homeSlides: [a] }), before = clone(original);
+  const gallery = api.trash(original.gallery, 0);
+  assert.deepEqual(clone(gallery), [{ ...a, trashed: true }, b]);
+  assert.deepEqual(clone(original), before);
+  assert.notEqual(gallery[0], original.gallery[0]);
+  assert.equal(gallery[1], original.gallery[1]);
+  const prepared = api.prepare({ ...original, gallery });
+  assert.equal(prepared.gallery[0].trashed, true);
+  assert.deepEqual(clone(prepared.homeSlides), [a]);
+});
+test('Restoring recovers the exact photo and crop without moving its place in the gallery', () => {
+  const a = photo('/a.webp', { position: '25% 75%', zoom: 1.7, futureMetadata: { keep: true } });
+  const original = [photo('/before.webp'), a, photo('/after.webp')];
+  const trashed = api.trash(original, '/a.webp'), before = clone(trashed);
+  const restored = api.restore(trashed, 1);
+  assert.deepEqual(clone(restored), original);
+  assert.deepEqual(clone(trashed), before);
+  assert.ok(!('trashed' in restored[1]));
+});
+test('Trash and restore resolve exact paths, including duplicate rows, without matching captions or basenames', () => {
+  const a = photo('/one/a.webp'), duplicate = photo('/one/a.webp', { label: 'Autre nom' }), b = photo('/two/a.webp');
+  const result = api.trash([a, duplicate, b], 1);
+  assert.deepEqual(clone(result.map(item => item.trashed === true)), [true, true, false]);
+  assert.deepEqual(clone(api.restore(result, a.file)), [a, duplicate, b]);
+  assert.deepEqual(clone(api.trash([a], -1)), [a]);
+  assert.deepEqual(clone(api.restore([a], '/unknown.webp')), [a]);
+  assert.equal(api.trash(null, a.file), null);
+});
+test('Trashed photos are never revived by their page usages or replacement archives', () => {
+  const hidden = photo('/hidden.webp', { trashed: true }), current = photo('/current.webp');
+  const original = document({ gallery: [hidden], homeSlides: [photo(hidden.file)], homePhotos: {
+    maison: { ...current, _galleryArchive: [photo(hidden.file)] },
+  } });
+  const prepared = api.prepare(original);
+  assert.deepEqual(clone(prepared.gallery.map(item => [item.file, item.trashed === true])), [
+    [hidden.file, true], [current.file, false],
+  ]);
+  assert.deepEqual(clone(api.prepare(prepared)), clone(prepared));
+  assert.equal(api.find(prepared, hidden.file).trashed, true);
+  assert.ok(!('trashed' in api.snapshot(hidden)), 'page snapshots never carry gallery visibility');
+});
+test('A recycled duplicate wins over a visible duplicate while the first row keeps its metadata and order', () => {
+  const first = photo('/same.webp', { label: 'Nom conservé', zoom: 1.2 });
+  const hidden = photo('/same.webp', { trashed: true, label: 'Doublon', zoom: 2 });
+  for (const gallery of [[first, hidden], [hidden, first]]) {
+    const prepared = api.prepare(document({ gallery }));
+    assert.equal(prepared.gallery.length, 1);
+    assert.equal(prepared.gallery[0].trashed, true);
+    assert.equal(prepared.gallery[0].label, gallery[0].label);
+    assert.equal(prepared.gallery[0].zoom, gallery[0].zoom);
+  }
+});
+test('All gallery photos may be hidden or absent without removing page photos', () => {
+  const a = photo('/a.webp');
+  const prepared = api.prepare(document({ gallery: api.trash([a], 0), homeSlides: [a] }));
+  assert.equal(prepared.gallery.filter(item => item.trashed !== true).length, 0);
+  assert.equal(prepared.homeSlides[0].file, a.file);
+  assert.deepEqual(clone(api.prepare(document()).gallery), []);
+});
+test('Gallery visibility never leaks into a reused page placement', () => {
+  const hidden = photo('/a.webp', { trashed: true });
+  const data = document({ gallery: [hidden], homeSlides: [hidden],
+    homePhotos: { maison: hidden }, collections: [{ slug: 'layer-cakes', cover: hidden }] });
+  const prepared = api.prepare(data);
+  assert.equal(prepared.gallery[0].trashed, true);
+  assert.ok(!('trashed' in prepared.homeSlides[0]));
+  assert.ok(!('trashed' in prepared.homePhotos.maison));
+  assert.ok(!('trashed' in prepared.collections[0].cover));
+  assert.equal(data.homeSlides[0].trashed, true, 'the source document remains untouched');
+});
+test('Only boolean recycle-bin flags are accepted in saved gallery data', () => {
+  for (const trashed of ['true', 'false', 0, 1, null, {}, []]) {
+    assert.throws(() => api.prepare(document({ gallery: [photo('/a.webp', { trashed })] })), /corbeille.*booléen/);
+  }
+  for (const trashed of [true, false, undefined]) {
+    const data = document({ gallery: [photo('/a.webp', { trashed })] });
+    assert.deepEqual(clone(api.prepare(data)), clone(data));
+  }
+});
+test('Usage notices enumerate current page locations but ignore gallery and temporary archives', () => {
+  const a = photo('/a.webp');
+  const data = document({ gallery: [{ ...a, trashed: true }], homeSlides: [a],
+    homePhotos: { maison: a, maisonCake: a, other: a },
+    collections: [{ slug: 'bento-cakes', cover: a, detail: a, request: a, home: a },
+      { slug: 'cupcakes', cover: { ...photo('/b.webp'), _galleryArchive: [a] } }],
+  });
+  assert.deepEqual(clone(api.usages(data, a.file)), [
+    'Diaporama de l’accueil — photo 1', 'Accueil — présentation de la maison',
+    'La maison — photographie de gâteau', 'Accueil et maison — other',
+    'Bento cakes — grande photo', 'Bento cakes — petite photo',
+    'Bento cakes — carte « À découvrir aussi »', 'Bento cakes — carte sur l’accueil',
+  ]);
+  assert.deepEqual(clone(api.usages(data, '/missing.webp')), []);
+  assert.deepEqual(clone(api.usages(undefined, a.file)), []);
+});
 console.log(`${checks} photo-gallery assertions passed.`);

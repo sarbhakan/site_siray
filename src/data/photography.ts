@@ -4,6 +4,17 @@ import { validatePhotoZoom } from '../lib/photo-crop';
 
 export interface PhotoRef { image: string; alt: string; position?: string; zoom?: number }
 interface EditablePhoto { file: string; alt: string; position?: string; zoom?: number }
+export interface EditableGalleryPhoto extends EditablePhoto { label: string; category: string; trashed?: boolean }
+
+/** Hiding a gallery photo never changes another placement or deletes its file. */
+export function visibleGalleryItems<T extends EditableGalleryPhoto>(items: T[]): T[] {
+  return items.filter((item) => {
+    if (item.trashed !== undefined && typeof item.trashed !== 'boolean') {
+      throw new Error('Le statut de corbeille d’une photo doit être vrai ou faux.');
+    }
+    return item.trashed !== true;
+  });
+}
 
 function editablePhoto(value: EditablePhoto): PhotoRef {
   if (!value.file || !value.alt.trim()) throw new Error('Chaque photographie doit avoir un fichier et une description.');
@@ -40,7 +51,7 @@ export const galleryFilters = [
   { id: 'buffets', label: 'Buffets' },
   { id: 'plateaux', label: 'Plateaux' },
 ];
-export const galleryPhotos = photography.gallery.map((item) => {
+export const galleryPhotos = visibleGalleryItems(photography.gallery).map((item) => {
   const categoryLabel = galleryFilters.find((filter) => filter.id === item.category && filter.id !== 'all')?.label;
   if (!categoryLabel) throw new Error(`Catégorie de galerie inconnue : ${item.category}`);
   return { ...editablePhoto(item), label: item.label, category: item.category, categoryLabel };

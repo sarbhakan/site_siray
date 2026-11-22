@@ -43,6 +43,16 @@ test('photograph imports have their own writable collection folder and keep the 
   assert.ok(count > 10, 'all photo controls are covered, including nested gallery controls');
 });
 
+test('gallery edits use the reversible trash control and accept an empty gallery', () => {
+  const photos = config.collections.find(collection => collection.name === 'photos');
+  const gallery = photos.files[0].fields.find(field => field.name === 'gallery');
+  assert.equal(gallery.widget, 'siray-gallery');
+  assert.equal(gallery.required, false);
+  assert.equal(gallery.min, undefined);
+  assert.equal(gallery.media_folder, undefined);
+  assert.equal(gallery.public_folder, undefined);
+});
+
 test('saved photographs keep a readonly alias which Sveltia cannot deduplicate with the global folder', () => {
   for (const [name, internal, publicPath] of [
     ['photos-conservees', uploadPath, uploadPath],

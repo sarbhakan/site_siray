@@ -39,6 +39,7 @@
       if (typeof photo.alt !== 'string' || !photo.alt.trim()) invalid('renseignez la description pour l’accessibilité');
       if (typeof photo.label !== 'string' || !photo.label.trim()) invalid('renseignez la légende visible');
       if (!categories.includes(photo.category)) invalid('choisissez une catégorie de prestation');
+      if (photo.trashed !== undefined && typeof photo.trashed !== 'boolean') invalid('choisissez un état valide pour la corbeille');
     }
   }
 

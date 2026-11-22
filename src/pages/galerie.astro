@@ -2,10 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import { gallery } from '../data/site';
-import { galleryFilters } from '../data/photography';
+import { galleryFilters, homeSlides } from '../data/photography';
+
+const preview = Boolean((Astro.locals as { sirayPreviewPath?: string }).sirayPreviewPath);
+// A hidden preview card keeps the list template available even when every
+// gallery photo was put in the trash before the last build. Its image must
+// come from an active placement, never from a possibly missing trash file.
+const previewPhoto = homeSlides[0];
+const galleryEntries = gallery.length || !preview || !previewPhoto ? gallery : [{
+  ...previewPhoto, label: '', category: 'layer-cakes', categoryLabel: '',
+}];
 ---
 
-<Layout title="La galerie" image={gallery[0].image}>
+<Layout title="La galerie" image={gallery[0]?.image}>
   <div class="section-pad">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane">
       <a href="/">Accueil</a>
@@ -26,7 +35,7 @@ import { galleryFilters } from '../data/photography';
     data-gallery
     aria-label="Galerie de photographies"
   >
-    <div class="gallery-controls">
+    <div class="gallery-controls" hidden={gallery.length === 0} data-preview-visible="photography.gallery">
       <div
         class="gallery-filters"
         role="group"
@@ -42,9 +51,12 @@ import { galleryFilters } from '../data/photography';
         {gallery.length} photographies
       </span>
     </div>
-    <div class="gallery-grid" data-preview-each="photography.gallery">
-      {gallery.map((photo, index) => (
-        <figure class="gallery-card" data-category={photo.category} data-preview-attr-data-category=".category">
+    <p hidden={gallery.length > 0} data-preview-visible="photography.galleryEmpty">
+      Aucune photo n’est présentée pour le moment. <a class="text-link" href="/creations/">Découvrir nos prestations</a>
+    </p>
+    <div class="gallery-grid" hidden={gallery.length === 0} data-preview-visible="photography.gallery" data-preview-each="photography.gallery">
+      {galleryEntries.map((photo, index) => (
+        <figure class="gallery-card" hidden={gallery.length === 0} data-category={photo.category} data-preview-attr-data-category=".category">
           <div class="gallery-photo">
             <Photo
               previewKey="." name={photo.image}

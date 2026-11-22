@@ -105,3 +105,43 @@ test('current production content resolves every uploaded and registered image', 
   assert.ok(result.references > 50);
   assert.ok(result.files > 50);
 });
+
+
+test('a gallery-only trash item cannot block publication when its old file is missing, but restoration requires it', async t => {
+  const { root, photography, save } = await fixture(t);
+  const archived = { file: '/src/assets/uploads/ancienne.webp', label: 'Ancienne réalisation', trashed: true };
+  photography.gallery.push(archived);
+  await save();
+  assert.deepEqual(await validateMediaReferences({ root }), { references: 8, files: 1 });
+  archived.trashed = false;
+  await save();
+  await assert.rejects(validateMediaReferences({ root }), /Galerie, photo 2 « Ancienne réalisation » : fichier introuvable/u);
+  await writeFile(resolve(root, 'src/assets/uploads/ancienne.webp'), 'restored');
+  assert.deepEqual(await validateMediaReferences({ root }), { references: 8, files: 2 });
+});
+
+test('a trashed gallery photo still needs its file whenever a live page uses that photo', async t => {
+  const { root, photography, save } = await fixture(t);
+  photography.gallery[0].trashed = true;
+  await unlink(resolve(root, 'src/assets/uploads/cake.webp'));
+  await save();
+  await assert.rejects(validateMediaReferences({ root }), error => {
+    assert.match(error.message, /Diaporama de l’accueil, photo 1/u);
+    assert.match(error.message, /layer-cakes, grande photo/u);
+    assert.doesNotMatch(error.message, /Galerie, photo 1/u);
+    return true;
+  });
+});
+
+test('trash status is a strict boolean and cannot bypass safe file paths', async t => {
+  const { root, photography, save } = await fixture(t);
+  for (const trashed of ['true', 'false', 1, null]) {
+    photography.gallery[0].trashed = trashed;
+    await save();
+    await assert.rejects(validateMediaReferences({ root }), /statut de corbeille doit être vrai ou faux/u);
+  }
+  photography.gallery[0].trashed = true;
+  photography.gallery[0].file = '/src/assets/uploads/../secret.webp';
+  await save();
+  await assert.rejects(validateMediaReferences({ root }));
+});

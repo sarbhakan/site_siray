@@ -16,6 +16,52 @@
       ? ['cover', 'detail', 'request', 'home'].map(key => item[key]) : []) : []),
   ].filter(object);
 
+  // The recycle bin changes gallery visibility only. Keep the source file,
+  // captions, crop and placement references so a restore never needs a reupload.
+  function setTrashed(gallery, identifier, trashed) {
+    if (!Array.isArray(gallery)) return gallery;
+    const file = Number.isInteger(identifier) ? gallery[identifier]?.file : identifier;
+    if (!text(file)) return gallery;
+    return gallery.map(photo => {
+      if (!object(photo) || photo.file !== file) return photo;
+      if (trashed) return photo.trashed === true ? photo : { ...photo, trashed: true };
+      if (!('trashed' in photo)) return photo;
+      const restored = { ...photo };
+      delete restored.trashed;
+      return restored;
+    });
+  }
+  const trash = (gallery, identifier) => setTrashed(gallery, identifier, true);
+  const restore = (gallery, identifier) => setTrashed(gallery, identifier, false);
+
+  function usages(data, file) {
+    if (!text(file)) return [];
+    const found = [];
+    const add = (photo, label) => { if (photo?.file === file) found.push(label); };
+    (Array.isArray(data?.homeSlides) ? data.homeSlides : []).forEach((photo, index) =>
+      add(photo, `Diaporama de l’accueil — photo ${index + 1}`));
+    const homeLabels = {
+      maison: 'Accueil — présentation de la maison', cakes: 'Accueil — les gâteaux',
+      tables: 'Accueil — les tables à partager', petitesDouceurs: 'Accueil — les petites douceurs',
+      maisonCake: 'La maison — photographie de gâteau', maisonTable: 'La maison — photographie de table',
+    };
+    Object.entries(object(data?.homePhotos) ? data.homePhotos : {}).forEach(([key, photo]) =>
+      add(photo, typeof homeLabels[key] === 'string' ? homeLabels[key] : `Accueil et maison — ${key}`));
+    const collectionLabels = {
+      'layer-cakes': 'Layer cakes', 'bento-cakes': 'Bento cakes', mignardises: 'Mignardises',
+      cupcakes: 'Cupcakes', 'brunch-box': 'Brunch box', buffets: 'Buffets', plateaux: 'Plateaux',
+    };
+    const placementLabels = {
+      cover: 'grande photo', detail: 'petite photo', request: 'carte « À découvrir aussi »', home: 'carte sur l’accueil',
+    };
+    (Array.isArray(data?.collections) ? data.collections : []).forEach((collection, index) => {
+      if (!object(collection)) return;
+      const family = typeof collectionLabels[collection.slug] === 'string' ? collectionLabels[collection.slug] : `Prestation ${index + 1}`;
+      Object.entries(placementLabels).forEach(([key, label]) => add(collection[key], `${family} — ${label}`));
+    });
+    return [...new Set(found)];
+  }
+
   function find(data, file) {
     if (!text(file)) return undefined;
     const photos = [...(Array.isArray(data?.gallery) ? data.gallery : []), ...placements(data)];
@@ -47,12 +93,23 @@
     const result = { ...data };
     const gallery = [], known = new Set(), pending = [];
     const add = (photo, existing = false) => {
-      if (known.has(photo.file)) return;
+      if (known.has(photo.file)) {
+        // A duplicate must not make a deliberately hidden file reappear. The
+        // first row still owns its caption, crop and position in the gallery.
+        if (existing && photo.trashed === true) {
+          const index = gallery.findIndex(item => item?.file === photo.file);
+          if (index !== -1 && gallery[index]?.trashed !== true) gallery[index] = { ...gallery[index], trashed: true };
+        }
+        return;
+      }
       known.add(photo.file); gallery.push(existing ? photo : snapshot(photo));
     };
-    const copy = photo => {
+    const copy = (photo, galleryEntry = false) => {
       if (!object(photo)) return photo;
       const next = { ...photo };
+      // Reusing a file from the recycle bin on a page does not hide that page
+      // image. The flag belongs to its gallery record, never its placements.
+      if (!galleryEntry) delete next.trashed;
       if (next._galleryArchive !== undefined) {
         if (!Array.isArray(next._galleryArchive) || next._galleryArchive.some(item => !valid(item))) {
           throw new Error('Une photo conservée pour la galerie est incomplète. Gardez cette page ouverte et prévenez Hakan.');
@@ -66,14 +123,17 @@
     // reused photograph's placement-specific crop. Only exact file duplicates
     // are coalesced; no name or approximate image matching is used.
     for (const photo of data.gallery) {
-      const next = copy(photo);
+      const next = copy(photo, true);
+      if (object(next) && next.trashed !== undefined && typeof next.trashed !== 'boolean') {
+        throw new Error('Dans « Galerie », l’état de la corbeille doit être un booléen. Remettez cette photo dans la galerie ou dans la corbeille avant d’enregistrer.');
+      }
       if (!valid(next)) {
         // Keep the existing validation contract and its actionable field errors.
         gallery.push(next);
         if (text(next?.file)) known.add(next.file);
       } else add(next, true);
     }
-    if (Array.isArray(data.homeSlides)) result.homeSlides = data.homeSlides.map(copy);
+    if (Array.isArray(data.homeSlides)) result.homeSlides = data.homeSlides.map(photo => copy(photo));
     if (object(data.homePhotos)) result.homePhotos = Object.fromEntries(Object.entries(data.homePhotos).map(([key, photo]) => [key, copy(photo)]));
     if (Array.isArray(data.collections)) result.collections = data.collections.map(item => {
       if (!object(item)) return item;
@@ -96,5 +156,5 @@
     return result;
   }
 
-  global.SirayPhotoGallery = Object.freeze({ categories, valid, snapshot, placements, find, archiveReplacement, prepare });
+  global.SirayPhotoGallery = Object.freeze({ categories, valid, snapshot, placements, find, archiveReplacement, trash, restore, usages, prepare });
 })(typeof window !== 'undefined' ? window : globalThis);

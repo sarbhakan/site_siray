@@ -2,10 +2,11 @@ import catalog from '../content/catalog.json';
 import photography from '../content/photography.json';
 import pages from '../content/pages.json';
 import { buildCatalogData, countInFrench, capitalize } from '../data/site';
-import { galleryFilters } from '../data/photography';
+import { galleryFilters, visibleGalleryItems, type EditableGalleryPhoto } from '../data/photography';
 
 export type DraftKind = 'photos' | 'catalogue' | 'pages';
-export type PreviewDrafts = { photos: typeof photography; catalogue: typeof catalog; pages: typeof pages };
+type PreviewPhotography = Omit<typeof photography, 'gallery'> & { gallery: EditableGalleryPhoto[] };
+export type PreviewDrafts = { photos: PreviewPhotography; catalogue: typeof catalog; pages: typeof pages };
 export const baselineDrafts: PreviewDrafts = { photos: photography, catalogue: catalog, pages };
 const money = (value: number) => new Intl.NumberFormat('fr-FR', {
   style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 2,
@@ -14,6 +15,7 @@ const money = (value: number) => new Intl.NumberFormat('fr-FR', {
 /** Same catalogue derivation as the public build; only UI labels are added here. */
 export function previewModel(drafts: PreviewDrafts) {
   const built = buildCatalogData(drafts.catalogue);
+  const visibleGallery = visibleGalleryItems(drafts.photos.gallery);
   const priceGroups = built.brunchPriceGroups.map((group) => ({ ...group, pricePerPerson: `${money(group.price)} / personne` }));
   const collections = built.collections.map((item) => {
     const classic = ['layer-cakes', 'bento-cakes'].includes(item.slug);
@@ -49,7 +51,8 @@ export function previewModel(drafts: PreviewDrafts) {
     },
     photography: {
       ...drafts.photos,
-      gallery: drafts.photos.gallery.map((photo) => ({ ...photo, categoryLabel: galleryFilters.find((filter) => filter.id === photo.category)?.label || photo.category })),
+      galleryEmpty: visibleGallery.length === 0,
+      gallery: visibleGallery.map((photo) => ({ ...photo, categoryLabel: galleryFilters.find((filter) => filter.id === photo.category)?.label || photo.category })),
     },
     pages: drafts.pages,
   };

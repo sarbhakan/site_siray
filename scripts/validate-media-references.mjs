@@ -8,9 +8,12 @@ const uploadPattern = /^\/src\/assets\/uploads\/[^/\\%?#\u0000-\u001f]+\.(?:jpg|
 
 function references(data) {
   const found = [];
-  const add = (photo, location) => {
+  const add = (photo, location, gallery = false) => {
     const label = typeof photo?.label === 'string' && photo.label.trim() ? ` « ${photo.label.trim()} »` : '';
-    found.push({ file: photo?.file, location: `${location}${label}` });
+    if (gallery && photo?.trashed !== undefined && typeof photo.trashed !== 'boolean') {
+      throw new Error(`${location}${label} : le statut de corbeille doit être vrai ou faux. Vérifiez cette photo dans Photographies avant de publier.`);
+    }
+    found.push({ file: photo?.file, location: `${location}${label}`, active: !gallery || photo?.trashed !== true });
   };
   if (!Array.isArray(data?.homeSlides) || !Array.isArray(data?.collections)
     || !data?.homePhotos || typeof data.homePhotos !== 'object' || Array.isArray(data.homePhotos)
@@ -23,7 +26,7 @@ function references(data) {
     const names = { cover: 'grande photo', detail: 'petite photo', request: 'à découvrir', home: 'carte de l’accueil' };
     Object.entries(names).forEach(([key, label]) => add(collection?.[key], `${collection?.slug || `Prestation ${i + 1}`}, ${label}`));
   });
-  data.gallery.forEach((photo, i) => add(photo, `Galerie, photo ${i + 1}`));
+  data.gallery.forEach((photo, i) => add(photo, `Galerie, photo ${i + 1}`, true));
   return found;
 }
 
@@ -61,7 +64,7 @@ export async function validateMediaReferences({ root = defaultRoot } = {}) {
     for (const path of paths) if (!registry.has(path)) registry.set(path, paths);
   }
 
-  for (const { file, location } of photos) {
+  for (const { file, location, active } of photos) {
     if (typeof file !== 'string' || !file.trim()) {
       failures.push(`${location} : choisissez une photo avant d’enregistrer.`);
       continue;
@@ -76,6 +79,10 @@ export async function validateMediaReferences({ root = defaultRoot } = {}) {
       failures.push(`${location} : la photo « ${file} » n’est pas un fichier importé ou une image connue du site. Choisissez-la de nouveau dans la bibliothèque.`);
       continue;
     }
+    // A gallery-only trash item is not rendered or resolved by Astro. Keep its
+    // path valid, but an old missing archive file must not block the live site.
+    // Restoring it, or using the same file on any page, makes it active again.
+    if (!active) continue;
     for (const delivery of files) {
       if (!checked.has(delivery.path)) checked.set(delivery.path, !!delivery.local && await exactFile(delivery.local));
       if (!checked.get(delivery.path)) {
