@@ -632,6 +632,22 @@
       "category": "cupcakes",
       "position": "50% 76%",
       "zoom": 1
+    },
+    {
+      "alt": "Mini burger au poulet",
+      "category": "mignardises",
+      "file": "/src/assets/uploads/20261122-752d70bf35cc.webp",
+      "label": "Le crunchy chicken",
+      "position": "50% 81%",
+      "zoom": 1
+    },
+    {
+      "alt": "Un nem croustillant accompagné de sa petite sauce traditionnelle, pour une touche gourmande et savoureuse.",
+      "category": "mignardises",
+      "file": "/src/assets/uploads/20261122-a8442dac114c.webp",
+      "label": "Nem",
+      "position": "0% 95.333%",
+      "zoom": 1.0017
     }
   ]
 }
