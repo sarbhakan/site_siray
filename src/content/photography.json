@@ -36,7 +36,7 @@
     {
       "slug": "layer-cakes",
       "cover": {
-        "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs aux nuances de rose et de blanc. Une composition florale romantique et raffinée, où douceur et élégance se rencontrent pour sublimer votre célébration",
+        "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs.",
         "category": "layer-cakes",
         "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
         "label": "Wedding cake aux fleurs roses",
@@ -57,7 +57,7 @@
         "position": "50% 70%"
       },
       "home": {
-        "alt": "Layer cake ivoire et framboises présenté sur des journaux Siray Signature",
+        "alt": "Layer cake ivoire orné de framboises.",
         "category": "layer-cakes",
         "file": "/images/siray-layer-journal-94e2c50b.webp",
         "label": "Layer cake sur papier journal",
