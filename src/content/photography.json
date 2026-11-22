@@ -57,11 +57,12 @@
         "position": "50% 70%"
       },
       "home": {
-        "alt": "Layer cake ivoire orné de framboises.",
+        "alt": "Layer cake de fiançailles",
         "category": "layer-cakes",
-        "file": "/images/siray-layer-journal-94e2c50b.webp",
-        "label": "Layer cake sur papier journal",
-        "position": "54% 76%"
+        "file": "/src/assets/uploads/20261121-f6ec8ec22f41.webp",
+        "label": "Engagement cake",
+        "position": "50% 50%",
+        "zoom": 1
       }
     },
     {
@@ -637,17 +638,17 @@
       "zoom": 1.0017
     },
     {
-      "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
       "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs.",
-      "label": "Wedding cake aux fleurs roses",
       "category": "layer-cakes",
+      "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
+      "label": "Wedding cake aux fleurs roses",
       "position": "57% 100%"
     },
     {
-      "file": "/images/siray-layer-journal-94e2c50b.webp",
       "alt": "Layer cake ivoire orné de framboises.",
-      "label": "Layer cake sur papier journal",
       "category": "layer-cakes",
+      "file": "/images/siray-layer-journal-94e2c50b.webp",
+      "label": "Layer cake sur papier journal",
       "position": "54% 76%"
     }
   ]
