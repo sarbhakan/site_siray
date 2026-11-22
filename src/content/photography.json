@@ -577,13 +577,6 @@
       "position": "50% 70%"
     },
     {
-      "alt": "Layer cake ivoire et framboises présenté sur des journaux Siray Signature",
-      "category": "layer-cakes",
-      "file": "/images/siray-layer-journal-94e2c50b.webp",
-      "label": "Layer cake sur papier journal",
-      "position": "50% 65.789%"
-    },
-    {
       "alt": "Petits gâteaux présentés dans des coffrets transparents avec des rubans",
       "category": "bento-cakes",
       "file": "/src/assets/uploads/20261121-841bae70bea9.webp",
@@ -602,7 +595,8 @@
       "category": "bento-cakes",
       "file": "/images/siray-bento-rubans-1d8a5a95.webp",
       "label": "Bento cake aux rubans blancs",
-      "position": "50% 58%"
+      "position": "97.538% 20.763%",
+      "zoom": 1
     },
     {
       "alt": "Bento cake vert orné de fleurs roses",
@@ -626,10 +620,10 @@
       "position": "50% 68%"
     },
     {
-      "file": "/src/assets/uploads/20261122-b0f670e97163.webp",
       "alt": "Cupcakes à la fraise",
-      "label": "Cupcakes à la fraise",
       "category": "cupcakes",
+      "file": "/src/assets/uploads/20261122-b0f670e97163.webp",
+      "label": "Cupcakes à la fraise",
       "position": "50% 76%",
       "zoom": 1
     },
@@ -648,6 +642,13 @@
       "label": "Nem",
       "position": "0% 95.333%",
       "zoom": 1.0017
+    },
+    {
+      "file": "/images/siray-layer-journal-94e2c50b.webp",
+      "alt": "Layer cake ivoire orné de framboises.",
+      "label": "Layer cake sur papier journal",
+      "category": "layer-cakes",
+      "position": "54% 76%"
     }
   ]
 }
