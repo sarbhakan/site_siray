@@ -13,8 +13,8 @@
     ]
   },
   "publish_mode": "simple",
-  "media_folder": "/src/assets/uploads",
-  "public_folder": "/src/assets/uploads",
+  "media_folder": "/public/admin",
+  "public_folder": "/admin",
   "media_libraries": {
     "all": {
       "max_file_size": 20971520,
@@ -55,6 +55,8 @@
       "editor": {
         "preview": true
       },
+      "media_folder": "/src/assets/uploads",
+      "public_folder": "/src/assets/uploads",
       "files": [
         {
           "name": "photos",

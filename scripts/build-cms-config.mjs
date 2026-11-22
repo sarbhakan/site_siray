@@ -167,6 +167,7 @@ const pageFields = [
 
 const collection = (name, label, file, fields, description) => ({
   name, label, description, format: 'json', editor: { preview: true },
+  ...(name === 'photos' ? { media_folder: '/src/assets/uploads', public_folder: '/src/assets/uploads' } : {}),
   files: [{ name, label, file, fields: [field('_pagePreview', 'Aperçu du site', 'siray-page-preview', {
     required: false, preview_kind: name,
   }), ...fields], preview_path: ({photos: 'galerie/', catalogue: 'creations/', pages: ''})[name] }],
@@ -181,8 +182,10 @@ const config = {
     base_url: authUrl.origin, auth_methods: ['oauth'],
   },
   publish_mode: 'simple',
-  media_folder: '/src/assets/uploads',
-  public_folder: '/src/assets/uploads',
+  // Sveltia requires a global folder. Its own real admin folder is natively
+  // protected from uploads/mutations. Photo imports use the collection folder.
+  media_folder: '/public/admin',
+  public_folder: '/admin',
   media_libraries: {
     all: {
       max_file_size: 20971520, slugify_filename: true,
@@ -195,8 +198,8 @@ const config = {
     media_folder: '/public/images', public_folder: '/images', readonly: true,
   }, {
     // Sveltia 0.270 protects existing assets across folders sharing this path.
-    // Keep the global upload folder writable: new imports remain possible,
-    // while delete/rename/replace of saved photos cannot break custom widgets.
+    // It must differ from the global folder or Sveltia discards the alias.
+    // The photos collection stays uploadable; saved files stay protected.
     name: 'photos-conservees', label: 'Photothèque conservée',
     media_folder: '/src/assets/uploads', public_folder: '/src/assets/uploads', readonly: true,
   }],
