@@ -39,7 +39,7 @@ async function save(app, entry) {
   await app.controller.check();
 }
 
-function browser({ receipt = makeReceipt(), githubStatus = 'completed', conclusion = 'success', main = SHA, apiFail = false, storage = new Map(), cms = true } = {}) {
+function browser({ receipt = makeReceipt(), githubStatus = 'completed', conclusion = 'success', main = SHA, apiFail = false, apiStatus = 429, apiHeaders = {}, storage = new Map(), cms = true } = {}) {
   const host = new FakeElement();
   const window = new FakeTarget();
   const document = new FakeTarget();
@@ -50,7 +50,7 @@ function browser({ receipt = makeReceipt(), githubStatus = 'completed', conclusi
   const calls = [];
   const events = [];
   const hooks = {};
-  const state = { receipt, main, apiFail, githubStatus, conclusion, receiptFail: false, fetchGate: null };
+  const state = { receipt, main, apiFail, apiStatus, apiHeaders, githubStatus, conclusion, receiptFail: false, fetchGate: null };
   window.setTimeout = (fn, delay) => { const id = ++counter; timers.set(id, { fn, delay }); return id; };
   window.clearTimeout = (id) => timers.delete(id);
   window.dispatchEvent = (event) => { events.push(event); return true; };
@@ -70,7 +70,7 @@ function browser({ receipt = makeReceipt(), githubStatus = 'completed', conclusi
       if (state.receiptFail) throw new TypeError('offline');
       return { ok: true, status: 200, json: async () => state.receipt };
     }
-    if (state.apiFail) return { ok: false, status: 429, headers: { get: () => null } };
+    if (state.apiFail) return { ok: false, status: state.apiStatus, headers: { get: (name) => state.apiHeaders[name] ?? null } };
     const payload = url.endsWith('/git/ref/heads/main')
       ? { object: { sha: state.main } }
       : { check_runs: [{ name: 'Cloudflare Pages', head_sha: state.main, status: state.githubStatus, conclusion: state.conclusion }] };
@@ -83,6 +83,19 @@ function browser({ receipt = makeReceipt(), githubStatus = 'completed', conclusi
   const CMS = { registerEventListener: ({ name, handler }) => { hooks[name] = handler; } };
   const controller = window.SirayPublication.init(cms ? CMS : undefined);
   return { host, controller, CMS, hooks, calls, events, state, timers, storage, navigator, document, window, tick: (ms) => { time += ms; } };
+}
+
+async function manualCheck(app) {
+  app.host.children[2].children[0].dispatchEvent({ type: 'click' });
+  await app.controller.check();
+}
+
+async function nextPoll(app) {
+  const timer = [...app.timers].find(([, value]) => value.delay === 15000);
+  assert.ok(timer, 'publication polling remains scheduled');
+  app.timers.delete(timer[0]);
+  timer[1].fn();
+  await app.controller.check();
 }
 
 test('canonical hashes ignore object key order but preserve arrays, Unicode and JSON values', () => {
@@ -210,6 +223,104 @@ test('a failed Cloudflare check is visible while the public site keeps the previ
     await save(app, fakeEntry('pages', { changed: true }));
     assert.equal(app.controller.getState().state, 'failed');
     assert.equal(app.events.some((event) => event.type === 'siray:publication-ready'), false);
+  } finally { app.controller.destroy(); }
+});
+
+test('a cancelled deployment waits for a replacement without announcing a build failure', async () => {
+  const app = browser({ main: OTHER_SHA, conclusion: 'cancelled' });
+  try {
+    await app.controller.ready;
+    assert.equal(app.controller.getState().state, 'pending');
+    assert.match(app.controller.getState().message, /annulée/);
+    assert.equal(app.events.some((event) => event.detail?.status === 'failed'), false);
+    app.tick(600001);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'delayed');
+    assert.equal([...app.timers.values()].some((timer) => timer.delay === 15000), false);
+  } finally { app.controller.destroy(); }
+});
+
+test('a cancelled attempt retains saved fingerprints until the replacement is publicly verified', async () => {
+  const app = browser({ main: OTHER_SHA, conclusion: 'cancelled' });
+  try {
+    await app.controller.ready;
+    const changed = { title: 'Nouvelle pâtisserie' };
+    await save(app, fakeEntry('photos', changed));
+    app.tick(120001);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'pending');
+    assert.match(app.controller.getState().message, /annulée/);
+    assert.equal(app.controller.getState().pendingCollections.length, 1);
+    app.state.receipt = makeReceipt({ ...hashes, photos: hashContent(changed) }, OTHER_SHA);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'published');
+    assert.equal(app.controller.getState().pendingCollections.length, 0);
+  } finally { app.controller.destroy(); }
+});
+
+test('manual verification refreshes a cached failed GitHub check immediately', async () => {
+  const app = browser({ main: OTHER_SHA, conclusion: 'failure' });
+  try {
+    await app.controller.ready;
+    assert.equal(app.controller.getState().state, 'failed');
+    app.state.githubStatus = 'in_progress';
+    app.state.conclusion = null;
+    await manualCheck(app);
+    assert.equal(app.calls.filter((call) => call.url.startsWith('https://api.github.com')).length, 4);
+    assert.equal(app.controller.getState().state, 'pending');
+    assert.equal(app.events.some((event) => event.type === 'siray:publication-ready'), false);
+  } finally { app.controller.destroy(); }
+});
+
+test('manual verification still respects GitHub 403 and 429 backoff headers', async () => {
+  for (const apiStatus of [403, 429]) {
+    const app = browser({ apiFail: true, apiStatus, apiHeaders: { 'retry-after': '300' } });
+    try {
+      await app.controller.ready;
+      app.state.apiFail = false;
+      await manualCheck(app);
+      app.tick(120001);
+      await manualCheck(app);
+      assert.equal(app.calls.filter((call) => call.url.startsWith('https://api.github.com')).length, 1);
+      app.tick(180000);
+      await manualCheck(app);
+      assert.equal(app.calls.filter((call) => call.url.startsWith('https://api.github.com')).length, 3);
+      assert.equal(app.controller.getState().state, 'published');
+    } finally { app.controller.destroy(); }
+  }
+});
+
+test('a failed head opened without a local save recovers automatically after an external repair', async () => {
+  const app = browser({ main: OTHER_SHA, conclusion: 'failure' });
+  try {
+    await app.controller.ready;
+    assert.equal(app.controller.getState().state, 'failed');
+    app.state.main = 'c'.repeat(40);
+    app.state.githubStatus = 'in_progress';
+    app.state.conclusion = null;
+    app.tick(120001);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'pending');
+    app.state.receipt = makeReceipt(hashes, app.state.main);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'published');
+    assert.equal([...app.timers.values()].some((timer) => timer.delay === 15000), false);
+  } finally { app.controller.destroy(); }
+});
+
+test('watching a failed head stops after ten minutes and a manual check restarts bounded tracking', async () => {
+  const app = browser({ main: OTHER_SHA, conclusion: 'failure' });
+  try {
+    await app.controller.ready;
+    app.tick(600001);
+    await nextPoll(app);
+    assert.equal(app.controller.getState().state, 'failed');
+    assert.equal([...app.timers.values()].some((timer) => timer.delay === 15000), false);
+    await manualCheck(app);
+    assert.equal([...app.timers.values()].some((timer) => timer.delay === 15000), true);
+    app.tick(600001);
+    await nextPoll(app);
+    assert.equal([...app.timers.values()].some((timer) => timer.delay === 15000), false);
   } finally { app.controller.destroy(); }
 });
 

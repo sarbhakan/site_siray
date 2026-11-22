@@ -51,6 +51,7 @@
     let deadline = 0;
     let lastSavedAt = 0;
     let nextGitHubAt = 0;
+    let githubBackoffUntil = 0;
     let latestCommit;
     let lastReceipt;
     let lastBuild;
@@ -116,7 +117,7 @@
 
     function schedule() {
       window.clearTimeout(pollTimer);
-      const watchingHead = validCommit(latestCommit) && lastReceipt?.commit !== latestCommit && state === 'pending';
+      const watchingHead = validCommit(latestCommit) && lastReceipt?.commit !== latestCommit && ['pending', 'failed'].includes(state);
       if (disposed || document.hidden || navigator.onLine === false || (!expected.size && !watchingHead) || Date.now() >= deadline) return;
       pollTimer = window.setTimeout(() => { void check(); }, POLL_MS);
     }
@@ -132,15 +133,16 @@
         if (api && (response.status === 403 || response.status === 429)) {
           const reset = Number(response.headers.get('x-ratelimit-reset')) * 1000;
           const retry = Number(response.headers.get('retry-after')) * 1000 + Date.now();
-          nextGitHubAt = Math.max(nextGitHubAt, Number.isFinite(reset) ? reset : 0, Number.isFinite(retry) ? retry : 0, Date.now() + GITHUB_MS);
+          githubBackoffUntil = Math.max(githubBackoffUntil, Number.isFinite(reset) ? reset : 0, Number.isFinite(retry) ? retry : 0, Date.now() + GITHUB_MS);
         }
         if (!response.ok) throw new Error('Suivi indisponible.');
         return await response.json();
       } finally { window.clearTimeout(timeout); }
     }
 
-    async function inspectGitHub() {
-      if (Date.now() < nextGitHubAt) return;
+    async function inspectGitHub(force = false) {
+      // A manual check bypasses normal polling intervals, never GitHub's rate-limit backoff.
+      if (Date.now() < githubBackoffUntil || (!force && Date.now() < nextGitHubAt)) return;
       nextGitHubAt = Date.now() + GITHUB_MS;
       const observedRevision = revision;
       try {
@@ -174,10 +176,12 @@
           return;
         }
         if (lastBuild?.sha === latestCommit && lastBuild.status === 'completed'
-          && ['failure', 'cancelled', 'timed_out', 'action_required', 'startup_failure'].includes(lastBuild.conclusion)) {
+          && ['failure', 'timed_out', 'action_required', 'startup_failure'].includes(lastBuild.conclusion)) {
           render('failed', 'La mise en ligne est bloquée.', 'Vos modifications sont enregistrées. La dernière version réussie reste visible ; prévenez Hakan.');
         } else if (Date.now() >= deadline) {
           render('delayed', 'La publication prend plus de temps que prévu.', 'Vos modifications sont enregistrées. Touchez « Vérifier la publication » pour relancer le suivi.');
+        } else if (lastBuild?.sha === latestCommit && lastBuild.status === 'completed' && lastBuild.conclusion === 'cancelled') {
+          render('pending', 'Publication précédente annulée — vérification en cours.', 'Vos modifications restent enregistrées. Le suivi vérifie si une nouvelle publication prend le relais.');
         } else {
           const names = [...expected.keys()].map((name) => NAMES[name]).join(', ');
           render('pending', 'Modifications enregistrées — mise en ligne en cours.', `${names}. Gardez cet onglet ouvert : ce message confirmera leur publication.`);
@@ -187,12 +191,15 @@
       } else if (validCommit(receipt.commit) && latestCommit === receipt.commit) {
         render('published', 'Le site est à jour.', 'Les dernières modifications enregistrées sont en ligne.');
       } else if (validCommit(receipt.commit) && latestCommit && latestCommit !== receipt.commit) {
-        if (lastBuild?.status === 'completed' && ['failure', 'cancelled', 'timed_out', 'action_required', 'startup_failure'].includes(lastBuild.conclusion)) {
+        // Keep watching a failed or cancelled head briefly: an external repair or rerun can replace it.
+        if (!deadline) deadline = Date.now() + MAX_WAIT_MS;
+        if (lastBuild?.status === 'completed' && ['failure', 'timed_out', 'action_required', 'startup_failure'].includes(lastBuild.conclusion)) {
           render('failed', 'La dernière mise en ligne est bloquée.', 'Le site affiche la dernière version réussie. Prévenez Hakan pour vérifier la publication.');
         } else if (deadline && Date.now() >= deadline) {
           render('delayed', 'La publication prend plus de temps que prévu.', 'Le site reste consultable. Touchez « Vérifier la publication » pour relancer le suivi.');
+        } else if (lastBuild?.status === 'completed' && lastBuild.conclusion === 'cancelled') {
+          render('pending', 'Publication précédente annulée — vérification en cours.', 'Le site reste consultable. Le suivi vérifie si une nouvelle publication prend le relais.');
         } else {
-          if (!deadline) deadline = Date.now() + MAX_WAIT_MS;
           render('pending', 'Vérification des dernières modifications en cours.', 'Le suivi confirmera quand la version enregistrée sera visible sur le site.');
         }
       } else {
@@ -200,7 +207,7 @@
       }
     }
 
-    async function performCheck() {
+    async function performCheck({ forceGitHub = false } = {}) {
       if (disposed) return;
       if (navigator.onLine === false) {
         render('offline', 'Connexion interrompue.', 'Le suivi reprendra au retour de la connexion. Gardez vos modifications ouvertes.');
@@ -209,7 +216,7 @@
       refresh.disabled = true;
       try {
         const [receipt] = await Promise.all([
-          request(`/publication.json?verification=${Date.now()}`), inspectGitHub(),
+          request(`/publication.json?verification=${Date.now()}`), inspectGitHub(forceGitHub),
         ]);
         if (disposed) return;
         if (receipt?.schemaVersion !== 1 || (receipt.commit !== null && !validCommit(receipt.commit)) || !receipt.contentHashes
@@ -228,9 +235,9 @@
       }
     }
 
-    function check() {
+    function check(options) {
       if (checking) return checking;
-      checking = performCheck().finally(() => { checking = undefined; });
+      checking = performCheck(options).finally(() => { checking = undefined; });
       return checking;
     }
 
@@ -264,8 +271,8 @@
     }
 
     const manualCheck = () => {
-      if ((expected.size || state === 'delayed') && Date.now() >= deadline) deadline = Date.now() + MAX_WAIT_MS;
-      void check();
+      if ((expected.size || ['delayed', 'failed'].includes(state)) && Date.now() >= deadline) deadline = Date.now() + MAX_WAIT_MS;
+      void check({ forceGitHub: true });
     };
     const resume = () => { if (!document.hidden) void check(); else window.clearTimeout(pollTimer); };
     const sync = (event) => { if (event.key === STORAGE_KEY) { restorePending(); void check(); } };

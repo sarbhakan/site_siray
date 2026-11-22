@@ -193,6 +193,12 @@ const config = {
   asset_collections: [{
     name: 'photos-actuelles', label: 'Photos actuelles du site',
     media_folder: '/public/images', public_folder: '/images', readonly: true,
+  }, {
+    // Sveltia 0.270 protects existing assets across folders sharing this path.
+    // Keep the global upload folder writable: new imports remain possible,
+    // while delete/rename/replace of saved photos cannot break custom widgets.
+    name: 'photos-conservees', label: 'Photothèque conservée',
+    media_folder: '/src/assets/uploads', public_folder: '/src/assets/uploads', readonly: true,
   }],
   collections: [
     collection('photos', 'Photographies', 'src/content/photography.json', photographyFields,

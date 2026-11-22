@@ -1,0 +1,11 @@
+# V25 — publication CMS bloquée, 22 novembre 2026
+
+Cause reproduite : le commit 8472bfb supprime src/assets/uploads/20261121-8ebbdce8e5e0.webp à 14 h 26 (Paris), mais la galerie de photography.json conserve « Layer cake vintage ». La construction Astro échoue sur « Image introuvable ». Les modifications suivantes restent enregistrées sur main39859a9 ; le domaine sert encore le dernier succès118ee88.
+
+Réparation : restauration du blob exact99b7b8ff635765a46c6cb51796f046249923c69b depuis118ee88. Aucun fichier de contenu JSON modifié ; toutes les modifications de Selin conservées.
+
+Prévention : collection média Sveltia0.270 en lecture seule partageant le chemin uploads, en conservant le dossier global pour importer. La suppression, le renommage et le remplacement des fichiers enregistrés sont désactivés par les contrôles natifs de Sveltia. Les choix de photos et le retrait de lignes de galerie restent possibles. Ceci est une garde de l’interface sur les fichiers du dossier plat actuel, pas une restriction des droits GitHub ; le nettoyage des fichiers et les sous-dossiers demandent une vérification technique. Aucun hook privé ni interception des requêtes.
+
+Le prébuild contrôle désormais tous les emplacements photo et leurs fichiers avant Astro : erreur précisant emplacement, légende, fichier et réparation. Le suivi distingue annulation/échec, sa vérification manuelle ignore le cache courant mais respecte le backoff GitHub, et surveille un échec pendant dix minutes pour détecter une réparation extérieure.
+
+Contrôles locaux : 277 tests Node passent, dont huit nouveaux cas médias et six nouveaux cas publication. 87 emplacements et112 fichiers vérifiés. Compilation Astro réussie (25 routes générées, plus fichiers admin statiques), zéro erreur et zéro avertissement, un hint TypeScript préexistant dans le simulateur de test. Contrôle statique :28 pages, zéro problème et zéro avertissement. Revue indépendante de30 cas ciblés et du blob restauré. Les preuves du déploiement exact et du contrôle CMS sont conservées dans le dossier releases/v25-publication-reparee du workspace utilisateur après publication. Aucun droit, secret, tarif ni dépendance ajouté.

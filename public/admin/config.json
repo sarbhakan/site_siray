@@ -37,6 +37,13 @@
       "media_folder": "/public/images",
       "public_folder": "/images",
       "readonly": true
+    },
+    {
+      "name": "photos-conservees",
+      "label": "Photothèque conservée",
+      "media_folder": "/src/assets/uploads",
+      "public_folder": "/src/assets/uploads",
+      "readonly": true
     }
   ],
   "collections": [
