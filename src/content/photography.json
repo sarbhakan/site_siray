@@ -2,19 +2,19 @@
   "_pagePreview": "",
   "homeSlides": [
     {
-      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
-      "category": "plateaux",
-      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
-      "label": "Fruits de saison",
-      "position": "50% 50%"
-    },
-    {
       "alt": "Verrine crevettes",
       "category": "mignardises",
       "file": "/src/assets/uploads/20261121-2af946d5cbb0.webp",
       "label": "Verrine crevette & avocat",
       "position": "50% 50%",
       "zoom": 1
+    },
+    {
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "category": "plateaux",
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "label": "Fruits de saison",
+      "position": "50% 50%"
     },
     {
       "alt": "Layer cake rouge sur un présentoir argenté",
@@ -301,18 +301,18 @@
   },
   "gallery": [
     {
+      "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
+      "category": "buffets",
+      "file": "/images/siray-buffet-ensemble-474a9997.webp",
+      "label": "Un buffet dressé sur mesure",
+      "position": "50% 75%"
+    },
+    {
       "alt": "Layer cake ivoire orné de framboises",
       "category": "layer-cakes",
       "file": "/src/assets/uploads/20261121-f6ec8ec22f41.webp",
       "label": "Engagement cake",
       "position": "50% 70%"
-    },
-    {
-      "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
-      "category": "brunch-box",
-      "file": "/images/siray-brunch-toasts-6239a88d.webp",
-      "label": "Le brunch salé",
-      "position": "50% 72%"
     },
     {
       "alt": "Bento cake ivoire garni de framboises et de rubans blancs",
@@ -323,13 +323,6 @@
       "zoom": 1
     },
     {
-      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
-      "category": "plateaux",
-      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
-      "label": "Fruits de saison",
-      "position": "50% 50%"
-    },
-    {
       "alt": "Six cupcakes décorés de fleurs et de fruits rouges sur un plateau Siray",
       "category": "cupcakes",
       "file": "/images/siray-cupcakes-fleurs-3acb8e0f.webp",
@@ -338,11 +331,25 @@
       "zoom": 1.1012
     },
     {
-      "alt": "Buffet de réception dressé sur des nappes blanches avec une composition florale",
-      "category": "buffets",
-      "file": "/images/siray-buffet-ensemble-474a9997.webp",
-      "label": "Un buffet dressé sur mesure",
-      "position": "50% 75%"
+      "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
+      "category": "cupcakes",
+      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
+      "label": "Petite douceur à partager",
+      "position": "50% 58%"
+    },
+    {
+      "alt": "Brunch box ouverte avec des tartines, des fruits et des fromages",
+      "category": "brunch-box",
+      "file": "/images/siray-brunch-toasts-6239a88d.webp",
+      "label": "Le brunch salé",
+      "position": "50% 72%"
+    },
+    {
+      "alt": "Deux plateaux de fruits frais disposés en compositions colorées",
+      "category": "plateaux",
+      "file": "/images/siray-plateau-fruits-3ced1c4c.webp",
+      "label": "Fruits de saison",
+      "position": "50% 50%"
     },
     {
       "alt": "Assortiment de petits toasts et de bouchées sur un plateau blanc",
@@ -387,13 +394,6 @@
       "position": "50% 65%"
     },
     {
-      "alt": "Cupcake à la crème avec une framboise sur un présentoir argenté",
-      "category": "cupcakes",
-      "file": "/images/siray-cupcake-presentoir-4d5a78f3.webp",
-      "label": "Petite douceur à partager",
-      "position": "50% 58%"
-    },
-    {
       "alt": "Verrines et desserts sur des présentoirs argentés près de fleurs blanches",
       "category": "buffets",
       "file": "/images/siray-buffet-desserts-7f108c7a.webp",
@@ -405,7 +405,7 @@
       "category": "mignardises",
       "file": "/images/siray-mignardises-assortiment-ca4da982.webp",
       "label": "Mousse au chocolat façon liégeois",
-      "position": "100% 82.027%",
+      "position": "50% 50%",
       "zoom": 1
     },
     {
@@ -638,18 +638,11 @@
       "zoom": 1.0017
     },
     {
-      "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs.",
-      "category": "layer-cakes",
       "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
+      "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs.",
       "label": "Wedding cake aux fleurs roses",
-      "position": "57% 100%"
-    },
-    {
-      "alt": "Layer cake ivoire orné de framboises.",
       "category": "layer-cakes",
-      "file": "/images/siray-layer-journal-94e2c50b.webp",
-      "label": "Layer cake sur papier journal",
-      "position": "54% 76%"
+      "position": "57% 100%"
     }
   ]
 }
