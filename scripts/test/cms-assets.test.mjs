@@ -7,6 +7,19 @@ const config = JSON.parse(await readFile(projectFile('public/admin/config.json')
 const uploadPath = '/src/assets/uploads';
 const clean = path => path.replace(/^\/+|\/+$/gu, '');
 
+test('the external CMS is pinned and verified by anonymous cross-origin SRI', async () => {
+  const html = await readFile(projectFile('public/admin/editeur/index.html'), 'utf8');
+  const externalScripts = [...html.matchAll(/<script\b[^>]*\bsrc="https:\/\/[^"]+"[^>]*>/gu)];
+  assert.equal(externalScripts.length, 1, 'the editor has one reviewed external script');
+  const attributes = Object.fromEntries([...externalScripts[0][0].matchAll(/([\w-]+)="([^"]*)"/gu)].map((match) => [match[1], match[2]]));
+  assert.equal(attributes.src, 'https://unpkg.com/@sveltia/cms@0.270.0/dist/sveltia-cms.js');
+  // Computed from the npm 0.270.0 release, also compared to the CDN at review.
+  assert.equal(attributes.integrity, 'sha384-1PWMVQLxD8dGUGyxhuAzW9bW9EK+8qa/c6ntzhkqwb1x/1R58I64fX/zuQy+SgZF');
+  assert.equal(attributes.crossorigin, 'anonymous', 'SRI needs a CORS-readable response');
+  assert.equal(attributes.referrerpolicy, 'no-referrer');
+  assert.equal(attributes['data-cfasync'], 'false');
+});
+
 // These are configuration contracts. The real pinned Sveltia UI is checked
 // separately; reproducing its folder or permission functions here would not
 // prove that uploads and the Delete action behave correctly in the browser.

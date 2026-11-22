@@ -14,7 +14,14 @@ const React = {
   useRef: initial => activeHooks ? activeHooks.useRef(initial) : ({current:initial}),
   useImperativeHandle: (ref, get) => { if (ref) ref.current = get(); }, forwardRef: component => component,
 };
-const sandbox = { globalThis: {}, Intl, Object, Array, Number, String, Error };
+const windowListeners = new Map();
+const sandbox = { globalThis: {
+  addEventListener(type, listener) {
+    if (!windowListeners.has(type)) windowListeners.set(type, new Set());
+    windowListeners.get(type).add(listener);
+  },
+  removeEventListener(type, listener) { windowListeners.get(type)?.delete(listener); },
+}, Intl, Object, Array, Number, String, Error };
 vm.runInNewContext(fs.readFileSync(`${repo}/public/admin/photo-gallery.js`, 'utf8'), sandbox);
 vm.runInNewContext(fs.readFileSync(`${repo}/public/admin/studio-widgets.js`, 'utf8'), sandbox);
 const api = sandbox.globalThis.SirayStudioWidgets;
@@ -696,17 +703,59 @@ for (const photo of photos) test('Native photo preview renders the existing obje
     if(mode==='button')rig.dismiss();
     if(mode==='cancel')rig.modal.tree.props.onCancel(event);
     if(mode==='Escape')rig.modal.tree.props.onKeyDown({...event,key:'Escape'});
-    if(mode==='backdrop')rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:rig.dialog,clientX:10,clientY:100});
+    if(mode==='backdrop') {
+      const pointer={currentTarget:rig.dialog,target:rig.dialog,clientX:10,clientY:100,pointerId:1,button:0,isPrimary:true};
+      rig.modal.tree.props.onPointerDown(pointer);rig.modal.tree.props.onPointerUp(pointer);
+    }
     assert.equal(rig.changes.length,0);assert.equal(remainsOpen(rig),false);
     if(mode==='cancel'||mode==='Escape'){assert.equal(calls.prevent,1);assert.equal(calls.stop,1);}
     rig.unmount();
   });
-  test('Clicks within the dialog content or its bounds never dismiss the draft',()=>{
-    const rig=modalRig();
-    rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:{},clientX:10,clientY:100});assert.equal(remainsOpen(rig),true);
-    rig.modal.tree.props.onClick({currentTarget:rig.dialog,target:rig.dialog,clientX:50,clientY:100});assert.equal(remainsOpen(rig),true);
-    rig.unmount();
-  });
+  // Exercise the actual two dialog components, including their independent
+  // local drafts, rather than just a coordinate helper or source-code pattern.
+  const backdropCases = [
+    ['a short primary tap outside', true, fire => { fire('Down'); fire('Move',{clientX:12}); fire('Up',{clientX:12}); }],
+    ['a press retained across a React rerender', true, (fire,rig) => { fire('Down'); rig.modal.render(); fire('Up'); }],
+    ['release without a press', false, fire => fire('Up')],
+    ['selection beginning inside and ending outside', false, fire => { fire('Down',{clientX:50}); fire('Up'); }],
+    ['release inside after an outside press', false, fire => { fire('Down'); fire('Up',{clientX:50}); }],
+    ['a content child retaining a pointer outside', false, fire => { fire('Down',{target:{}}); fire('Up',{target:{}}); }],
+    ['padding within the dialog bounds', false, fire => { fire('Down',{clientX:50}); fire('Up',{clientX:50}); }],
+    ['release from another pointer', false, fire => { fire('Down'); fire('Up',{pointerId:2}); }],
+    ['a secondary touch', false, fire => { fire('Down',{isPrimary:false}); fire('Up',{isPrimary:false}); }],
+    ['the secondary mouse button', false, fire => { fire('Down',{button:2}); fire('Up',{button:2}); }],
+    ['an outside drag returning to its start', false, fire => { fire('Down'); fire('Move',{clientY:140}); fire('Up'); }],
+    ['a gesture passing through the dialog', false, fire => { fire('Down'); fire('Move',{clientX:50}); fire('Up'); }],
+    ['a cancelled pointer gesture', false, fire => { fire('Down'); fire('Cancel'); fire('Up'); }],
+    ['lost pointer capture', false, fire => { fire('Down'); fire('Lost'); fire('Up'); }],
+    ['a second finger arriving mid-tap', false, fire => { fire('Down'); fire('Down',{pointerId:2,isPrimary:false}); fire('Up'); }],
+    ['window focus lost mid-tap', false, fire => { fire('Down'); for(const listener of windowListeners.get('blur') || [])listener(); fire('Up'); }],
+  ];
+  for(const kind of ['PhotoMetadataDialog','FullScreenCrop']) for(const [scenario,shouldClose,act] of backdropCases) {
+    const rig=kind==='PhotoMetadataDialog'?await photoDialogRig():modalRig();
+    test(`${kind} handles ${scenario} without publishing the local draft`,()=>{
+      if(kind==='PhotoMetadataDialog')rig.input('label','Mon brouillon conservé');
+      else {rig.draft({position:'25% 75%',zoom:1.5});rig.modal.render();}
+      const fire=(phase,patch={})=>{
+        const handler=phase==='Lost'?'onLostPointerCapture':`onPointer${phase}`;
+        rig.modal.tree.props[handler]({currentTarget:rig.dialog,target:rig.dialog,clientX:10,clientY:100,
+          pointerId:1,pointerType:'touch',button:phase==='Move'?-1:0,isPrimary:true,...patch});
+      };
+      const open=()=>nodes(rig.parent.render()).some(n=>n.type?.name===kind);
+      act(fire,rig);
+      assert.equal(open(),!shouldClose);
+      assert.equal(rig.changes.length,0);
+      if(!shouldClose) {
+        // A cancelled or rejected gesture leaves the draft intact and the very
+        // next deliberate backdrop tap still works without reopening anything.
+        rig.modal.render();
+        if(kind==='PhotoMetadataDialog')assert.equal(nodes(rig.modal.tree).find(n=>n.props.id==='add-photo-new-photo-label').props.value,'Mon brouillon conservé');
+        else assert.equal(rig.cropNode().props.value.position,'25% 75%');
+        fire('Down');fire('Up');assert.equal(open(),false);assert.equal(rig.changes.length,0);
+      }
+      rig.unmount();
+    });
+  }
   test('Native Tab remains usable while editor save shortcuts are blocked inside the modal',()=>{
     const rig=modalRig();
     for(const keys of [{key:'Tab'},{key:'s',ctrlKey:true},{key:'S',metaKey:true}]){

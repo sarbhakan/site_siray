@@ -152,6 +152,7 @@ function initialize() {
     const slides = Array.from(
       hero.querySelectorAll<HTMLElement>('[data-slide]'),
     );
+    const description = hero.querySelector<HTMLElement>('[data-hero-description]');
     let current = 0;
     let pausedByUser = false;
     let inView = true;
@@ -163,7 +164,7 @@ function initialize() {
     let timer: ReturnType<typeof setTimeout> | undefined;
     let animation: ReturnType<AnimationEngine['timeline']> | undefined;
     const canRun = () =>
-      !disposed && !animationUnavailable && !pausedByUser &&
+      slides.length > 1 && !disposed && !animationUnavailable && !pausedByUser &&
       !reduced.matches && inView && !document.hidden;
     const loadEngine = () => {
       // Only the visible, animated hero needs GSAP. Keep one request in flight.
@@ -187,7 +188,11 @@ function initialize() {
       clearTimeout(timer);
       const scheduledGeneration = ++generation;
       hero.dataset.running = String(canRun());
-      surface.disabled = reduced.matches || animationUnavailable;
+      surface.disabled = slides.length < 2 || reduced.matches || animationUnavailable;
+      // The pause button's accessible name describes the action. Its separate,
+      // non-live description identifies the current photograph without announcing
+      // an automatic change every 6.5 seconds.
+      if (description) description.textContent = slides[current]?.querySelector('img')?.alt || '';
       surface.setAttribute('aria-pressed', String(pausedByUser));
       surface.setAttribute(
         'aria-label',
@@ -338,10 +343,12 @@ function initialize() {
         'click',
         () => {
           const category = filter(button.dataset.filter || 'all');
+          const nextURL = new URL(location.href);
+          nextURL.hash = category === 'all' ? '' : category;
           history.replaceState(
-            null,
+            history.state,
             '',
-            category === 'all' ? location.pathname : `#${category}`,
+            nextURL,
           );
         },
         { signal },

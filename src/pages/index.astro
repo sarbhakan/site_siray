@@ -43,6 +43,7 @@ const page = pages.home;
         disabled
         aria-label="Figer le défilement des photographies"
         aria-pressed="false"
+        aria-describedby="hero-photo-description"
       >
         {slides.map((slide, index) => (
           <span
@@ -64,6 +65,7 @@ const page = pages.home;
           </span>
         ))}
       </button>
+      <p id="hero-photo-description" class="sr-only" data-hero-description data-preview-text="photography.homeSlides.0.alt">{slides[0]?.alt}</p>
     </div>
   </section>
 

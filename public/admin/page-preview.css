@@ -9,7 +9,8 @@
 .siray-page-launcher p { margin: 0; font-size: 14px; color: var(--siray-muted); }
 .siray-page-dialog { position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--siray-paper); overflow: hidden; }
 .siray-page-dialog[open] { display: grid; grid-template-rows: auto auto auto minmax(0,1fr); }
-.siray-page-dialog::backdrop { background: rgb(28 33 23 / 74%); }
+.siray-page-dialog:modal { overscroll-behavior: contain; }
+.siray-page-dialog::backdrop { background: rgb(28 33 23 / 74%); overflow: hidden; overscroll-behavior: contain; }
 .siray-page-dialog * { box-sizing: border-box; }
 .siray-page-dialog :focus-visible, .siray-page-launcher :focus-visible { outline: 3px solid #535c2e; outline-offset: 3px; }
 .siray-page-dialog ::selection { background: var(--siray-olive); color: var(--siray-paper); }

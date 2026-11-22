@@ -117,6 +117,39 @@
     const h = React.createElement;
     const { useState, useEffect, useRef, useImperativeHandle, forwardRef } = React;
 
+    // A backdrop tap must begin and end outside. A selection or crop gesture
+    // that ends there must never discard the local, unconfirmed photo draft.
+    function useBackdropDismiss(onClose) {
+      const press = useRef(null);
+      const outside = event => {
+        const r = event.currentTarget.getBoundingClientRect();
+        return event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom;
+      };
+      const clear = () => { press.current = null; };
+      useEffect(() => {
+        global.addEventListener?.('blur', clear);
+        return () => { clear(); global.removeEventListener?.('blur', clear); };
+      }, []);
+      const matches = (event, release = false) => {
+        const start = press.current;
+        return start && start.id === event.pointerId && start.dialog === event.currentTarget &&
+          event.isPrimary === true && (!release || event.button === 0) && event.target === event.currentTarget && outside(event) &&
+          Math.hypot(event.clientX - start.x, event.clientY - start.y) <= 8;
+      };
+      return {
+        onPointerDown: event => {
+          clear();
+          if (event.isPrimary === true && event.button === 0 && event.target === event.currentTarget && outside(event)) {
+            press.current = { id: event.pointerId, dialog: event.currentTarget, x: event.clientX, y: event.clientY };
+          }
+        },
+        onPointerMove: event => { if (press.current?.id === event.pointerId && !matches(event)) clear(); },
+        onPointerUp: event => { const dismiss = matches(event, true); clear(); if (dismiss) onClose(); },
+        onPointerCancel: clear,
+        onLostPointerCapture: clear,
+      };
+    }
+
     function ImageFrame({ photo, getAsset, ratio = 4 / 5, whole = false, onDimensions, className = '', ...props }) {
       const src = safeImageURL(photo?.file, getAsset);
       const [failed, setFailed] = useState(false);
@@ -444,6 +477,7 @@
     function PhotoMetadataDialog({ photo, forID, getAsset, trigger, reuse = false, onClose, onConfirm }) {
       const [draft, setDraft] = useState({ ...photo }), [error, setError] = useState('');
       const dialogRef = useRef(null);
+      const backdropDismiss = useBackdropDismiss(onClose);
       useEffect(() => {
         const dialog = dialogRef.current, doc = global.document;
         const previous = [doc.body.style.overflow, doc.documentElement.style.overflow];
@@ -475,11 +509,7 @@
           if (event.key === 'Escape') { event.preventDefault(); onClose(); }
           if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') event.preventDefault();
         },
-        onClick: event => {
-          if (event.target !== event.currentTarget) return;
-          const r = event.currentTarget.getBoundingClientRect();
-          if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) onClose();
-        } },
+        ...backdropDismiss },
         h('header', { className: 'siray-dialog-header' }, h('h2', { id: `${forID}-title` }, 'Nommer et classer la photo'),
           h('p', { id: `${forID}-instructions` }, 'Cette photo restera dans la galerie, même si vous changez ensuite le visuel de la page.')),
         h('div', { className: 'siray-dialog-body siray-photo-add-form' },
@@ -508,6 +538,7 @@
     function FullScreenCrop({ photo, field, forID, getAsset, initialView, trigger, onClose, onConfirm }) {
       const [draft, setDraft] = useState({ ...photo });
       const draftRef = useRef({ ...photo }), viewRef = useRef(initialView), dialogRef = useRef(null);
+      const backdropDismiss = useBackdropDismiss(onClose);
       useEffect(() => {
         const dialog = dialogRef.current, doc = global.document;
         const previous = [doc.body.style.overflow, doc.documentElement.style.overflow];
@@ -528,11 +559,7 @@
           if (event.key === 'Escape') { event.preventDefault(); onClose(); }
           if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') event.preventDefault();
         },
-        onClick: event => {
-          if (event.target !== event.currentTarget) return;
-          const r = event.currentTarget.getBoundingClientRect();
-          if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) onClose();
-        } },
+        ...backdropDismiss },
         h('header', { className: 'siray-dialog-header' }, h('h2', { id: `${forID}-title`, tabIndex: -1 }, 'Cadrer la photo'),
           h('p', { id: `${forID}-instructions` }, 'Un doigt pour déplacer, deux doigts pour zoomer.')),
         h('div', { className: 'siray-dialog-body' }, h(PhotoControl, { value: draft, field, forID, getAsset,
