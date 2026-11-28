@@ -638,11 +638,19 @@
       "zoom": 1.0017
     },
     {
-      "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
       "alt": "Un wedding cake à deux étages, délicatement habillé de fleurs.",
-      "label": "Wedding cake aux fleurs roses",
       "category": "layer-cakes",
+      "file": "/src/assets/uploads/20261121-b98ffb625e84.webp",
+      "label": "Wedding cake aux fleurs roses",
       "position": "57% 100%"
+    },
+    {
+      "alt": "Cupcakes aux fruits rouges & pistache",
+      "category": "cupcakes",
+      "file": "/src/assets/uploads/20261128-c9b4f01bb1a8.webp",
+      "label": "Cupcakes aux fruits rouges & pistache",
+      "position": "48% 100%",
+      "zoom": 1
     }
   ]
 }
